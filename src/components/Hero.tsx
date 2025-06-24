@@ -13,7 +13,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col-reverse items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex flex-col-reverse  items-center justify-center overflow-hidden"
     >
       {/* Image de fond pleine largeur */}
       <div className="absolute inset-0 z-0">
@@ -32,7 +32,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.5 }}
-        className="md:absolute bottom-20 md:top-1/2 md:right-8 md:transform -translate-y-1/2 z-10"
+        className="md:absolute bottom-20 md:top-1/2 md:right-8 md:transform md:-translate-y-1/2 z-10"
       >
         <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 shadow-lg border border-white/20">
           <div className="flex items-center gap-3">
@@ -43,7 +43,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
       </motion.div>
 
       {/* Contenu au-dessus de l'image */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-5 text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
