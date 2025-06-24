@@ -13,7 +13,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col-reverse  items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex flex-col-reverse  items-center justify-center overflow-hidden h-svh"
     >
       {/* Image de fond pleine largeur */}
       <div className="absolute inset-0 z-0">
