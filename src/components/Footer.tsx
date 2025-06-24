@@ -1,7 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
-import { useTranslations } from '../i18n';
+import React from "react";
+import { motion } from "framer-motion";
+import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { useTranslations } from "../i18n";
 
 interface FooterProps {
   lang: string;
@@ -12,10 +12,10 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
+    { icon: Facebook, href: "#", label: "Facebook" },
+    { icon: Twitter, href: "#", label: "Twitter" },
+    { icon: Linkedin, href: "#", label: "LinkedIn" },
+    { icon: Instagram, href: "#", label: "Instagram" },
   ];
 
   return (
@@ -30,14 +30,14 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
             className="text-left"
           >
             <div className="flex items-center mb-4">
-              <img 
-                src="/logo-automatisation.png" 
-                alt="Automatisons Agency Logo" 
+              <img
+                src="/logo-automatisation.png"
+                alt="Automatisons Agency Logo"
                 className="h-12 w-auto"
               />
             </div>
             <p className="text-gray-300 leading-relaxed">
-              {t('footer.description')}
+              {t("footer.description")}
             </p>
           </motion.div>
 
@@ -48,14 +48,12 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
             viewport={{ once: true }}
             className="text-left"
           >
-            <h4 className="text-lg font-semibold mb-4">
-              Navigation
-            </h4>
+            <h4 className="text-lg font-semibold mb-4">Navigation</h4>
             <ul className="space-y-2">
               {[
-                { key: 'nav.home', href: '/' },
-                { key: 'nav.solutions', href: '/solutions' },
-                { key: 'nav.contact', href: '/contact' },
+                { key: "nav.home", href: "/" },
+                { key: "nav.solutions", href: "/solutions" },
+                { key: "nav.contact", href: "/contact" },
               ].map((link) => (
                 <li key={link.key}>
                   <a
@@ -76,9 +74,7 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
             viewport={{ once: true }}
             className="text-left"
           >
-            <h4 className="text-lg font-semibold mb-4">
-              Suivez-nous
-            </h4>
+            <h4 className="text-lg font-semibold mb-4">Suivez-nous</h4>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
                 <motion.a
@@ -96,10 +92,30 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
           </motion.div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center">
+        <div className="flex justify-between items-center flex-row border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-gray-400">
-            © {currentYear} Automatisons Agency. {t('footer.rights')}
+            © {currentYear} Automatisons Agency. {t("footer.rights")}
           </p>
+          <div className="flex gap-4">
+            <a
+              href="/mentions-legales"
+              className="text-gray-400 hover:text-primary-400 transition-colors duration-200"
+            >
+              Mentions légales
+            </a>
+            <a
+              href="/conditions-generales"
+              className="text-gray-400 hover:text-primary-400 transition-colors duration-200"
+            >
+              Conditions Générales d’Utilisation
+            </a>
+            <a
+              href="/termes-utilisation"
+              className="text-gray-400 hover:text-primary-400 transition-colors duration-200"
+            >
+              Termes d’utilisation
+            </a>
+          </div>
         </div>
       </div>
     </footer>
