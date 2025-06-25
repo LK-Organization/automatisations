@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Send, Mail, Phone, MapPin } from 'lucide-react';
-import { useTranslations } from '../i18n';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Send, Mail, Phone, MapPin } from "lucide-react";
+import { useTranslations } from "../i18n";
 
 interface ContactProps {
   lang: string;
@@ -10,20 +10,22 @@ interface ContactProps {
 const Contact: React.FC<ContactProps> = ({ lang }) => {
   const t = useTranslations(lang);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    name: "",
+    email: "",
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -38,10 +40,10 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            {t('contact.title')}
+            {t("contact.title")}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {t('contact.subtitle')}
+            {t("contact.subtitle")}
           </p>
         </motion.div>
 
@@ -53,10 +55,16 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
             viewport={{ once: true }}
             className="bg-white rounded-2xl p-8 shadow-lg"
           >
+            <h3 className="text-3xl font-bold text-gray-900 mb-4">
+              {t("contact.emailFormTitle")}
+            </h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  {t('contact.name')}
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
+                  {t("contact.name")}
                 </label>
                 <input
                   type="text"
@@ -69,8 +77,11 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  {t('contact.email')}
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
+                  {t("contact.email")}
                 </label>
                 <input
                   type="email"
@@ -83,8 +94,11 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  {t('contact.message')}
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
+                  {t("contact.message")}
                 </label>
                 <textarea
                   id="message"
@@ -103,7 +117,7 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                 className="w-full bg-primary-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-700 transition-colors duration-200 flex items-center justify-center gap-2"
               >
                 <Send size={20} />
-                {t('contact.send')}
+                {t("contact.send")}
               </motion.button>
             </form>
           </motion.div>
@@ -115,11 +129,11 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
             viewport={{ once: true }}
             className="space-y-8"
           >
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                Coordonnées
-              </h3>
+            <div className="bg-white rounded-2xl p-8 shadow-lg space-y-6 h-full justify-between flex flex-col">
               <div className="space-y-4">
+                <h3 className="text-3xl font-bold text-gray-900 mb-4">
+                  {t("contact.meetingFormTitle")}
+                </h3>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center">
                     <Mail size={20} className="text-white" />
@@ -148,6 +162,15 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                   </div>
                 </div>
               </div>
+              <motion.a
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full bg-primary-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-700 transition-colors duration-200 flex items-center justify-center gap-2"
+                href="https://automatai.com/"
+                target="_blank"
+              >
+                Prendre RDV
+              </motion.a>
             </div>
           </motion.div>
         </div>

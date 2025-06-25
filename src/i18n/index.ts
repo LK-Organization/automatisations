@@ -107,6 +107,8 @@ export const ui = {
     "contact.title": "Contactez-nous",
     "contact.subtitle":
       "Prêt à transformer votre entreprise ? Parlons de votre projet.",
+    "contact.emailFormTitle": "Envoyer un email",
+    "contact.meetingFormTitle": "Prendre un rendez-vous",
     "contact.name": "Nom",
     "contact.email": "Email",
     "contact.message": "Message",
