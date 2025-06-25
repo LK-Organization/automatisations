@@ -25,8 +25,8 @@ export const POST: APIRoute = async ({ request }) => {
 
   const transporter = nodemailer.createTransport({
     host: "mail.automatisons.fr", // 🔧 ton host SMTP
-    port: 465,
-    secure: true,
+    port: 587,
+    secure: false,
     auth: {
       user: "contact@automatisons.fr", // 🔐 ton adresse mail
       pass: "z3yJd5623@Kjhsd", // 🔐 ton mot de passe SMTP
