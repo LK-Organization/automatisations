@@ -15,9 +15,40 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+
+    // Vérifie que les données sont bien présentes
+    if (!formData.name || !formData.email || !formData.message) {
+      alert("Veuillez remplir tous les champs.");
+      return;
+    }
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert("✅ Message envoyé !");
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+      } else {
+        alert("❌ Erreur serveur : " + result.error);
+      }
+    } catch (error) {
+      console.error(error);
+      alert("❌ Une erreur est survenue.");
+    }
   };
 
   const handleChange = (
