@@ -11,10 +11,10 @@ const About: React.FC<AboutProps> = ({ lang }) => {
   const t = useTranslations(lang);
 
   const stats = [
-    { icon: Users, value: "85+", label: "Clients satisfaits" },
+    { icon: Users, value: "100%", label: "Clients satisfaits" },
     { icon: Award, value: "3+", label: "Années d'expérience" },
     { icon: Zap, value: "100%", label: "Amélioration efficacité" },
-    { icon: CheckCircle, value: "90+", label: "Projets réalisés" },
+    { icon: CheckCircle, value: "100+", label: "Projets réalisés" },
   ];
 
   return (

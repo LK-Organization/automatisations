@@ -48,7 +48,7 @@ const Methodology: React.FC<MethodologyProps> = ({ lang }) => {
       icon: Rocket,
       title: "methodology.implementation.title",
       description: "methodology.implementation.description",
-      duration: "2 semaines",
+      duration: "1 semaine",
       color: "from-green-500 to-green-600",
       features: [
         "Développement sur mesure",

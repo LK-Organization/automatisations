@@ -5,6 +5,8 @@ import tailwind from "@astrojs/tailwind";
 import netlify from "@astrojs/netlify";
 
 export default defineConfig({
+  output: "server",
+
   integrations: [react(), tailwind()],
 
   // Configuration pour les variables d'environnement

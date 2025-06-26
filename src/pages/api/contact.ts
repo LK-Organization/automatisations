@@ -2,6 +2,9 @@ export const prerender = false;
 
 import type { APIRoute } from "astro";
 import nodemailer from "nodemailer";
+import { render } from "@react-email/render";
+import ContactConfirmationEmail from "../../emails/ContactConfirmationEmail";
+import { tr } from "framer-motion/client";
 
 export const POST: APIRoute = async ({ request }) => {
   try {
@@ -14,9 +17,9 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const transporter = nodemailer.createTransport({
-      host: "mail.automatisons.fr", // ou mail77.lwspanel.com
+      host: "mail77.lwspanel.com",
       port: 465,
-      secure: true, // SSL
+      secure: true,
       auth: {
         user: "contact@automatisons.fr",
         pass: "z3yJd5623@Kjhsd",
@@ -24,7 +27,7 @@ export const POST: APIRoute = async ({ request }) => {
     });
 
     await transporter.sendMail({
-      from: `"${data.name}" <${data.email}>`,
+      from: '"Automatisons" <contact@automatisons.fr>',
       to: "contact@automatisons.fr",
       subject: "📬 Nouveau message depuis le formulaire",
       text: data.message,
@@ -34,7 +37,14 @@ export const POST: APIRoute = async ({ request }) => {
         <p><strong>Message :</strong><br/>${data.message}</p>
       `,
     });
+    const confirmationHtml = await render(ContactConfirmationEmail(data.name));
 
+    await transporter.sendMail({
+      from: '"Automatisons.fr" <contact@automatisons.fr>',
+      to: data.email,
+      subject: "🤝 Confirmation de votre message",
+      html: confirmationHtml,
+    });
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
     });
