@@ -182,7 +182,7 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="w-full bg-primary-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-700 transition-colors duration-200 flex items-center justify-center gap-2"
-                href="https://automatai.com/"
+                href="https://calendly.com/kkulig25/30min"
                 target="_blank"
               >
                 Prendre RDV

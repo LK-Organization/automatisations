@@ -34,14 +34,12 @@ export const ContactConfirmationEmail = ({
         </Text>
         <Hr />
         <Text>— L’équipe de Automatisations.fr</Text>
-      </Container>
-      <Section className="text-center flex justify-center mx-auto">
         <table className="w-full flex justify-center mx-auto">
           <tr className="w-full mx-auto">
             <td align="center">
               <Img
                 alt="React Email logo"
-                height="42"
+                height="100"
                 src="https://www.automatisons.fr/logo.png"
               />
             </td>
@@ -95,12 +93,12 @@ export const ContactConfirmationEmail = ({
           <tr>
             <td align="center">
               <Text className="mt-[4px] mb-0 font-semibold text-[16px] text-gray-500 leading-[24px]">
-                contact@automatai.com | +33 1 23 45 67 89
+                contact@automatisons.fr | +33 1 23 45 67 89
               </Text>
             </td>
           </tr>
         </table>
-      </Section>
+      </Container>
     </Body>
   </Html>
 );
