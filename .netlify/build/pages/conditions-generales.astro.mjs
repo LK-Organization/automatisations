@@ -1,0 +1,57 @@
+/* empty css                                                */
+import { e as createComponent, k as renderComponent, r as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_D0YNkI8Y.mjs';
+import 'kleur/colors';
+import { $ as $$Layout, N as Navigation, F as Footer, C as Chatbot } from '../chunks/Chatbot_CJSXzon3.mjs';
+export { renderers } from '../renderers.mjs';
+
+const $$ConditionsGenerales = createComponent(($$result, $$props, $$slots) => {
+  const lang = "fr";
+  const title = "Automatisons - Conditions G\xE9n\xE9rales d\u2019Utilisation";
+  const description = "Conditions G\xE9n\xE9rales d\u2019Utilisation des services propos\xE9s par Automatisons Agency.";
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": title, "description": description, "lang": lang }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Navigation", Navigation, { "lang": lang, "isHomePage": false, "client:load": true, "client:component-hydration": "load", "client:component-path": "C:/Users/MohMost/Downloads/Sandbox/Projects/automatisations/src/components/Navigation", "client:component-export": "default" })} ${maybeRenderHead()}<main class="pt-16"> <section class="max-w-4xl mx-auto px-4 py-20 text-gray-800"> <h1 class="text-4xl font-bold mb-10">Conditions Générales d’Utilisation</h1> <p class="bg-yellow-100 border-l-4 border-yellow-400 text-yellow-900 px-4 py-3 mb-6"> <strong>Important :</strong> Les présentes Conditions Générales d'Utilisation (CGU) régissent l'utilisation des services d'automatisation et d'intelligence artificielle proposés par Automatisons Agency. Elles constituent un contrat entre vous et notre société.
+</p> <h2 class="text-2xl font-semibold mt-8 mb-2">1. Objet et champ d'application</h2> <p class="mb-4">
+Les présentes CGU définissent les conditions dans lesquelles Automatisons Agency fournit ses services d'automatisation, d'intelligence artificielle et de conseil en transformation digitale. Elles s'appliquent à toute commande passée via notre site web, par téléphone, email ou tout autre moyen.
+</p> <h2 class="text-2xl font-semibold mt-8 mb-2">2. Définitions</h2> <p class="mb-4"> <strong>"Automatisons Agency" ou "Prestataire"</strong> : la société Automatisons Agency SAS<br> <strong>"Client"</strong> : toute personne physique ou morale qui commande des services<br> <strong>"Services"</strong> : prestations d'automatisation, d'IA, de conseil et de formation<br> <strong>"Projet"</strong> : ensemble des Services définis dans un devis ou contrat<br> <strong>"Livrables"</strong> : résultats des Services fournis au Client
+</p> <h2 class="text-2xl font-semibold mt-8 mb-2">3. Commande et acceptation</h2> <h3 class="text-xl font-medium mt-4">3.1 Processus de commande</h3> <p class="mb-4">
+Chaque commande suit ce processus :
+</p><ul class="list-disc ml-6 mt-2"> <li>Audit gratuit (48h)</li> <li>Émission d’un devis personnalisé (sous 7 jours)</li> <li>Validation par le Client</li> <li>Signature du contrat</li> <li>Démarrage des travaux</li> </ul>  <h3 class="text-xl font-medium mt-4">3.2 Acceptation</h3> <p class="mb-4">
+La commande est définitive après signature du devis et réception de l’acompte. Automatisons Agency se réserve le droit de refuser une commande ne respectant pas ces CGU.
+</p> <h2 class="text-2xl font-semibold mt-8 mb-2">4. Prix et conditions de paiement</h2> <h3 class="text-xl font-medium mt-4">4.1 Prix</h3> <p class="mb-4">
+Les prix sont en euros hors taxes. Toute prestation additionnelle fera l’objet d’un devis séparé.
+</p> <h3 class="text-xl font-medium mt-4">4.2 Modalités de paiement</h3> <div class="overflow-x-auto mb-4"> <table class="min-w-full border border-gray-300 text-sm"> <thead class="bg-gray-100"> <tr> <th class="border border-gray-300 px-4 py-2 text-left">Type de projet</th> <th class="border border-gray-300 px-4 py-2 text-left">Acompte</th> <th class="border border-gray-300 px-4 py-2 text-left">Solde</th> </tr> </thead> <tbody> <tr> <td class="border border-gray-300 px-4 py-2">&lt; 5 000€</td> <td class="border border-gray-300 px-4 py-2">30% à la commande</td> <td class="border border-gray-300 px-4 py-2">70% à la livraison</td> </tr> <tr class="bg-gray-50"> <td class="border border-gray-300 px-4 py-2">5 000€ - 20 000€</td> <td class="border border-gray-300 px-4 py-2">40% à la commande</td> <td class="border border-gray-300 px-4 py-2">60% à la livraison</td> </tr> <tr> <td class="border border-gray-300 px-4 py-2">&gt; 20 000€</td> <td class="border border-gray-300 px-4 py-2">50% à la commande</td> <td class="border border-gray-300 px-4 py-2">50% selon échéancier</td> </tr> </tbody> </table> </div> <h3 class="text-xl font-medium mt-4">4.3 Retard de paiement</h3> <p class="mb-4">
+En cas de retard, des pénalités de 3% par mois seront appliquées. Après 8 jours sans règlement, les prestations peuvent être suspendues.
+</p> <h2 class="text-2xl font-semibold mt-8 mb-2">5. Exécution des services</h2> <h3 class="text-xl font-medium mt-4">5.1 Délais</h3> <p class="mb-4">
+Les délais sont donnés à titre indicatif et commencent à réception de l’acompte et de tous les éléments nécessaires.
+</p> <h3 class="text-xl font-medium mt-4">5.2 Obligations du Client</h3> <p class="mb-4">
+Le Client s’engage à fournir les informations et accès nécessaires, désigner un interlocuteur et valider les livrables dans les délais.
+</p> <h3 class="text-xl font-medium mt-4">5.3 Obligations du Prestataire</h3> <p class="mb-4">
+Automatisons Agency s’engage à travailler avec professionnalisme, respecter la confidentialité et assurer un support et une formation si prévue.
+</p> <h2 class="text-2xl font-semibold mt-8 mb-2">6. Propriété intellectuelle</h2> <p class="mb-4">
+Les développements spécifiques deviennent la propriété du Client après paiement intégral. Les outils génériques restent la propriété d’Automatisons Agency.
+</p> <h2 class="text-2xl font-semibold mt-8 mb-2">7. Confidentialité</h2> <p class="mb-4">
+Chaque partie s’engage à garder confidentielles toutes les informations échangées pendant 5 ans après la fin de la relation contractuelle.
+</p> <h2 class="text-2xl font-semibold mt-8 mb-2">8. Garanties et responsabilité</h2> <p class="mb-4">
+Automatisons Agency garantit la conformité des Services aux spécifications définies. Sa responsabilité ne peut être engagée qu’en cas de faute prouvée.
+</p> <h2 class="text-2xl font-semibold mt-8 mb-2">9. Droit applicable et juridiction</h2> <p class="mb-4">
+Les présentes CGU sont régies par le droit français. Tout litige sera soumis aux tribunaux compétents de Paris.
+</p> <h2 class="text-2xl font-semibold mt-8 mb-2">10. Contact</h2> <p class="mb-4">
+Pour toute question, vous pouvez nous contacter à :<br>
+Email : <a href="mailto:legal@automatisons-agency.com" class="text-blue-600 hover:underline">legal@automatisons-agency.com</a><br>
+Adresse : 123 Avenue de l'Innovation, 75001 Paris, France<br>
+Téléphone : +33 1 23 45 67 89
+</p> <p class="mt-12 text-sm text-gray-500">Dernière mise à jour : 24 juin 2025</p> </section> </main> ${renderComponent($$result2, "Footer", Footer, { "lang": lang, "client:load": true, "client:component-hydration": "load", "client:component-path": "C:/Users/MohMost/Downloads/Sandbox/Projects/automatisations/src/components/Footer", "client:component-export": "default" })} ${renderComponent($$result2, "Chatbot", Chatbot, { "lang": lang, "client:load": true, "client:component-hydration": "load", "client:component-path": "C:/Users/MohMost/Downloads/Sandbox/Projects/automatisations/src/components/Chatbot", "client:component-export": "default" })} ` })}`;
+}, "C:/Users/MohMost/Downloads/Sandbox/Projects/automatisations/src/pages/conditions-generales.astro", void 0);
+
+const $$file = "C:/Users/MohMost/Downloads/Sandbox/Projects/automatisations/src/pages/conditions-generales.astro";
+const $$url = "/conditions-generales";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$ConditionsGenerales,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };

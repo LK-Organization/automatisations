@@ -150,7 +150,7 @@ const TestimonialsCarousel: React.FC = () => {
         >
           {testimonials.map((testimonial, index) => (
             <SwiperSlide key={index} className="mb-5">
-              <div className="bg-white rounded-2xl p-6  shadow-lg border border-gray-100 h-[450px]  flex flex-col justify-between">
+              <div className="bg-white rounded-2xl p-6  shadow-lg border border-gray-100 h-[400px]  flex flex-col justify-center gap-0">
                 <div className="flex items-center mb-4">
                   <img
                     src={testimonial.image}

@@ -156,7 +156,9 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                   </div>
                   <div>
                     <div className="font-semibold text-gray-900">Email</div>
-                    <div className="text-gray-600">contact@automatai.com</div>
+                    <div className="text-gray-600">
+                      contact@Automatisons.com
+                    </div>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
