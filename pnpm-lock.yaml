@@ -38,6 +38,9 @@ importers:
       framer-motion:
         specifier: ^11.11.17
         version: 11.18.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      google-reviews-widget:
+        specifier: ^1.0.4
+        version: 1.0.4(react@18.3.1)
       lucide-react:
         specifier: ^0.468.0
         version: 0.468.0(react@18.3.1)
@@ -1699,6 +1702,11 @@ packages:
     resolution: {integrity: sha512-otgSPpUmdWJ43VXyiNgEYE4luzHCL2pz4wQ0OnDluC6Eg4Ko3Vexy/SrSynglw/eR+OhkzmqFCZa/OFa/RgAOQ==}
     engines: {node: '>=0.6.0'}
     hasBin: true
+
+  google-reviews-widget@1.0.4:
+    resolution: {integrity: sha512-46X0NKuODHHRP6Bogn189OFZZi6z8PQD7yzEO6DePu1OGOxcJ4qpyZCT3VJ7AJHqJLEdX9z0OFD+/JoQJ9hCeA==}
+    peerDependencies:
+      react: '>=16.8.0'
 
   gopd@1.2.0:
     resolution: {integrity: sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==}
@@ -5010,6 +5018,10 @@ snapshots:
   gonzales-pe@4.3.0:
     dependencies:
       minimist: 1.2.8
+
+  google-reviews-widget@1.0.4(react@18.3.1):
+    dependencies:
+      react: 18.3.1
 
   gopd@1.2.0: {}
 

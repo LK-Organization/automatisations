@@ -146,10 +146,10 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
             className="space-y-8"
           >
             <div className="bg-white rounded-2xl p-8 shadow-lg space-y-6 h-full justify-between flex flex-col">
+              <h3 className="text-3xl font-bold text-gray-900 ">
+                {t("contact.meetingFormTitle")}
+              </h3>
               <div className="space-y-4">
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">
-                  {t("contact.meetingFormTitle")}
-                </h3>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center">
                     <Mail size={20} className="text-white" />
@@ -157,7 +157,9 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                   <div>
                     <div className="font-semibold text-gray-900">Email</div>
                     <div className="text-gray-600">
-                      contact@Automatisons.com
+                      <a href="mailto:contact@Automatisons.fr">
+                        contact@Automatisons.fr
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -167,7 +169,9 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                   </div>
                   <div>
                     <div className="font-semibold text-gray-900">Téléphone</div>
-                    <div className="text-gray-600">+33 1 23 45 67 89</div>
+                    <div className="text-gray-600">
+                      <a href="tel:+33 6 48 09 15 11">+33 6 48 09 15 11</a>
+                    </div>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">

@@ -7,8 +7,8 @@ import Methodology from '../components/Methodology';
 import About from '../components/About';
 import Footer from '../components/Footer';
 import Chatbot from '../components/Chatbot';
-import Testimonials from '../components/Testimonials';
-
+import Googlereviews from '../components/Googlereviews.astro';
+import TestimonialsCarousel from '../components/Testimonials';
 const lang = 'fr';
 const title = 'Automatisons - Accueil';
 const description = 'Automatisons - Votre partenaire pour l\'automatisation et l\'intelligence artificielle. Transformez votre entreprise grâce à des solutions d\'automatisation intelligentes.';
@@ -20,7 +20,8 @@ const description = 'Automatisons - Votre partenaire pour l\'automatisation et l
   <Sectors lang={lang} client:load />
   <Methodology lang={lang} client:load />
   <About lang={lang} client:load />
-  <Testimonials  client:load />
+  <TestimonialsCarousel client:load />
+  <Googlereviews lang={lang} />
   <Footer lang={lang} client:load />
   <Chatbot lang={lang} client:load />
 </Layout>

@@ -1,13 +1,13 @@
-import OpenAI from 'openai';
+import OpenAI from "openai";
 
 // Configuration sécurisée de l'API OpenAI
 const openai = new OpenAI({
   apiKey: import.meta.env.VITE_OPENAI_API_KEY,
-  dangerouslyAllowBrowser: true // Nécessaire pour l'utilisation côté client
+  dangerouslyAllowBrowser: true, // Nécessaire pour l'utilisation côté client
 });
 
 export interface ChatMessage {
-  role: 'user' | 'assistant' | 'system';
+  role: "user" | "assistant" | "system";
   content: string;
 }
 
@@ -18,7 +18,7 @@ CONTEXTE DE L'ENTREPRISE:
 - Spécialité: Automatisation des workflows et implémentation d'agents IA
 - Services: Automatisation des emails, CRM, génération de leads, comptabilité, chatbots IA, etc.
 - Secteurs: Industrie, Finance, Santé, Commerce, Éducation, Logistique
-- Contact: contact@automatisons.com, +33 1 23 45 67 89
+- Contact: contact@automatisons.com, +33 6 48 09 15 11
 - Site web: Présence sur toutes les pages avec navigation fluide
 
 SERVICES PRINCIPAUX:
@@ -100,57 +100,61 @@ STYLE DE COMMUNICATION:
 - Évite le jargon technique excessif
 - Mets en avant les bénéfices business avant les aspects techniques`;
 
-export async function getChatGPTResponse(messages: ChatMessage[]): Promise<string> {
+export async function getChatGPTResponse(
+  messages: ChatMessage[]
+): Promise<string> {
   try {
     // Vérification de la clé API
     if (!import.meta.env.VITE_OPENAI_API_KEY) {
-      throw new Error('Clé API OpenAI non configurée');
+      throw new Error("Clé API OpenAI non configurée");
     }
 
     const response = await openai.chat.completions.create({
-      model: 'gpt-4o-mini', // Modèle optimisé pour les chatbots
-      messages: [
-        { role: 'system', content: SYSTEM_PROMPT },
-        ...messages
-      ],
+      model: "gpt-4o-mini", // Modèle optimisé pour les chatbots
+      messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
       max_tokens: 400, // Réponses concises
       temperature: 0.7, // Équilibre créativité/précision
       presence_penalty: 0.1, // Évite les répétitions
       frequency_penalty: 0.1, // Encourage la variété
-      top_p: 0.9 // Contrôle de la cohérence
+      top_p: 0.9, // Contrôle de la cohérence
     });
 
     const content = response.choices[0]?.message?.content;
-    
+
     if (!content) {
-      throw new Error('Réponse vide de ChatGPT');
+      throw new Error("Réponse vide de ChatGPT");
     }
 
     return content;
-    
   } catch (error) {
-    console.error('Erreur ChatGPT:', error);
-    
+    console.error("Erreur ChatGPT:", error);
+
     // Messages d'erreur personnalisés selon le type d'erreur
     if (error instanceof Error) {
-      if (error.message.includes('API key')) {
-        return "🔧 Problème de configuration détecté. Notre équipe technique a été notifiée. Contactez-nous directement au +33 1 23 45 67 89 pour une assistance immédiate !";
+      if (error.message.includes("API key")) {
+        return "🔧 Problème de configuration détecté. Notre équipe technique a été notifiée. Contactez-nous directement au +33 6 48 09 15 11 pour une assistance immédiate !";
       }
-      
-      if (error.message.includes('quota') || error.message.includes('billing')) {
-        return "⚡ Service temporairement indisponible pour maintenance. Contactez notre équipe au +33 1 23 45 67 89 ou email: contact@automatisons.com pour une réponse immédiate !";
+
+      if (
+        error.message.includes("quota") ||
+        error.message.includes("billing")
+      ) {
+        return "⚡ Service temporairement indisponible pour maintenance. Contactez notre équipe au +33 6 48 09 15 11 ou email: contact@automatisons.com pour une réponse immédiate !";
       }
-      
-      if (error.message.includes('network') || error.message.includes('fetch')) {
-        return "🌐 Problème de connexion temporaire. Veuillez réessayer dans quelques instants ou contactez-nous directement au +33 1 23 45 67 89.";
+
+      if (
+        error.message.includes("network") ||
+        error.message.includes("fetch")
+      ) {
+        return "🌐 Problème de connexion temporaire. Veuillez réessayer dans quelques instants ou contactez-nous directement au +33 6 48 09 15 11.";
       }
     }
-    
+
     // Fallback général avec proposition d'aide
     return `🤖 Je rencontre un problème technique temporaire, mais je peux quand même vous aider !
 
 Pour une assistance immédiate:
-📞 Téléphone: +33 1 23 45 67 89
+📞 Téléphone: +33 6 48 09 15 11
 📧 Email: contact@automatisons.com
 
 En attendant, dites-moi quel type d'automatisation vous intéresse:

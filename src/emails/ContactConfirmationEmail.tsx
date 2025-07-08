@@ -93,7 +93,7 @@ export const ContactConfirmationEmail = ({
           <tr>
             <td align="center">
               <Text className="mt-[4px] mb-0 font-semibold text-[16px] text-gray-500 leading-[24px]">
-                contact@automatisons.fr | +33 1 23 45 67 89
+                contact@automatisons.fr | +33 6 48 09 15 11
               </Text>
             </td>
           </tr>

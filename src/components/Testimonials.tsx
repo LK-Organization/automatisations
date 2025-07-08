@@ -52,8 +52,7 @@ const testimonials = [
     quote:
       "L'automatisation a réduit considérablement les erreurs de saisie. L’équipe est à l’écoute et réactive. Le support technique est rapide et efficace.",
     result: "-70% erreurs de saisie",
-    image:
-      "https://images.pexels.com/photos/210647/pexels-photo-210647.jpeg?auto=compress&cs=tinysrgb&w=150",
+    image: "/clair.webp",
     rating: 5,
     date: "Il y a 2 mois",
   },
@@ -128,7 +127,7 @@ const renderStars = (rating: number) => (
 
 const TestimonialsCarousel: React.FC = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="pt-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h3 className="text-3xl font-bold text-gray-900 mb-4">
