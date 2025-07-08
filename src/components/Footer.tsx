@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import LogoX from "./LogoX";
+import { Facebook, Instagram, Youtube } from "lucide-react";
 import { useTranslations } from "../i18n";
 
 interface FooterProps {
@@ -12,10 +13,22 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Instagram, href: "#", label: "Instagram" },
+    {
+      icon: Facebook,
+      href: "https://www.facebook.com/profile.php?id=61577856784226",
+      label: "Facebook",
+    },
+    { icon: LogoX, href: "https://x.com/Automatisonsfr", label: "X" },
+    {
+      icon: Youtube,
+      href: "https://www.youtube.com/channel/UCbhcq1KZSTbgCqz2aUNXaTA",
+      label: "YouTube",
+    },
+    {
+      icon: Instagram,
+      href: " https://www.instagram.com/automatisons.fr/ ",
+      label: "Instagram",
+    },
   ];
 
   return (
@@ -84,6 +97,7 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
                   whileTap={{ scale: 0.9 }}
                   className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-primary-600 transition-colors duration-200"
                   aria-label={social.label}
+                  target="_blank"
                 >
                   <social.icon size={20} />
                 </motion.a>
