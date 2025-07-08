@@ -1,4 +1,4 @@
-import { e as createComponent, f as createAstro, h as addAttribute, l as renderHead, n as renderSlot, r as renderTemplate } from './astro/server_D0YNkI8Y.mjs';
+import { e as createAstro, f as createComponent, r as renderTemplate, l as renderSlot, n as renderHead, o as renderScript, h as addAttribute } from './astro/server_MKBel6VV.mjs';
 import 'kleur/colors';
 import 'clsx';
 /* empty css                                        */
@@ -7,12 +7,16 @@ import { useState, useEffect, useRef } from 'react';
 import { X, Menu, Facebook, Twitter, Linkedin, Instagram, MessageCircle, Bot, Maximize2, Minimize2, User, Send } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const $$Astro = createAstro();
+var __freeze = Object.freeze;
+var __defProp = Object.defineProperty;
+var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(cooked.slice()) }));
+var _a;
+const $$Astro = createAstro("https://automatisons.fr");
 const $$Layout = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$Layout;
   const { title, description = "Automatisons - Votre partenaire de confiance en automatisation et intelligence artificielle", lang = "fr" } = Astro2.props;
-  return renderTemplate`<html${addAttribute(lang, "lang")}> <head><meta charset="UTF-8"><meta name="description"${addAttribute(description, "content")}><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator"${addAttribute(Astro2.generator, "content")}><title>${title}</title><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">${renderHead()}</head> <body class="font-sans"> ${renderSlot($$result, $$slots["default"])} </body></html>`;
+  return renderTemplate(_a || (_a = __template(["<html", '> <head><meta charset="UTF-8"><meta name="description"', '><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta property="og:image" content="/brand.png"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator"', "><title>", '</title><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-8CDN9B0J2D"><\/script>', "", '</head> <body class="font-sans"> ', " </body></html>"])), addAttribute(lang, "lang"), addAttribute(description, "content"), addAttribute(Astro2.generator, "content"), title, renderScript($$result, "C:/Users/MohMost/Downloads/Sandbox/Projects/automatisations/src/layouts/Layout.astro?astro&type=script&index=0&lang.ts"), renderHead(), renderSlot($$result, $$slots["default"]));
 }, "C:/Users/MohMost/Downloads/Sandbox/Projects/automatisations/src/layouts/Layout.astro", void 0);
 
 const ui = {

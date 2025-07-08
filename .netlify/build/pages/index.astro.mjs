@@ -1,7 +1,7 @@
 /* empty css                                                */
-import { e as createComponent, k as renderComponent, r as renderTemplate } from '../chunks/astro/server_D0YNkI8Y.mjs';
+import { f as createComponent, k as renderComponent, r as renderTemplate } from '../chunks/astro/server_MKBel6VV.mjs';
 import 'kleur/colors';
-import { u as useTranslations, $ as $$Layout, N as Navigation, F as Footer, C as Chatbot } from '../chunks/Chatbot_CJSXzon3.mjs';
+import { u as useTranslations, $ as $$Layout, N as Navigation, F as Footer, C as Chatbot } from '../chunks/Chatbot_C1apEjJ1.mjs';
 import { jsxs, jsx } from 'react/jsx-runtime';
 import 'react';
 import { motion } from 'framer-motion';
