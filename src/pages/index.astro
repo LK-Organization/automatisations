@@ -7,7 +7,7 @@ import Methodology from '../components/Methodology';
 import About from '../components/About';
 import Footer from '../components/Footer';
 import Chatbot from '../components/Chatbot';
-import Googlereviews from '../components/Googlereviews.astro';
+import GoogleReviews from '../components/GoogleReviews';
 import TestimonialsCarousel from '../components/Testimonials';
 const lang = 'fr';
 const title = 'Automatisons - Accueil';
@@ -21,7 +21,7 @@ const description = 'Automatisons - Votre partenaire pour l\'automatisation et l
   <Methodology lang={lang} client:load />
   <About lang={lang} client:load />
   <TestimonialsCarousel client:load />
-  <Googlereviews lang={lang} />
+  <GoogleReviews client:load />
   <Footer lang={lang} client:load />
   <Chatbot lang={lang} client:load />
 </Layout>
