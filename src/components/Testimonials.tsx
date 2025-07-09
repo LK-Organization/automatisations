@@ -1,112 +1,142 @@
-import React from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
+import { useTranslations } from "../i18n";
 
-const testimonials = [
+interface Testimonial {
+  nameKey: string;
+  quoteKey: string;
+  image: string;
+  rating: number;
+  dateKey: string;
+  roleKey?: string;
+  companyKey?: string;
+  sectorKey?: string;
+  resultKey?: string;
+  google?: boolean;
+  link?: string;
+}
+
+const testimonials: Testimonial[] = [
+  // Avis Google
   {
-    name: "Jean-Pierre L.",
-    role: "Gérant de magasin",
-    company: "—",
-    sector: "Commerce de détail",
-    quote:
-      "On a fait appel à Automatisons Agency pour optimiser notre gestion des commandes. J'étais sceptique au début mais l'équipe a assuré. Moins d’erreurs et un bon retour sur investissement. Je recommande !",
-    result: "-30% erreurs",
+    nameKey: "google.michal.name",
+    quoteKey: "google.michal.quote",
+    image:
+      "https://lh3.googleusercontent.com/a-/ALV-UjVS5pyiS9_3e7sULrVYX_1lxPriE0LspxWZMCtvg3b9ZoIW1D7H=s128-c0x00000000-cc-rp-mo",
+    rating: 5,
+    dateKey: "google.michal.date",
+    link: "https://maps.app.goo.gl/dMPkcWyNTZCkX5Mv6",
+    google: true,
+  },
+  {
+    nameKey: "google.lucas.name",
+    quoteKey: "google.lucas.quote",
+    image:
+      "https://lh3.googleusercontent.com/a-/ALV-UjXjgMdmZQigdYIIc4s61eOLL0JhQ8Ra9OkCZ0u5TDWGMzMqsk2l=s128-c0x00000000-cc-rp-mo",
+    rating: 5,
+    dateKey: "google.lucas.date",
+    link: "https://maps.app.goo.gl/QEGeBrYyCJHK6Fhk9",
+    google: true,
+  },
+
+  // Témoignages internes
+  {
+    nameKey: "testimonials.jpl.name",
+    roleKey: "testimonials.jpl.role",
+    companyKey: "testimonials.jpl.company",
+    sectorKey: "testimonials.jpl.sector",
+    quoteKey: "testimonials.jpl.quote",
+    resultKey: "testimonials.jpl.result",
     image:
       "https://images.pexels.com/photos/428361/pexels-photo-428361.jpeg?auto=compress&cs=tinysrgb&w=150",
     rating: 5,
-    date: "Il y a 2 semaines",
+    dateKey: "testimonials.jpl.date",
   },
   {
-    name: "Sarah M.",
-    role: "Directrice Administrative",
-    company: "—",
-    sector: "Services",
-    quote:
-      "Ils ont automatisé la gestion des factures. Avant, on passait des heures à tout faire manuellement. Maintenant, c’est rapide, automatique, et on a plus de temps pour d'autres tâches.",
-    result: "Gain de temps x2",
+    nameKey: "testimonials.sm.name",
+    roleKey: "testimonials.sm.role",
+    companyKey: "testimonials.sm.company",
+    sectorKey: "testimonials.sm.sector",
+    quoteKey: "testimonials.sm.quote",
+    resultKey: "testimonials.sm.result",
     image:
       "https://images.pexels.com/photos/3184405/pexels-photo-3184405.jpeg?auto=compress&cs=tinysrgb&w=150",
     rating: 5,
-    date: "Il y a 1 mois",
+    dateKey: "testimonials.sm.date",
   },
   {
-    name: "Mohamed K.",
-    role: "Gérant E-commerce",
-    company: "—",
-    sector: "E-commerce",
-    quote:
-      "Super travail sur notre boutique en ligne. Commandes et stocks sont gérés automatiquement. Les ventes ont augmenté et le suivi des colis est bien pensé.",
-    result: "+35% ventes",
+    nameKey: "testimonials.mk.name",
+    roleKey: "testimonials.mk.role",
+    companyKey: "testimonials.mk.company",
+    sectorKey: "testimonials.mk.sector",
+    quoteKey: "testimonials.mk.quote",
+    resultKey: "testimonials.mk.result",
     image:
       "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=150",
     rating: 5,
-    date: "Il y a 3 semaines",
+    dateKey: "testimonials.mk.date",
   },
   {
-    name: "Claire D.",
-    role: "Comptable",
-    company: "—",
-    sector: "Comptabilité",
-    quote:
-      "L'automatisation a réduit considérablement les erreurs de saisie. L’équipe est à l’écoute et réactive. Le support technique est rapide et efficace.",
-    result: "-70% erreurs de saisie",
+    nameKey: "testimonials.cd.name",
+    roleKey: "testimonials.cd.role",
+    companyKey: "testimonials.cd.company",
+    sectorKey: "testimonials.cd.sector",
+    quoteKey: "testimonials.cd.quote",
+    resultKey: "testimonials.cd.result",
     image: "/clair.webp",
     rating: 5,
-    date: "Il y a 2 mois",
+    dateKey: "testimonials.cd.date",
   },
   {
-    name: "Thomas R.",
-    role: "Directeur Logistique",
-    company: "—",
-    sector: "Logistique",
-    quote:
-      "On a automatisé notre chaîne d'approvisionnement. Moins de retards, meilleure organisation et bon rapport qualité-prix malgré l’investissement de départ.",
-    result: "-50% retards livraison",
+    nameKey: "testimonials.tr.name",
+    roleKey: "testimonials.tr.role",
+    companyKey: "testimonials.tr.company",
+    sectorKey: "testimonials.tr.sector",
+    quoteKey: "testimonials.tr.quote",
+    resultKey: "testimonials.tr.result",
     image:
       "https://images.pexels.com/photos/4481259/pexels-photo-4481259.jpeg?auto=compress&cs=tinysrgb&w=150",
     rating: 5,
-    date: "Il y a 1 mois",
+    dateKey: "testimonials.tr.date",
   },
   {
-    name: "Nathalie F.",
-    role: "Responsable Marketing",
-    company: "—",
-    sector: "Marketing",
-    quote:
-      "L’automatisation de la génération de leads a boosté nos conversions. Le système envoie les bonnes infos au bon moment. Équipe pédagogue et sympa.",
-    result: "+45% conversions",
+    nameKey: "testimonials.nf.name",
+    roleKey: "testimonials.nf.role",
+    companyKey: "testimonials.nf.company",
+    sectorKey: "testimonials.nf.sector",
+    quoteKey: "testimonials.nf.quote",
+    resultKey: "testimonials.nf.result",
     image:
       "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150",
     rating: 5,
-    date: "Il y a 3 semaines",
+    dateKey: "testimonials.nf.date",
   },
   {
-    name: "Karim B.",
-    role: "Directeur Technique",
-    company: "—",
-    sector: "Industrie",
-    quote:
-      "Ils ont automatisé notre maintenance prédictive. Moins de pannes et une meilleure anticipation. Équipe technique compétente et réactive.",
-    result: "-60% pannes",
+    nameKey: "testimonials.kb.name",
+    roleKey: "testimonials.kb.role",
+    companyKey: "testimonials.kb.company",
+    sectorKey: "testimonials.kb.sector",
+    quoteKey: "testimonials.kb.quote",
+    resultKey: "testimonials.kb.result",
     image:
       "https://images.pexels.com/photos/2102416/pexels-photo-2102416.jpeg?auto=compress&cs=tinysrgb&w=150",
     rating: 5,
-    date: "Il y a 2 mois",
+    dateKey: "testimonials.kb.date",
   },
   {
-    name: "Amélie L.",
-    role: "Responsable RH",
-    company: "—",
-    sector: "Ressources humaines",
-    quote:
-      "Le tri des CV est automatisé. On a gagné un temps fou. L’équipe a bien pris le temps de nous former. L’interface pourrait être plus intuitive, mais le système est efficace.",
-    result: "-50% temps de recrutement",
+    nameKey: "testimonials.al.name",
+    roleKey: "testimonials.al.role",
+    companyKey: "testimonials.al.company",
+    sectorKey: "testimonials.al.sector",
+    quoteKey: "testimonials.al.quote",
+    resultKey: "testimonials.al.result",
     image:
       "https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=150",
     rating: 5,
-    date: "Il y a 1 mois",
+    dateKey: "testimonials.al.date",
   },
 ];
 
@@ -115,9 +145,7 @@ const renderStars = (rating: number) => (
     {[...Array(5)].map((_, i) => (
       <span
         key={i}
-        className={`text-[20px] ${
-          i < rating ? "text-yellow-400" : "text-gray-300"
-        }`}
+        className={`text-[20px] ${i < rating ? "text-yellow-400" : "text-gray-300"}`}
       >
         ★
       </span>
@@ -125,21 +153,54 @@ const renderStars = (rating: number) => (
   </div>
 );
 
-const TestimonialsCarousel: React.FC = () => {
+const TestimonialsCarousel: React.FC<{ lang: string }> = ({ lang }) => {
+  const t = useTranslations(lang);
+  const [selectedTestimonial, setSelectedTestimonial] =
+    useState<Testimonial | null>(null);
+
+  // Improved truncation function that handles paragraphs
+  const truncateQuote = (
+    quote: string
+  ): { display: string; isTruncated: boolean } => {
+    // Split into paragraphs while preserving line breaks
+    const paragraphs = quote
+      .split(/(?:\r?\n){2,}/)
+      .filter((p) => p.trim() !== "");
+
+    if (paragraphs.length <= 3) {
+      return { display: quote, isTruncated: false };
+    }
+
+    // Join first 3 paragraphs with double line breaks
+    const truncated = paragraphs.slice(0, 3).join("\n\n") + "...";
+    return { display: truncated, isTruncated: true };
+  };
+
+  const openTestimonial = (tst: Testimonial, e: React.MouseEvent) => {
+    if (!tst.google) {
+      e.preventDefault();
+      setSelectedTestimonial(tst);
+    }
+  };
+
+  const closeModal = () => setSelectedTestimonial(null);
+
   return (
-    <section className="pt-20 bg-white">
+    <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
         <div className="text-center mb-12">
           <h3 className="text-3xl font-bold text-gray-900 mb-4">
-            Témoignages clients
+            {t("testimonials.title")}
           </h3>
-          <p className="text-lg text-gray-600">Ils nous font confiance.</p>
+          <p className="text-lg text-gray-600">{t("testimonials.subtitle")}</p>
         </div>
 
+        {/* Testimonials Slider */}
         <Swiper
           modules={[Autoplay]}
           autoplay={{ delay: 4000, disableOnInteraction: false }}
-          loop={true}
+          loop
           spaceBetween={30}
           breakpoints={{
             320: { slidesPerView: 1 },
@@ -147,48 +208,165 @@ const TestimonialsCarousel: React.FC = () => {
             1024: { slidesPerView: 3 },
           }}
         >
-          {testimonials.map((testimonial, index) => (
-            <SwiperSlide key={index} className="mb-5">
-              <div className="bg-white rounded-2xl p-6  shadow-lg border border-gray-100 h-[400px]  flex flex-col justify-center gap-0">
-                <div className="flex items-center mb-4">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover mr-4"
-                  />
-                  <div>
-                    <h4 className="font-bold text-gray-900">
-                      {testimonial.name}
-                    </h4>
-                    <span className="text-xs text-gray-400">
-                      {testimonial.date}
-                    </span>
-                    <p className="text-sm text-gray-600">{testimonial.role}</p>
-                    <p className="text-sm text-primary-600">
-                      {testimonial.company}
-                    </p>
+          {testimonials.map((tst, index) => {
+            const fullQuote = t(tst.quoteKey);
+            const { display: displayQuote, isTruncated } =
+              truncateQuote(fullQuote);
+
+            return (
+              <SwiperSlide key={index} className="mb-5">
+                <a
+                  href={tst.link || "#"}
+                  target={tst.link ? "_blank" : undefined}
+                  rel={tst.link ? "noopener noreferrer" : undefined}
+                  className="block h-full"
+                  onClick={(e) => openTestimonial(tst, e)}
+                >
+                  <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 h-[400px] flex flex-col justify-center gap-0">
+                    {/* Header with image, name, date */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center">
+                        <img
+                          src={tst.image}
+                          alt={t(tst.nameKey)}
+                          className="w-12 h-12 rounded-full object-cover mr-4"
+                        />
+                        <div>
+                          <h4 className="font-bold text-gray-900">
+                            {t(tst.nameKey)}
+                          </h4>
+                          <span className="text-xs text-gray-400">
+                            {t(tst.dateKey)}
+                          </span>
+                          {tst.roleKey && (
+                            <p className="text-sm text-gray-600">
+                              {t(tst.roleKey)}
+                            </p>
+                          )}
+                          {tst.companyKey && (
+                            <p className="text-sm text-primary-600">
+                              {t(tst.companyKey)}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                      {tst.google && (
+                        <img
+                          src="/google-logo.svg"
+                          alt="Google"
+                          className="w-6 h-auto"
+                        />
+                      )}
+                    </div>
+
+                    {renderStars(tst.rating)}
+
+                    <blockquote className="text-gray-700 mb-4 italic whitespace-pre-line">
+                      "{displayQuote}"
+                    </blockquote>
+
+                    {/* Show "Read more" only when truncated */}
+                    {isTruncated && !tst.google && (
+                      <div className="mt-2 text-sm text-primary-600 font-medium">
+                        Read full review...
+                      </div>
+                    )}
+
+                    {tst.sectorKey && tst.resultKey && (
+                      <div className="flex justify-between items-center mt-auto">
+                        <span className="text-sm text-gray-500">
+                          {t(tst.sectorKey)}
+                        </span>
+                        <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                          {t(tst.resultKey)}
+                        </span>
+                      </div>
+                    )}
                   </div>
-                </div>
-
-                {renderStars(testimonial.rating)}
-
-                <blockquote className="text-gray-700 mb-4 italic">
-                  "{testimonial.quote}"
-                </blockquote>
-
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-500">
-                    {testimonial.sector}
-                  </span>
-                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-                    {testimonial.result}
-                  </span>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
+                </a>
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
       </div>
+
+      {/* Testimonial Modal */}
+      {selectedTestimonial && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center p-4"
+          onClick={closeModal}
+        >
+          <div
+            className="bg-white rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+              onClick={closeModal}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center">
+                <img
+                  src={selectedTestimonial.image}
+                  alt={t(selectedTestimonial.nameKey)}
+                  className="w-16 h-16 rounded-full object-cover mr-4"
+                />
+                <div>
+                  <h4 className="font-bold text-gray-900 text-xl">
+                    {t(selectedTestimonial.nameKey)}
+                  </h4>
+                  <span className="text-sm text-gray-400">
+                    {t(selectedTestimonial.dateKey)}
+                  </span>
+                  {selectedTestimonial.roleKey && (
+                    <p className="text-gray-600">
+                      {t(selectedTestimonial.roleKey)}
+                    </p>
+                  )}
+                  {selectedTestimonial.companyKey && (
+                    <p className="text-primary-600 font-medium">
+                      {t(selectedTestimonial.companyKey)}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {renderStars(selectedTestimonial.rating)}
+
+            <blockquote className="text-gray-700 text-lg mb-6 italic whitespace-pre-line">
+              "{t(selectedTestimonial.quoteKey)}"
+            </blockquote>
+
+            {selectedTestimonial.sectorKey && selectedTestimonial.resultKey && (
+              <div className="flex justify-between items-center mt-6 pt-4 border-t border-gray-200">
+                <span className="text-gray-600">
+                  {t(selectedTestimonial.sectorKey)}
+                </span>
+                <span className="bg-green-100 text-green-800 px-4 py-2 rounded-full font-medium">
+                  {t(selectedTestimonial.resultKey)}
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </section>
   );
 };

@@ -26,7 +26,7 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
     },
     {
       icon: Instagram,
-      href: " https://www.instagram.com/automatisons.fr/ ",
+      href: "https://www.instagram.com/automatisons.fr/",
       label: "Instagram",
     },
   ];
@@ -61,7 +61,9 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
             viewport={{ once: true }}
             className="text-left"
           >
-            <h4 className="text-lg font-semibold mb-4">Navigation</h4>
+            <h4 className="text-lg font-semibold mb-4">
+              {t("footer.navigationTitle")}
+            </h4>
             <ul className="space-y-2">
               {[
                 { key: "nav.home", href: "/" },
@@ -87,7 +89,9 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
             viewport={{ once: true }}
             className="text-left"
           >
-            <h4 className="text-lg font-semibold mb-4">Suivez-nous</h4>
+            <h4 className="text-lg font-semibold mb-4">
+              {t("footer.followUs")}
+            </h4>
             <div className="flex gap-4">
               {socialLinks.map((social) => (
                 <motion.a
@@ -106,28 +110,28 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
           </motion.div>
         </div>
 
-        <div className="flex justify-between items-center flex-row border-t border-gray-800 mt-8 pt-8 text-center">
+        <div className="flex justify-between items-center flex-row border-t border-gray-800 mt-8 pt-8 text-center flex-wrap gap-4">
           <p className="text-gray-400">
             © {currentYear} Automatisons Agency. {t("footer.rights")}
           </p>
-          <div className="flex gap-4">
+          <div className="flex gap-4 flex-wrap">
             <a
-              href="/mentions-legales"
+              href={t("footer.legalLink")}
               className="text-gray-400 hover:text-primary-400 transition-colors duration-200"
             >
-              Mentions légales
+              {t("footer.legal")}
             </a>
             <a
-              href="/conditions-generales"
+              href={t("footer.termsLink")}
               className="text-gray-400 hover:text-primary-400 transition-colors duration-200"
             >
-              Conditions Générales d’Utilisation
+              {t("footer.terms")}
             </a>
             <a
-              href="/termes-utilisation"
+              href={t("footer.usageLink")}
               className="text-gray-400 hover:text-primary-400 transition-colors duration-200"
             >
-              Termes d’utilisation
+              {t("footer.usage")}
             </a>
           </div>
         </div>

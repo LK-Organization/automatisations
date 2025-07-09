@@ -29,10 +29,10 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
     const result = await response.json();
 
     if (response.ok) {
-      alert("✅ Message envoyé !");
+      alert(t("contact.success"));
       setFormData({ name: "", email: "", message: "" });
     } else {
-      alert("❌ Erreur : " + result.error);
+      alert(t("contact.error") + result.error);
     }
   };
 
@@ -155,7 +155,9 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                     <Mail size={20} className="text-white" />
                   </div>
                   <div>
-                    <div className="font-semibold text-gray-900">Email</div>
+                    <div className="font-semibold text-gray-900">
+                      {t("contact.emailLabel")}
+                    </div>
                     <div className="text-gray-600">
                       <a href="mailto:contact@Automatisons.fr">
                         contact@Automatisons.fr
@@ -168,7 +170,9 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                     <Phone size={20} className="text-white" />
                   </div>
                   <div>
-                    <div className="font-semibold text-gray-900">Téléphone</div>
+                    <div className="font-semibold text-gray-900">
+                      {t("contact.phoneLabel")}
+                    </div>
                     <div className="text-gray-600">
                       <a href="tel:+33 6 48 09 15 11">+33 6 48 09 15 11</a>
                     </div>
@@ -179,8 +183,10 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                     <MapPin size={20} className="text-white" />
                   </div>
                   <div>
-                    <div className="font-semibold text-gray-900">Adresse</div>
-                    <div className="text-gray-600">Paris, France</div>
+                    <div className="font-semibold text-gray-900">
+                      {t("contact.addressLabel")}
+                    </div>
+                    <div className="text-gray-600">{t("contact.city")}</div>
                   </div>
                 </div>
               </div>
@@ -191,7 +197,7 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                 href="https://calendly.com/kkulig25/30min"
                 target="_blank"
               >
-                Prendre RDV
+                {t("contact.schedule")}
               </motion.a>
             </div>
           </motion.div>

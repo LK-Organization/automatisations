@@ -1,15 +1,24 @@
 ---
+// src/layouts/Layout.astro
 import '../styles/global.css';
+import { getLangFromUrl, useTranslations } from "../i18n";
 
+// Props you pass in from pages
 export interface Props {
   title: string;
   description?: string;
-  lang?: string;
 }
 
-const { title, description = "Automatisons - Votre partenaire de confiance en automatisation et intelligence artificielle", lang = 'fr' } = Astro.props;
----
+// pull props
+const {
+  title,
+  description = "Automatisons — Votre partenaire de confiance en automatisation et intelligence artificielle",
+} = Astro.props;
 
+// detect language from URL
+const lang = getLangFromUrl(new URL(Astro.request.url));
+const t = useTranslations(lang);
+---
 <!DOCTYPE html>
 <html lang={lang}>
   <head>
@@ -20,22 +29,30 @@ const { title, description = "Automatisons - Votre partenaire de confiance en au
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8CDN9B0J2D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-8CDN9B0J2D');
-</script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CDN9B0J2D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-8CDN9B0J2D");
+    </script>
   </head>
   <body class="font-sans">
-    <slot />
+    <main>
+      <!-- Pass `lang` and `t` down to pages/components -->
+      <slot {lang} {t} />
+    </main>
   </body>
 </html>
