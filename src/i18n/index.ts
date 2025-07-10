@@ -139,6 +139,15 @@ export const ui = {
       "On a fait appel à Automatisons Agency pour optimiser notre gestion des commandes. J'étais sceptique au début mais l'équipe a assuré. Moins d’erreurs et un bon retour sur investissement. Je recommande !",
     "testimonials.jpl.result": "-30 % erreurs",
     "testimonials.jpl.date": "Il y a 2 semaines",
+    // Lucie B.
+    "testimonials.lb.name": "Lucie B.",
+    "testimonials.lb.role": "Responsable formation digitale",
+    "testimonials.lb.company": "—",
+    "testimonials.lb.sector": "Éducation / EdTech",
+    "testimonials.lb.quote":
+      "On a automatisé l’envoi des certificats et les relances de modules. Avant, tout était manuel et chronophage. Aujourd’hui, nos apprenants reçoivent tout en temps voulu, et notre équipe peut se concentrer sur l’essentiel.",
+    "testimonials.lb.result": "-60 % de tâches manuelles",
+    "testimonials.lb.date": "il y a 2 semaines",
 
     // Sarah M.
     "testimonials.sm.name": "Sarah M.",
@@ -456,6 +465,15 @@ export const ui = {
       "We turned to Automatisons Agency to optimize our order management. I was skeptical at first but the team delivered. Fewer errors and a great ROI. Highly recommend!",
     "testimonials.jpl.result": "-30 % errors",
     "testimonials.jpl.date": "2 weeks ago",
+    // Lucie B.
+    "testimonials.lb.name": "Lucie B.",
+    "testimonials.lb.role": "Responsable formation digitale",
+    "testimonials.lb.company": "—",
+    "testimonials.lb.sector": "Éducation / EdTech",
+    "testimonials.lb.quote":
+      "On a automatisé l’envoi des certificats et les relances de modules. Avant, tout était manuel et chronophage. Aujourd’hui, nos apprenants reçoivent tout en temps voulu, et notre équipe peut se concentrer sur l’essentiel.",
+    "testimonials.lb.result": "-60 % de tâches manuelles",
+    "testimonials.lb.date": "il y a 2 semaines",
 
     // Sarah M.
     "testimonials.sm.name": "Sarah M.",

@@ -135,6 +135,17 @@ const testimonials: Testimonial[] = [
     rating: 5,
     dateKey: "testimonials.al.date",
   },
+  {
+    nameKey: "testimonials.lb.name",
+    roleKey: "testimonials.lb.role",
+    companyKey: "testimonials.lb.company",
+    sectorKey: "testimonials.lb.sector",
+    quoteKey: "testimonials.lb.quote",
+    resultKey: "testimonials.lb.result",
+    image: "/lucie.webp",
+    rating: 5,
+    dateKey: "testimonials.lb.date",
+  },
 ];
 
 const renderStars = (rating: number) => (
