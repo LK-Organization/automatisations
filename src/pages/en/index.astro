@@ -7,10 +7,10 @@ import Methodology from '../../components/Methodology';
 import About from '../../components/About';
 import Footer from '../../components/Footer';
 import Chatbot from '../../components/Chatbot';
-
+import Faq from '../../components/Faq';
 import TestimonialsCarousel from '../../components/Testimonials';
 const lang = 'en';
-const title = 'Automatisons - Accueil';
+const title = 'Automatisons Agency – Smart Automation & Artificial Intelligence.';
 const description = 'Automatisons - Votre partenaire pour l\'automatisation et l\'intelligence artificielle. Transformez votre entreprise grâce à des solutions d\'automatisation intelligentes.';
 ---
 
@@ -18,10 +18,10 @@ const description = 'Automatisons - Votre partenaire pour l\'automatisation et l
   <Navigation lang={lang} isHomePage={true} client:load />
   <Hero lang={lang} client:load />
   <Sectors lang={lang} client:load />
+    <Faq lang={lang} client:load />
   <Methodology lang={lang} client:load />
   <About lang={lang} client:load />
   <TestimonialsCarousel lang='en' client:load />
-
   <Footer lang={lang} client:load />
   <Chatbot lang={lang} client:load />
 </Layout>

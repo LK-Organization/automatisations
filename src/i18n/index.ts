@@ -19,7 +19,7 @@ export const ui = {
     "hero.cta.link": "/solutions",
     "hero.cta.secondary.link": "/contact",
     // Solutions
-    "solutions.title": "Nos Solutions d'Automatisation",
+    "solutions.title": "Nos Solutions d'Automatisation Intelligentes",
     "solutions.subtitle":
       "Des solutions complètes pour automatiser tous vos processus métier",
     "solutions.email.title": "Gestion des Emails",
@@ -307,6 +307,10 @@ export const ui = {
       "Prêt à transformer votre entreprise ? Parlons de votre projet.",
     "contact.emailFormTitle": "Envoyer un email",
     "contact.meetingFormTitle": "Prendre un rendez-vous",
+    "contact.meetingFormSubtitle":
+      "Discutons de votre projet d’automatisation IA ",
+    "contact.meetingFormDescription":
+      "Grâce à l’automatisation intelligente vous libérez votre équipe des tâches répétitives. Nous simplifions vos processus (marketing, service client, emailing…) pour que vous puissiez vous concentrer sur ce qui compte vraiment : la croissance de votre entreprise.",
     "contact.name": "Nom",
     "contact.email": "Email",
     "contact.message": "Message",
@@ -318,6 +322,57 @@ export const ui = {
     "contact.schedule": "Prendre RDV",
     "contact.success": "✅ Message envoyé !",
     "contact.error": "❌ Erreur : ",
+    "faq.title": "FAQ – Questions Fréquentes",
+    "faq.subtitle":
+      "Les questions les plus fréquentes sur l'automatisation intelligente",
+
+    "faq.q1.question":
+      "Quels types de tâches peut-on automatiser dans une entreprise ?",
+    "faq.q1.answer": `Toutes les tâches répétitives et chronophages, même complexes, peuvent être automatisées grâce à l’intelligence artificielle.
+
+Les tâches le plus fréquemment automatisées pour les PME sont :
+- Gestion des stocks : mise à jour automatique des niveaux de stock, réapprovisionnement intelligent basé sur les ventes et la saisonnalité.
+- Marketing : envoi automatisé de newsletters, relance personnalisée des paniers abandonnés, détection des points de friction dans le tunnel de vente.
+- Service client (SAV) : réponses automatisées aux questions fréquentes, tri et priorisation des tickets selon leur nature ou leur urgence.
+
+Vous avez une tâche spécifique en tête ? Contactez-nous pour une analyse gratuite sous 24h.`,
+
+    "faq.q2.question":
+      "L’automatisation IA est-elle compatible avec les logiciels que nous utilisons ?",
+    "faq.q2.answer": `Oui. Nous concevons des solutions qui s’intègrent à vos outils existants (CRM, ERP, CMS, etc.) grâce à des interfaces sur mesure. Nos systèmes d’automatisation intelligents connectent vos logiciels, vos données et les processus automatisés sans perturber votre organisation.`,
+
+    "faq.q3.question": "Est-ce que l’automatisation est réversible ?",
+    "faq.q3.answer": `Oui. Chaque système d’automatisation intelligent fonctionne comme un programme indépendant : il peut être modifié, désactivé ou supprimé à tout moment, sans impacter vos données ni désorganiser vos processus internes.`,
+
+    "faq.q4.question": "Mes données sont-elles sécurisées ?",
+    "faq.q4.answer": `Absolument. Toutes les données sont chiffrées et traitées dans des environnements conformes aux normes RGPD.
+
+Deux options sont possibles :
+- Cloud sécurisé privé respectant les normes européennes
+- Hébergement local sur vos propres serveurs, pour une totale maîtrise des données.`,
+
+    "faq.q5.question": "Combien coûte une automatisation intelligente IA ?",
+    "faq.q5.answer": `Nous ne proposons pas de tarifs fixes, car chaque projet est unique. Le coût dépend de plusieurs facteurs : complexité des tâches, volumes de données, fréquence d’utilisation, etc.
+
+L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
+
+    // Chatbot
+    "chatbot.welcome":
+      "Vous recherchez des solutions pour optimiser vos processus métier et réduire le temps consacré aux tâches répétitives ? Notre expertise en automatisation vous permet de transformer ces contraintes en opportunités d'efficacité.\nEn tant que spécialistes de l'automatisation, nous accompagnons les entreprises dans la digitalisation de leurs workflows. Vous pouvez explorer nos solutions via cet assistant intelligent ou nous contacter directement pour un entretien personnalisé avec nos experts. \nDécouvrons ensemble comment l'automatisation peut révolutionner votre productivité.",
+
+    "chatbot.default":
+      "Je comprends votre question, mais j'aimerais vous donner une réponse plus précise. Pouvez-vous me dire si vous vous intéressez plutôt à :\n\n• L'automatisation de processus métier\n• L'implémentation d'agents IA\n• Nos services et tarifs\n• Un secteur d'activité spécifique\n\nOu contactez directement notre équipe au +33 6 48 09 15 11 pour un conseil personnalisé !",
+
+    "chatbot.greeting":
+      "Bonjour ! Ravi de vous rencontrer. Je suis là pour répondre à toutes vos questions sur l'automatisation et l'intelligence artificielle. Que souhaitez-vous savoir ?",
+
+    "chatbot.thank_you":
+      "Je vous en prie ! N'hésitez pas si vous avez d'autres questions. Je suis là pour vous aider à comprendre comment l'automatisation peut transformer votre entreprise.",
+
+    "chatbot.contact":
+      "Pour nous contacter :\n\n📧 **Email** : contact@automatisons.com\n📞 **Téléphone** : +33 6 48 09 15 11\n📍 **Adresse** : Paris, France\n\nVous pouvez aussi remplir notre formulaire de contact sur le site pour une réponse rapide. Souhaitez-vous que je vous redirige vers la page contact ?",
+
+    "chatbot.input.placeholder": "Tapez votre message...",
 
     "footer.description":
       "Automatisons Agency - Votre partenaire de confiance en automatisation et intelligence artificielle",
@@ -345,7 +400,7 @@ export const ui = {
     "hero.cta.link": "/en/solutions",
     "hero.cta.secondary.link": "/en/contact",
     // Solutions
-    "solutions.title": "Our Automation Solutions",
+    "solutions.title": "Our Smart Automation Solutions",
     "solutions.subtitle":
       "Comprehensive solutions to automate all your business processes",
     "solutions.email.title": "Email Management",
@@ -620,6 +675,10 @@ export const ui = {
     "contact.subtitle": "Ready to transform your business? Let's talk.",
     "contact.emailFormTitle": "Send an Email",
     "contact.meetingFormTitle": "Schedule a Meeting",
+    "contact.meetingFormSubtitle":
+      "Let’s Talk About Your AI Automation Project",
+    "contact.meetingFormDescription":
+      "With smart automation, you free your team from repetitive tasks. We simplify your processes (marketing, customer service, emailing…) so you can focus on what really matters: growing your business.",
     "contact.name": "Name",
     "contact.email": "Email",
     "contact.message": "Message",
@@ -631,6 +690,53 @@ export const ui = {
     "contact.schedule": "Schedule a Meeting",
     "contact.success": "✅ Message sent!",
     "contact.error": "❌ Error: ",
+    "faq.title": "FAQ – Frequently Asked Questions",
+    "faq.subtitle": "The most common questions about intelligent automation",
+    "faq.q1.question": "What kind of tasks can be automated in a business?",
+    "faq.q1.answer": `All repetitive and time-consuming tasks, even complex ones, can be automated thanks to artificial intelligence.
+
+The most commonly automated tasks for SMEs include:
+- Inventory management: automatic stock level updates, smart restocking based on sales and seasonality.
+- Marketing: automated newsletter sending, personalized cart abandonment follow-ups, detection of friction points in the sales funnel.
+- Customer service (support): automated responses to frequent questions, ticket sorting and prioritization based on urgency or type.
+
+Have a specific task in mind? Contact us for a free analysis within 24 hours.`,
+
+    "faq.q2.question": "Is AI automation compatible with the software we use?",
+    "faq.q2.answer": `Yes. We design solutions that integrate with your existing tools (CRM, ERP, CMS, etc.) using custom interfaces. Our intelligent automation systems connect your software, data, and automated processes without disrupting your organization.`,
+
+    "faq.q3.question": "Is automation reversible?",
+    "faq.q3.answer": `Yes. Each intelligent automation system works as an independent program: it can be modified, disabled, or removed at any time without affecting your data or disrupting your internal processes.`,
+
+    "faq.q4.question": "Is my data secure?",
+    "faq.q4.answer": `Absolutely. All data is encrypted and processed in environments compliant with GDPR standards.
+
+Two options are available:
+- Private secure cloud respecting European standards
+- Local hosting on your own servers for full control over your data.`,
+
+    "faq.q5.question": "How much does intelligent AI automation cost?",
+    "faq.q5.answer": `We don’t offer fixed prices because every project is unique. The cost depends on several factors: task complexity, data volume, usage frequency, etc.
+
+The analysis of your needs and the quote are free and delivered within 24 hours.`,
+
+    // Chatbot
+    "chatbot.welcome":
+      "Are you looking for solutions to optimize your business processes and reduce time spent on repetitive tasks? Our automation expertise turns constraints into productivity opportunities.\nAs automation specialists, we help companies digitize their workflows. You can explore our solutions via this intelligent assistant or contact us directly for a personalized consultation with our experts. \nLet’s discover together how automation can revolutionize your productivity.",
+
+    "chatbot.default":
+      "I understand your question, but I’d like to give you a more precise answer. Could you let me know if you're interested in:\n\n• Business process automation\n• Implementing AI agents\n• Our services and pricing\n• A specific industry\n\nOr contact our team directly at +33 6 48 09 15 11 for personalized advice!",
+
+    "chatbot.greeting":
+      "Hello! Nice to meet you. I'm here to answer all your questions about automation and artificial intelligence. What would you like to know?",
+
+    "chatbot.thank_you":
+      "You're welcome! Feel free to ask if you have more questions. I'm here to help you understand how automation can transform your business.",
+
+    "chatbot.contact":
+      "To contact us:\n\n📧 **Email**: contact@automatisons.com\n📞 **Phone**: +33 6 48 09 15 11\n📍 **Address**: Paris, France\n\nYou can also fill out our contact form on the website for a quick response. Would you like me to redirect you to the contact page?",
+
+    "chatbot.input.placeholder": "Type your message...",
 
     "footer.description":
       "Automatisons Agency – Your trusted partner in automation and AI",

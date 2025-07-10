@@ -145,9 +145,9 @@ const Solutions: React.FC<SolutionsProps> = ({ lang }) => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
             {t("solutions.title")}
-          </h2>
+          </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             {t("solutions.subtitle")}
           </p>
@@ -170,9 +170,9 @@ const Solutions: React.FC<SolutionsProps> = ({ lang }) => {
                 <solution.icon size={28} className="text-white" />
               </div>
 
-              <h3 className="text-xl font-bold text-gray-900 mb-3">
+              <h2 className="text-xl font-bold text-gray-900 mb-3">
                 {t(solution.title)}
-              </h3>
+              </h2>
 
               <p className="text-gray-600 mb-4">{t(solution.description)}</p>
 

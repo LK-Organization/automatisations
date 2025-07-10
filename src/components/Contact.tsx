@@ -81,9 +81,9 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">
             {t("contact.title")}
-          </h2>
+          </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             {t("contact.subtitle")}
           </p>
@@ -98,9 +98,9 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
             viewport={{ once: true }}
             className="bg-white rounded-2xl p-8 shadow-lg relative"
           >
-            <h3 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
               {t("contact.emailFormTitle")}
-            </h3>
+            </h2>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
@@ -198,10 +198,16 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
             className="space-y-8"
           >
             <div className="bg-white rounded-2xl p-8 shadow-lg space-y-6 h-full justify-between flex flex-col">
-              <h3 className="text-3xl font-bold text-gray-900 ">
+              <h2 className="text-3xl font-bold text-gray-900 ">
                 {t("contact.meetingFormTitle")}
-              </h3>
-              <div className="space-y-4">
+              </h2>
+              <div className="space-y-7 m-[0]">
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    {t("contact.meetingFormSubtitle")}
+                  </h3>
+                  <p>{t("contact.meetingFormDescription")}</p>
+                </div>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center">
                     <Mail size={20} className="text-white" />

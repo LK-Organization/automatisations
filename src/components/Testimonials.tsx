@@ -1,3 +1,4 @@
+// Updated TestimonialsCarousel with 3-line text clamp and full modal display
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -166,24 +167,6 @@ const TestimonialsCarousel: React.FC<{ lang: string }> = ({ lang }) => {
   const [selectedTestimonial, setSelectedTestimonial] =
     useState<Testimonial | null>(null);
 
-  // Improved truncation function that handles paragraphs
-  const truncateQuote = (
-    quote: string
-  ): { display: string; isTruncated: boolean } => {
-    // Split into paragraphs while preserving line breaks
-    const paragraphs = quote
-      .split(/(?:\r?\n){2,}/)
-      .filter((p) => p.trim() !== "");
-
-    if (paragraphs.length <= 3) {
-      return { display: quote, isTruncated: false };
-    }
-
-    // Join first 3 paragraphs with double line breaks
-    const truncated = paragraphs.slice(0, 3).join("\n\n") + "...";
-    return { display: truncated, isTruncated: true };
-  };
-
   const openTestimonial = (tst: Testimonial, e: React.MouseEvent) => {
     if (!tst.google) {
       e.preventDefault();
@@ -196,7 +179,6 @@ const TestimonialsCarousel: React.FC<{ lang: string }> = ({ lang }) => {
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <div className="text-center mb-12">
           <h3 className="text-3xl font-bold text-gray-900 mb-4">
             {t("testimonials.title")}
@@ -204,7 +186,6 @@ const TestimonialsCarousel: React.FC<{ lang: string }> = ({ lang }) => {
           <p className="text-lg text-gray-600">{t("testimonials.subtitle")}</p>
         </div>
 
-        {/* Testimonials Slider */}
         <Swiper
           modules={[Autoplay]}
           autoplay={{ delay: 4000, disableOnInteraction: false }}
@@ -216,116 +197,95 @@ const TestimonialsCarousel: React.FC<{ lang: string }> = ({ lang }) => {
             1024: { slidesPerView: 3 },
           }}
         >
-          {testimonials.map((tst, index) => {
-            const fullQuote = t(tst.quoteKey);
-            const { display: displayQuote, isTruncated } =
-              truncateQuote(fullQuote);
-
-            return (
-              <SwiperSlide key={index} className="mb-5">
-                <a
-                  href={tst.link || "#"}
-                  target={tst.link ? "_blank" : undefined}
-                  rel={tst.link ? "noopener noreferrer" : undefined}
-                  className="block h-full"
-                  onClick={(e) => openTestimonial(tst, e)}
-                >
-                  <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 h-[400px] flex flex-col justify-center gap-0">
-                    {/* Header with image, name, date */}
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center">
-                        <img
-                          src={tst.image}
-                          alt={t(tst.nameKey)}
-                          className="w-12 h-12 rounded-full object-cover mr-4"
-                        />
-                        <div>
-                          <h4 className="font-bold text-gray-900">
-                            {t(tst.nameKey)}
-                          </h4>
-                          <span className="text-xs text-gray-400">
-                            {t(tst.dateKey)}
-                          </span>
-                          {tst.roleKey && (
-                            <p className="text-sm text-gray-600">
-                              {t(tst.roleKey)}
-                            </p>
-                          )}
-                          {tst.companyKey && (
-                            <p className="text-sm text-primary-600">
-                              {t(tst.companyKey)}
-                            </p>
-                          )}
-                        </div>
+          {testimonials.map((tst, index) => (
+            <SwiperSlide key={index} className="mb-5">
+              <a
+                href={tst.link || "#"}
+                target={tst.link ? "_blank" : undefined}
+                rel={tst.link ? "noopener noreferrer" : undefined}
+                className="block h-full"
+                onClick={(e) => openTestimonial(tst, e)}
+              >
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 h-[350px] flex flex-col justify-center gap-0">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center">
+                      <img
+                        src={tst.image}
+                        alt={t(tst.nameKey)}
+                        className="w-12 h-12 rounded-full object-cover mr-4"
+                      />
+                      <div>
+                        <h4 className="font-bold text-gray-900">
+                          {t(tst.nameKey)}
+                        </h4>
+                        <span className="text-xs text-gray-400">
+                          {t(tst.dateKey)}
+                        </span>
+                        {tst.roleKey && (
+                          <p className="text-sm text-gray-600">
+                            {t(tst.roleKey)}
+                          </p>
+                        )}
+                        {tst.companyKey && (
+                          <p className="text-sm text-primary-600">
+                            {t(tst.companyKey)}
+                          </p>
+                        )}
                       </div>
-                      {tst.google && (
-                        <img
-                          src="/google-logo.svg"
-                          alt="Google"
-                          className="w-6 h-auto"
-                        />
-                      )}
                     </div>
-
-                    {renderStars(tst.rating)}
-
-                    <blockquote className="text-gray-700 mb-4 italic whitespace-pre-line">
-                      "{displayQuote}"
-                    </blockquote>
-
-                    {/* Show "Read more" only when truncated */}
-                    {isTruncated && !tst.google && (
-                      <div className="mt-2 text-sm text-primary-600 font-medium">
-                        Read full review...
-                      </div>
-                    )}
-
-                    {tst.sectorKey && tst.resultKey && (
-                      <div className="flex justify-between items-center mt-auto">
-                        <span className="text-sm text-gray-500">
-                          {t(tst.sectorKey)}
-                        </span>
-                        <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-                          {t(tst.resultKey)}
-                        </span>
-                      </div>
+                    {tst.google && (
+                      <img
+                        src="/google-logo.svg"
+                        alt="Google"
+                        className="w-6 h-auto"
+                      />
                     )}
                   </div>
-                </a>
-              </SwiperSlide>
-            );
-          })}
+
+                  {renderStars(tst.rating)}
+
+                  <blockquote
+                    className="text-gray-700 mb-4 italic whitespace-pre-line line-clamp-3 overflow-hidden"
+                    style={{
+                      display: "-webkit-box",
+                      WebkitBoxOrient: "vertical",
+                      WebkitLineClamp: 3,
+                    }}
+                  >
+                    "{t(tst.quoteKey)}"
+                  </blockquote>
+
+                  {tst.sectorKey && tst.resultKey && (
+                    <div className="flex justify-between items-center mt-auto">
+                      <span className="text-sm text-gray-500">
+                        {t(tst.sectorKey)}
+                      </span>
+                      <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                        {t(tst.resultKey)}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </a>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
 
-      {/* Testimonial Modal */}
       {selectedTestimonial && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center p-4"
           onClick={closeModal}
         >
           <div
-            className="bg-white rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            className="bg-white rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto relative"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
               onClick={closeModal}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+              ✕
             </button>
 
             <div className="flex items-center justify-between mb-6">
