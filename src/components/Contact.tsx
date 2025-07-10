@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Mail, Phone, MapPin } from "lucide-react";
+import { Send, Mail, Phone, MapPin, Loader } from "lucide-react";
 import { useTranslations } from "../i18n";
 
 interface ContactProps {
@@ -9,45 +9,71 @@ interface ContactProps {
 
 const Contact: React.FC<ContactProps> = ({ lang }) => {
   const t = useTranslations(lang);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-
-    const result = await response.json();
-
-    if (response.ok) {
-      alert(t("contact.success"));
-      setFormData({ name: "", email: "", message: "" });
-    } else {
-      alert(t("contact.error") + result.error);
-    }
-  };
+  const [loading, setLoading] = useState(false);
+  const [popup, setPopup] = useState({
+    visible: false,
+    message: "",
+    isError: false,
+  });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const result = await response.json();
+
+      if (response.ok) {
+        setPopup({
+          visible: true,
+          message: t("contact.success"),
+          isError: false,
+        });
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setPopup({
+          visible: true,
+          message: t("contact.error") + (result.error || ""),
+          isError: true,
+        });
+      }
+    } catch (err) {
+      setPopup({
+        visible: true,
+        message: t("contact.error") + (err as Error).message,
+        isError: true,
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const closePopup = () => {
+    setPopup({ ...popup, visible: false });
   };
 
   return (
     <section id="contact" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -64,16 +90,18 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
+          {/* Email Form */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="bg-white rounded-2xl p-8 shadow-lg"
+            className="bg-white rounded-2xl p-8 shadow-lg relative"
           >
             <h3 className="text-3xl font-bold text-gray-900 mb-4">
               {t("contact.emailFormTitle")}
             </h3>
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label
@@ -89,9 +117,10 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 transition-colors duration-200"
                 />
               </div>
+
               <div>
                 <label
                   htmlFor="email"
@@ -106,9 +135,10 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 transition-colors duration-200"
                 />
               </div>
+
               <div>
                 <label
                   htmlFor="message"
@@ -123,21 +153,43 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-200 resize-none"
-                ></textarea>
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 transition-colors duration-200 resize-none"
+                />
               </div>
+
               <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
                 type="submit"
-                className="w-full bg-primary-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-700 transition-colors duration-200 flex items-center justify-center gap-2"
+                disabled={loading}
+                whileHover={{ scale: loading ? 1 : 1.05 }}
+                whileTap={{ scale: loading ? 1 : 0.95 }}
+                className="w-full flex items-center justify-center gap-2 bg-primary-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-700 transition-colors duration-200 disabled:opacity-50"
               >
-                <Send size={20} />
+                {loading ? (
+                  <Loader size={20} className="animate-spin" />
+                ) : (
+                  <Send size={20} />
+                )}
                 {t("contact.send")}
               </motion.button>
             </form>
+
+            {/* Popup Modal */}
+            {popup.visible && (
+              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                <div className="bg-white rounded-xl p-6 max-w-sm text-center">
+                  <p className="mb-4">{popup.message}</p>
+                  <button
+                    onClick={closePopup}
+                    className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700"
+                  >
+                    OK
+                  </button>
+                </div>
+              </div>
+            )}
           </motion.div>
 
+          {/* Static Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}

@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "https://automatisons.fr/*"
+  to = "https://www.automatisons.fr/:splat"
+  status = 301
+  force = true

@@ -58,7 +58,7 @@ export const ContactConfirmationEmail = ({
             <td align="center">
               <Row className="table-cell h-[44px] w-[56px] align-bottom">
                 <Column className="pr-[8px]">
-                  <Link href="#">
+                  <Link href="https://www.facebook.com/people/Automatisons/61577856784226/">
                     <Img
                       alt="Facebook"
                       height="36"
@@ -68,7 +68,7 @@ export const ContactConfirmationEmail = ({
                   </Link>
                 </Column>
                 <Column className="pr-[8px]">
-                  <Link href="#">
+                  <Link href="https://x.com/Automatisonsfr">
                     <Img
                       alt="X"
                       height="36"
@@ -78,11 +78,21 @@ export const ContactConfirmationEmail = ({
                   </Link>
                 </Column>
                 <Column>
-                  <Link href="#">
+                  <Link href="https://www.instagram.com/automatisons.fr/">
                     <Img
                       alt="Instagram"
                       height="36"
                       src="https://react.email/static/instagram-logo.png"
+                      width="36"
+                    />
+                  </Link>
+                </Column>
+                <Column>
+                  <Link href="https://www.youtube.com/channel/UCbhcq1KZSTbgCqz2aUNXaTA">
+                    <Img
+                      alt="youtube"
+                      height="36"
+                      src="/youtube-logo.png"
                       width="36"
                     />
                   </Link>

@@ -20,29 +20,6 @@ interface Testimonial {
 }
 
 const testimonials: Testimonial[] = [
-  // Avis Google
-  {
-    nameKey: "google.michal.name",
-    quoteKey: "google.michal.quote",
-    image:
-      "https://lh3.googleusercontent.com/a-/ALV-UjVS5pyiS9_3e7sULrVYX_1lxPriE0LspxWZMCtvg3b9ZoIW1D7H=s128-c0x00000000-cc-rp-mo",
-    rating: 5,
-    dateKey: "google.michal.date",
-    link: "https://maps.app.goo.gl/dMPkcWyNTZCkX5Mv6",
-    google: true,
-  },
-  {
-    nameKey: "google.lucas.name",
-    quoteKey: "google.lucas.quote",
-    image:
-      "https://lh3.googleusercontent.com/a-/ALV-UjXjgMdmZQigdYIIc4s61eOLL0JhQ8Ra9OkCZ0u5TDWGMzMqsk2l=s128-c0x00000000-cc-rp-mo",
-    rating: 5,
-    dateKey: "google.lucas.date",
-    link: "https://maps.app.goo.gl/QEGeBrYyCJHK6Fhk9",
-    google: true,
-  },
-
-  // Témoignages internes
   {
     nameKey: "testimonials.jpl.name",
     roleKey: "testimonials.jpl.role",
@@ -68,6 +45,16 @@ const testimonials: Testimonial[] = [
     dateKey: "testimonials.sm.date",
   },
   {
+    nameKey: "google.michal.name",
+    quoteKey: "google.michal.quote",
+    image:
+      "https://lh3.googleusercontent.com/a-/ALV-UjVS5pyiS9_3e7sULrVYX_1lxPriE0LspxWZMCtvg3b9ZoIW1D7H=s128-c0x00000000-cc-rp-mo",
+    rating: 5,
+    dateKey: "google.michal.date",
+    link: "https://maps.app.goo.gl/dMPkcWyNTZCkX5Mv6",
+    google: true,
+  },
+  {
     nameKey: "testimonials.mk.name",
     roleKey: "testimonials.mk.role",
     companyKey: "testimonials.mk.company",
@@ -89,6 +76,16 @@ const testimonials: Testimonial[] = [
     image: "/clair.webp",
     rating: 5,
     dateKey: "testimonials.cd.date",
+  },
+  {
+    nameKey: "google.lucas.name",
+    quoteKey: "google.lucas.quote",
+    image:
+      "https://lh3.googleusercontent.com/a-/ALV-UjXjgMdmZQigdYIIc4s61eOLL0JhQ8Ra9OkCZ0u5TDWGMzMqsk2l=s128-c0x00000000-cc-rp-mo",
+    rating: 5,
+    dateKey: "google.lucas.date",
+    link: "https://maps.app.goo.gl/QEGeBrYyCJHK6Fhk9",
+    google: true,
   },
   {
     nameKey: "testimonials.tr.name",
