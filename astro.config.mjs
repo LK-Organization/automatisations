@@ -4,14 +4,23 @@ import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap"; // ← tu dois l'importer
 import netlify from "@astrojs/netlify";
 
+import sanity from "@sanity/astro";
+
 export default defineConfig({
   output: "server",
   site: "https://automatisons.fr", // ← très important
   adapter: netlify(),
   integrations: [
     react(),
-    tailwind(),
-    sitemap(), // ← ici avec les autres
+    tailwind(), // ← ici avec les autres
+    sitemap(),
+    sanity({
+      projectId: "x83z7c4c",
+      dataset: "dev",
+      // Set useCdn to false if you're building statically.
+      useCdn: false,
+      studioBasePath: "/studio",
+    }),
   ],
   vite: {
     define: {

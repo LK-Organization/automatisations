@@ -115,7 +115,7 @@ const Navigation: React.FC<NavigationProps> = ({
             {/* Language Switcher Desktop */}
             <a
               href={switchTo}
-              className=" bg-primary-600 text-white px-8 py-2 rounded-lg font-semibold hover:bg-primary-700 transition-colors duration-200 flex items-center justify-center gap-2"
+              className="hidden md:flex bg-primary-600 text-white px-8 py-2 rounded-lg font-semibold hover:bg-primary-700 transition-colors duration-200 items-center justify-center gap-2"
             >
               {switchLabel}
             </a>
@@ -144,7 +144,7 @@ const Navigation: React.FC<NavigationProps> = ({
                 isHomePage ? "border-white/10" : "border-gray-800"
               }`}
             >
-              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              <div className="flex flex-col gap-4 px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 {navItems.map((item) => (
                   <a
                     key={item.key}
@@ -155,6 +155,12 @@ const Navigation: React.FC<NavigationProps> = ({
                     {t(item.key)}
                   </a>
                 ))}
+                <a
+                  href={switchTo}
+                  className=" bg-primary-600 text-white px-8 py-2 rounded-lg font-semibold hover:bg-primary-700 transition-colors duration-200 items-center justify-center gap-2 "
+                >
+                  {switchLabel}
+                </a>
               </div>
             </motion.div>
           )}
