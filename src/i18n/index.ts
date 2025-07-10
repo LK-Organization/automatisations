@@ -16,7 +16,8 @@ export const ui = {
       "Automatisons Agency transforme votre entreprise grâce à des solutions d'automatisation intelligentes et personnalisées.",
     "hero.cta": "Découvrir nos solutions",
     "hero.cta.secondary": "Nous contacter",
-
+    "hero.cta.link": "/solutions",
+    "hero.cta.secondary.link": "/contact",
     // Solutions
     "solutions.title": "Nos Solutions d'Automatisation",
     "solutions.subtitle":
@@ -332,7 +333,8 @@ export const ui = {
       "Automatisons Agency transforms your business with smart, customized automation solutions.",
     "hero.cta": "Discover Our Solutions",
     "hero.cta.secondary": "Contact Us",
-
+    "hero.cta.link": "/en/solutions",
+    "hero.cta.secondary.link": "/en/contact",
     // Solutions
     "solutions.title": "Our Automation Solutions",
     "solutions.subtitle":
