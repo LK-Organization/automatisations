@@ -113,6 +113,16 @@ const testimonials: Testimonial[] = [
     dateKey: "testimonials.nf.date",
   },
   {
+    nameKey: "google.robert.name",
+    quoteKey: "google.robert.quote",
+    image:
+      "https://lh3.googleusercontent.com/a-/ALV-UjXAaT0oltSu6t0NBpGSbs6iwzfuC3Xt_2lCRuTEBoyrrBXZkGgf=w72-h72-p-rp-mo-br100",
+    rating: 5,
+    dateKey: "google.robert.date",
+    link: "https://maps.app.goo.gl/xtHdunsTCQDC9oN58",
+    google: true,
+  },
+  {
     nameKey: "testimonials.kb.name",
     roleKey: "testimonials.kb.role",
     companyKey: "testimonials.kb.company",
@@ -135,6 +145,16 @@ const testimonials: Testimonial[] = [
       "https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=150",
     rating: 5,
     dateKey: "testimonials.al.date",
+  },
+  {
+    nameKey: "google.gauthier.name",
+    quoteKey: "google.gauthier.quote",
+    image:
+      "https://lh3.googleusercontent.com/a-/ALV-UjUDF573SdGX3zh50wMnANkKf1_ru0jfsGaPM7ThpNoxjYjUTv3L=w72-h72-p-rp-mo-br100",
+    rating: 5,
+    dateKey: "google.gauthier.date",
+    link: "https://maps.app.goo.gl/xtHdunsTCQDC9oN58",
+    google: true,
   },
   {
     nameKey: "testimonials.lb.name",

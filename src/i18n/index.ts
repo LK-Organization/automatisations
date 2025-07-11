@@ -240,7 +240,15 @@ export const ui = {
     "google.lucas.quote":
       "L'agence Automatisons a littéralement révolutionné la gestion de mon auto entreprise. Ils ont automatisé tout le volet CRM et data, ce qui m’a fait gagner un temps fou au quotidien. Fini les tâches répétitives et la perte d’informations ! Aujourd’hui, tout est centralisé, fluide, et surtout, je peux enfin me concentrer sur ce qui compte vraiment : mon cœur de métier. Un accompagnement clair, humain et hyper efficace. Je recommande les yeux fermés.",
     "google.lucas.date": "2025-07-08",
-
+    // Robert Stepa
+    "google.robert.name": "Robert Stepa",
+    "google.robert.quote": "Je recommande 10/10",
+    "google.robert.date": "2025-07-10",
+    // Gauthier
+    "google.gauthier.name": "Gauthier Milla",
+    "google.gauthier.quote":
+      "Super pro et rapide, Lukas m’a beaucoup aidé à simplifier mes tâches. Il a créé un Chatbot qui répond aux messages de toutes mes boites mail et de toutes mes conversations WhatsApp. Tout est réuni sur une interface dédiée simple et fonctionnelle qui me permet de suivre toutes les conversations, les demandes et les réponses.\nUn gain de temps énorme et un travail vraiment qualitatif, vous pouvez y aller les yeux fermés !",
+    "google.gauthier.date": "2025-07-10",
     // Methodology
     "methodology.title": "Notre Méthodologie",
     "methodology.subtitle":

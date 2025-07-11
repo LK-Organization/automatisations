@@ -216,8 +216,8 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                       {t("contact.emailLabel")}
                     </div>
                     <div className="text-gray-600">
-                      <a href="mailto:contact@Automatisons.fr">
-                        contact@Automatisons.fr
+                      <a href="mailto:contact@automatisons.fr">
+                        contact@automatisons.fr
                       </a>
                     </div>
                   </div>

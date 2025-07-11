@@ -117,6 +117,7 @@ const Sectors: React.FC<SectorsProps> = ({ lang }) => {
           })}
         </div>
       </div>
+      <div></div>
     </section>
   );
 };
