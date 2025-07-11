@@ -30,14 +30,14 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+              className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-0 sm:p-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
             >
-              <div className="relative w-full max-w-5xl aspect-video">
+              <div className="relative w-full h-full max-h-screen sm:h-auto sm:w-[90vw] sm:max-w-3xl sm:aspect-video">
                 <iframe
-                  className="w-full h-full rounded-lg"
+                  className="w-full h-full rounded-none sm:rounded-lg"
                   src={videoUrl}
                   title="Video player"
                   frameBorder="0"
