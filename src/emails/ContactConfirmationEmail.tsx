@@ -27,7 +27,7 @@ export const ContactConfirmationEmail = ({
       style={{ backgroundColor: "#fff", fontFamily: "sans-serif" }}
     >
       <Container style={{ padding: "20px" }}>
-        <Heading>Merci pour votre message, {name} !</Heading>
+        <Heading>Merci pour votre message.</Heading>
         <Text>
           Nous avons bien reçu votre demande. Un membre de notre équipe vous
           contactera dans les plus brefs délais.
@@ -54,52 +54,7 @@ export const ContactConfirmationEmail = ({
               </Text>
             </td>
           </tr>
-          <tr>
-            <td align="center">
-              <Row className="table-cell h-[44px] w-[56px] align-bottom">
-                <Column className="pr-[8px]">
-                  <Link href="https://www.facebook.com/people/Automatisons/61577856784226/">
-                    <Img
-                      alt="Facebook"
-                      height="36"
-                      src="https://react.email/static/facebook-logo.png"
-                      width="36"
-                    />
-                  </Link>
-                </Column>
-                <Column className="pr-[8px]">
-                  <Link href="https://x.com/Automatisonsfr">
-                    <Img
-                      alt="X"
-                      height="36"
-                      src="https://react.email/static/x-logo.png"
-                      width="36"
-                    />
-                  </Link>
-                </Column>
-                <Column>
-                  <Link href="https://www.instagram.com/automatisons.fr/">
-                    <Img
-                      alt="Instagram"
-                      height="36"
-                      src="https://react.email/static/instagram-logo.png"
-                      width="36"
-                    />
-                  </Link>
-                </Column>
-                <Column>
-                  <Link href="https://www.youtube.com/channel/UCbhcq1KZSTbgCqz2aUNXaTA">
-                    <Img
-                      alt="youtube"
-                      height="36"
-                      src="/youtube-logo.png"
-                      width="36"
-                    />
-                  </Link>
-                </Column>
-              </Row>
-            </td>
-          </tr>
+
           <tr>
             <td align="center">
               <Text className="mt-[4px] mb-0 font-semibold text-[16px] text-gray-500 leading-[24px]">

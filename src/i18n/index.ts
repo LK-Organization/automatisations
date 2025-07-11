@@ -322,7 +322,7 @@ export const ui = {
     "contact.schedule": "Prendre RDV",
     "contact.success": "✅ Message envoyé !",
     "contact.error": "❌ Erreur : ",
-    "faq.title": "FAQ – Questions Fréquentes",
+    "faq.title": "FAQ",
     "faq.subtitle":
       "Les questions les plus fréquentes sur l'automatisation intelligente",
 
@@ -357,8 +357,11 @@ Deux options sont possibles :
 L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
 
     // Chatbot
+    "chatbot.title": "Assistant IA",
+    "chatbot.subtitle": "Automatisons Agency",
+    "chatbot.input": "Tapez votre message...",
     "chatbot.welcome":
-      "Vous recherchez des solutions pour optimiser vos processus métier et réduire le temps consacré aux tâches répétitives ? Notre expertise en automatisation vous permet de transformer ces contraintes en opportunités d'efficacité.\nEn tant que spécialistes de l'automatisation, nous accompagnons les entreprises dans la digitalisation de leurs workflows. Vous pouvez explorer nos solutions via cet assistant intelligent ou nous contacter directement pour un entretien personnalisé avec nos experts. \nDécouvrons ensemble comment l'automatisation peut révolutionner votre productivité.",
+      "👋 Bonjour et bienvenue !\n Si vous cherchez à gagner du temps, à simplifier vos tâches quotidiennes et à automatiser ce qui peut l’être, vous êtes au bon endroit.\n Cet assistant est là pour vous aider à découvrir nos solutions ou pour vous mettre en contact avec un expert.",
 
     "chatbot.default":
       "Je comprends votre question, mais j'aimerais vous donner une réponse plus précise. Pouvez-vous me dire si vous vous intéressez plutôt à :\n\n• L'automatisation de processus métier\n• L'implémentation d'agents IA\n• Nos services et tarifs\n• Un secteur d'activité spécifique\n\nOu contactez directement notre équipe au +33 6 48 09 15 11 pour un conseil personnalisé !",
@@ -690,7 +693,7 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "contact.schedule": "Schedule a Meeting",
     "contact.success": "✅ Message sent!",
     "contact.error": "❌ Error: ",
-    "faq.title": "FAQ – Frequently Asked Questions",
+    "faq.title": "FAQ",
     "faq.subtitle": "The most common questions about intelligent automation",
     "faq.q1.question": "What kind of tasks can be automated in a business?",
     "faq.q1.answer": `All repetitive and time-consuming tasks, even complex ones, can be automated thanks to artificial intelligence.
@@ -721,8 +724,11 @@ Two options are available:
 The analysis of your needs and the quote are free and delivered within 24 hours.`,
 
     // Chatbot
+    "chatbot.title": "AI Assistant",
+    "chatbot.subtitle": "Automatisons Agency",
+    "chatbot.input": "Type your message...",
     "chatbot.welcome":
-      "Are you looking for solutions to optimize your business processes and reduce time spent on repetitive tasks? Our automation expertise turns constraints into productivity opportunities.\nAs automation specialists, we help companies digitize their workflows. You can explore our solutions via this intelligent assistant or contact us directly for a personalized consultation with our experts. \nLet’s discover together how automation can revolutionize your productivity.",
+      "👋 Hello and welcome!\n If you're looking to save time, simplify your daily tasks, and automate what can be automated, you're in the right place.\n This assistant is here to help you discover our solutions or connect you with an expert.",
 
     "chatbot.default":
       "I understand your question, but I’d like to give you a more precise answer. Could you let me know if you're interested in:\n\n• Business process automation\n• Implementing AI agents\n• Our services and pricing\n• A specific industry\n\nOr contact our team directly at +33 6 48 09 15 11 for personalized advice!",

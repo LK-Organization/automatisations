@@ -206,7 +206,6 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">
                     {t("contact.meetingFormSubtitle")}
                   </h3>
-                  <p>{t("contact.meetingFormDescription")}</p>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center">
@@ -245,6 +244,21 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                       {t("contact.addressLabel")}
                     </div>
                     <div className="text-gray-600">{t("contact.city")}</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <a href="https://wa.me/33648091511" target="_blank">
+                    <div className="w-12 h-12 bg-[#24d367] rounded-xl flex items-center justify-center">
+                      <img width={20} src="/whatsapp.svg" alt="" />
+                    </div>{" "}
+                  </a>
+                  <div>
+                    <a href="https://wa.me/33648091511" target="_blank">
+                      <div className="font-semibold text-gray-900">
+                        WhatsApp
+                      </div>
+                      <div className="text-gray-600">+33 6 48 09 15 11</div>
+                    </a>
                   </div>
                 </div>
               </div>
