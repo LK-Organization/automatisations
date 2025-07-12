@@ -63,7 +63,7 @@ const Sectors: React.FC<SectorsProps> = ({ lang }) => {
   ];
 
   return (
-    <section className="pt-20 bg-white">
+    <section id="next-section" className="pt-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <motion.div

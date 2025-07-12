@@ -1,7 +1,7 @@
 // src/i18n.ts
 export const languages = {
-  fr: "Français",
-  en: "English",
+  fr: "/fr-flag.svg",
+  en: "/gb-flag.svg",
 };
 
 export const defaultLang = "fr";
@@ -11,9 +11,11 @@ export const ui = {
     "nav.home": "Accueil",
     "nav.solutions": "Solutions",
     "nav.contact": "Contact",
-    "hero.title": "Automatisez vos tâches répétitives et vos process avec l'IA",
+    "hero.title": "Automatisez vos tâches répétitives\n ",
+    "hero.title2": "et vos process avec l'IA",
     "hero.subtitle":
       "Nous optimisons votre entreprise grâce à des solutions d'automatisation intelligentes et personnalisées.",
+
     "hero.cta": "Découvrir nos solutions",
     "hero.cta.secondary": "Nous contacter",
     "hero.cta.link": "/solutions",
@@ -403,7 +405,8 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "nav.home": "Home",
     "nav.solutions": "Solutions",
     "nav.contact": "Contact",
-    "hero.title": "Automate your repetitive tasks and processes with AI",
+    "hero.title": "Automate your repetitive tasks",
+    "hero.title2": "and processes with AI",
     "hero.subtitle":
       "We optimize your business with smart and customized automation solutions.",
     "hero.cta": "Discover Our Solutions",

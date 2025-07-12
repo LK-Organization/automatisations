@@ -115,9 +115,9 @@ const Navigation: React.FC<NavigationProps> = ({
             {/* Language Switcher Desktop */}
             <a
               href={switchTo}
-              className="hidden md:flex bg-primary-600 text-white px-8 py-2 rounded-lg font-semibold hover:bg-primary-700 transition-colors duration-200 items-center justify-center gap-2"
+              className="hidden md:flex text-white  transition-colors duration-200 items-center justify-center gap-2"
             >
-              {switchLabel}
+              <img src={switchLabel} alt="" width={30} />
             </a>
             {/* Mobile menu button and Language Switcher */}
             <div className="md:hidden flex items-center space-x-4">
@@ -157,9 +157,9 @@ const Navigation: React.FC<NavigationProps> = ({
                 ))}
                 <a
                   href={switchTo}
-                  className=" bg-primary-600 text-white px-8 py-2 rounded-lg font-semibold hover:bg-primary-700 transition-colors duration-200 items-center justify-center gap-2 "
+                  className="  px-8 py-2 items-center justify-center gap-2 "
                 >
-                  {switchLabel}
+                  <img src={switchLabel} alt="" width={30} />
                 </a>
               </div>
             </motion.div>
