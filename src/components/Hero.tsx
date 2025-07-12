@@ -72,14 +72,14 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
           {/* Icônes sur mobile sous le sous-titre, cachées sur md+ */}
           <div className="flex sm:hidden justify-center space-x-6 mb-6 text-white">
             <a
-              href="https://instagram.com/tonprofil"
+              href="https://www.instagram.com/automatisons.fr/"
               target="_blank"
               rel="noreferrer"
             >
               <Instagram size={28} />
             </a>
             <a
-              href="https://facebook.com/tonprofil"
+              href="https://www.facebook.com/profile.php?id=61577856784226"
               target="_blank"
               rel="noreferrer"
             >
