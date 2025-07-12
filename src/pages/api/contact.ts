@@ -4,7 +4,6 @@ import type { APIRoute } from "astro";
 import nodemailer from "nodemailer";
 import { render } from "@react-email/render";
 import ContactConfirmationEmail from "../../emails/ContactConfirmationEmail";
-import { tr } from "framer-motion/client";
 
 export const POST: APIRoute = async ({ request }) => {
   try {

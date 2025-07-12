@@ -6,11 +6,11 @@ import Footer from '../components/Footer';
 import Chatbot from '../components/Chatbot';
 
 const lang = 'fr';
-const title = 'Automatisons - Contactez Automatisons Agency – Projets Automatisation IA & RPA pour entreprises';
+const title = 'Contactez Automatisons Agency – Automatisation IA & RPA';
 const description = 'Contactez-nous pour discuter de votre projet d\'automatisation et d\'intelligence artificielle.';
 ---
 
-<Layout title={title} description={description} lang={lang}>
+<Layout title={title} description={description} >
   <Navigation lang={lang} isHomePage={false} client:load />
   <main class="pt-16">
     <Contact lang={lang} client:load />
