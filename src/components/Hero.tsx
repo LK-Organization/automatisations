@@ -120,14 +120,14 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
         {/* Icônes */}
         <div className="flex flex-col items-center space-y-4 text-white">
           <a
-            href="https://instagram.com/tonprofil"
+            href="https://www.instagram.com/automatisons.fr/"
             target="_blank"
             rel="noreferrer"
           >
             <Instagram size={28} />
           </a>
           <a
-            href="https://facebook.com/tonprofil"
+            href="https://www.facebook.com/profile.php?id=61577856784226"
             target="_blank"
             rel="noreferrer"
           >
