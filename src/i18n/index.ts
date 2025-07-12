@@ -13,7 +13,7 @@ export const ui = {
     "nav.contact": "Contact",
     "hero.title": "Automatisez vos tâches répétitives et vos process avec l'IA",
     "hero.subtitle":
-      "Automatisons Agency transforme votre entreprise grâce à des solutions d'automatisation intelligentes et personnalisées.",
+      "Nous optimisons votre entreprise grâce à des solutions d'automatisation intelligentes et personnalisées.",
     "hero.cta": "Découvrir nos solutions",
     "hero.cta.secondary": "Nous contacter",
     "hero.cta.link": "/solutions",
@@ -405,7 +405,7 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "nav.contact": "Contact",
     "hero.title": "Automate your repetitive tasks and processes with AI",
     "hero.subtitle":
-      "Automatisons Agency transforms your business with smart, customized automation solutions.",
+      "We optimize your business with smart and customized automation solutions.",
     "hero.cta": "Discover Our Solutions",
     "hero.cta.secondary": "Contact Us",
     "hero.cta.link": "/en/solutions",
