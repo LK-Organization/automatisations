@@ -31,7 +31,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.5 }}
-        className="absolute md:mr-auto md:ml-4 bottom-20 md:top-1/2 md:left-8 md:transform md:-translate-y-1/2 z-10"
+        className="hidden md:inline-block absolute md:mr-auto md:ml-4 bottom-20 md:top-1/2 md:left-8 md:transform md:-translate-y-1/2 z-10"
       >
         <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 shadow-lg border border-white/20">
           <div className="flex items-center gap-3">
