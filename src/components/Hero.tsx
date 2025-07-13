@@ -69,24 +69,6 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
             {t("hero.subtitle")}
           </p>
 
-          {/* Icônes sur mobile sous le sous-titre, cachées sur md+ */}
-          <div className="flex sm:hidden justify-center space-x-6 mb-6 text-white">
-            <a
-              href="https://www.instagram.com/automatisons.fr/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Instagram size={28} />
-            </a>
-            <a
-              href="https://www.facebook.com/profile.php?id=61577856784226"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Facebook size={28} />
-            </a>
-          </div>
-
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
             <motion.a
               href={t("hero.cta.link")}
@@ -117,24 +99,6 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
         transition={{ duration: 0.8, delay: 0.7 }}
         className="hidden sm:flex absolute right-4 top-1/2 transform -translate-y-1/2 flex-col items-center space-y-6 z-10"
       >
-        {/* Icônes */}
-        <div className="flex flex-col items-center space-y-4 text-white">
-          <a
-            href="https://www.instagram.com/automatisons.fr/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Instagram size={28} />
-          </a>
-          <a
-            href="https://www.facebook.com/profile.php?id=61577856784226"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Facebook size={28} />
-          </a>
-        </div>
-
         {/* Flèche */}
         <a href="#next-section" className="block">
           <ArrowDown size={48} className="text-white animate-bounce" />
