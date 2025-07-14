@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useRef, useEffect } from "react";
 import { ChevronDown, ChevronUp, CheckCircle } from "lucide-react";
 import { useTranslations } from "../i18n";
 
@@ -8,13 +7,74 @@ interface FAQItem {
   answer: string;
 }
 
-interface FAQSectionProps {
-  lang: string;
+interface AccordionItemProps {
+  item: FAQItem;
+  isExpanded: boolean;
+  onToggle: () => void;
+  index: number;
 }
 
-const FAQSection: React.FC<FAQSectionProps> = ({ lang }) => {
+function AccordionItem({
+  item,
+  isExpanded,
+  onToggle,
+  index,
+}: AccordionItemProps) {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [contentHeight, setContentHeight] = useState(0);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setContentHeight(contentRef.current.scrollHeight);
+    }
+  }, [item.answer]);
+
+  return (
+    <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 ease-out hover:shadow-md hover:border-gray-200">
+      <button
+        onClick={onToggle}
+        className="w-full px-4 sm:px-6 py-4 sm:py-5 text-left flex justify-between items-start gap-4 focus:outline-none  transition-colors duration-200 hover:bg-gray-50"
+        aria-expanded={isExpanded}
+        aria-controls={`faq-content-${index}`}
+      >
+        <h3 className="text-base sm:text-lg font-semibold text-gray-900 leading-tight">
+          {item.question}
+        </h3>
+        <ChevronDown
+          className={`h-5 w-5 text-gray-400 transition-all duration-300 ease-out flex-shrink-0 mt-0.5 ${
+            isExpanded
+              ? "transform rotate-180 text-blue-600"
+              : "hover:text-gray-600"
+          }`}
+        />
+      </button>
+
+      <div
+        id={`faq-content-${index}`}
+        style={{
+          height: isExpanded ? `${contentHeight}px` : "0px",
+        }}
+        className="transition-all duration-500 ease-out overflow-hidden"
+      >
+        <div ref={contentRef} className="px-4 sm:px-6 pb-4 sm:pb-6">
+          <div className="border-t border-gray-100 pt-4">
+            <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+              {item.answer}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+interface FAQAccordionProps {
+  lang?: string;
+}
+
+export default function FAQAccordion({ lang = "en" }: FAQAccordionProps) {
   const t = useTranslations(lang);
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [expandedItem, setExpandedItem] = useState<number | null>(null);
 
   const faqs: FAQItem[] = [
     { question: t("faq.q1.question"), answer: t("faq.q1.answer") },
@@ -24,111 +84,49 @@ const FAQSection: React.FC<FAQSectionProps> = ({ lang }) => {
     { question: t("faq.q5.question"), answer: t("faq.q5.answer") },
   ];
 
-  const toggle = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  const renderAnswer = (answer: string) => {
-    const lines = answer.split("\n").filter(Boolean);
-    const blocks: (string | string[])[] = [];
-    let currentList: string[] = [];
-    let currentParagraph: string[] = [];
-
-    lines.forEach((line) => {
-      const isBullet = line.trim().startsWith("-");
-      if (isBullet) {
-        if (currentParagraph.length > 0) {
-          blocks.push(currentParagraph.join(" "));
-          currentParagraph = [];
-        }
-        currentList.push(line.replace(/^-/, "").trim());
-      } else {
-        if (currentList.length > 0) {
-          blocks.push([...currentList]);
-          currentList = [];
-        }
-        currentParagraph.push(line.trim());
-      }
-    });
-
-    if (currentParagraph.length > 0) blocks.push(currentParagraph.join(" "));
-    if (currentList.length > 0) blocks.push([...currentList]);
-
-    return (
-      <div className="space-y-4 mt-2">
-        {blocks.map((block, idx) =>
-          Array.isArray(block) ? (
-            <ul key={idx} className="space-y-2">
-              {block.map((item, j) => (
-                <li key={j} className="flex items-start gap-2">
-                  <CheckCircle
-                    size={20}
-                    className="text-primary-600 flex-shrink-0 mt-1"
-                  />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p key={idx}>{block}</p>
-          )
-        )}
-      </div>
-    );
+  const toggleItem = (index: number) => {
+    setExpandedItem(expandedItem === index ? null : index);
   };
 
   return (
-    <section className="pb-20 bg-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+    <div className="min-h-screen py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl lg:max-w-4xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 tracking-tight">
             {t("faq.title")}
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          </h1>
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed px-4">
             {t("faq.subtitle")}
           </p>
         </div>
 
-        <div className="space-y-4">
-          {faqs.map((faq, idx) => {
-            const isOpen = openIndex === idx;
-            return (
-              <div key={idx} className="border border-gray-200 rounded-xl">
-                <button
-                  onClick={() => toggle(idx)}
-                  aria-expanded={isOpen}
-                  className="w-full flex justify-between items-center px-6 py-4 text-left bg-white hover:bg-gray-50 transition focus:outline-none"
-                >
-                  <span className="font-medium text-gray-900 text-lg">
-                    {faq.question}
-                  </span>
-                  <motion.div
-                    animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="flex-shrink-0"
-                  >
-                    {isOpen ? (
-                      <ChevronUp size={20} />
-                    ) : (
-                      <ChevronDown size={20} />
-                    )}
-                  </motion.div>
-                </button>
+        {/* FAQ Items */}
+        <div className="space-y-3 sm:space-y-4 lg:space-y-6">
+          {faqs.map((item, index) => (
+            <AccordionItem
+              key={index}
+              item={item}
+              isExpanded={expandedItem === index}
+              onToggle={() => toggleItem(index)}
+              index={index}
+            />
+          ))}
+        </div>
 
-                <div
-                  className={`px-6 pb-6 bg-gray-50 overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out ${
-                    isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
-                  }`}
-                >
-                  {isOpen && renderAnswer(faq.answer)}
-                </div>
-              </div>
-            );
-          })}
+        {/* Footer */}
+        <div className="text-center mt-12 sm:mt-16 lg:mt-20 pt-8 border-t border-gray-200">
+          <p className="text-sm sm:text-base text-gray-600 px-4">
+            {t("faq.contact")}{" "}
+            <a
+              href="#"
+              className="text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200 underline decoration-2 underline-offset-2 hover:decoration-blue-700"
+            >
+              {t("faq.contactLink")}
+            </a>
+          </p>
         </div>
       </div>
-    </section>
+    </div>
   );
-};
-
-export default FAQSection;
+}
