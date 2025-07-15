@@ -51,23 +51,15 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
         >
           {/* Contour avec effet glow bleuté */}
           <h1 className="md:flex flex-col hidden justify-center items-center gap-5 w-full text-4xl md:text-6xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            <span className=" w-full whitespace-normal border-2 p-2 border-blue-400/60 rounded-xl filter shadow-[0_0_12px_rgba(100,150,255,0.7)]">
-              {t("hero.title")}
-            </span>
-
-            <span className=" w-fit whitespace-normal border-2 p-2 border-blue-400/60 rounded-xl filter shadow-[0_0_12px_rgba(100,150,255,0.7)]">
-              {t("hero.title2")}
-            </span>
-          </h1>
-          <h1 className="md:hidden inline-block w-full text-4xl md:text-6xl lg:text-6xl space-y-5 font-bold text-white mb-6 leading-tight border-2 p-2 border-blue-400/60 rounded-xl filter shadow-[0_0_12px_rgba(100,150,255,0.7)]">
             <span className=" w-full whitespace-normal ">
               {t("hero.title")}
-              {t("hero.title2")}
             </span>
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-4 leading-relaxed max-w-4xl mx-auto">
-            {t("hero.subtitle")}
-          </p>
+          <h1 className="md:hidden inline-block w-full text-4xl md:text-6xl lg:text-6xl space-y-5 font-bold text-white mb-6 leading-tight ">
+            <span className=" w-full whitespace-normal ">
+              {t("hero.title")}
+            </span>
+          </h1>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
             <motion.a
@@ -89,6 +81,9 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
               {t("hero.cta.secondary")}
             </motion.a>
           </div>
+          <p className="text-xl md:text-2xl text-white/90 mb-4 leading-relaxed max-w-4xl mx-auto">
+            {t("hero.subtitle")}
+          </p>
         </motion.div>
       </div>
 

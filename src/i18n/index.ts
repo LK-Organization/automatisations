@@ -11,12 +11,12 @@ export const ui = {
     "nav.home": "Accueil",
     "nav.solutions": "Solutions",
     "nav.contact": "Contact",
-    "hero.title": "Automatisez vos tâches répétitives\n ",
-    "hero.title2": "et vos process avec l'IA",
-    "hero.subtitle":
-      "Nous optimisons votre entreprise grâce à des solutions d'automatisation intelligentes et personnalisées.",
+    "hero.title": "Dites adieux à vos tâches répétitives.\n ",
 
-    "hero.cta": "Découvrir nos solutions",
+    "hero.subtitle":
+      "Nous optimisons votre entreprise grâce à des solutions d'automatisation personnalisées.",
+
+    "hero.cta": "Comment ça fonctionne",
     "hero.cta.secondary": "Nous contacter",
     "hero.cta.link": "/solutions",
     "hero.cta.secondary.link": "/contact",
@@ -399,11 +399,11 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "nav.home": "Home",
     "nav.solutions": "Solutions",
     "nav.contact": "Contact",
-    "hero.title": "Automate your repetitive tasks",
-    "hero.title2": "and processes with AI",
+    "hero.title": "Say goodbye to your repetitive tasks.",
+
     "hero.subtitle":
-      "We optimize your business with smart and customized automation solutions.",
-    "hero.cta": "Discover Our Solutions",
+      "We optimize your business with customized automation solutions.",
+    "hero.cta": "How does it work",
     "hero.cta.secondary": "Contact Us",
     "hero.cta.link": "/en/solutions",
     "hero.cta.secondary.link": "/en/contact",

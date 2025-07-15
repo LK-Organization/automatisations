@@ -63,8 +63,8 @@ const Sectors: React.FC<SectorsProps> = ({ lang }) => {
   ];
 
   return (
-    <section id="next-section" className="pt-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="next-section" className="pb-20 bg-white footer">
+      <div id="footer" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

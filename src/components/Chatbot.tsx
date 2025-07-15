@@ -1,4 +1,3 @@
-// src/components/Chatbot.tsx
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -30,14 +29,11 @@ const Chatbot: React.FC<ChatbotProps> = ({ lang }) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [showLauncher, setShowLauncher] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
   useEffect(() => {
-    scrollToBottom();
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   useEffect(() => {
@@ -51,6 +47,31 @@ const Chatbot: React.FC<ChatbotProps> = ({ lang }) => {
       setMessages([welcomeMessage]);
     }
   }, [isOpen]);
+
+  // ➤ Observer l'élément avec la classe .footer
+  useEffect(() => {
+    const footer = document.querySelector(".footer");
+    if (!footer) return;
+
+    const observer = new IntersectionObserver(
+      (entries, observerInstance) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setShowLauncher(true);
+            observerInstance.disconnect(); // ➤ Arrête l'observation après la première fois
+          }
+        });
+      },
+      {
+        root: null,
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(footer);
+
+    return () => observer.disconnect();
+  }, []);
 
   const knowledgeBase = t("chatbot.knowledge") as Record<string, any>;
 
@@ -77,15 +98,18 @@ const Chatbot: React.FC<ChatbotProps> = ({ lang }) => {
 
   const handleSendMessage = () => {
     if (!inputValue.trim()) return;
+
     const userMessage: Message = {
       id: Date.now().toString(),
       text: inputValue,
       isBot: false,
       timestamp: new Date(),
     };
+
     setMessages((prev) => [...prev, userMessage]);
     setInputValue("");
     setIsTyping(true);
+
     setTimeout(
       () => {
         const botResponse: Message = {
@@ -108,29 +132,29 @@ const Chatbot: React.FC<ChatbotProps> = ({ lang }) => {
     }
   };
 
-  const formatTime = (date: Date) => {
-    return date.toLocaleTimeString(lang === "en" ? "en-US" : "fr-FR", {
+  const formatTime = (date: Date) =>
+    date.toLocaleTimeString(lang === "en" ? "en-US" : "fr-FR", {
       hour: "2-digit",
       minute: "2-digit",
     });
-  };
 
   return (
     <>
-      <motion.button
-        onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 right-6 z-50 bg-gradient-to-r from-primary-600 to-accent-500 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 ${isOpen ? "hidden" : "block"}`}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ delay: 2 }}
-      >
-        <MessageCircle size={24} />
-        <div className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
-          <span className="text-xs font-bold">!</span>
-        </div>
-      </motion.button>
+      {!isOpen && showLauncher && (
+        <motion.button
+          onClick={() => setIsOpen(true)}
+          className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-primary-600 to-accent-500 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+        >
+          <MessageCircle size={24} />
+          <div className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+            <span className="text-xs font-bold">!</span>
+          </div>
+        </motion.button>
+      )}
 
       <AnimatePresence>
         {isOpen && (
@@ -146,6 +170,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ lang }) => {
             className="fixed bottom-6 right-6 z-50 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden"
             style={{ width: "400px", maxWidth: "90vw" }}
           >
+            {/* Header */}
             <div className="bg-gradient-to-r from-primary-600 to-accent-500 text-white p-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
@@ -176,6 +201,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ lang }) => {
               </div>
             </div>
 
+            {/* Chat content */}
             {!isMinimized && (
               <>
                 <div className="h-96 overflow-y-auto p-4 space-y-4">
@@ -184,13 +210,21 @@ const Chatbot: React.FC<ChatbotProps> = ({ lang }) => {
                       key={message.id}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className={`flex ${message.isBot ? "justify-start" : "justify-end"}`}
+                      className={`flex ${
+                        message.isBot ? "justify-start" : "justify-end"
+                      }`}
                     >
                       <div
-                        className={`flex items-start gap-2 max-w-[80%] ${message.isBot ? "flex-row" : "flex-row-reverse"}`}
+                        className={`flex items-start gap-2 max-w-[80%] ${
+                          message.isBot ? "flex-row" : "flex-row-reverse"
+                        }`}
                       >
                         <div
-                          className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${message.isBot ? "bg-gradient-to-r from-primary-600 to-accent-500 text-white" : "bg-gray-200 text-gray-600"}`}
+                          className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                            message.isBot
+                              ? "bg-gradient-to-r from-primary-600 to-accent-500 text-white"
+                              : "bg-gray-200 text-gray-600"
+                          }`}
                         >
                           {message.isBot ? (
                             <Bot size={16} />
@@ -199,13 +233,19 @@ const Chatbot: React.FC<ChatbotProps> = ({ lang }) => {
                           )}
                         </div>
                         <div
-                          className={`rounded-2xl p-3 ${message.isBot ? "bg-gray-100 text-gray-800" : "bg-gradient-to-r from-primary-600 to-accent-500 text-white"}`}
+                          className={`rounded-2xl p-3 ${
+                            message.isBot
+                              ? "bg-gray-100 text-gray-800"
+                              : "bg-gradient-to-r from-primary-600 to-accent-500 text-white"
+                          }`}
                         >
                           <p className="text-sm whitespace-pre-line">
                             {message.text}
                           </p>
                           <p
-                            className={`text-xs mt-1 opacity-70 ${message.isBot ? "text-gray-500" : "text-white/70"}`}
+                            className={`text-xs mt-1 opacity-70 ${
+                              message.isBot ? "text-gray-500" : "text-white/70"
+                            }`}
                           >
                             {formatTime(message.timestamp)}
                           </p>
@@ -243,6 +283,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ lang }) => {
                   <div ref={messagesEndRef} />
                 </div>
 
+                {/* Input */}
                 <div className="p-4 border-t border-gray-200">
                   <div className="flex gap-2">
                     <input
