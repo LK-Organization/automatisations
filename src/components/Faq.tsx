@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { ChevronDown, ChevronUp, CheckCircle } from "lucide-react";
+import { ChevronDown, CheckCircle } from "lucide-react";
 import { useTranslations } from "../i18n";
 
 interface FAQItem {
@@ -33,7 +33,7 @@ function AccordionItem({
     <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 ease-out hover:shadow-md hover:border-gray-200">
       <button
         onClick={onToggle}
-        className="w-full px-4 sm:px-6 py-4 sm:py-5 text-left flex justify-between items-start gap-4 focus:outline-none  transition-colors duration-200 hover:bg-gray-50"
+        className="w-full px-4 sm:px-6 py-4 sm:py-5 text-left flex justify-between items-start gap-4 focus:outline-none transition-colors duration-200 hover:bg-gray-50"
         aria-expanded={isExpanded}
         aria-controls={`faq-content-${index}`}
       >
@@ -41,10 +41,9 @@ function AccordionItem({
           {item.question}
         </h3>
         <ChevronDown
+          color="#2563eb"
           className={`h-5 w-5 text-gray-400 transition-all duration-300 ease-out flex-shrink-0 mt-0.5 ${
-            isExpanded
-              ? "transform rotate-180 text-blue-600"
-              : "hover:text-gray-600"
+            isExpanded ? "rotate-180 text-blue-600" : "hover:text-gray-600"
           }`}
         />
       </button>
@@ -58,9 +57,20 @@ function AccordionItem({
       >
         <div ref={contentRef} className="px-4 sm:px-6 pb-4 sm:pb-6">
           <div className="border-t border-gray-100 pt-4">
-            <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-              {item.answer}
-            </p>
+            <div className="text-sm sm:text-base text-gray-700 leading-relaxed space-y-2">
+              {item.answer.split("\n").map((line, idx) => {
+                if (line.trim().startsWith("-")) {
+                  return (
+                    <div key={idx} className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 mt-1 text-[#2563eb] flex-shrink-0" />
+                      <span>{line.replace(/^- /, "")}</span>
+                    </div>
+                  );
+                } else {
+                  return <p key={idx}>{line}</p>;
+                }
+              })}
+            </div>
           </div>
         </div>
       </div>
@@ -112,19 +122,6 @@ export default function FAQAccordion({ lang = "en" }: FAQAccordionProps) {
               index={index}
             />
           ))}
-        </div>
-
-        {/* Footer */}
-        <div className="text-center mt-12 sm:mt-16 lg:mt-20 pt-8 border-t border-gray-200">
-          <p className="text-sm sm:text-base text-gray-600 px-4">
-            {t("faq.contact")}{" "}
-            <a
-              href="#"
-              className="text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200 underline decoration-2 underline-offset-2 hover:decoration-blue-700"
-            >
-              {t("faq.contactLink")}
-            </a>
-          </p>
         </div>
       </div>
     </div>

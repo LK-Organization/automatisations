@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import { Send, Mail, Phone, MapPin, Loader } from "lucide-react";
+import debounce from "lodash/debounce";
 import { useTranslations } from "../i18n";
 
 interface ContactProps {
@@ -9,26 +10,112 @@ interface ContactProps {
 
 const Contact: React.FC<ContactProps> = ({ lang }) => {
   const t = useTranslations(lang);
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
-
   const [loading, setLoading] = useState(false);
   const [popup, setPopup] = useState({
     visible: false,
     message: "",
     isError: false,
   });
+  const hasSubmittedRef = useRef(false);
+  const draftSavedRef = useRef(false);
+  const formDataRef = useRef(formData);
 
+  // Keep ref updated with current form data
+  useEffect(() => {
+    formDataRef.current = formData;
+  }, [formData]);
+
+  // Load draft from localStorage on component mount
+  useEffect(() => {
+    const savedDraft = localStorage.getItem("contactFormDraft");
+    if (savedDraft) {
+      try {
+        const draftData = JSON.parse(savedDraft);
+        setFormData(draftData);
+      } catch (e) {
+        console.error("Error parsing saved draft:", e);
+      }
+    }
+  }, []);
+
+  // Save to localStorage with debouncing
+  const saveToLocalStorage = useCallback(
+    debounce(() => {
+      if (hasSubmittedRef.current) return;
+      if (
+        !formDataRef.current.name &&
+        !formDataRef.current.email &&
+        !formDataRef.current.message
+      )
+        return;
+
+      localStorage.setItem(
+        "contactFormDraft",
+        JSON.stringify(formDataRef.current)
+      );
+    }, 2000),
+    []
+  );
+
+  // Save draft to server
+  const saveDraftToServer = useCallback(() => {
+    if (hasSubmittedRef.current) return;
+    if (
+      !formDataRef.current.name &&
+      !formDataRef.current.email &&
+      !formDataRef.current.message
+    )
+      return;
+
+    const data = { ...formDataRef.current, draft: true };
+    const blob = new Blob([JSON.stringify(data)], { type: "application/json" });
+
+    const success = navigator.sendBeacon("/api/save-draft", blob);
+    if (success) {
+      draftSavedRef.current = true;
+      localStorage.removeItem("contactFormDraft");
+    } else {
+      // Store in localStorage again for retry
+      localStorage.setItem("contactFormDraft", JSON.stringify(data));
+    }
+  }, []);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      saveDraftToServer();
+    }, 10000); // every 10 seconds
+
+    return () => clearInterval(interval);
+  }, [saveDraftToServer]);
+
+  // Handle form field changes
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    saveToLocalStorage();
   };
 
+  // Set up page unload handler
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      saveToLocalStorage.flush();
+      saveDraftToServer();
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+      saveToLocalStorage.cancel();
+    };
+  }, [saveToLocalStorage, saveDraftToServer]);
+
+  // Submit form handler
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -39,6 +126,7 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+
       const result = await response.json();
 
       if (response.ok) {
@@ -47,7 +135,10 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
           message: t("contact.success"),
           isError: false,
         });
+        // Clear form and saved draft
         setFormData({ name: "", email: "", message: "" });
+        localStorage.removeItem("contactFormDraft");
+        hasSubmittedRef.current = true;
       } else {
         setPopup({
           visible: true,
@@ -247,13 +338,21 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <a href="https://wa.me/33648091511" target="_blank">
+                  <a
+                    href="https://wa.me/33648091511"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <div className="w-12 h-12 bg-[#24d367] rounded-xl flex items-center justify-center">
-                      <img width={20} src="/whatsapp.svg" alt="" />
+                      <img width={20} src="/whatsapp.svg" alt="WhatsApp" />
                     </div>{" "}
                   </a>
                   <div>
-                    <a href="https://wa.me/33648091511" target="_blank">
+                    <a
+                      href="https://wa.me/33648091511"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
                       <div className="font-semibold text-gray-900">
                         WhatsApp
                       </div>
@@ -268,6 +367,7 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                 className="w-full bg-primary-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-700 transition-colors duration-200 flex items-center justify-center gap-2"
                 href="https://calendly.com/kkulig25/30min"
                 target="_blank"
+                rel="noreferrer"
               >
                 {t("contact.schedule")}
               </motion.a>

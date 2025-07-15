@@ -16,12 +16,12 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const transporter = nodemailer.createTransport({
-      host: "mail77.lwspanel.com",
+      host: `${import.meta.env.MAIL_HOST}`,
       port: 465,
       secure: true,
       auth: {
-        user: "contact@automatisons.fr",
-        pass: "z3yJd5623@Kjhsd",
+        user: `${import.meta.env.MAIL_USER}`,
+        pass: `${import.meta.env.MAIL_PASS}`,
       },
     });
 
