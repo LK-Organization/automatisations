@@ -339,7 +339,7 @@ export const ui = {
     "faq.q1.question":
       "Quels types de tâches peut-on automatiser dans une entreprise ?",
     "faq.q1.answer": `Toutes les tâches répétitives et chronophages, même complexes, peuvent être automatisées grâce à l’intelligence artificielle.\nLes tâches le plus fréquemment automatisées pour les PME sont :\n
-- Gestion des stocks : mise à jour automatique des niveaux de stock, réapprovisionnement intelligent basé sur les ventes et la saisonnalité.\n- Marketing : envoi automatisé de newsletters, relance personnalisée des paniers abandonnés, détection des points de friction dans le tunnel de vente.\n- Service client (SAV) : réponses automatisées aux questions fréquentes, tri et priorisation des tickets selon leur nature ou leur urgence.\nVous avez une tâche spécifique en tête ? Contactez-nous pour une analyse gratuite sous 24h.`,
+- Gestion des stocks : mise à jour automatique des niveaux de stock, réapprovisionnement intelligent basé sur les ventes et la saisonnalité.\n- Marketing : envoi automatisé de newsletters, relance personnalisée des paniers abandonnés, détection des points de friction dans le tunnel de vente.\n- Service client (SAV) : traitement et réponse automatique aux e-mails, réponses instantanées aux questions fréquentes, tri et priorisation des tickets selon leur nature ou leur niveau d'urgence.\nVous avez une tâche spécifique en tête ? Contactez-nous pour une analyse gratuite sous 24h.`,
 
     "faq.q2.question":
       "L’automatisation IA est-elle compatible avec les logiciels que nous utilisons ?",
@@ -706,7 +706,7 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
 The most commonly automated tasks for SMEs include:
 - Inventory management: automatic stock level updates, smart restocking based on sales and seasonality.
 - Marketing: automated newsletter sending, personalized cart abandonment follow-ups, detection of friction points in the sales funnel.
-- Customer service (support): automated responses to frequent questions, ticket sorting and prioritization based on urgency or type.
+- Customer Service (After-Sales Support): automatic processing and responses to emails, instant replies to frequently asked questions, sorting and prioritizing tickets based on their nature or level of urgency.
 
 Have a specific task in mind? Contact us for a free analysis within 24 hours.`,
 
