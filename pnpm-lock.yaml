@@ -50,6 +50,12 @@ importers:
       google-reviews-widget:
         specifier: ^1.0.4
         version: 1.0.4(react@19.1.0)
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
+      lodash.debounce:
+        specifier: ^4.0.8
+        version: 4.0.8
       lucide-react:
         specifier: ^0.468.0
         version: 0.468.0(react@19.1.0)
@@ -78,6 +84,9 @@ importers:
         specifier: ^3.4.17
         version: 3.4.17
     devDependencies:
+      '@types/lodash':
+        specifier: ^4.17.20
+        version: 4.17.20
       '@types/nodemailer':
         specifier: ^6.4.17
         version: 6.4.17

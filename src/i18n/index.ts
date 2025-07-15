@@ -338,14 +338,8 @@ export const ui = {
 
     "faq.q1.question":
       "Quels types de tâches peut-on automatiser dans une entreprise ?",
-    "faq.q1.answer": `Toutes les tâches répétitives et chronophages, même complexes, peuvent être automatisées grâce à l’intelligence artificielle.
-
-Les tâches le plus fréquemment automatisées pour les PME sont :
-- Gestion des stocks : mise à jour automatique des niveaux de stock, réapprovisionnement intelligent basé sur les ventes et la saisonnalité.
-- Marketing : envoi automatisé de newsletters, relance personnalisée des paniers abandonnés, détection des points de friction dans le tunnel de vente.
-- Service client (SAV) : réponses automatisées aux questions fréquentes, tri et priorisation des tickets selon leur nature ou leur urgence.
-
-Vous avez une tâche spécifique en tête ? Contactez-nous pour une analyse gratuite sous 24h.`,
+    "faq.q1.answer": `Toutes les tâches répétitives et chronophages, même complexes, peuvent être automatisées grâce à l’intelligence artificielle.\nLes tâches le plus fréquemment automatisées pour les PME sont :\n
+- Gestion des stocks : mise à jour automatique des niveaux de stock, réapprovisionnement intelligent basé sur les ventes et la saisonnalité.\n- Marketing : envoi automatisé de newsletters, relance personnalisée des paniers abandonnés, détection des points de friction dans le tunnel de vente.\n- Service client (SAV) : réponses automatisées aux questions fréquentes, tri et priorisation des tickets selon leur nature ou leur urgence.\nVous avez une tâche spécifique en tête ? Contactez-nous pour une analyse gratuite sous 24h.`,
 
     "faq.q2.question":
       "L’automatisation IA est-elle compatible avec les logiciels que nous utilisons ?",
