@@ -18,8 +18,54 @@ export const ui = {
 
     "hero.cta": "Comment ça fonctionne",
     "hero.cta.secondary": "Nous contacter",
-    "hero.cta.link": "/solutions",
+    "hero.cta.link": "#exemples",
     "hero.cta.secondary.link": "/contact",
+
+    // exemples
+    "exemples.title": "Exemples concrets d’automatisation",
+
+    "exemples.factures.title": "Saisie automatique de factures fournisseurs",
+    "exemples.factures.subtitle":
+      "Je ne perds plus mes soirées à trier des factures.",
+    "exemples.factures.image": "/inassistant.png",
+    "exemples.factures.details":
+      "En tant que gérant d’un e-commerce dans le domaine de la mode, je collabore avec plus de 20 fournisseurs basés en Europe.\n\nLa gestion manuelle des factures, avec des formats variés, des taux de TVA différents, et parfois des conversions de devises, etc. me prenait en moyenne 4 heures par semaine. Sans compter les erreurs de saisie qui pouvaient entraîner des oublis ou des retards de paiement.\n\nDepuis que j’ai un traitement automatisé des factures, la comptabilité de mes achats est largement simplifiée.\n\nLes factures reçues par e-mail ou transférées dans un dossier sont lues automatiquement.\n\nToutes les informations utiles (fournisseur, montant HT/TTC, TVA, devise, date, n° de facture) sont extraites et triées dans un fichier Excel.\n\nIl ne me reste plus qu’à vérifier rapidement les lignes, puis à transmettre à ma comptable. Résultat : je gagne facilement 3 heures par semaine.",
+
+    "exemples.emails.title": "Automatisation de la gestion des e-mails reçus",
+    "exemples.emails.subtitle":
+      "Des centaines de mails quotidiens qui se trient tout seuls.",
+    "exemples.emails.image": "/emails.png",
+    "exemples.emails.details":
+      "Je suis responsable d’exploitation dans une PME logistique. Entre les bons de commande, les notifications de transport, les relances et les documents douaniers, je reçois plus de 150 e-mails par jour.\n\nAvant, je passais mes matinées à trier, transférer et classer les messages. Certaines demandes urgentes se perdaient, et des retards d’expédition pouvaient arriver à cause d’un simple oubli de lecture.\n\nDepuis que j’ai fait automatiser la gestion de notre boîte mail, les e-mails sont lus, catégorisés et transférés automatiquement à la bonne personne ou dans le bon dossier.\n\nLes pièces jointes sont enregistrées dans notre Drive, et les urgences sont signalées par un code couleur.\n\nEn tout, je gagne près de 2 heures par jour, et surtout, nous avons réduit les erreurs de traitement de 80 %.",
+
+    "exemples.reports.title": "Envoi automatisé de comptes-rendus après visite",
+    "exemples.reports.subtitle":
+      "Fini la perte de temps sur les compte-rendus.",
+    "exemples.reports.image": "/reports.png",
+    "exemples.reports.details":
+      "À chaque visite client je dois rédiger un compte-rendu manuel. Entre la rédaction, le copier-coller d’infos, l’envoi par mail, cela me prenait 10 à 15 minutes par bien à la fin de la journée… parfois jusqu’à 22h.\n\nAujourd’hui, dès qu’une visite est terminée, je remplis simplement un formulaire. Le compte-rendu personnalisé est généré automatiquement et envoyé au client en quelques minutes, avec les infos du bien, les points clés, et même des suggestions de visites similaires.\n\nCela me fait gagner un nombre d’heures incalculable chaque semaine, et mes clients sont bluffés de recevoir un suivi aussi rapide et soigné.",
+
+    "exemples.crm.title":
+      "Synchronisation entre CRM, calendrier, et boîte mail",
+    "exemples.crm.subtitle":
+      "Toutes les infos au même endroit : plus aucune erreur.",
+    "exemples.crm.image": "/crm.png",
+    "exemples.crm.details":
+      "Notre équipe commerciale travaille sur le terrain, avec un CRM, un calendrier Google, et des échanges mails très fréquents avec les clients pros (artisans, grossistes…).\n\nAvant, on perdait un temps fou à mettre à jour les rendez-vous manuellement, reporter les infos dans le CRM, et reclasser les e-mails dans les bons dossiers.\nRésultat : doublons, oublis, et un CRM jamais à jour.\n\nDepuis la mise en place d’une synchronisation intelligente, tout est fluide :\n\n- Un rendez-vous fixé dans un mail s’ajoute au calendrier et au CRM.\n- Les infos client sont extraites du mail pour enrichir les fiches automatiquement.\n- Les comptes-rendus d’appels sont centralisés.\n\n Aujourd’hui, nos commerciaux passent moins de temps sur l’administratif, et plus de temps à vendre. Le CRM est enfin à jour sans effort, et le suivi client est beaucoup plus réactif.",
+
+    "exemples.chatbot.title": "Chatbot de réponses automatiques",
+    "exemples.chatbot.subtitle":
+      "Des équipes réduites, un meilleur fonctionnement et une meilleure satisfaction client.",
+    "exemples.chatbot.image": "/chatbot.png",
+    "exemples.chatbot.details":
+      "Je suis responsable du service client pour une assurance en ligne. Chaque jour, notre équipe reçoit des dizaines de questions identiques sur les remboursements, les délais de traitement ou les pièces justificatives à fournir. On perdait un temps fou à répondre à des demandes basiques, et nous étions toujours en retard.\n\nDepuis que nous avons mis en place un chatbot intelligent sur notre site, c’est terminé. Il répond instantanément aux demandes les plus fréquentes, guide les utilisateurs vers les bons formulaires et leur indique le suivi de leur dossier. En cas de besoin, il redirige vers un conseiller humain.\n\nAujourd’hui, nous fonctionnons mieux, avec moins de personnel, et nos clients sont bien plus satisfaits.",
+
+    "exemples.assistant.title": "Assistant vocal intelligent",
+    "exemples.assistant.subtitle":
+      "Je demande simplement les infos client à mon assistant vocal.",
+    "exemples.assistant.image": "/assistant.png",
+    "exemples.assistant.details":
+      "Quand on est commercial de terrain, on doit jongler entre les clients et retrouver les infos dans le CRM, les mails, les notes et les autres outils. Avant chaque rendez-vous, je passais 15 ou 20 minutes à fouiller partout pour retrouver les infos du client : dernières interactions, contrats en cours, échéances, historique…\n\nDepuis qu’on a intégré un assistant vocal connecté à toutes les bases de données, je n’ai plus besoin de chercher. Je demande simplement à voix haute : « Où en est le dossier Dupont ? » ou « Quel est le chiffre d’affaires de ce client sur les six derniers mois ? », et l’IA me répond en quelques secondes, avec des données à jour extraites de nos différents outils.\n\nL’assistant vocal me fournit instantanément les informations dont j’ai besoin, pour n’importe quel client.",
     // Solutions
     "solutions.title": "Nos Solutions d'Automatisation Intelligentes",
     "solutions.subtitle":
@@ -405,8 +451,48 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
       "We optimize your business with customized automation solutions.",
     "hero.cta": "How does it work",
     "hero.cta.secondary": "Contact Us",
-    "hero.cta.link": "/en/solutions",
+    "hero.cta.link": "#exemples",
     "hero.cta.secondary.link": "/en/contact",
+    // exemples
+    "exemples.title": "Concrete Examples of Automation",
+
+    "exemples.factures.title": "Automatic Entry of Supplier Invoices",
+    "exemples.factures.subtitle": "No more wasting evenings sorting invoices.",
+    "exemples.factures.image": "/inassistant.png",
+    "exemples.factures.details":
+      "As the manager of a fashion e-commerce business, I work with over 20 suppliers based in Europe.\n\nManually handling invoices—with varying formats, different VAT rates, and sometimes currency conversions—used to take me an average of 4 hours per week. Not to mention data entry errors that could lead to missed or late payments.\n\nSince implementing automated invoice processing, managing my purchase accounting has become much simpler.\n\nInvoices received via email or saved in a folder are automatically read.\n\nAll relevant information (supplier, amount excl./incl. tax, VAT, currency, date, invoice number) is extracted and sorted into an Excel file.\n\nAll I have to do is quickly check the lines and send them to my accountant.\n\nResult: I easily save 3 hours per week.",
+
+    "exemples.emails.title": "Automation of Incoming Email Management",
+    "exemples.emails.subtitle": "Hundreds of daily emails now sort themselves.",
+    "exemples.emails.image": "/emails.png",
+    "exemples.emails.details":
+      "I'm an operations manager at a logistics SME. Between purchase orders, shipping notifications, follow-ups, and customs documents, I receive over 150 emails a day.\n\nPreviously, I spent my mornings sorting, forwarding, and filing messages. Urgent requests were sometimes missed, leading to shipment delays due to simple oversight.\n\nSince automating our mailbox management, emails are automatically read, categorized, and forwarded to the right person or folder.\n\nAttachments are saved to our Drive, and urgent messages are flagged with a color code.\n\nIn total, I save nearly 2 hours a day, and we've reduced processing errors by 80%.",
+
+    "exemples.reports.title": "Automated Sending of Visit Reports",
+    "exemples.reports.subtitle": "No more wasting time on reports.",
+    "exemples.reports.image": "/reports.png",
+    "exemples.reports.details":
+      "After every client visit, I used to write a manual report. Between writing, copy-pasting info, and emailing, it took me 10 to 15 minutes per property at the end of the day—sometimes until 10 p.m.\n\nNow, as soon as a visit is over, I just fill out a form. A personalized report is automatically generated and sent to the client within minutes, including property details, key points, and even suggestions for similar listings.\n\nThis saves me countless hours every week, and my clients are amazed by the fast and polished follow-up.",
+
+    "exemples.crm.title": "Synchronization Between CRM, Calendar, and Email",
+    "exemples.crm.subtitle": "All info in one place—no more errors.",
+    "exemples.crm.image": "/crm.png",
+    "exemples.crm.details":
+      "Our sales team works in the field using a CRM, Google Calendar, and frequent email exchanges with professional clients (craftsmen, wholesalers, etc.).\n\nBefore, we wasted a lot of time manually updating meetings, transferring info into the CRM, and organizing emails into the right folders.\n\nResult: duplicates, oversights, and an outdated CRM.\n\nSince setting up smart synchronization, everything runs smoothly:\n\n- A meeting scheduled in an email is added to the calendar and CRM.\n- Client information is extracted from emails and automatically enriches their profile.\n -Call reports are centralized.\n\nNow, our salespeople spend less time on admin and more time selling. The CRM is finally up-to-date effortlessly, and client follow-up is much more responsive.",
+
+    "exemples.chatbot.title": "Automatic Response Chatbot",
+    "exemples.chatbot.subtitle":
+      "Smaller teams, better efficiency, and higher customer satisfaction.",
+    "exemples.chatbot.image": "/chatbot.png",
+    "exemples.chatbot.details":
+      "I'm the customer service manager for an online insurance company. Every day, our team receives dozens of repetitive questions about reimbursements, processing times, or required documents. We wasted a lot of time answering basic inquiries and were constantly behind.\n\nSince deploying an intelligent chatbot on our site, that’s over. It instantly answers common questions, guides users to the right forms, and shows them how to track their files. When needed, it redirects them to a human agent.\n\nToday, we operate more efficiently with fewer staff, and our clients are far more satisfied.",
+
+    "exemples.assistant.title": "Smart Voice Assistant",
+    "exemples.assistant.subtitle":
+      "I simply ask my voice assistant for client info.",
+    "exemples.assistant.image": "/assistant.png",
+    "exemples.assistant.details":
+      "As a field salesperson, I have to juggle between clients and search through the CRM, emails, notes, and other tools. Before each meeting, I’d spend 15–20 minutes digging for client info: recent interactions, current contracts, deadlines, history…\n\nSince integrating a voice assistant connected to all our databases, I no longer need to search. I just ask aloud, “What’s the status of the Dupont file?” or “What’s this client’s turnover over the last six months?”—and the AI replies in seconds with up-to-date data pulled from our tools.\n\nThe voice assistant instantly gives me the info I need, for any client.",
     // Solutions
     "solutions.title": "Our Smart Automation Solutions",
     "solutions.subtitle":
@@ -771,7 +857,7 @@ export function getLangFromUrl(url: URL): keyof typeof ui {
 }
 
 export function useTranslations(lang: keyof typeof ui) {
-  return function t(key: keyof (typeof ui)["fr"]) {
+  return function t<K extends keyof (typeof ui)[keyof typeof ui]>(key: K) {
     return ui[lang][key] ?? ui["fr"][key];
   };
 }
