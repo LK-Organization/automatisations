@@ -82,7 +82,7 @@ const Navigation: React.FC<NavigationProps> = ({
       transition={{ duration: 0.3, ease: "easeInOut" }}
     >
       <div className={getBackgroundStyle()}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
             <div className="flex-shrink-0">
@@ -117,7 +117,12 @@ const Navigation: React.FC<NavigationProps> = ({
               href={switchTo}
               className="hidden md:flex text-white  transition-colors duration-200 items-center justify-center gap-2"
             >
-              <img src={switchLabel} alt="" width={30} />
+              <img
+                src={switchLabel}
+                alt=""
+                className="saturate-50 "
+                width={25}
+              />
             </a>
             {/* Mobile menu button and Language Switcher */}
             <div className="md:hidden flex items-center space-x-4">

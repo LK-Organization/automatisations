@@ -12,6 +12,7 @@ import Faq from '../components/Faq';
 import TestimonialsCarousel from '../components/Testimonials';
 import VideoPlayer from "../components/VideoPlayer";
 import CTA from '../components/CTA';
+import Exemples from '../components/Exemples';
 const lang = 'fr';
 const title = 'Automatisons Agency – Automatisation Intelligente & IA';
 const description = 'Automatisons - Votre partenaire pour l\'automatisation et l\'intelligence artificielle. Transformez votre entreprise grâce à des solutions d\'automatisation intelligentes.';
@@ -20,7 +21,7 @@ const description = 'Automatisons - Votre partenaire pour l\'automatisation et l
 <Layout title={title} description={description} >
   <Navigation lang={lang} isHomePage={true} client:load />
   <Hero lang={lang} client:load />
-
+  <Exemples lang={lang} client:load />
   <Methodology lang={lang} client:load />
   <TestimonialsCarousel lang='fr' client:load />
   <CTA lang={lang} client:load />

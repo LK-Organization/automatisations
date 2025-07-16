@@ -42,7 +42,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
       </motion.div>
 
       {/* Contenu */}
-      <div className="relative z-10 md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-5 text-center flex flex-col items-center">
+      <div className="relative z-10 md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-5 text-center flex flex-col items-center justify-center h-full">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -81,10 +81,10 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
               {t("hero.cta.secondary")}
             </motion.a>
           </div>
-          <p className="text-xl md:text-2xl text-white/90 mb-4 leading-relaxed max-w-4xl mx-auto">
-            {t("hero.subtitle")}
-          </p>
         </motion.div>
+        <p className="text-xl md:absolute bottom-[100px] md:text-2xl text-white/90 mb-4 leading-relaxed max-w-4xl mx-auto">
+          {t("hero.subtitle")}
+        </p>
       </div>
 
       {/* Réseaux + flèche → section suivante sur md+ */}

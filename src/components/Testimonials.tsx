@@ -200,10 +200,12 @@ const TestimonialsCarousel: React.FC<{ lang: string }> = ({ lang }) => {
     <section className="pt-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h3 className="text-3xl font-bold text-gray-900 mb-4">
+          <h3 className="text-4xl font-bold text-gray-900 mb-4">
             {t("testimonials.title")}
           </h3>
-          <p className="text-lg text-gray-600">{t("testimonials.subtitle")}</p>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            {t("testimonials.subtitle")}
+          </p>
         </div>
 
         <Swiper
