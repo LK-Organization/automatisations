@@ -44,6 +44,9 @@ importers:
       astro:
         specifier: ^5.2.5
         version: 5.10.1(@netlify/blobs@8.2.0)(@types/node@24.0.3)(jiti@2.4.2)(rollup@4.44.0)(typescript@5.8.3)(yaml@2.8.0)
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       framer-motion:
         specifier: ^11.11.17
         version: 11.18.2(@emotion/is-prop-valid@1.2.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
