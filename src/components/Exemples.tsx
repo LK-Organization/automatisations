@@ -180,7 +180,14 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
               onClick={() => setSelected(null)}
             >
               <motion.div
-                className="bg-white rounded-2xl max-w-2xl w-full p-8 relative mx-4"
+                className="
+          bg-white rounded-2xl
+          w-full max-w-2xl
+          p-6 sm:p-8
+          mx-4
+          max-h-[90svh]
+          overflow-y-auto
+        "
                 initial={{ scale: 0.8, y: 50 }}
                 animate={{ scale: 1, y: 0 }}
                 exit={{ scale: 0.8, y: 50 }}
