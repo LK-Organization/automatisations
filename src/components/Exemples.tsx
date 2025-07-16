@@ -26,7 +26,7 @@ interface AutomationCarouselProps {
 const exampleIds: Example[] = [
   {
     id: "factures",
-    image: "/invoice.png",
+    image: "/invoice.webp",
     tags: ["OCR", "Node.js", "Excel"],
     imageClass:
       "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top rounded-b-2xl",
@@ -34,7 +34,7 @@ const exampleIds: Example[] = [
   },
   {
     id: "emails",
-    image: "/emailing.png",
+    image: "/emailing.webp",
     tags: ["Gmail API", "Drive API"],
     imageClass:
       "h-[250px] md:h-[200px] md:w-full w-auto object-contain object-right rounded-t-2xl",
@@ -42,7 +42,7 @@ const exampleIds: Example[] = [
   },
   {
     id: "chatbot",
-    image: "/chatbot.png",
+    image: "/chatbot.webp",
     tags: ["React", "OpenAI"],
     imageClass:
       "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top rounded-t-2xl",
@@ -50,7 +50,7 @@ const exampleIds: Example[] = [
   },
   {
     id: "crm",
-    image: "/crm.png",
+    image: "/crm.webp",
     tags: ["Salesforce ", "Google Calendar "],
     imageClass:
       "h-[200px] md:h-[150px] md:w-auto w-[300px] object-cover object-center rounded-b-2xl",
@@ -58,7 +58,7 @@ const exampleIds: Example[] = [
   },
   {
     id: "reports",
-    image: "/reports.png",
+    image: "/reports.webp",
     tags: ["Formik", "jsPDF", "SMTP"],
     imageClass:
       "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top rounded-b-2xl",
@@ -66,7 +66,7 @@ const exampleIds: Example[] = [
   },
   {
     id: "assistant",
-    image: "/vocal-assitance.png",
+    image: "/vocal-assitance.webp",
     tags: ["React", "Web Speech API"],
     imageClass:
       "h-[250px] md:w-full w-full object-cover object-bottom rounded-t-2xl",

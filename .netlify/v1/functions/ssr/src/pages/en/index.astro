@@ -1,0 +1,34 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation';
+import Hero from '../../components/Hero';
+import Sectors from '../../components/Sectors';
+import Methodology from '../../components/Methodology';
+import About from '../../components/About';
+import Footer from '../../components/Footer';
+import Chatbot from '../../components/Chatbot';
+import Faq from '../../components/Faq';
+import TestimonialsCarousel from '../../components/Testimonials';
+import CTA from '../../components/CTA';
+import Exemples from '../../components/Exemples';
+const lang = 'en';
+const title = 'Automatisons Agency – Smart Automation & AI';
+const description = 'Automatisons - Votre partenaire pour l\'automatisation et l\'intelligence artificielle. Transformez votre entreprise grâce à des solutions d\'automatisation intelligentes.';
+---
+
+<Layout title={title} description={description}>
+  <Navigation lang={lang} isHomePage={true} client:load />
+<Hero lang={lang} client:load />
+  <Exemples lang={lang} client:load />
+  <Methodology lang={lang} client:load />
+  <TestimonialsCarousel lang='en' client:load />
+  <CTA lang={lang} client:load />
+  <About lang={lang} client:load />
+  
+  <Faq lang={lang} client:load />
+    <Sectors lang={lang} client:load />
+    
+
+  <Footer lang={lang} client:load />
+  <Chatbot lang={lang} client:load />
+</Layout>
