@@ -195,7 +195,7 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
                 <h3 className="text-2xl font-bold text-gray-900 mb-4">
                   {selected.title}
                 </h3>
-                <p className="text-gray-700 whitespace-pre-line mb-6">
+                <p className="text-gray-700 whitespace-pre-line text-sm mb-6">
                   {selected.details}
                 </p>
               </motion.div>
