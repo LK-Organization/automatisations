@@ -26,7 +26,7 @@ interface AutomationCarouselProps {
 const exampleIds: Example[] = [
   {
     id: "factures",
-    image: "/invoice.webp",
+    image: "/invoice-fr.png",
     tags: ["OCR", "Node.js", "Excel"],
     imageClass:
       "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top rounded-b-2xl",
@@ -42,7 +42,7 @@ const exampleIds: Example[] = [
   },
   {
     id: "chatbot",
-    image: "/chatbot.webp",
+    image: "/chatbot-fr.png",
     tags: ["React", "OpenAI"],
     imageClass:
       "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top rounded-t-2xl",
@@ -128,17 +128,6 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
                     {ex.title}
                   </h3>
                   <p className="text-gray-200 mb-4 text-sm">{ex.subtitle}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {ex.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="inline-flex items-center px-2 py-1 bg-white bg-opacity-20 text-white text-xs rounded-full"
-                      >
-                        <TagIcon size={12} className="mr-1" />
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
                 </div>
                 {ex.imgPosition === "bottom" && (
                   <img
