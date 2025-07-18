@@ -26,7 +26,7 @@ interface AutomationCarouselProps {
 const exampleIds: Example[] = [
   {
     id: "factures",
-    image: "/invoice.webp",
+    image: "/invoice-fr.png",
     tags: ["OCR", "Node.js", "Excel"],
     imageClass:
       "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top rounded-b-2xl",
@@ -42,7 +42,7 @@ const exampleIds: Example[] = [
   },
   {
     id: "chatbot",
-    image: "/chatbot.webp",
+    image: "/chatbot-fr.png",
     tags: ["React", "OpenAI"],
     imageClass:
       "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top rounded-t-2xl",

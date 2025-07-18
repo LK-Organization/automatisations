@@ -60,7 +60,7 @@ const Methodology: React.FC<MethodologyProps> = ({ lang }) => {
   ];
 
   return (
-    <section className="pt-20 bg-gradient-to-br from-gray-50 to-white">
+    <section className="pt-20 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
