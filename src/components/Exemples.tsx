@@ -2,7 +2,13 @@
 import React, { useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
-import { X, ChevronLeft, ChevronRight, Tag as TagIcon } from "lucide-react";
+import {
+  X,
+  Bot,
+  ChevronLeft,
+  ChevronRight,
+  Tag as TagIcon,
+} from "lucide-react";
 import clsx from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "../i18n"; // ← IMPORT i18n
@@ -162,7 +168,7 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
         <AnimatePresence>
           {selected && (
             <motion.div
-              className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50"
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -170,30 +176,52 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
             >
               <motion.div
                 className="
-          bg-white rounded-2xl
-          w-full max-w-2xl
-          p-6 sm:p-8
-          mx-4
-          max-h-[90svh]
-          overflow-y-auto
+          relative bg-white/90 dark:bg-zinc-900/80
+          backdrop-blur-xl border border-white/30
+          rounded-3xl shadow-2xl ring-1 ring-white/10
+          w-full max-w-3xl mx-4 p-0 overflow-hidden
+          max-h-[90svh] overflow-y-auto
         "
-                initial={{ scale: 0.8, y: 50 }}
-                animate={{ scale: 1, y: 0 }}
-                exit={{ scale: 0.8, y: 50 }}
+                initial={{ scale: 0.95, y: 30, opacity: 0 }}
+                animate={{ scale: 1, y: 0, opacity: 1 }}
+                exit={{ scale: 0.95, y: 30, opacity: 0 }}
                 onClick={(e) => e.stopPropagation()}
               >
-                <button
-                  className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
-                  onClick={() => setSelected(null)}
-                >
-                  <X size={24} />
-                </button>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  {selected.title}
-                </h3>
-                <p className="text-gray-700 whitespace-pre-line text-sm mb-6">
-                  {selected.details}
-                </p>
+                {/* Modal Header */}
+                <div className="flex items-center justify-between gap-4 px-6 py-4 bg-white dark:bg-zinc-800 border-b border-gray-200 dark:border-zinc-700 shadow-sm">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-indigo-100 text-indigo-600 rounded-full">
+                      <Bot size={20} />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                      {selected.title}
+                    </h3>
+                  </div>
+                  <button
+                    className="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white transition-colors"
+                    onClick={() => setSelected(null)}
+                  >
+                    <X size={22} />
+                  </button>
+                </div>
+
+                {/* Modal Content */}
+                <div className="px-6 py-6 sm:p-8 space-y-6">
+                  <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed whitespace-pre-line">
+                    {selected.details}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {selected.tags?.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-100 text-indigo-800 dark:bg-indigo-800/20 dark:text-indigo-300"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </motion.div>
             </motion.div>
           )}
