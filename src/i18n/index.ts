@@ -14,7 +14,7 @@ export const ui = {
     "hero.title": "Dites adieux à vos tâches répétitives.\n ",
 
     "hero.subtitle":
-      "Nous optimisons votre entreprise grâce à des solutions d'automatisation personnalisées.",
+      "Nos automatisations IA personnalisées pour vos tâches et vos workflows informatiques.",
 
     "hero.cta": "Comment ça fonctionne",
     "hero.cta.secondary": "Nous contacter",
@@ -66,6 +66,71 @@ export const ui = {
     "exemples.assistant.image": "/assistant.png",
     "exemples.assistant.details":
       "Quand on est commercial de terrain, on doit jongler entre les clients et retrouver les infos dans le CRM, les mails, les notes et les autres outils. Avant chaque rendez-vous, je passais 15 ou 20 minutes à fouiller partout pour retrouver les infos du client : dernières interactions, contrats en cours, échéances, historique…\n\nDepuis qu’on a intégré un assistant vocal connecté à toutes les bases de données, je n’ai plus besoin de chercher. Je demande simplement à voix haute : « Où en est le dossier Dupont ? » ou « Quel est le chiffre d’affaires de ce client sur les six derniers mois ? », et l’IA me répond en quelques secondes, avec des données à jour extraites de nos différents outils.\n\nL’assistant vocal me fournit instantanément les informations dont j’ai besoin, pour n’importe quel client.",
+    // multistep form
+    "form.title": "Formulaire interactif",
+    "form.labels.next": "Suivant",
+    "form.labels.back": "Retour",
+    "form.labels.send": "Envoyer",
+    "form.labels.optional": "optionnel",
+
+    "multistep.step1.question": "Savez-vous ce qu’est l’automatisation ?",
+    "multistep.step1.option.known": "Oui, je connais",
+    "multistep.step1.option.learn": "Pas vraiment, j’aimerais en savoir plus",
+    "multistep.step1.info":
+      "L’automatisation, c’est déléguer vos tâches répétitives à un système intelligent (ou à un robot) pour gagner du temps et de l’efficacité.",
+
+    "multistep.step2.question":
+      "Quand vous travaillez sur ordinateur ou portable, combien de temps perdez-vous chaque jour sur des tâches répétitives ?",
+    "multistep.step2.option.zero": "Zéro",
+    "multistep.step2.option.few": "Jusqu’à 8h !",
+    "multistep.step2.option.team":
+      "J’ai une équipe avec plusieurs collaborateurs, beaucoup plus !",
+    "multistep.step2.option.notsure": "Aucune idée, mais sûrement trop",
+    "multistep.step2.info":
+      "Votre temps a de la valeur pour vous, félicitations !",
+
+    "multistep.step3.question":
+      "Vous est-il déjà arrivé de vous dire : “Un robot pourrait faire ça à ma place” ?",
+    "multistep.step3.option.often": "Oui, souvent",
+    "multistep.step3.option.never": "Non, jamais",
+    "multistep.step3.option.now": "Maintenant que vous le dites… oui !",
+
+    "multistep.step4.question": "Quel est votre rôle ?",
+    "multistep.step4.option.owner": "Gérant / Entrepreneur",
+    "multistep.step4.option.employee": "Salarié",
+    "multistep.step4.option.freelance": "Freelance",
+    "multistep.step4.option.student": "Étudiant",
+    "multistep.step4.option.other": "Autre",
+
+    "multistep.step5.question":
+      "Avez-vous une idée précise de ce que vous aimeriez automatiser ?",
+    "multistep.step5.option.yes": "Oui",
+    "multistep.step5.option.no": "Non, j’aimerais des exemples",
+
+    "multistep.step6.question": "Qu’est-ce qui vous intéresse ?",
+    "multistep.step6.option.sync":
+      "Synchroniser mes outils (ex : Google Sheets + Gmail + WhatsApp)",
+    "multistep.step6.option.appointments":
+      "Automatiser la prise de rendez-vous",
+    "multistep.step6.option.crm":
+      "Gagner du temps sur la gestion client (CRM, factures, réponses auto...)",
+    "multistep.step6.option.repetitive":
+      "Ne pas m’occuper des tâches répétitives (copier-coller, tri, suivi...)",
+    "multistep.step6.option.guide": "Je veux qu’on me guide",
+
+    "multistep.final.question": "Quand souhaitez-vous qu’on vous contacte ?",
+    "multistep.final.option.now": "Dès maintenant",
+    "multistep.final.option.today": "Dans la journée",
+    "multistep.final.option.schedule": "Je préfère prendre rendez-vous",
+    "multistep.final.channel.whatsapp": "WhatsApp",
+    "multistep.final.channel.email": "Mail",
+    "multistep.final.channel.calendar": "Prise de rendez-vous via calendrier",
+    "multistep.success.title": "Merci !",
+    "multistep.success.message": "Votre formulaire a bien été envoyé.",
+    "multistep.error.title": "Oups…",
+    "multistep.error.message": "Erreur d’envoi. Réessayez.",
+    "form.labels.retry": "Réessayer",
+
     // Solutions
     "solutions.title": "Nos Solutions d'Automatisation Intelligentes",
     "solutions.subtitle":
@@ -448,7 +513,7 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "hero.title": "Say goodbye to your repetitive tasks.",
 
     "hero.subtitle":
-      "We optimize your business with customized automation solutions.",
+      "Our custom AI automations for your IT tasks and workflows.",
     "hero.cta": "How does it work",
     "hero.cta.secondary": "Contact Us",
     "hero.cta.link": "#exemples",
@@ -493,6 +558,69 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "exemples.assistant.image": "/assistant.png",
     "exemples.assistant.details":
       "As a field salesperson, I have to juggle between clients and search through the CRM, emails, notes, and other tools. Before each meeting, I’d spend 15–20 minutes digging for client info: recent interactions, current contracts, deadlines, history…\n\nSince integrating a voice assistant connected to all our databases, I no longer need to search. I just ask aloud, “What’s the status of the Dupont file?” or “What’s this client’s turnover over the last six months?”—and the AI replies in seconds with up-to-date data pulled from our tools.\n\nThe voice assistant instantly gives me the info I need, for any client.",
+    // multi-step form
+    "form.title": "Interactive Form",
+    "form.labels.next": "Next",
+    "form.labels.back": "Back",
+    "form.labels.send": "Send",
+    "form.labels.optional": "optional",
+    "form.labels.retry": "Retry",
+
+    "multistep.step1.question": "Do you know what automation is?",
+    "multistep.step1.option.known": "Yes, I know",
+    "multistep.step1.option.learn": "Not really, I’d like to learn more",
+    "multistep.step1.info":
+      "Automation means delegating your repetitive tasks to an intelligent system (or a robot) to save time and work more efficiently.",
+
+    "multistep.step2.question":
+      "When you work on a computer or laptop, how much time do you lose each day on repetitive tasks?",
+    "multistep.step2.option.zero": "Zero",
+    "multistep.step2.option.few": "Up to 8 hours!",
+    "multistep.step2.option.team":
+      "I have a team with multiple people, much more!",
+    "multistep.step2.option.notsure": "No idea, but probably too much",
+    "multistep.step2.info": "Your time is valuable—congratulations!",
+
+    "multistep.step3.question":
+      "Have you ever thought: “A robot could do this for me”?",
+    "multistep.step3.option.often": "Yes, often",
+    "multistep.step3.option.never": "No, never",
+    "multistep.step3.option.now": "Now that you mention it… yes!",
+
+    "multistep.step4.question": "What is your role?",
+    "multistep.step4.option.owner": "Owner / Entrepreneur",
+    "multistep.step4.option.employee": "Employee",
+    "multistep.step4.option.freelance": "Freelancer",
+    "multistep.step4.option.student": "Student",
+    "multistep.step4.option.other": "Other",
+
+    "multistep.step5.question":
+      "Do you have a specific idea of what you’d like to automate?",
+    "multistep.step5.option.yes": "Yes",
+    "multistep.step5.option.no": "No, I’d like some examples",
+
+    "multistep.step6.question": "What interests you?",
+    "multistep.step6.option.sync":
+      "Sync my tools (e.g. Google Sheets + Gmail + WhatsApp)",
+    "multistep.step6.option.appointments": "Automate appointment scheduling",
+    "multistep.step6.option.crm":
+      "Save time on client management (CRM, invoicing, auto‑responses...)",
+    "multistep.step6.option.repetitive":
+      "Avoid repetitive tasks (copy/paste, sorting, follow‑up...)",
+    "multistep.step6.option.guide": "I want guidance",
+
+    "multistep.final.question": "When would you like us to contact you?",
+    "multistep.final.option.now": "Right away",
+    "multistep.final.option.today": "Later today",
+    "multistep.final.option.schedule": "I prefer to schedule a meeting",
+    "multistep.final.channel.whatsapp": "WhatsApp",
+    "multistep.final.channel.email": "Email",
+    "multistep.final.channel.calendar": "Calendar scheduling",
+
+    "multistep.success.title": "Thank you!",
+    "multistep.success.message": "Your form has been submitted successfully.",
+    "multistep.error.title": "Oops…",
+    "multistep.error.message": "Submission failed. Please try again.",
     // Solutions
     "solutions.title": "Our Smart Automation Solutions",
     "solutions.subtitle":

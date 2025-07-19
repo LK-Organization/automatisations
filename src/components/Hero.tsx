@@ -18,7 +18,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
       {/* Fond */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/hero.webp"
+          src="/hero.png"
           alt="Bannière IA"
           className="w-full h-full object-cover"
         />
@@ -82,7 +82,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
             </motion.a>
           </div>
         </motion.div>
-        <p className="text-xl md:absolute bottom-[100px] md:text-2xl text-white/90 mb-4 leading-relaxed max-w-4xl mx-auto">
+        <p className="text-xl md:absolute bottom-[100px] md:text-2xl text-white mb-4 leading-relaxed max-w-4xl mx-auto">
           {t("hero.subtitle")}
         </p>
       </div>
