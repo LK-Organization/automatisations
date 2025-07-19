@@ -2,16 +2,10 @@
 import React, { useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
-import {
-  X,
-  Bot,
-  ChevronLeft,
-  ChevronRight,
-  Tag as TagIcon,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, X, Bot } from "lucide-react";
 import clsx from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTranslations } from "../i18n"; // ← IMPORT i18n
+import { useTranslations } from "../i18n";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -82,7 +76,14 @@ const exampleIds: Example[] = [
 
 const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
   const t = useTranslations(lang);
-  const [selected, setSelected] = useState<Example | null>(null);
+  const [selected, setSelected] = useState<
+    | (Example & {
+        title: string;
+        subtitle: string;
+        details: string;
+      })
+    | null
+  >(null);
   const swiperRef = useRef<any>(null);
 
   const examplesWithText = exampleIds.map((ex) => ({
@@ -95,16 +96,16 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
   return (
     <section className="py-16" id="exemples">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-8">
+        <div className="text-center mb-8">
+          <h2 className="text-4xl font-bold text-gray-900">
             {t("exemples.title")}
           </h2>
         </div>
 
+        {/* Carousel */}
         <Swiper
           modules={[Navigation, Autoplay]}
           onSwiper={(sw) => (swiperRef.current = sw)}
-          spaceBetween={24}
           loop
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           breakpoints={{
@@ -118,7 +119,7 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
           {examplesWithText.map((ex) => (
             <SwiperSlide key={ex.id}>
               <div
-                onClick={() => setSelected(ex)}
+                onClick={() => setSelected(selected?.id === ex.id ? null : ex)}
                 className="h-[450px] flex flex-col justify-between bg-gradient-to-br from-indigo-800 to-purple-700 rounded-2xl shadow-lg overflow-hidden cursor-pointer"
               >
                 {ex.imgPosition === "top" && (
@@ -148,7 +149,50 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
           ))}
         </Swiper>
 
-        {/* Navigation Arrows */}
+        {/* Expanded content below carousel */}
+        <AnimatePresence>
+          {selected && (
+            <motion.div
+              layout
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+              className="mt-10 rounded-2xl bg-gradient-to-br from-indigo-800 to-purple-700 text-white p-8 shadow-xl"
+            >
+              <div className="flex justify-between items-start mb-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-indigo-100 text-indigo-600 rounded-full">
+                    <Bot size={20} />
+                  </div>
+                  <h3 className="text-2xl font-semibold">{selected.title}</h3>
+                </div>
+                <button
+                  onClick={() => setSelected(null)}
+                  className="text-white hover:text-gray-200"
+                >
+                  <X />
+                </button>
+              </div>
+
+              <p className="text-sm leading-relaxed whitespace-pre-line">
+                {selected.details}
+              </p>
+
+              <div className="flex flex-wrap gap-2 mt-6">
+                {selected.tags?.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-100 text-indigo-800 dark:bg-indigo-800/20 dark:text-indigo-300"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+        {/* Navigation buttons */}
         <div className="flex justify-center space-x-4 mt-6">
           <button
             onClick={() => swiperRef.current?.slidePrev()}
@@ -163,69 +207,6 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
             <ChevronRight />
           </button>
         </div>
-
-        {/* Modal */}
-        <AnimatePresence>
-          {selected && (
-            <motion.div
-              className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setSelected(null)}
-            >
-              <motion.div
-                className="
-          relative bg-white/90 dark:bg-zinc-900/80
-          backdrop-blur-xl border border-white/30
-          rounded-3xl shadow-2xl ring-1 ring-white/10
-          w-full max-w-3xl mx-4 p-0 overflow-hidden
-          max-h-[90svh] overflow-y-auto
-        "
-                initial={{ scale: 0.95, y: 30, opacity: 0 }}
-                animate={{ scale: 1, y: 0, opacity: 1 }}
-                exit={{ scale: 0.95, y: 30, opacity: 0 }}
-                onClick={(e) => e.stopPropagation()}
-              >
-                {/* Modal Header */}
-                <div className="flex items-center justify-between gap-4 px-6 py-4 bg-white dark:bg-zinc-800 border-b border-gray-200 dark:border-zinc-700 shadow-sm">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-indigo-100 text-indigo-600 rounded-full">
-                      <Bot size={20} />
-                    </div>
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                      {selected.title}
-                    </h3>
-                  </div>
-                  <button
-                    className="text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-white transition-colors"
-                    onClick={() => setSelected(null)}
-                  >
-                    <X size={22} />
-                  </button>
-                </div>
-
-                {/* Modal Content */}
-                <div className="px-6 py-6 sm:p-8 space-y-6">
-                  <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed whitespace-pre-line">
-                    {selected.details}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {selected.tags?.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-100 text-indigo-800 dark:bg-indigo-800/20 dark:text-indigo-300"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
     </section>
   );
