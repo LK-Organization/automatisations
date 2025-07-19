@@ -22,7 +22,7 @@ const description = 'Automatisons - Votre partenaire pour l\'automatisation et l
 <Layout title={title} description={description} >
   <Navigation lang={lang} isHomePage={true} client:load />
   <Hero lang={lang} client:load />
- 
+    <MultiStepForm lang={lang} client:load />
   <Exemples lang={lang} client:load />
    <VideoPlayer
     thumbnail="/image.png"
@@ -30,9 +30,9 @@ const description = 'Automatisons - Votre partenaire pour l\'automatisation et l
     client:load
   />
    <CTA lang={lang} client:load />
-   <MultiStepForm  client:load />
-  <Methodology lang={lang} client:load />
-  <TestimonialsCarousel lang='fr' client:load />
+
+  <Methodology lang={lang}  client:load />
+  <TestimonialsCarousel lang={lang} client:load />
  
   <About lang={lang} client:load />
   
