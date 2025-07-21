@@ -175,7 +175,7 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
                 </div>
 
                 <div className="w-full md:w-2/3 p-6 text-white border-t md:border-t-0 md:border-l border-white/20">
-                  <div className="flex items-center gap-3 mb-4">
+                  <div className="flex justify-between items-center gap-3 mb-4">
                     <div className="p-2 bg-indigo-100 text-indigo-600 rounded-full">
                       <Bot size={20} />
                     </div>
@@ -183,7 +183,7 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
                     <div className="flex justify-end">
                       <button
                         onClick={handleCollapse}
-                        className="mt-4 px-4 py-2 text-white rounded-full hover:bg-white/30 transition flex items-center"
+                        className=" px-4 py-2 text-white rounded-full hover:bg-white/30 transition flex items-center"
                       >
                         <X size={16} className="mr-1" />
                         {t("common.close")}
