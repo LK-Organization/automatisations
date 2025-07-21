@@ -240,13 +240,31 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
                         className={clsx(ex.imageClass, "w-full select-none")}
                       />
                     )}
-                    <div className="p-6">
+                    <div className="flex flex-col items-end p-6">
                       <h3 className="text-xl font-semibold text-white mb-1">
                         {ex.title}
                       </h3>
                       <p className="text-gray-200 mb-4 text-sm">
                         {ex.subtitle}
                       </p>
+                      <button
+                        onClick={(e) => handleExpand(ex, e)}
+                        className="w-fit bottom-4 right-4 p-2 bg-white/20 text-white rounded-full hover:bg-white/30 transition"
+                        aria-label={t("common.expand")}
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5 transform "
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </button>
                     </div>
                     {ex.imgPosition === "bottom" && (
                       <img
@@ -256,24 +274,6 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
                         className={clsx(ex.imageClass, "w-full select-none")}
                       />
                     )}
-                    <button
-                      onClick={(e) => handleExpand(ex, e)}
-                      className="absolute bottom-4 right-4 p-2 bg-white/20 text-white rounded-full hover:bg-white/30 transition"
-                      aria-label={t("common.expand")}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 transform "
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </button>
                   </div>
                 </SwiperSlide>
               ))}
