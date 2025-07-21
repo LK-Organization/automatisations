@@ -23,13 +23,12 @@ const Typewriter: React.FC<{ text: string }> = ({ text }) => {
   useEffect(() => {
     setDisplayed("");
     let i = 0;
-    const interval = setInterval(() => {
-      const next = text.charAt(i) || "";
-      setDisplayed((p) => p + next);
-      i += 1;
-      if (i >= text.length) clearInterval(interval);
+    const iv = setInterval(() => {
+      setDisplayed((d) => d + (text.charAt(i) || ""));
+      i++;
+      if (i >= text.length) clearInterval(iv);
     }, 35);
-    return () => clearInterval(interval);
+    return () => clearInterval(iv);
   }, [text]);
   return (
     <span className="font-mono text-gray-800">
@@ -66,18 +65,16 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ lang }) => {
     if (!needsDetail) goNext();
   };
   const toggleInterest = (v: string) =>
-    setForm((f) => {
-      const arr = f.interests.includes(v)
+    setForm((f) => ({
+      ...f,
+      interests: f.interests.includes(v)
         ? f.interests.filter((i) => i !== v)
-        : [...f.interests, v];
-      return { ...f, interests: arr };
-    });
+        : [...f.interests, v],
+    }));
 
   const handleSubmit = async () => {
     setLoading(true);
     setStatus("idle");
-
-    // Prepare payload: only keep email if it's the “day” option
     const payload = { ...form, lang };
     if (payload.contactWhen !== "day") delete payload.contactEmail;
     if (payload.contactWhen !== "now") delete payload.contactWhats;
@@ -90,9 +87,9 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ lang }) => {
       });
       if (!res.ok) throw new Error();
       setStatus("success");
-
-      // after success, open Calendly only for rendezvous
-      if (form.contactWhen === "rendezvous") {
+      if (form.contactWhen === "now") {
+        window.open("https://wa.me/33648091511", "_blank");
+      } else if (form.contactWhen === "rendezvous") {
         window.open("https://calendly.com/kkulig25/30min", "_blank");
       }
     } catch {
@@ -123,6 +120,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ lang }) => {
       </section>
     );
   }
+
   if (status === "error") {
     return (
       <section className="max-w-xl mx-auto p-8 bg-red-50 rounded-3xl shadow-2xl text-center">
@@ -156,6 +154,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ lang }) => {
           />
         </div>
       </div>
+
       <motion.div
         key={step}
         initial={{ opacity: 0, y: 20 }}
@@ -170,7 +169,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ lang }) => {
           <Typewriter text={questionText} />
         </div>
 
-        {/* STEP CONTENT */}
+        {/* STEP 0 */}
         {step === 0 && (
           <div className="space-y-4">
             <label className="flex items-center gap-3">
@@ -199,6 +198,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ lang }) => {
           </div>
         )}
 
+        {/* STEP 1 */}
         {step === 1 && (
           <div className="space-y-4">
             {[
@@ -244,6 +244,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ lang }) => {
           </div>
         )}
 
+        {/* STEP 2 */}
         {step === 2 && (
           <div className="space-y-4">
             {[
@@ -267,6 +268,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ lang }) => {
           </div>
         )}
 
+        {/* STEP 3 */}
         {step === 3 && (
           <div className="space-y-4">
             {[
@@ -292,6 +294,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ lang }) => {
           </div>
         )}
 
+        {/* STEP 4 */}
         {step === 4 && (
           <div className="space-y-4">
             <label className="flex items-center gap-3 w-full">
@@ -329,6 +332,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ lang }) => {
           </div>
         )}
 
+        {/* STEP 5 */}
         {step === 5 && (
           <div className="space-y-4">
             {[
@@ -351,6 +355,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ lang }) => {
           </div>
         )}
 
+        {/* FINAL STEP */}
         {step === stepsKeys.length && (
           <div className="space-y-4">
             {[
@@ -366,12 +371,9 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ lang }) => {
                   onChange={() => select("contactWhen", o.v)}
                 />
                 {t(o.labelKey)}{" "}
-                {o.v === "now" && `(${t("multistep.final.channel.whatsapp")})`}
-                {o.v === "day" && `(${t("multistep.final.channel.email")})`}
               </label>
             ))}
 
-            {/* only for “day” */}
             {form.contactWhen === "day" && (
               <input
                 type="email"
@@ -383,28 +385,15 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ lang }) => {
                 }
               />
             )}
-
-            {/* only for “now” */}
-            {form.contactWhen === "now" && (
-              <input
-                type="tel"
-                placeholder={t("multistep.final.channel.whatsapp")}
-                className="mt-2 w-full px-4 py-3 border rounded-lg"
-                value={form.contactWhats}
-                onChange={(e) =>
-                  setForm((f) => ({ ...f, contactWhats: e.target.value }))
-                }
-              />
-            )}
           </div>
         )}
 
-        {/* NAV BUTTONS */}
+        {/* NAV */}
         <div className="flex justify-between items-center mt-8">
           {step > 0 && (
             <button
               onClick={goBack}
-              className="px-4 py-2 bg-gray-200 rounded-lg"
+              className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300"
             >
               {t("form.labels.back")}
             </button>
@@ -420,7 +409,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ lang }) => {
                 (step === 4 && !form.idea) ||
                 (step === 5 && form.interests.length === 0)
               }
-              className="px-6 py-2 bg-primary-600 text-white rounded-lg"
+              className="px-6 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 disabled:opacity-50"
             >
               {t("form.labels.next")}
             </button>
@@ -430,15 +419,42 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ lang }) => {
               disabled={
                 loading ||
                 !form.contactWhen ||
-                (form.contactWhen === "day" && !form.contactEmail) ||
-                (form.contactWhen === "now" && !form.contactWhats)
+                (form.contactWhen === "day" && !form.contactEmail)
               }
-              className="px-6 py-2 bg-primary-600 text-white rounded-lg flex items-center gap-2"
+              className={`px-6 py-2 text-white rounded-lg flex items-center gap-2 disabled:opacity-50 ${
+                form.contactWhen === "now"
+                  ? "bg-[#24d367] hover:bg-green-700"
+                  : form.contactWhen === "rendezvous"
+                    ? "bg-[#016bfe] hover:bg-blue-700"
+                    : "bg-primary-600 hover:bg-primary-700"
+              }`}
             >
               {loading ? (
                 <Loader className="animate-spin" />
               ) : (
-                t("form.labels.send")
+                <>
+                  {form.contactWhen === "now" && (
+                    <img
+                      src="/whatsapp.svg"
+                      alt="WhatsApp"
+                      className="w-5 h-5"
+                    />
+                  )}
+                  {form.contactWhen === "rendezvous" && (
+                    <img
+                      src="/calendly.webp"
+                      alt="Calendly"
+                      className="w-5 h-5"
+                    />
+                  )}
+                  <span>
+                    {form.contactWhen === "now"
+                      ? t("form.labels.contact")
+                      : form.contactWhen === "rendezvous"
+                        ? t("form.labels.meeting")
+                        : t("form.labels.send")}
+                  </span>
+                </>
               )}
             </button>
           )}
@@ -446,7 +462,7 @@ const MultiStepForm: React.FC<MultiStepFormProps> = ({ lang }) => {
       </motion.div>
 
       <style>{`
-        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+        @keyframes blink { 0%,100% {opacity:1;} 50% {opacity:0;} }
         .animate-blink { animation: blink 1s step-start infinite; }
       `}</style>
     </section>
