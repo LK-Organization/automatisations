@@ -20,16 +20,28 @@ const finalQuestionKey = "multistep.final.question";
 
 const Typewriter: React.FC<{ text: string }> = ({ text }) => {
   const [displayed, setDisplayed] = useState("");
+
   useEffect(() => {
-    setDisplayed("");
     let i = 0;
-    const iv = setInterval(() => {
-      setDisplayed((d) => d + (text.charAt(i) || ""));
+    let cancelled = false;
+
+    const type = () => {
+      if (cancelled) return;
+      setDisplayed(text.slice(0, i + 1));
       i++;
-      if (i >= text.length) clearInterval(iv);
-    }, 35);
-    return () => clearInterval(iv);
+      if (i < text.length) {
+        setTimeout(type, 35);
+      }
+    };
+
+    setDisplayed(""); // Reset before starting
+    type();
+
+    return () => {
+      cancelled = true;
+    };
   }, [text]);
+
   return (
     <span className="font-mono text-gray-800">
       {displayed}
