@@ -12,7 +12,7 @@ export const ui = {
     "nav.solutions": "Solutions",
     "nav.contact": "Contact",
     "hero.title": "Dites adieux à vos tâches répétitives.\n ",
-
+     "hero.ai": "IA Active",
     "hero.subtitle":
       "Nos automatisations IA personnalisées pour vos tâches et vos workflows informatiques.",
 
@@ -513,7 +513,7 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "nav.solutions": "Solutions",
     "nav.contact": "Contact",
     "hero.title": "Say goodbye to your repetitive tasks.",
-
+    "hero.ai": "Active AI",
     "hero.subtitle":
       "Our custom AI automations for your IT tasks and workflows.",
     "hero.cta": "How does it work",

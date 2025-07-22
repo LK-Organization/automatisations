@@ -1,101 +1,93 @@
+// src/components/Hero.tsx
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowDown, Play, Instagram, Facebook } from "lucide-react";
+import { ArrowDown, Play } from "lucide-react";
 import { useTranslations } from "../i18n";
+import Silk from "./SilkBackground"; // ← import your Silk component
 
-interface HeroProps {
-  lang: string;
-}
-
+interface HeroProps { lang: string; }
 const Hero: React.FC<HeroProps> = ({ lang }) => {
   const t = useTranslations(lang);
+
 
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden h-svh"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden h-svh"
     >
-      {/* Fond */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/hero.png"
-          alt="Bannière IA"
-          className="w-full h-full object-cover"
+      {/* ─────────────────────────────────────────────── */}
+      {/* 0) Silk animated background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Silk
+         speed={5}
+  scale={1}
+  color="#2563eb"
+  noiseIntensity={1.5}
+  rotation={0}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/10 to-black/30" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30" />
       </div>
 
-      {/* IA Active */}
+      
+
+
+      {/* 4) IA Active badge */}
       <motion.div
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.5 }}
-        className="hidden md:inline-block absolute md:mr-auto md:ml-4 bottom-20 md:top-1/2 md:left-8 md:transform md:-translate-y-1/2 z-10"
+        className="hidden md:inline-block absolute bottom-20 md:top-1/2 md:left-8 transform -translate-y-1/2 z-10"
       >
         <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 shadow-lg border border-white/20">
           <div className="flex items-center gap-3">
             <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse" />
-            <span className="text-sm font-medium text-white">IA Active</span>
+            <span className="text-sm font-medium text-white">{t("hero.ai")}</span>
           </div>
         </div>
       </motion.div>
 
-      {/* Contenu */}
-      <div className="relative z-10 md:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-5 text-center flex flex-col items-center justify-center h-full">
+      {/* 5) Main content */}
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center justify-center h-full pt-10 pb-5">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center"
+          className="w-full"
         >
-          {/* Contour avec effet glow bleuté */}
-          <h1 className="md:flex flex-col hidden justify-center items-center gap-5 w-full text-4xl md:text-6xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            <span className=" w-full whitespace-normal ">
-              {t("hero.title")}
-            </span>
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+            {t("hero.title")}
           </h1>
-          <h1 className="md:hidden inline-block w-full text-4xl md:text-6xl lg:text-6xl space-y-5 font-bold text-white mb-6 leading-tight ">
-            <span className=" w-full whitespace-normal ">
-              {t("hero.title")}
-            </span>
-          </h1>
-
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
             <motion.a
               href={t("hero.cta.link")}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-primary-600 to-accent-500 text-white px-8 py-4 rounded-lg font-semibold hover:shadow-2xl transition-all duration-200 flex items-center justify-center gap-2"
+              className="bg-gradient-to-r from-primary-600 to-accent-500 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-200 flex items-center gap-2"
             >
-              {t("hero.cta")}
-              <ArrowDown size={20} />
+              {t("hero.cta")} <ArrowDown size={20} />
             </motion.a>
             <motion.a
               href={t("hero.cta.secondary.link")}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-200 flex items-center justify-center gap-2 backdrop-blur-sm"
+              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-200 flex items-center gap-2 backdrop-blur-sm"
             >
-              <Play size={20} />
-              {t("hero.cta.secondary")}
+              <Play size={20} /> {t("hero.cta.secondary")}
             </motion.a>
           </div>
         </motion.div>
-        <p className="text-xl md:absolute bottom-[100px] md:text-2xl text-white mb-4 leading-relaxed max-w-4xl mx-auto">
+        <p className="text-xl md:text-2xl text-white mb-4 max-w-4xl leading-relaxed">
           {t("hero.subtitle")}
         </p>
       </div>
 
-      {/* Réseaux + flèche → section suivante sur md+ */}
+      {/* 6) Scroll arrow */}
       <motion.div
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.7 }}
-        className="hidden sm:flex absolute right-4 top-1/2 transform -translate-y-1/2 flex-col items-center space-y-6 z-10"
+        className="hidden sm:flex absolute right-4 top-1/2 transform -translate-y-1/2 z-10"
       >
-        {/* Flèche */}
-        <a href="#next-section" className="block">
+        <a href="#next-section">
           <ArrowDown size={48} className="text-white animate-bounce" />
         </a>
       </motion.div>

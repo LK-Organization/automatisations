@@ -12,7 +12,9 @@ import Pricing from '../components/Pricing';
 import TestimonialsCarousel from '../components/Testimonials';
 import VideoPlayer from "../components/VideoPlayer";
 import CTA from '../components/CTA';
+import TiltedCard from '../components/TiltedCard';
 import Exemples from '../components/Exemples';
+import Silk from '../components/SilkBackground';
 import MultiStepForm from '../components/MultiStepForm';
 const lang = 'fr';
 const title = 'Automatisons Agency – Automatisation Intelligente & IA';
@@ -30,10 +32,12 @@ const description = 'Dites adieu à vos tâches répétitives et gagnez plusieur
     client:load
   />
    <CTA lang={lang} client:load />
-  <Pricing  client:load />
-  <Methodology lang={lang}  client:load />
-  <TestimonialsCarousel lang={lang} client:load />
  
+  <Methodology lang={lang}  client:load />
+   <Pricing  client:load />
+  <TestimonialsCarousel lang={lang} client:load />
+
+
   <About lang={lang} client:load />
   
   <Faq lang={lang} client:load />
