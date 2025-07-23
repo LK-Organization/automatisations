@@ -120,7 +120,7 @@ const Navigation: React.FC<NavigationProps> = ({
               <img
                 src={switchLabel}
                 alt=""
-                className="saturate-50 "
+                className="saturate-50 rounded-full"
                 width={25}
               />
             </a>

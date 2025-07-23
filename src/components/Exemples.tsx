@@ -23,6 +23,18 @@ interface AutomationCarouselProps {
   lang: string;
 }
 
+// Simple hook to detect mobile screens
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+  return isMobile;
+};
+
 const exampleIds: Example[] = [
   {
     id: "factures",
@@ -76,18 +88,27 @@ const exampleIds: Example[] = [
 
 const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
   const t = useTranslations(lang);
+  const isMobile = useIsMobile();
+
   const [selected, setSelected] = useState<
-    | (Example & {
-        title: string;
-        subtitle: string;
-        details: string;
-      })
-    | null
+    (Example & { title: string; subtitle: string; details: string }) | null
   >(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const [originSlide, setOriginSlide] = useState<HTMLElement | null>(null);
   const swiperRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  // Lock background scroll on mobile when modal is open
+  useEffect(() => {
+    if (isMobile && isExpanded) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobile, isExpanded]);
 
   const examplesWithText = exampleIds.map((ex) => ({
     ...ex,
@@ -96,36 +117,29 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
     details: t(`exemples.${ex.id}.details`),
   }));
 
-  // Handle slide expansion
-  const handleExpand = (ex: any, event: React.MouseEvent) => {
+  const handleExpand = (
+    ex: Example & { title: string; subtitle: string; details: string },
+    event: React.MouseEvent<HTMLElement>
+  ) => {
     setSelected(ex);
     setIsExpanded(true);
-    setOriginSlide(event.currentTarget as HTMLElement);
-
-    if (swiperRef.current) {
-      swiperRef.current.autoplay.stop();
-    }
+    setOriginSlide(event.currentTarget);
+    swiperRef.current?.autoplay.stop();
   };
 
-  // Handle slide collapse
   const handleCollapse = () => {
     setIsExpanded(false);
     setTimeout(() => {
       setSelected(null);
       setOriginSlide(null);
-      if (swiperRef.current) {
-        swiperRef.current.autoplay.start();
-      }
+      swiperRef.current?.autoplay.start();
     }, 300);
   };
 
-  // Calculate position for expand animation
   const getSlidePosition = () => {
     if (!originSlide || !containerRef.current) return {};
-
     const slideRect = originSlide.getBoundingClientRect();
     const containerRect = containerRef.current.getBoundingClientRect();
-
     return {
       top: slideRect.top - containerRect.top,
       left: slideRect.left - containerRect.left,
@@ -136,7 +150,6 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
 
   return (
     <section className="py-16" id="exemples">
-      
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
           <h2 className="text-4xl font-bold text-gray-900">
@@ -144,58 +157,39 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
           </h2>
         </div>
 
-        {/* Carousel Container */}
-        <div className="relative " ref={containerRef}>
-          {/* Expanded View */}
+        <div className="relative" ref={containerRef}>
           <AnimatePresence>
-            {isExpanded && selected && (
-              <motion.div
-                key="expanded-view"
-                initial={getSlidePosition()}
-                animate={{
-                  top: 0,
-                  left: 0,
-                  width: "100%",
-                  height: "fit-content",
-                }}
-                exit={getSlidePosition()}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="absolute z-20 flex flex-col md:flex-row bg-gradient-to-br from-indigo-800 to-purple-700 rounded-2xl shadow-lg overflow-hidden"
-              >
-                <div className="w-full md:w-1/3 h-full p-6 flex flex-col justify-between">
-                  <div className="flex justify-center items-center h-full">
-                    <img
-                      src={selected.image}
-                      alt={selected.title}
-                      draggable={false}
-                      className={clsx(
-                        "w-full h-auto max-h-[300px] object-contain"
-                      )}
-                    />
-                  </div>
-                </div>
-
-                <div className="w-full md:w-2/3 p-6 text-white border-t md:border-t-0 md:border-l border-white/20">
-                  <div className="flex justify-between items-center gap-3 mb-4">
-                    <div className="p-2 bg-indigo-100 text-indigo-600 rounded-full">
-                      <Bot size={20} />
+            {isExpanded &&
+              selected &&
+              (isMobile ? (
+                // Mobile full-screen modal (no image)
+                <motion.div
+                  key="mobile-modal"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="fixed inset-0 z-50 bg-white overflow-auto p-6"
+                >
+                  <div className="flex justify-between items-center mb-4">
+                    <div className="flex flex-col items-center gap-2">
+                      <Bot size={40} className="text-indigo-600" />
+                      <h3 className="text-2xl text-center font-semibold text-gray-900">
+                        {selected.title}
+                      </h3>
                     </div>
-                    <h3 className="text-2xl font-semibold">{selected.title}</h3>
-                    <div className="flex justify-end">
-                      <button
-                        onClick={handleCollapse}
-                        className=" px-4 py-2 text-white rounded-full hover:bg-white/30 transition flex items-center"
-                      >
-                        <X size={16} className="mr-1" />
-                        {t("common.close")}
-                      </button>
-                    </div>
+                    <button
+                      onClick={handleCollapse}
+                      aria-label={t("common.close")}
+                      className="absolute top-4 right-4"
+                    >
+                      <X size={24} className="text-gray-700" />
+                    </button>
                   </div>
-                  <p className="text-sm leading-relaxed whitespace-pre-line mb-6">
+                  <p className="text-gray-800 mb-6 whitespace-pre-line">
                     {selected.details}
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {selected.tags?.map((tag) => (
+                    {selected.tags.map((tag) => (
                       <span
                         key={tag}
                         className="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-100 text-indigo-800"
@@ -204,18 +198,71 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
                       </span>
                     ))}
                   </div>
-                </div>
-              </motion.div>
-            )}
+                </motion.div>
+              ) : (
+                // Desktop expanded view (unchanged)
+                <motion.div
+                  key="expanded-view"
+                  initial={getSlidePosition()}
+                  animate={{
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "fit-content",
+                  }}
+                  exit={getSlidePosition()}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="absolute z-20 flex flex-col md:flex-row bg-gradient-to-br from-indigo-800 to-purple-700 rounded-2xl shadow-lg overflow-hidden"
+                >
+                  <div className="w-full md:w-1/3 h-full p-6 flex flex-col justify-between">
+                    <div className="flex justify-center items-center h-full">
+                      <img
+                        src={selected.image}
+                        alt={selected.title}
+                        draggable={false}
+                        className="w-full h-auto max-h-[300px] object-contain"
+                      />
+                    </div>
+                  </div>
+                  <div className="w-full md:w-2/3 p-6 text-white border-t md:border-t-0 md:border-l border-white/20">
+                    <div className="flex justify-between items-center gap-3 mb-4">
+                      <div className="p-2 bg-indigo-100 text-indigo-600 rounded-full">
+                        <Bot size={20} />
+                      </div>
+                      <h3 className="text-2xl font-semibold">
+                        {selected.title}
+                      </h3>
+                      <button
+                        onClick={handleCollapse}
+                        className="px-4 py-2 text-white rounded-full hover:bg-white/30 transition flex items-center"
+                      >
+                        <X size={16} className="mr-1" />
+                        {t("common.close")}
+                      </button>
+                    </div>
+                    <p className="text-sm leading-relaxed whitespace-pre-line mb-6">
+                      {selected.details}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {selected.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-100 text-indigo-800"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
           </AnimatePresence>
 
           {/* Carousel */}
           <motion.div
-            animate={{
-              opacity: isExpanded ? 0 : 1,
-            }}
+            animate={{ opacity: isExpanded ? 0 : 1 }}
             transition={{ duration: 0.2 }}
-            className={clsx("relative", isExpanded ? "invisible" : "visible")}
+            className={clsx(isExpanded ? "invisible" : "visible")}
           >
             <Swiper
               modules={[Navigation, Autoplay]}
@@ -232,7 +279,11 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
             >
               {examplesWithText.map((ex) => (
                 <SwiperSlide key={ex.id}>
-                  <div className="h-[450px] flex flex-col justify-between bg-gradient-to-br from-indigo-800 to-purple-700 rounded-2xl shadow-lg overflow-hidden relative">
+                  {/* Entire slide clickable */}
+                  <div
+                    onClick={(e) => handleExpand(ex, e)}
+                    className="cursor-pointer h-[450px] flex flex-col justify-between bg-gradient-to-br from-indigo-800 to-purple-700 rounded-2xl shadow-lg overflow-hidden relative"
+                  >
                     {ex.imgPosition === "top" && (
                       <img
                         src={ex.image}
@@ -248,14 +299,11 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
                       <p className="text-gray-200 mb-4 text-sm">
                         {ex.subtitle}
                       </p>
-                      <button
-                        onClick={(e) => handleExpand(ex, e)}
-                        className="w-fit bottom-4 right-4 p-2 bg-white/20 text-white rounded-full hover:bg-white/30 transition"
-                        aria-label={t("common.expand")}
-                      >
+                      {/* keep the icon for affordance */}
+                      <div className="w-fit bottom-4 right-4 p-2 bg-white/20 text-white rounded-full hover:bg-white/30 transition">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          className="h-5 w-5 transform "
+                          className="h-5 w-5 transform"
                           viewBox="0 0 20 20"
                           fill="currentColor"
                         >
@@ -265,7 +313,7 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
                             clipRule="evenodd"
                           />
                         </svg>
-                      </button>
+                      </div>
                     </div>
                     {ex.imgPosition === "bottom" && (
                       <img
@@ -298,7 +346,6 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
           </button>
         </div>
       </div>
-    
     </section>
   );
 };
