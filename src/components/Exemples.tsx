@@ -38,50 +38,49 @@ const useIsMobile = () => {
 const exampleIds: Example[] = [
   {
     id: "factures",
-    image: "/invoice-fr.png",
+    image: "/facture.jpg",
     tags: ["OCR", "Node.js", "Excel"],
     imageClass:
-      "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top rounded-b-2xl",
+      "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top ",
     imgPosition: "bottom",
   },
   {
     id: "emails",
-    image: "/emailing.webp",
+    image: "/email.jpg",
     tags: ["Gmail API", "Drive API"],
     imageClass:
-      "h-[250px] md:h-[200px] md:w-full w-auto object-contain object-right rounded-t-2xl",
+      "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-right",
     imgPosition: "top",
   },
   {
     id: "chatbot",
-    image: "/chatbot-fr.png",
+    image: "/chatbot.webp",
     tags: ["React", "OpenAI"],
     imageClass:
-      "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top rounded-t-2xl",
+      "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top ",
     imgPosition: "bottom",
   },
   {
     id: "crm",
-    image: "/crm.webp",
+    image: "/crm.jpg",
     tags: ["Salesforce ", "Google Calendar "],
     imageClass:
-      "h-[200px] md:h-[150px] md:w-auto w-[300px] object-cover object-center rounded-b-2xl",
+      "h-auto md:h-[210px] md:w-full w-[300px] object-cover object-center",
     imgPosition: "top",
   },
   {
     id: "reports",
-    image: "/reports.webp",
+    image: "/reports.jpg",
     tags: ["Formik", "jsPDF", "SMTP"],
     imageClass:
-      "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top rounded-b-2xl",
+      "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top ",
     imgPosition: "bottom",
   },
   {
     id: "assistant",
-    image: "/vocal-assitance.webp",
+    image: "/vocal-assitance.jpg",
     tags: ["React", "Web Speech API"],
-    imageClass:
-      "h-[250px] md:w-full w-full object-cover object-bottom rounded-t-2xl",
+    imageClass: "h-[250px] md:w-full w-full object-cover object-bottom ",
     imgPosition: "top",
   },
 ];
@@ -212,18 +211,13 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
                   }}
                   exit={getSlidePosition()}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="absolute z-20 flex flex-col md:flex-row bg-gradient-to-br from-indigo-800 to-purple-700 rounded-2xl shadow-lg overflow-hidden"
+                  className="absolute z-20 flex flex-col md:flex-row bg-gradient-to-br from-blue-800 to-[#2563eb] rounded-2xl shadow-lg overflow-hidden min-h-[300px]"
                 >
-                  <div className="w-full md:w-1/3 h-full p-6 flex flex-col justify-between">
-                    <div className="flex justify-center items-center h-full">
-                      <img
-                        src={selected.image}
-                        alt={selected.title}
-                        draggable={false}
-                        className="w-full h-auto max-h-[300px] object-contain"
-                      />
-                    </div>
-                  </div>
+                  <div
+                    className="w-full md:w-1/3 min-h-[300px] p-6 flex flex-col justify-between bg-cover bg-center"
+                    style={{ backgroundImage: `url(${selected.image})` }}
+                  ></div>
+
                   <div className="w-full md:w-2/3 p-6 text-white border-t md:border-t-0 md:border-l border-white/20">
                     <div className="flex justify-between items-center gap-3 mb-4">
                       <div className="p-2 bg-indigo-100 text-indigo-600 rounded-full">
@@ -282,7 +276,7 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
                   {/* Entire slide clickable */}
                   <div
                     onClick={(e) => handleExpand(ex, e)}
-                    className="cursor-pointer h-[450px] flex flex-col justify-between bg-gradient-to-br from-indigo-800 to-purple-700 rounded-2xl shadow-lg overflow-hidden relative"
+                    className="cursor-pointer h-[450px] flex flex-col justify-between bg-gradient-to-br from-blue-800 to-[#2563eb] rounded-2xl shadow-lg overflow-hidden relative"
                   >
                     {ex.imgPosition === "top" && (
                       <img
