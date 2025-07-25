@@ -326,17 +326,7 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                     </div>
                   </div>
                 </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center">
-                    <MapPin size={20} className="text-white" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-gray-900">
-                      {t("contact.addressLabel")}
-                    </div>
-                    <div className="text-gray-600">{t("contact.city")}</div>
-                  </div>
-                </div>
+
                 <div className="flex items-center gap-4">
                   <a
                     href="https://wa.me/33648091511"
@@ -358,6 +348,20 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
                       </div>
                       <div className="text-gray-600">+33 6 48 09 15 11</div>
                     </a>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center">
+                    <MapPin size={20} className="text-white" />
+                  </div>
+                  <div>
+                    <div className="font-semibold text-gray-900">
+                      {t("contact.addressLabel")}
+                    </div>
+                    <div className="text-gray-600">
+                      {" "}
+                      25 RUE TRONCHET 75008 PARIS
+                    </div>
                   </div>
                 </div>
               </div>

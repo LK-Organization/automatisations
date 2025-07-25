@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import LogoX from "./LogoX";
-import { Facebook, Instagram, Youtube } from "lucide-react";
+import { Facebook, Instagram, Youtube, MapPin } from "lucide-react";
 import { useTranslations } from "../i18n";
 
 interface FooterProps {
@@ -34,7 +34,9 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
   return (
     <footer className="bg-gray-900 text-white py-12 footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Three-column layout */}
         <div className="grid md:grid-cols-3 gap-8">
+          {/* Logo & Description */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -54,6 +56,7 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
             </p>
           </motion.div>
 
+          {/* Navigation Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -82,6 +85,7 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
             </ul>
           </motion.div>
 
+          {/* Social Links & Address Below */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -92,7 +96,7 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
             <h4 className="text-lg font-semibold mb-4">
               {t("footer.followUs")}
             </h4>
-            <div className="flex gap-4">
+            <div className="flex gap-4 mb-6">
               {socialLinks.map((social) => (
                 <motion.a
                   key={social.label}
@@ -107,10 +111,23 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
                 </motion.a>
               ))}
             </div>
+            {/* Address Section with Icon Next to Address */}
+            <h4 className="text-lg font-semibold mb-2">
+              {t("footer.addressTitle")}
+            </h4>
+            <div className="flex items-start gap-2 text-gray-300 leading-relaxed">
+              <MapPin size={20} className="mt-1" />
+              <p>
+                25 RUE TRONCHET
+                <br />
+                75008 PARIS
+              </p>
+            </div>
           </motion.div>
         </div>
 
-        <div className="flex justify-between items-center flex-row border-t border-gray-800 mt-8 pt-8 text-center flex-wrap gap-4">
+        {/* Bottom Legal & Copyright */}
+        <div className="flex justify-between items-center border-t border-gray-800 mt-8 pt-8 flex-col sm:flex-row gap-4 text-center">
           <p className="text-gray-400">
             © {currentYear} Automatisons Agency. {t("footer.rights")}
           </p>

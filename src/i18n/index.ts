@@ -12,7 +12,7 @@ export const ui = {
     "nav.solutions": "Solutions",
     "nav.contact": "Contact",
     "hero.title": "Dites adieux à vos tâches répétitives.\n ",
-     "hero.ai": "IA Active",
+    "hero.ai": "IA Active",
     "hero.subtitle":
       "Nos automatisations IA personnalisées pour vos tâches et vos workflows informatiques.",
 
@@ -506,6 +506,7 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "footer.legalLink": "/mentions-legales",
     "footer.termsLink": "/conditions-generales",
     "footer.usageLink": "/termes-utilisation",
+    "footer.addressTitle": "Adresse",
   },
 
   en: {
@@ -979,6 +980,7 @@ The analysis of your needs and the quote are free and delivered within 24 hours.
     "footer.legalLink": "/en/mentions-legales",
     "footer.termsLink": "/en/conditions-generales",
     "footer.usageLink": "/en/termes-utilisation",
+    "footer.addressTitle": "Address",
   },
 } as const;
 

@@ -41,7 +41,7 @@ const exampleIds: Example[] = [
     image: "/facture.jpg",
     tags: ["OCR", "Node.js", "Excel"],
     imageClass:
-      "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top ",
+      "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top",
     imgPosition: "bottom",
   },
   {
@@ -57,13 +57,13 @@ const exampleIds: Example[] = [
     image: "/chatbot.webp",
     tags: ["React", "OpenAI"],
     imageClass:
-      "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top ",
+      "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top",
     imgPosition: "bottom",
   },
   {
     id: "crm",
     image: "/crm.jpg",
-    tags: ["Salesforce ", "Google Calendar "],
+    tags: ["Salesforce", "Google Calendar"],
     imageClass:
       "h-auto md:h-[210px] md:w-full w-[300px] object-cover object-center",
     imgPosition: "top",
@@ -73,14 +73,14 @@ const exampleIds: Example[] = [
     image: "/reports.jpg",
     tags: ["Formik", "jsPDF", "SMTP"],
     imageClass:
-      "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top ",
+      "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top",
     imgPosition: "bottom",
   },
   {
     id: "assistant",
     image: "/vocal-assitance.jpg",
     tags: ["React", "Web Speech API"],
-    imageClass: "h-[250px] md:w-full w-full object-cover object-bottom ",
+    imageClass: "h-[250px] md:w-full w-full object-cover object-bottom",
     imgPosition: "top",
   },
 ];
@@ -96,6 +96,7 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
   const [originSlide, setOriginSlide] = useState<HTMLElement | null>(null);
   const swiperRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const expandedRef = useRef<HTMLDivElement>(null);
 
   // Lock background scroll on mobile when modal is open
   useEffect(() => {
@@ -108,6 +109,24 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
       document.body.style.overflow = "";
     };
   }, [isMobile, isExpanded]);
+
+  // Close expanded view on click outside (desktop only)
+  useEffect(() => {
+    if (isExpanded && !isMobile) {
+      const handleClickOutside = (event: MouseEvent) => {
+        if (
+          expandedRef.current &&
+          !expandedRef.current.contains(event.target as Node)
+        ) {
+          handleCollapse();
+        }
+      };
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }
+  }, [isExpanded, isMobile]);
 
   const examplesWithText = exampleIds.map((ex) => ({
     ...ex,
@@ -161,7 +180,7 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
             {isExpanded &&
               selected &&
               (isMobile ? (
-                // Mobile full-screen modal (no image)
+                // Mobile full-screen modal
                 <motion.div
                   key="mobile-modal"
                   initial={{ opacity: 0 }}
@@ -199,8 +218,9 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
                   </div>
                 </motion.div>
               ) : (
-                // Desktop expanded view (unchanged)
+                // Desktop expanded view with outside click handling
                 <motion.div
+                  ref={expandedRef}
                   key="expanded-view"
                   initial={getSlidePosition()}
                   animate={{
@@ -217,7 +237,6 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
                     className="w-full md:w-1/3 min-h-[300px] p-6 flex flex-col justify-between bg-cover bg-center"
                     style={{ backgroundImage: `url(${selected.image})` }}
                   ></div>
-
                   <div className="w-full md:w-2/3 p-6 text-white border-t md:border-t-0 md:border-l border-white/20">
                     <div className="flex justify-between items-center gap-3 mb-4">
                       <div className="p-2 bg-indigo-100 text-indigo-600 rounded-full">
@@ -230,8 +249,7 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
                         onClick={handleCollapse}
                         className="px-4 py-2 text-white rounded-full hover:bg-white/30 transition flex items-center"
                       >
-                        <X size={16} className="mr-1" />
-                        {t("common.close")}
+                        <X size={16} className="mr-1" /> {t("common.close")}
                       </button>
                     </div>
                     <p className="text-sm leading-relaxed whitespace-pre-line mb-6">
@@ -273,7 +291,6 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
             >
               {examplesWithText.map((ex) => (
                 <SwiperSlide key={ex.id}>
-                  {/* Entire slide clickable */}
                   <div
                     onClick={(e) => handleExpand(ex, e)}
                     className="cursor-pointer h-[450px] flex flex-col justify-between bg-gradient-to-br from-blue-800 to-[#2563eb] rounded-2xl shadow-lg overflow-hidden relative"
@@ -293,7 +310,6 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
                       <p className="text-gray-200 mb-4 text-sm">
                         {ex.subtitle}
                       </p>
-                      {/* keep the icon for affordance */}
                       <div className="w-fit bottom-4 right-4 p-2 bg-white/20 text-white rounded-full hover:bg-white/30 transition">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
