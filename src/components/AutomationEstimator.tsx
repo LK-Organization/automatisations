@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function AutomationEstimator() {
   const [hoursPerWeek, setHoursPerWeek] = useState(10);
   const [peopleCount, setPeopleCount] = useState(1);
-  const [hourlyCost, setHourlyCost] = useState(30);
+  const [hourlyCost, setHourlyCost] = useState(15); // Valeur moyenne patronale SMIC
   const [automationCost, setAutomationCost] = useState(1000);
 
   const monthlyHoursSaved = hoursPerWeek * peopleCount * 4;
@@ -39,11 +39,9 @@ export default function AutomationEstimator() {
               <path d="M9 13v2"></path>
             </svg>
           </div>
-          <div>
-            <h3 className="font-semibold text-lg">
-              Calculateur d'économies par automatisation
-            </h3>
-          </div>
+          <h3 className="font-semibold text-lg">
+            Calculateur d'économies par automatisation
+          </h3>
         </div>
       </div>
 
@@ -51,7 +49,8 @@ export default function AutomationEstimator() {
       <div className="p-6 space-y-6 bg-white">
         <div>
           <label className="block text-sm font-medium mb-2">
-            Heures hebdo répétitives ({hoursPerWeek}h)
+            Temps passé chaque semaine sur des tâches répétitives (
+            {hoursPerWeek}h)
           </label>
           <input
             type="range"
@@ -63,9 +62,10 @@ export default function AutomationEstimator() {
             className="w-full accent-primary-600"
           />
         </div>
+
         <div>
           <label className="block text-sm font-medium mb-1">
-            Nombre de personnes
+            Combien de personnes sont nécessaires pour cette tâche ?
           </label>
           <input
             type="number"
@@ -74,9 +74,10 @@ export default function AutomationEstimator() {
             onChange={(e) => setPeopleCount(parseInt(e.target.value) || 0)}
           />
         </div>
+
         <div>
           <label className="block text-sm font-medium mb-1">
-            Coût horaire moyen (€)
+            Quel est le coût horaire moyen par personne ? (€)
           </label>
           <input
             type="number"
@@ -85,6 +86,7 @@ export default function AutomationEstimator() {
             onChange={(e) => setHourlyCost(parseFloat(e.target.value) || 0)}
           />
         </div>
+
         <div>
           <label className="block text-sm font-medium mb-1">
             Coût de l’automatisation (€)
@@ -99,27 +101,27 @@ export default function AutomationEstimator() {
 
         <hr className="my-6" />
 
-        <div className="space-y-3 bg-[#f3f4f6] p-5 text-gray-800 rounded-2xl p-3">
+        <div className="space-y-3 bg-[#f3f4f6] p-5 text-gray-800 rounded-2xl">
           <div>
-            <span className="font-medium">Coût de l’automatisation :</span>{" "}
+            💰 <span className="font-medium">Coût de l’automatisation :</span>{" "}
             {automationCost.toLocaleString()} €
           </div>
           <div>
-            <span className="font-medium">Temps économisé :</span>
+            ⏱️ <span className="font-medium">Temps économisé :</span>
             <div className="text-sm ml-2">
               - Sur un mois : {monthlyHoursSaved.toLocaleString()} h<br />- Sur
               un an : {yearlyHoursSaved.toLocaleString()} h
             </div>
           </div>
           <div>
-            <span className="font-medium">Économie réalisée :</span>
+            💶 <span className="font-medium">Économie réalisée :</span>
             <div className="text-sm ml-2">
               - Sur un mois : {monthlySavings.toLocaleString()} €<br />- Sur un
               an : {yearlySavings.toLocaleString()} €
             </div>
           </div>
           <div>
-            <span className="font-medium">Rentable à partir de :</span>{" "}
+            ✅ <span className="font-medium">Rentable à partir de :</span>{" "}
             {breakEvenMonths} mois
           </div>
         </div>
