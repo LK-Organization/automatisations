@@ -4,59 +4,59 @@ import { localeString, localeText, localeBlockContent } from "./localeSchemas";
 
 export default defineType({
   name: "post",
-  title: "Post",
+  title: "Article", // Titre du document principal
   type: "document",
   fields: [
     defineField({
       name: "title",
-      title: "Title",
-      type: "localeString", // localized string
+      title: "Titre",
+      type: "localeString",
     }),
 
     defineField({
       name: "slug",
-      title: "Slug",
+      title: "Identifiant (slug)",
       type: "slug",
-      options: { source: "title.en", maxLength: 96 },
+      options: { source: "title.fr", maxLength: 96 },
     }),
 
     defineField({
       name: "author",
-      title: "Author",
+      title: "Auteur",
       type: "reference",
       to: [{ type: "author" }],
     }),
 
     defineField({
       name: "mainImage",
-      title: "Main image",
+      title: "Image principale",
       type: "image",
       options: { hotspot: true },
     }),
 
     defineField({
       name: "categories",
-      title: "Categories",
+      title: "Catégories",
       type: "array",
       of: [{ type: "reference", to: { type: "category" } }],
     }),
 
     defineField({
       name: "publishedAt",
-      title: "Published at",
+      title: "Date de publication",
       type: "datetime",
     }),
 
     defineField({
       name: "body",
-      title: "Body",
-      type: "localeBlockContent", // localized rich text
+      title: "Contenu",
+      type: "localeBlockContent",
     }),
   ],
 
   preview: {
     select: {
-      title: "title.en",
+      title: "title.fr",
       author: "author.name",
       media: "mainImage",
     },
@@ -64,7 +64,7 @@ export default defineType({
       const { author, title } = selection;
       return {
         title: title,
-        subtitle: author ? `by ${author}` : "",
+        subtitle: author ? `par ${author}` : "",
         media: selection.media,
       };
     },
