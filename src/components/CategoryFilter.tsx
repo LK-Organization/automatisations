@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import BlogPostCard from "./BlogPostCard";
+import BlogPostCard from "./BlogPostInteractions";
 
 export default function CategoryFilter({ posts, categories }) {
   const [selected, setSelected] = useState<string | null>(null);

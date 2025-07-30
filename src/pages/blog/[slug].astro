@@ -1,0 +1,122 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import type { PostItem } from "../../libs/PostItem";
+import { sanityClient } from "../../libs/sanityClient";
+import { urlFor } from '../../libs/imageBuilder';
+import BlogPostInteractions from '../../components/BlogPostInteractions.jsx';
+import Navigation from "../../components/Navigation";
+import Footer from "../../components/Footer";
+import { PortableText } from "astro-portabletext";
+import PortableTextImage from '../../components/PortableTextImage.jsx';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const slugs = await sanityClient.fetch<{ params: { slug: string } }[]>(
+    `*[_type == "post" && !(_id in path("drafts.**"))] {
+      "params": { "slug": slug.current }
+    }`
+  );
+  return slugs;
+}
+
+const { slug } = Astro.params;
+const query = `*[_type == "post" && slug.current == $slug][0]{
+  title,
+  slug,
+  _id,
+  mainImage { asset-> { _ref } },
+  author->{ name },
+  categories[]->{ title },
+  publishedAt,
+  body { fr[] }
+}`;
+
+const post: PostItem = await sanityClient.fetch(query, { slug });
+
+// Serializer for PortableText using external component
+const ptComponents = {
+  types: {
+    image: PortableTextImage
+  },
+};
+---
+
+<Layout title={post.title?.fr || 'Article'}>
+  <Navigation lang="fr" isHomePage={false} client:load />
+
+  <!-- Dynamic Header -->
+  <header class="pt-32 pb-16 max-w-7xl mx-auto px-6">
+    <!-- Fixed: Properly render categories without @html -->
+    <div class="flex flex-wrap items-center gap-2 text-sm text-gray-600 mb-6">
+      {post.categories?.map((cat) => (
+        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full">
+          {cat.title}
+        </span>
+      ))}
+    </div>
+    
+    <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-8 text-transparent bg-gradient-to-br from-gray-900 via-gray-700 to-gray-600 bg-clip-text">
+      {post.title?.fr}
+    </h1>
+    
+    <div class="flex flex-wrap items-center gap-6 text-gray-500">
+      <div class="flex items-center gap-2">
+        <span class="icon"></span>
+        <span>{post.author?.name}</span>
+      </div> 
+      <div class="flex items-center gap-2">
+        <span class="icon"></span>
+        <span>
+          {post.publishedAt
+            ? new Date(post.publishedAt).toLocaleDateString('fr-FR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })
+            : ''}
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 grid lg:grid-cols-4 gap-12">
+    <!-- Table of contents -->
+    <aside class="lg:col-span-1 sticky top-32 p-6 bg-white/80 backdrop-blur-xl border rounded-2xl">
+      <h3 class="flex items-center gap-2 text-lg font-semibold mb-4">
+        Sommaire
+      </h3>
+      <nav class="space-y-2">
+        <a href="#introduction" class="block text-sm text-gray-600 hover:text-blue-600 py-1">Introduction</a>
+        <a href="#performance" class="block text-sm text-gray-600 hover:text-blue-600 py-1">Performance Metrics</a>
+        <a href="#algorithms" class="block text-sm text-gray-600 hover:text-blue-600 py-1">Modern Algorithms</a>
+        <a href="#implementation" class="block text-sm text-gray-600 hover:text-blue-600 py-1">Implementation</a>
+        <a href="#benchmarks" class="block text-sm text-gray-600 hover:text-blue-600 py-1">Benchmarks</a>
+        <a href="#conclusion" class="block text-sm text-gray-600 hover:text-blue-600 py-1">Conclusion</a>
+      </nav>
+    </aside>
+ 
+    <!-- Article content -->
+    <article class="lg:col-span-3 prose-lg max-w-none prose dark:prose-invert">
+      <!-- Main image -->
+    
+ {post.mainImage?.asset?.url && (
+        <img
+          src={post.mainImage.asset.url}
+          alt={post.title?.fr || ''}
+          class="w-full h-auto object-cover rounded-lg mb-8"
+        />
+      )}
+
+
+      <!-- Body content rendered by PortableText -->
+      <PortableText
+        value={post.body?.fr}
+        components={ptComponents}
+      />
+    </article>
+  </main>
+
+  <BlogPostInteractions client:only />
+  <Footer lang="fr" client:only />
+</Layout>

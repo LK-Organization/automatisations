@@ -1,0 +1,32 @@
+---
+import type { PostItem } from "../../libs/PostItem";
+import { sanityClient } from "../../libs/sanityClient";
+import BlogListing from "../../components/BlogListing";
+import Layout from "../../layouts/Layout.astro";
+import Navigation from '../../components/Navigation';
+import Footer from '../../components/Footer';
+// Charge tous les articles
+const allPosts = await sanityClient.fetch<PostItem[]>(
+  `*[_type == "post" && !(_id in path("drafts.**"))] | order(publishedAt desc){
+    _id,
+    title{fr},
+    slug,
+    author-> { _id, name },
+    mainImage { asset-> { _id, url } },
+    categories[]-> { _id, title },
+    publishedAt,
+    body{fr}
+  }`
+);
+---
+   <Layout title="Automatisons Blog" >
+    <Navigation lang="fr" isHomePage={false} client:load />
+    <main class="pt-16">
+      {/* Composant React gestion liste, recherche, filtre, pagination */}
+      <BlogListing posts={allPosts} itemsPerPage={9}  client:load/>
+    </main>
+    <Footer lang="fr" client:load />
+  </Layout>
+
+ 
+ 

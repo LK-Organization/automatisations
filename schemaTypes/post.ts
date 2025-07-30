@@ -12,7 +12,11 @@ export default defineType({
       title: "Titre",
       type: "localeString",
     }),
-
+    defineField({
+      name: "metaDescription",
+      title: "descritption meta",
+      type: "localeString",
+    }),
     defineField({
       name: "slug",
       title: "Identifiant (slug)",
@@ -33,7 +37,11 @@ export default defineType({
       type: "image",
       options: { hotspot: true },
     }),
-
+    defineField({
+      name: "altImage",
+      title: "Alt de l'image",
+      type: "localeString",
+    }),
     defineField({
       name: "categories",
       title: "Catégories",
