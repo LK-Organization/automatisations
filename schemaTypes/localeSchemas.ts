@@ -28,6 +28,19 @@ export const localeBlockContent = defineType({
   type: "object",
   fields: [
     defineField({ name: "en", title: "English", type: "blockContent" }),
-    defineField({ name: "fr", title: "Français", type: "blockContent" }),
+    defineField({
+      name: "fr",
+      title: "Français",
+      type: "array",
+
+      of: [
+        {
+          type: "block",
+        },
+        {
+          type: "image",
+        },
+      ],
+    }),
   ],
 });

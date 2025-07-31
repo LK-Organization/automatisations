@@ -1,0 +1,65 @@
+---
+// components/PortableTextImage.astro
+import { urlFor } from "../libs/imageBuilder";
+
+// Props TypeScript (optionnel)
+interface Props {
+  value: {
+    asset?: {
+      url: string;
+      metadata?: {
+        dimensions: {
+          aspectRatio: number;
+        };
+      };
+    };
+    alt?: string;
+    caption?: string;
+  };
+}
+
+// Récupération des props
+const { value } = Astro.props;
+---
+
+<!-- Debug: Affichage des données en développement -->
+{import.meta.env.DEV && (
+  <script>
+    console.log('Image data received:', { value: ${JSON.stringify(value)} });
+    {!value?.asset?.url && console.error('Missing image asset', ${JSON.stringify(value)})}
+  </script>
+)}
+
+<!-- Contenu principal -->
+{!value?.asset?.url ? (
+  <div class="bg-red-100 text-red-800 p-4 my-4 rounded">
+    Image manquante ou données incomplètes
+  </div>
+) : (
+  <figure class="my-8 group">
+    <img
+      src={urlFor(value).width(1200).auto('format').quality(80).url()}
+      alt={value.alt || "Image du contenu"}
+      class="rounded-lg w-full h-auto transition-all duration-300 group-hover:shadow-xl"
+      loading="lazy"
+      width={1200}
+      height={Math.round(1200 / value.asset.metadata.dimensions.aspectRatio)}
+    />
+    {value.caption && (
+      <figcaption class="text-center text-sm text-gray-600 mt-2">
+        {value.caption}
+      </figcaption>
+    )}
+  </figure>
+)}
+
+<style>
+  .group:hover img {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  }
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+</style>

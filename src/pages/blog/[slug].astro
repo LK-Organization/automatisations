@@ -7,7 +7,7 @@ import BlogPostInteractions from '../../components/BlogPostInteractions';
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
 import { PortableText } from 'astro-portabletext';
-import PortableTextImage from '../../components/PortableTextImage.jsx';
+import { PortableTextComponents } from 'astro-portabletext';
 
 export const prerender = true;
 
@@ -53,12 +53,8 @@ const query = `*[_type == "post" && slug.current == $slug][0]{
 }`;
 const post: PostItem = await sanityClient.fetch(query, { slug });
 
-// Serializer for PortableText using external component
-const ptComponents = {
-  types: {
-    image: PortableTextImage
-  },
-};
+
+
 ---
 
 <Layout title={post.title?.fr || 'Article'}>
@@ -122,14 +118,13 @@ const ptComponents = {
     />
   )}
 
-  <!-- Body content rendered by PortableText -->
-  {post.body?.fr && (
-    <PortableText
-      value={post.body.fr} // <-- Passez directement le tableau
-      components={ptComponents}
-    
-    />
-  )}
+
+{post.body?.fr && (
+  <PortableText
+    value={post.body.fr}
+    components={PortableTextComponents}
+  />
+)}
 </article>
 
   </main>
