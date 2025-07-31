@@ -47,7 +47,6 @@ const ptComponents = {
 
   <!-- Dynamic Header -->
   <header class="pt-32 pb-16 max-w-7xl mx-auto px-6">
-    <!-- Fixed: Properly render categories without @html -->
     <div class="flex flex-wrap items-center gap-2 text-sm text-gray-600 mb-6">
       {post.categories?.map((cat) => (
         <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full">
@@ -56,7 +55,7 @@ const ptComponents = {
       ))}
     </div>
     
-    <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-8 text-transparent bg-gradient-to-br from-gray-900 via-gray-700 to-gray-600 bg-clip-text">
+    <h1 class="text-3xl text-center md:text-left md:text-7xl font-bold leading-tight mb-8 text-transparent bg-gradient-to-br from-gray-900 via-gray-700 to-gray-600 bg-clip-text">
       {post.title?.fr}
     </h1>
     
@@ -82,32 +81,25 @@ const ptComponents = {
 
   <main class="max-w-7xl mx-auto px-6 grid lg:grid-cols-4 gap-12">
     <!-- Table of contents -->
-    <aside class="lg:col-span-1 sticky top-32 p-6 bg-white/80 backdrop-blur-xl border rounded-2xl">
+    <aside class="lg:col-span-1 h-fit  lg:sticky top-[90px] p-6 bg-white/80 backdrop-blur-xl border rounded-2xl">
       <h3 class="flex items-center gap-2 text-lg font-semibold mb-4">
         Sommaire
       </h3>
-      <nav class="space-y-2">
-        <a href="#introduction" class="block text-sm text-gray-600 hover:text-blue-600 py-1">Introduction</a>
-        <a href="#performance" class="block text-sm text-gray-600 hover:text-blue-600 py-1">Performance Metrics</a>
-        <a href="#algorithms" class="block text-sm text-gray-600 hover:text-blue-600 py-1">Modern Algorithms</a>
-        <a href="#implementation" class="block text-sm text-gray-600 hover:text-blue-600 py-1">Implementation</a>
-        <a href="#benchmarks" class="block text-sm text-gray-600 hover:text-blue-600 py-1">Benchmarks</a>
-        <a href="#conclusion" class="block text-sm text-gray-600 hover:text-blue-600 py-1">Conclusion</a>
+      <nav id="toc-container" class="space-y-2">
+        <!-- Les liens seront générés dynamiquement ici -->
       </nav>
     </aside>
  
     <!-- Article content -->
-    <article class="lg:col-span-3 prose-lg max-w-none prose dark:prose-invert">
+    <article class="lg:col-span-3 prose-lg max-w-none prose dark:prose-invert" id="article-content">
       <!-- Main image -->
-    
- {post.mainImage?.asset?.url && (
+      {post.mainImage?.asset?.url && (
         <img
           src={post.mainImage.asset.url}
           alt={post.title?.fr || ''}
           class="w-full h-auto object-cover rounded-lg mb-8"
         />
       )}
-
 
       <!-- Body content rendered by PortableText -->
       <PortableText
@@ -118,5 +110,61 @@ const ptComponents = {
   </main>
 
   <BlogPostInteractions client:only />
+  
+  <!-- Script pour générer le sommaire dynamiquement -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const articleContent = document.getElementById('article-content');
+      const tocContainer = document.getElementById('toc-container');
+      
+      if (!articleContent || !tocContainer) return;
+      
+      const headings = articleContent.querySelectorAll('h2');
+      
+      if (headings.length === 0) {
+        tocContainer.innerHTML = '<p class="text-sm text-gray-500">Aucune section disponible</p>';
+        return;
+      }
+      
+      let tocHTML = '';
+      
+      headings.forEach(heading => {
+        // Crée un ID slugifié s'il n'existe pas
+        let id = heading.id;
+        if (!id) {
+          id = heading.textContent
+            .toLowerCase()
+            .replace(/[^\w\s]/g, '')
+            .replace(/\s+/g, '-');
+          heading.id = id;
+        }
+        
+        tocHTML += `
+          <a href="#${id}" class="block text-sm text-gray-600 hover:text-blue-600 py-1 transition-colors">
+            ${heading.textContent}
+          </a>
+        `;
+      });
+      
+      tocContainer.innerHTML = tocHTML;
+      
+      // Gestion du défilement fluide
+      tocContainer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 100,
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+  </script>
+
   <Footer lang="fr" client:only />
 </Layout>
