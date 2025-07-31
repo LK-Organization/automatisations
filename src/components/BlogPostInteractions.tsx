@@ -5,8 +5,6 @@ import { ArrowUp, Copy, Check, Heart, Bookmark, Share2 } from "lucide-react";
 export default function BlogPostInteractions() {
   const [scrollY, setScrollY] = useState(0);
   const [copied, setCopied] = useState(false);
-  const [liked, setLiked] = useState(false);
-  const [bookmarked, setBookmarked] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -39,34 +37,7 @@ export default function BlogPostInteractions() {
           style={{ width: `${progress}%` }}
         ></div>
       </div>
-      {/* Floating actions */}
-      <div className="fixed right-6 top-1/2 transform -translate-y-1/2 space-y-3 z-30">
-        <button
-          onClick={() => setLiked(!liked)}
-          className={
-            liked
-              ? "p-3 rounded-full bg-red-50 border-red-200 text-red-500 border"
-              : "p-3 rounded-full bg-white/90 border-gray-200 text-gray-400 hover:text-red-500 border"
-          }
-        >
-          <Heart className={liked ? "w-5 h-5 fill-current" : "w-5 h-5"} />
-        </button>
-        <button
-          onClick={() => setBookmarked(!bookmarked)}
-          className={
-            bookmarked
-              ? "p-3 rounded-full bg-blue-50 border-blue-200 text-blue-500 border"
-              : "p-3 rounded-full bg-white/90 border-gray-200 text-gray-400 hover:text-blue-500 border"
-          }
-        >
-          <Bookmark
-            className={bookmarked ? "w-5 h-5 fill-current" : "w-5 h-5"}
-          />
-        </button>
-        <button className="p-3 rounded-full bg-white/90 border-gray-200 text-gray-400 hover:text-gray-900 border shadow-lg">
-          <Share2 className="w-5 h-5" />
-        </button>
-      </div>
+
       {/* Copy-snippet for code blocks */}
       <div id="copy-code-button" className="hidden">
         <button

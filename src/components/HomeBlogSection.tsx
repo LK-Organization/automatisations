@@ -102,7 +102,7 @@ const HomeBlogSection = () => {
 
   if (loading)
     return (
-      <section className="py-16 bg-gray-50">
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-6 text-center py-12">
           Chargement des articles...
         </div>
@@ -111,7 +111,7 @@ const HomeBlogSection = () => {
 
   if (error)
     return (
-      <section className="py-16 bg-gray-50">
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-6 text-center py-12 text-red-500">
           Erreur : {error}
         </div>
@@ -120,7 +120,7 @@ const HomeBlogSection = () => {
 
   return (
     <motion.section
-      className="py-16 bg-gray-50"
+      className="py-16"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin: "-100px" }}
@@ -128,8 +128,10 @@ const HomeBlogSection = () => {
     >
       <div className="max-w-7xl mx-auto px-6">
         <motion.div className="text-center mb-12" variants={fadeIn}>
-          <h2 className="text-3xl md:text-4xl font-bold">Derniers Articles</h2>
-          <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Derniers Articles
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Découvrez nos dernières analyses, tutoriels et perspectives
           </p>
         </motion.div>

@@ -1,6 +1,11 @@
 // src/components/Stepper.tsx
 import React, { useState, Children, useRef, useLayoutEffect } from "react";
-import type { HTMLAttributes, ReactNode, ButtonHTMLAttributes, SVGProps } from "react";
+import type {
+  HTMLAttributes,
+  ReactNode,
+  ButtonHTMLAttributes,
+  SVGProps,
+} from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface StepperProps extends HTMLAttributes<HTMLDivElement> {
@@ -76,7 +81,12 @@ export default function Stepper({
       <div className="flex items-center mb-6">
         {stepsArray.map((_, idx) => {
           const num = idx + 1;
-          const status = currentStep > num ? "complete" : currentStep === num ? "active" : "inactive";
+          const status =
+            currentStep > num
+              ? "complete"
+              : currentStep === num
+                ? "active"
+                : "inactive";
           const circle = (
             <motion.div
               key={num}
@@ -101,7 +111,11 @@ export default function Stepper({
           return (
             <React.Fragment key={num}>
               {renderStepIndicator
-                ? renderStepIndicator({ step: num, currentStep, onStepClick: updateStep })
+                ? renderStepIndicator({
+                    step: num,
+                    currentStep,
+                    onStepClick: updateStep,
+                  })
                 : circle}
               {idx < totalSteps - 1 && (
                 <motion.div
@@ -144,7 +158,10 @@ export default function Stepper({
           ) : (
             <div />
           )}
-          <button onClick={isLastStep ? handleComplete : handleNext} {...nextButtonProps}>
+          <button
+            onClick={isLastStep ? handleComplete : handleNext}
+            {...nextButtonProps}
+          >
             {isLastStep ? "Complete" : nextButtonText}
           </button>
         </div>
@@ -153,17 +170,45 @@ export default function Stepper({
   );
 }
 
-interface SlideTransitionProps { children: ReactNode; direction: number; onHeightReady: (h: number) => void; }
-function StepContentWrapper({ isCompleted, currentStep, direction, children, className = "" }: { isCompleted: boolean; currentStep: number; direction: number; children: ReactNode; className?: string; }) {
+interface SlideTransitionProps {
+  children: ReactNode;
+  direction: number;
+  onHeightReady: (h: number) => void;
+}
+function StepContentWrapper({
+  isCompleted,
+  currentStep,
+  direction,
+  children,
+  className = "",
+}: {
+  isCompleted: boolean;
+  currentStep: number;
+  direction: number;
+  children: ReactNode;
+  className?: string;
+}) {
   const [height, setHeight] = useState(0);
   return (
-    <motion.div style={{ overflow: "hidden", position: "relative", height: isCompleted ? 0 : height }} transition={{ type: "spring", duration: 0.4 }} className={className}>
+    <motion.div
+      style={{
+        overflow: "hidden",
+        position: "relative",
+        height: isCompleted ? 0 : height,
+      }}
+      transition={{ type: "spring", duration: 0.4 }}
+      className={className}
+    >
       <AnimatePresence initial={false} custom={direction}>
         {!isCompleted && (
           <motion.div
             key={currentStep}
             custom={direction}
-            variants={{ enter: (d) => ({ x: d > 0 ? 300 : -300, opacity: 0 }), center: { x: 0, opacity: 1 }, exit: (d) => ({ x: d > 0 ? -300 : 300, opacity: 0 }) }}
+            variants={{
+              enter: (d) => ({ x: d > 0 ? 300 : -300, opacity: 0 }),
+              center: { x: 0, opacity: 1 },
+              exit: (d) => ({ x: d > 0 ? -300 : 300, opacity: 0 }),
+            }}
             initial="enter"
             animate="center"
             exit="exit"
@@ -178,23 +223,55 @@ function StepContentWrapper({ isCompleted, currentStep, direction, children, cla
   );
 }
 
-export function Step({ children }: { children: ReactNode }) { return <div>{children}</div>; }
+export function Step({ children }: { children: ReactNode }) {
+  return <div>{children}</div>;
+}
 
-interface StepIndicatorProps { step: number; currentStep: number; onClickStep: (n: number) => void; disableStepIndicators?: boolean; }
-function StepIndicator({ step, currentStep, onClickStep, disableStepIndicators = false }: StepIndicatorProps) {
+interface StepIndicatorProps {
+  step: number;
+  currentStep: number;
+  onClickStep: (n: number) => void;
+  disableStepIndicators?: boolean;
+}
+function StepIndicator({
+  step,
+  currentStep,
+  onClickStep,
+  disableStepIndicators = false,
+}: StepIndicatorProps) {
   // ... implementation if needed
   return null;
 }
 
-interface StepConnectorProps { isComplete: boolean; }
+interface StepConnectorProps {
+  isComplete: boolean;
+}
 function StepConnector({ isComplete }: StepConnectorProps) {
   return <div className="flex-1 h-1 mx-2 bg-gray-300" />;
 }
 
 function CheckIcon(props: SVGProps<SVGSVGElement>) {
   return (
-    <svg {...props} fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-      <motion.path initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ delay: 0.1, type: "tween", ease: "easeOut", duration: 0.3 }} strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+    <svg
+      {...props}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      viewBox="0 0 24 24"
+    >
+      <motion.path
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{
+          delay: 0.1,
+          type: "tween",
+          ease: "easeOut",
+          duration: 0.3,
+        }}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M5 13l4 4L19 7"
+      />
     </svg>
   );
 }

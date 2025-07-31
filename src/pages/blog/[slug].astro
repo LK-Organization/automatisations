@@ -3,10 +3,10 @@ import Layout from "../../layouts/Layout.astro";
 import type { PostItem } from "../../libs/PostItem";
 import { sanityClient } from "../../libs/sanityClient";
 import { urlFor } from '../../libs/imageBuilder';
-import BlogPostInteractions from '../../components/BlogPostInteractions.jsx';
+import BlogPostInteractions from '../../components/BlogPostInteractions';
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
-import { PortableText } from "astro-portabletext";
+import { PortableText } from 'astro-portabletext';
 import PortableTextImage from '../../components/PortableTextImage.jsx';
 
 export const prerender = true;
@@ -25,13 +25,32 @@ const query = `*[_type == "post" && slug.current == $slug][0]{
   title,
   slug,
   _id,
-  mainImage { asset-> { _ref } },
+  mainImage { asset-> { _id, _ref, _type, url } },
+  altImage,
   author->{ name },
   categories[]->{ title },
   publishedAt,
-  body { fr[] }
+  body {
+    fr[] {
+      ...,
+      _type == "image" => {
+        ...,
+        asset-> {
+          _id,
+          _ref,
+          _type,
+          url,
+          metadata {
+            dimensions,
+            lqip
+          }
+        },
+        alt,
+        caption
+      }
+    }
+  }
 }`;
-
 const post: PostItem = await sanityClient.fetch(query, { slug });
 
 // Serializer for PortableText using external component
@@ -58,7 +77,9 @@ const ptComponents = {
     <h1 class="text-3xl text-center md:text-left md:text-7xl font-bold leading-tight mb-8 text-transparent bg-gradient-to-br from-gray-900 via-gray-700 to-gray-600 bg-clip-text">
       {post.title?.fr}
     </h1>
-    
+    <a href={post.body?.fr?.find(b => b._type === "image")?.asset?.url} target="_blank">
+  Test d'ouverture de l'image
+</a>
     <div class="flex flex-wrap items-center gap-6 text-gray-500">
       <div class="flex items-center gap-2">
         <span class="icon"></span>
@@ -91,22 +112,28 @@ const ptComponents = {
     </aside>
  
     <!-- Article content -->
-    <article class="lg:col-span-3 prose-lg max-w-none prose dark:prose-invert" id="article-content">
-      <!-- Main image -->
-      {post.mainImage?.asset?.url && (
-        <img
-          src={post.mainImage.asset.url}
-          alt={post.title?.fr || ''}
-          class="w-full h-auto object-cover rounded-lg mb-8"
-        />
-      )}
+   <!-- Article content -->
+<article class="lg:col-span-3 prose-lg max-w-none prose dark:prose-invert" id="article-content">
+  <!-- Main image -->
+  {post.mainImage?.asset?.url && (
+    <img
+      src={urlFor(post.mainImage).width(1200).url()}
+      alt={post.altImage?.fr || post.title?.fr || ''}
+      class="w-full h-auto object-cover rounded-lg mb-8"
+      loading="eager"
+    />
+  )}
 
-      <!-- Body content rendered by PortableText -->
-      <PortableText
-        value={post.body?.fr}
-        components={ptComponents}
-      />
-    </article>
+  <!-- Body content rendered by PortableText -->
+  {post.body?.fr && (
+    <PortableText
+      value={post.body.fr} // <-- Passez directement le tableau
+      components={ptComponents}
+    
+    />
+  )}
+</article>
+
   </main>
 
   <BlogPostInteractions client:only />
@@ -165,6 +192,15 @@ const ptComponents = {
       });
     });
   </script>
+<!-- À la fin du layout -->
 
   <Footer lang="fr" client:only />
+<!-- Debug - À placer à la fin avant la fermeture du Layout -->
+  <div aria-hidden="true">
+    <h3>Debug: Image Data</h3>
+    <pre>{JSON.stringify({
+      imageData: post.body?.fr?.find(block => block._type === "image"),
+      allTypes: [...new Set(post.body?.fr?.map(block => block._type))]
+    }, null, 2)}</pre>
+  </div>
 </Layout>
