@@ -195,12 +195,5 @@ const ptComponents = {
 <!-- À la fin du layout -->
 
   <Footer lang="fr" client:only />
-<!-- Debug - À placer à la fin avant la fermeture du Layout -->
-  <div aria-hidden="true">
-    <h3>Debug: Image Data</h3>
-    <pre>{JSON.stringify({
-      imageData: post.body?.fr?.find(block => block._type === "image"),
-      allTypes: [...new Set(post.body?.fr?.map(block => block._type))]
-    }, null, 2)}</pre>
-  </div>
+
 </Layout>
