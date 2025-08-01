@@ -1,80 +1,70 @@
-// schemaTypes/post.ts
 import { defineField, defineType } from "sanity";
-import { localeString, localeText, localeBlockContent } from "./localeSchemas";
 
 export default defineType({
   name: "post",
-  title: "Article", // Titre du document principal
+  title: "Post",
   type: "document",
   fields: [
     defineField({
       name: "title",
-      title: "Titre",
-      type: "localeString",
-    }),
-    defineField({
-      name: "metaDescription",
-      title: "descritption meta",
-      type: "localeString",
+      title: "Title",
+      type: "string",
     }),
     defineField({
       name: "slug",
-      title: "Identifiant (slug)",
+      title: "Slug",
       type: "slug",
-      options: { source: "title.fr", maxLength: 96 },
+      options: {
+        source: "title",
+        maxLength: 96,
+      },
     }),
-
     defineField({
       name: "author",
-      title: "Auteur",
+      title: "Author",
       type: "reference",
-      to: [{ type: "author" }],
+      to: { type: "author" },
     }),
-
     defineField({
       name: "mainImage",
-      title: "Image principale",
+      title: "Main image",
       type: "image",
-      options: { hotspot: true },
+      options: {
+        hotspot: true,
+      },
     }),
     defineField({
       name: "altImage",
       title: "Alt de l'image",
-      type: "localeString",
+      type: "string",
     }),
     defineField({
       name: "categories",
-      title: "Catégories",
+      title: "Categories",
       type: "array",
       of: [{ type: "reference", to: { type: "category" } }],
     }),
-
     defineField({
       name: "publishedAt",
-      title: "Date de publication",
+      title: "Published at",
       type: "datetime",
     }),
-
     defineField({
       name: "body",
       title: "Contenu",
-      type: "localeBlockContent",
+      type: "blockContent",
     }),
   ],
 
   preview: {
     select: {
-      title: "title.fr",
+      title: "title",
       author: "author.name",
       media: "mainImage",
     },
     prepare(selection) {
-      const { author, title } = selection;
-      return {
-        title: title,
-        subtitle: author ? `par ${author}` : "",
-        media: selection.media,
-      };
+      const { author } = selection;
+      return { ...selection, subtitle: author && `by ${author}` };
     },
   },
 });

@@ -16,7 +16,7 @@ export default defineConfig({
     sitemap(),
     sanity({
       projectId: "x83z7c4c",
-      dataset: "dev",
+      dataset: "production",
       // Set useCdn to false if you're building statically.
       useCdn: false,
       studioBasePath: "/studio",

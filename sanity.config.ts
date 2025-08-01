@@ -1,4 +1,4 @@
-import { defineConfig } from "sanity";
+import { defineConfig, defineArrayMember } from "sanity";
 import { structureTool } from "sanity/structure";
 import { visionTool } from "@sanity/vision";
 import { schemaTypes } from "./schemaTypes";
@@ -8,7 +8,7 @@ export default defineConfig({
   title: "Automatisons",
 
   projectId: "x83z7c4c",
-  dataset: "dev",
+  dataset: "production",
 
   plugins: [structureTool(), visionTool()],
 

@@ -102,26 +102,29 @@ const BlogListing: React.FC<BlogListingProps> = ({
           {paginatedPosts.map((post) => (
             <article
               key={post._id}
-              className=" rounded-2xl bg-white p-6 hover:shadow-lg transition"
+              className="flex flex-col justify-between rounded-2xl bg-white p-6 hover:shadow-lg transition"
             >
               <a href={`/blog/${post.slug.current}`}>
                 <img
                   src={post.mainImage?.asset?.url}
-                  alt={post.title.fr || post.title.en}
+                  alt={post.title || post.title.en}
                   className="w-full aspect-square object-cover rounded-lg mb-4"
                 />
                 <p>{post.categories?.map((c) => c.title).join(", ")}</p>
                 <h2 className="text-xl  font-semibold mb-2">
-                  {post.title.fr || post.title.en}
+                  {post.title || post.title.en}
                 </h2>
               </a>
-              <p className="text-gray-500  text-sm mb-4">
-                Publié le{" "}
-                {new Date(post.publishedAt).toLocaleDateString("fr-FR")}
-              </p>
+              {post.publishedAt && (
+                <p className="text-gray-500  text-sm mb-4">
+                  Publié le{" "}
+                  {new Date(post.publishedAt).toLocaleDateString("fr-FR")}
+                </p>
+              )}
+
               <p className="text-gray-500  text-sm line-clamp-3">
-                {post.body?.fr?.[0]?.children?.[0]?.text ||
-                  post.body?.en?.[0]?.children?.[0]?.text}
+                {post.body?.[0]?.children?.[0]?.text ||
+                  post.body?.[0]?.children?.[0]?.text}
               </p>
             </article>
           ))}

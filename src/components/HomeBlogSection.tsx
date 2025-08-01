@@ -23,9 +23,7 @@ interface Category {
 
 interface Post {
   _id: string;
-  title: {
-    fr: string;
-  };
+  title: string;
   slug: {
     current: string;
   };
@@ -159,7 +157,7 @@ const HomeBlogSection = () => {
                 >
                   <motion.img
                     src={urlFor(post.mainImage).width(600).url()}
-                    alt={post.mainImage?.alt || post.title?.fr || ""}
+                    alt={post.mainImage?.alt || post.title || ""}
                     className="w-full h-full object-cover"
                     loading="lazy"
                     initial={{ scale: 1.1 }}
@@ -197,17 +195,18 @@ const HomeBlogSection = () => {
                     whileHover={{ x: 5 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    {post.title?.fr}
+                    {post.title}
                   </motion.a>
                 </h3>
-
-                <p className="text-gray-500 text-sm mb-4">
-                  {new Date(post.publishedAt).toLocaleDateString("fr-FR", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </p>
+                {post.publishedAt && (
+                  <p className="text-gray-500 text-sm mb-4">
+                    {new Date(post.publishedAt).toLocaleDateString("fr-FR", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </p>
+                )}
 
                 {post.excerpt && (
                   <p className="text-gray-600 mb-4">{post.excerpt}</p>

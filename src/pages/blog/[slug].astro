@@ -1,15 +1,17 @@
 ---
+export const prerender = true;
 import Layout from "../../layouts/Layout.astro";
+import { sanityClient } from '../../libs/sanityClient';
+import { PortableText } from 'astro-portabletext';
+import { List } from 'astro-portabletext/components';
 import type { PostItem } from "../../libs/PostItem";
-import { sanityClient } from "../../libs/sanityClient";
 import { urlFor } from '../../libs/imageBuilder';
 import BlogPostInteractions from '../../components/BlogPostInteractions';
 import Navigation from "../../components/Navigation";
 import Footer from "../../components/Footer";
-import { PortableText } from 'astro-portabletext';
+// import List from '../../components/list.astro';
+import ImageBLock from '../../components/ImageBlock.astro';
 
-
-export const prerender = true;
 
 export async function getStaticPaths() {
   const slugs = await sanityClient.fetch<{ params: { slug: string } }[]>(
@@ -21,49 +23,23 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
-const query = `*[_type == "post" && slug.current == $slug][0]{
-  title,
-  slug,
-  _id,
-  mainImage { asset-> { _id, _ref, _type, url } },
-  altImage,
-  author->{ name },
-  categories[]->{ title },
-  publishedAt,
-  body {
-    fr[] {
-      ...,
-      _type == "image" => {
-        ...,
-        asset-> {
-          _id,
-          _ref,
-          _type,
-          url,
-          metadata {
-            dimensions,
-            lqip
-          }
-        },
-        alt,
-        caption
-      }
-    }
+
+const { title, body, mainImage, categories, author, publishedAt } = await sanityClient.fetch(`*[_type == "post" && slug.current == $slug][0]`, { slug });
+
+const components = {
+  type: {
+    image: ImageBLock,
+  
   }
-}`;
-const post: PostItem = await sanityClient.fetch(query, { slug });
-
-
-
+};
 ---
-
-<Layout title={post.title?.fr || 'Article'}>
+<Layout title={title || 'Article'}>
   <Navigation lang="fr" isHomePage={false} client:load />
 
   <!-- Dynamic Header -->
   <header class="pt-32 pb-16 max-w-7xl mx-auto px-6">
     <div class="flex flex-wrap items-center gap-2 text-sm text-gray-600 mb-6">
-      {post.categories?.map((cat) => (
+      {categories?.map((cat: { title: unknown; } ) => (
         <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full">
           {cat.title}
         </span>
@@ -71,19 +47,19 @@ const post: PostItem = await sanityClient.fetch(query, { slug });
     </div>
     
     <h1 class="text-3xl text-center md:text-left md:text-7xl font-bold leading-tight mb-8 text-transparent bg-gradient-to-br from-gray-900 via-gray-700 to-gray-600 bg-clip-text">
-      {post.title?.fr}
+      {title}
     </h1>
  
     <div class="flex flex-wrap items-center gap-6 text-gray-500">
       <div class="flex items-center gap-2">
         <span class="icon"></span>
-        <span>{post.author?.name}</span>
+        <span>{author?.name}</span>
       </div> 
       <div class="flex items-center gap-2">
         <span class="icon"></span>
         <span>
-          {post.publishedAt
-            ? new Date(post.publishedAt).toLocaleDateString('fr-FR', {
+          {publishedAt
+            ? new Date(publishedAt).toLocaleDateString('fr-FR', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',
@@ -107,23 +83,20 @@ const post: PostItem = await sanityClient.fetch(query, { slug });
  
     <!-- Article content -->
    <!-- Article content -->
-<article class="lg:col-span-3 prose-lg max-w-none prose dark:prose-invert" id="article-content">
+<article class="lg:col-span-3 prose-lg max-w-none prose dark:prose-invert mb-10" id="article-content">
   <!-- Main image -->
-  {post.mainImage?.asset?.url && (
+  {mainImage && (
     <img
-      src={urlFor(post.mainImage).width(1200).url()}
-      alt={post.altImage?.fr || post.title?.fr || ''}
+      src={urlFor(mainImage).width(1200).url()}
+      alt=""
       class="w-full h-auto object-cover rounded-lg mb-8"
       loading="eager"
     />
   )}
 
 
-{post.body?.fr && (
-  <PortableText
-    value={post.body.fr}
-   
-  />
+{body && (
+   <PortableText value={body} components={components} />
 )}
 </article>
 

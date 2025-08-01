@@ -9,13 +9,13 @@ import Footer from '../../components/Footer';
 const allPosts = await sanityClient.fetch<PostItem[]>(
   `*[_type == "post" && !(_id in path("drafts.**"))] | order(publishedAt desc){
     _id,
-    title{fr},
+    title,
     slug,
     author-> { _id, name },
     mainImage { asset-> { _id, url } },
     categories[]-> { _id, title },
     publishedAt,
-    body{fr}
+    body
   }`
 );
 ---
