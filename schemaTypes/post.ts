@@ -22,7 +22,7 @@ export default defineType({
     defineField({
       name: "metaDescription",
       title: "descritption meta",
-      type: "localeString",
+      type: "string",
     }),
     defineField({
       name: "author",
