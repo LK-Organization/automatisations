@@ -47,7 +47,7 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
             <div className="flex items-center mb-4">
               <img
                 src="/logo-automatisation.png"
-                alt="Automatisons Agency Logo"
+                alt="Automatisons Agence IA Logo"
                 className="h-12 w-auto"
               />
             </div>
@@ -129,7 +129,7 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
         {/* Bottom Legal & Copyright */}
         <div className="flex justify-between items-center border-t border-gray-800 mt-8 pt-8 flex-col sm:flex-row gap-4 text-center">
           <p className="text-gray-400">
-            © {currentYear} Automatisons Agency. {t("footer.rights")}
+            © {currentYear} Automatisons Agence IA. {t("footer.rights")}
           </p>
           <div className="flex gap-4 flex-wrap">
             <a

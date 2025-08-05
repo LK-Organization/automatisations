@@ -251,7 +251,7 @@ export const ui = {
     "testimonials.jpl.company": "—",
     "testimonials.jpl.sector": "Commerce de détail",
     "testimonials.jpl.quote":
-      "On a fait appel à Automatisons Agency pour optimiser notre gestion des commandes. J'étais sceptique au début mais l'équipe a assuré. Moins d’erreurs et un bon retour sur investissement. Je recommande !",
+      "On a fait appel à Automatisons Agence IA pour optimiser notre gestion des commandes. J'étais sceptique au début mais l'équipe a assuré. Moins d’erreurs et un bon retour sur investissement. Je recommande !",
     "testimonials.jpl.result": "-30 % erreurs",
     "testimonials.jpl.date": "Il y a 2 semaines",
     // Lucie B.
@@ -405,7 +405,7 @@ export const ui = {
     "methodology.implementation.feature3": "Formation des équipes",
     "methodology.implementation.feature4": "Support continu",
 
-    "about.title": "À propos d'Automatisons Agency",
+    "about.title": "À propos d'Automatisons Agence IA",
     "about.description":
       "Nous sommes une agence spécialisée dans l'automatisation et l'intelligence artificielle, dédiée à transformer la façon dont les entreprises opèrent.",
     // About stats (FR)
@@ -475,7 +475,7 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
 
     // Chatbot
     "chatbot.title": "Assistant IA",
-    "chatbot.subtitle": "Automatisons Agency",
+    "chatbot.subtitle": "Automatisons Agence IA",
     "chatbot.input": "Tapez votre message...",
     "chatbot.welcome":
       "👋 Bonjour et bienvenue !\n Si vous cherchez à gagner du temps, à simplifier vos tâches quotidiennes et à automatiser ce qui peut l’être, vous êtes au bon endroit.\n Cet assistant est là pour vous aider à découvrir nos solutions ou pour vous mettre en contact avec un expert.",
@@ -495,7 +495,7 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "chatbot.input.placeholder": "Tapez votre message...",
 
     "footer.description":
-      "Automatisons Agency - Votre partenaire de confiance en automatisation et intelligence artificielle",
+      "Automatisons Agence IA - Votre partenaire de confiance en automatisation et intelligence artificielle",
 
     "footer.navigationTitle": "Navigation",
     "footer.followUs": "Suivez-nous",
@@ -744,7 +744,7 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "testimonials.jpl.company": "—",
     "testimonials.jpl.sector": "Retail",
     "testimonials.jpl.quote":
-      "We turned to Automatisons Agency to optimize our order management. I was skeptical at first but the team delivered. Fewer errors and a great ROI. Highly recommend!",
+      "We turned to Automatisons Agence IA to optimize our order management. I was skeptical at first but the team delivered. Fewer errors and a great ROI. Highly recommend!",
     "testimonials.jpl.result": "-30 % errors",
     "testimonials.jpl.date": "2 weeks ago",
     // Lucie B.
@@ -843,7 +843,7 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
 
     "google.lucas.name": "lucas desprat",
     "google.lucas.quote":
-      "Automatisons Agency literally revolutionized the management of my auto business. They automated the entire CRM and data side, saving me a ton of time daily. No more repetitive tasks or lost info! Everything’s now centralized and smooth, allowing me to focus on what truly matters: my core business. Clear, human, and highly efficient support—I recommend them wholeheartedly.",
+      "Automatisons Agence IA literally revolutionized the management of my auto business. They automated the entire CRM and data side, saving me a ton of time daily. No more repetitive tasks or lost info! Everything’s now centralized and smooth, allowing me to focus on what truly matters: my core business. Clear, human, and highly efficient support—I recommend them wholeheartedly.",
     "google.lucas.date": "2025-07-08",
 
     // Methodology
@@ -881,7 +881,7 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "methodology.implementation.feature3": "Team training",
     "methodology.implementation.feature4": "Ongoing support",
 
-    "about.title": "About Automatisons Agency",
+    "about.title": "About Automatisons Agence IA",
     "about.description":
       "We are an agency specializing in automation and artificial intelligence, dedicated to transforming how businesses operate.",
     "about.stats.customers": "100 %",
@@ -949,7 +949,7 @@ The analysis of your needs and the quote are free and delivered within 24 hours.
 
     // Chatbot
     "chatbot.title": "AI Assistant",
-    "chatbot.subtitle": "Automatisons Agency",
+    "chatbot.subtitle": "Automatisons Agence IA",
     "chatbot.input": "Type your message...",
     "chatbot.welcome":
       "👋 Hello and welcome!\n If you're looking to save time, simplify your daily tasks, and automate what can be automated, you're in the right place.\n This assistant is here to help you discover our solutions or connect you with an expert.",
@@ -969,7 +969,7 @@ The analysis of your needs and the quote are free and delivered within 24 hours.
     "chatbot.input.placeholder": "Type your message...",
 
     "footer.description":
-      "Automatisons Agency – Your trusted partner in automation and AI",
+      "Automatisons Agence IA – Your trusted partner in automation and AI",
 
     "footer.navigationTitle": "Navigation",
     "footer.followUs": "Follow us",

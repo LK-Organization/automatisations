@@ -92,7 +92,7 @@ const Navigation: React.FC<NavigationProps> = ({
               >
                 <img
                   src="/logo-automatisation.png"
-                  alt="Automatisons Agency Logo"
+                  alt="Automatisons Agence IA Logo"
                   className="h-12 w-auto"
                 />
               </a>

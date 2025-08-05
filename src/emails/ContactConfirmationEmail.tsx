@@ -47,7 +47,7 @@ export const ContactConfirmationEmail = ({
           <tr className="w-full mx-auto">
             <td align="center">
               <Text className="my-[8px] font-semibold text-[16px] text-gray-900 leading-[24px]">
-                AUTOMATISONS AGENCY
+                AUTOMATISONS AGENCE IA
               </Text>
               <Text className="mt-[4px] mb-0 text-[16px] text-gray-500 leading-[24px]">
                 Automatisez votre succès avec l'IA

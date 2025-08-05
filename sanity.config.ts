@@ -7,9 +7,9 @@ export default defineConfig({
   name: "default",
   title: "Automatisons",
 
-  projectId: "x83z7c4c",
-  dataset: "production",
-
+  projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID,
+  dataset: import.meta.env.PUBLIC_SANITY_DATASET,
+  apiVersion: "2025-02-06",
   plugins: [structureTool(), visionTool()],
 
   schema: {
