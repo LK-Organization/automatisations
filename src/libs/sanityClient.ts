@@ -2,9 +2,9 @@
 import { createClient, type SanityClient } from "@sanity/client";
 
 export const sanityClient: SanityClient = createClient({
-  projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID,
-  dataset: import.meta.env.PUBLIC_SANITY_DATASET,
+  projectId: "x83z7c4c",
+  dataset: "production",
   useCdn: false,
   apiVersion: "2025-02-06",
 });
-console.log(import.meta.env.PUBLIC_SANITY_PROJECT_ID); // devrait afficher 'x83z7c4c'
+console.log("x83z7c4c"); // devrait afficher '"x83z7c4c"'
