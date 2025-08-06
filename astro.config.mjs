@@ -8,6 +8,7 @@ import sanity from "@sanity/astro";
 
 export default defineConfig({
   output: "server",
+  trailingSlash: "always",
   site: "https://www.automatisons.fr", // ← très important
   adapter: netlify(),
   integrations: [

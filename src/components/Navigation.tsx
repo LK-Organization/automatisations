@@ -87,7 +87,7 @@ const Navigation: React.FC<NavigationProps> = ({
             {/* Logo */}
             <div className="flex-shrink-0">
               <a
-                href={lang === "en" ? "/en/" : "/"}
+                href={lang === "en/" ? "/en/" : "/"}
                 className="flex items-center"
               >
                 <img
@@ -104,7 +104,7 @@ const Navigation: React.FC<NavigationProps> = ({
                 {navItems.map((item) => (
                   <a
                     key={item.key}
-                    href={item.href}
+                    href={item.href === "/" ? "/" : `${item.href}/`}
                     className="text-white/90 hover:text-white px-4 py-2 text-base font-medium transition-all duration-200 hover:scale-105"
                   >
                     {t(item.key)}
@@ -153,7 +153,7 @@ const Navigation: React.FC<NavigationProps> = ({
                 {navItems.map((item) => (
                   <a
                     key={item.key}
-                    href={item.href}
+                    href={item.href === "/" ? "/" : `${item.href}/`}
                     className="text-white/90 hover:text-white block px-3 py-2 text-base font-medium transition-all duration-200"
                     onClick={() => setIsMenuOpen(false)}
                   >

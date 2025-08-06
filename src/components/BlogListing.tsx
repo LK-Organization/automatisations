@@ -104,7 +104,7 @@ const BlogListing: React.FC<BlogListingProps> = ({
               key={post._id}
               className="flex flex-col justify-between rounded-2xl bg-white p-6 hover:shadow-lg transition"
             >
-              <a href={`/blog/${post.slug.current}`}>
+              <a href={`/blog/${post.slug.current}/`}>
                 <img
                   src={post.mainImage?.asset?.url}
                   alt={post.title || post.title.en}

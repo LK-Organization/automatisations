@@ -190,7 +190,7 @@ const HomeBlogSection = () => {
 
                 <h3 className="text-xl font-bold mb-2">
                   <motion.a
-                    href={`/blog/${post.slug.current}`}
+                    href={`/blog/${post.slug.current}/`}
                     className="hover:text-blue-600 transition-colors"
                     whileHover={{ x: 5 }}
                     transition={{ type: "spring", stiffness: 300 }}
@@ -213,7 +213,7 @@ const HomeBlogSection = () => {
                 )}
 
                 <motion.a
-                  href={`/blog/${post.slug.current}`}
+                  href={`/blog/${post.slug.current}/`}
                   className="inline-flex items-center text-blue-600 font-medium hover:text-blue-800 transition-colors group"
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
@@ -236,7 +236,7 @@ const HomeBlogSection = () => {
           transition={{ delay: 0.4 }}
         >
           <motion.a
-            href="/blog"
+            href="/blog/"
             className="inline-block bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition-colors"
             whileHover={{
               scale: 1.05,

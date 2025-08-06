@@ -70,8 +70,8 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
             <ul className="space-y-2">
               {[
                 { key: "nav.home", href: "/" },
-                { key: "nav.solutions", href: "/solutions" },
-                { key: "nav.contact", href: "/contact" },
+                { key: "nav.solutions", href: "/solutions/" },
+                { key: "nav.contact", href: "/contact/" },
               ].map((link) => (
                 <li key={link.key}>
                   <a
