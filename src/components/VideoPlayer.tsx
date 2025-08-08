@@ -24,7 +24,7 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({
 
   return (
     <section className="py-20 bg-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="relative w-auto md:h-[500px] aspect-square rounded-2xl overflow-hidden shadow-lg max-w-7xl mx-auto ">
+      <div className="relative w-auto md:h-[500px] aspect-square rounded-2xl overflow-hidden shadow-lg  mx-auto ">
         <video
           ref={videoRef}
           className="w-full h-full object-cover"
