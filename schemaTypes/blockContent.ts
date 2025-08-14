@@ -70,5 +70,8 @@ export default defineType({
         },
       ],
     }),
+    defineArrayMember({
+      type: "table", // New table support added here
+    }),
   ],
 });
