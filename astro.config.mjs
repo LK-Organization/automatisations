@@ -18,8 +18,8 @@ export default defineConfig({
       i18n: {
         defaultLocale: "fr",
         locales: {
-          fr: "https://www.automatisons.fr",
-          en: "https://www.automatisons.fr/en",
+          fr: "fr-FR",
+          en: "en-US",
         },
       },
     }),
