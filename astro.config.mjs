@@ -14,15 +14,7 @@ export default defineConfig({
   integrations: [
     react(),
     tailwind(),
-    sitemap({
-      i18n: {
-        defaultLocale: "fr",
-        locales: {
-          fr: "fr-FR",
-          en: "en-US",
-        },
-      },
-    }),
+    sitemap(),
     sanity({
       projectId: "83z7c4c",
       dataset: "production",
