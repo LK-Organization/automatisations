@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
-import sitemap from "@astrojs/sitemap"; // ← tu dois l'importer
+import sitemap from "@astrojs/sitemap";
 import netlify from "@astrojs/netlify";
 
 import sanity from "@sanity/astro";
@@ -9,12 +9,20 @@ import sanity from "@sanity/astro";
 export default defineConfig({
   output: "server",
   trailingSlash: "always",
-  site: "https://www.automatisons.fr", // ← très important
+  site: "https://www.automatisons.fr",
   adapter: netlify(),
   integrations: [
     react(),
-    tailwind(), // ← ici avec les autres
-    sitemap(),
+    tailwind(),
+    sitemap({
+      i18n: {
+        defaultLocale: "fr",
+        locales: {
+          fr: "https://www.automatisons.fr",
+          en: "https://www.automatisons.fr/en",
+        },
+      },
+    }),
     sanity({
       projectId: "83z7c4c",
       dataset: "production",

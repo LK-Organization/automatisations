@@ -20,7 +20,7 @@ const Navigation: React.FC<NavigationProps> = ({
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const navItems = [
-    { key: "nav.home", href: lang === "en" ? "/en/" : "/" },
+    { key: "nav.home", href: lang === "en" ? "/en" : "/" },
     {
       key: "nav.solutions",
       href: lang === "en" ? "/en/solutions" : "/solutions",
@@ -29,7 +29,7 @@ const Navigation: React.FC<NavigationProps> = ({
   ];
 
   // Determine language switch target and label
-  const [switchTo, setSwitchTo] = useState("/");
+  const [switchTo, setSwitchTo] = useState("");
   const [switchLabel, setSwitchLabel] = useState("");
 
   useEffect(() => {
