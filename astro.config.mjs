@@ -3,7 +3,6 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import netlify from "@astrojs/netlify";
-
 import sanity from "@sanity/astro";
 
 export default defineConfig({
