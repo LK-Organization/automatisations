@@ -76,13 +76,6 @@ const exampleIds: Example[] = [
       "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top",
     imgPosition: "bottom",
   },
-  {
-    id: "assistant",
-    image: "/vocal-assitance.jpg",
-    tags: ["React", "Web Speech API"],
-    imageClass: "h-[250px] md:w-full w-full object-cover object-bottom",
-    imgPosition: "top",
-  },
 ];
 
 const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
