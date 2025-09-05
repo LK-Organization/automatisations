@@ -49,6 +49,15 @@ const BlogListing: React.FC<BlogListingProps> = ({
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+  // Utility: extract plain text from Sanity Portable Text
+  function getPlainText(blocks: any[] = []): string {
+    return blocks
+      .map((block) => {
+        if (block._type !== "block" || !block.children) return "";
+        return block.children.map((child: any) => child.text).join("");
+      })
+      .join("\n");
+  }
 
   return (
     <section className="py-20 bg-gray-50">
@@ -122,9 +131,8 @@ const BlogListing: React.FC<BlogListingProps> = ({
                 </p>
               )}
 
-              <p className="text-gray-500  text-sm line-clamp-3">
-                {post.body?.[0]?.children?.[0]?.text ||
-                  post.body?.[0]?.children?.[0]?.text}
+              <p className="text-gray-500 text-sm line-clamp-3">
+                {getPlainText(post.body)}
               </p>
             </article>
           ))}
