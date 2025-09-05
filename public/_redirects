@@ -1,3 +1,6 @@
+# Force canonical domain
 https://automatisons.fr/*  https://www.automatisons.fr/:splat  301!
-/en//    /en/    301
-/en//*   /en/:splat   301
+
+# Optional: cleanup double slashes globally
+/*/*/*  /:splat  301
+
