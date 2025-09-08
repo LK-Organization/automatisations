@@ -1,21 +1,27 @@
 ---
-import imageUrlBuilder from '@sanity/image-url';
+import imageUrlBuilder from "@sanity/image-url";
+import { sanityClient } from '../libs/sanityClient';
 
-const builder = imageUrlBuilder({
-   projectId: "x83z7c4c",
-  dataset: "production",
- 
-});
 
-const {
-  node: {
-    asset: { _ref },
-    alt,
-  },
-  ...attrs
-} = Astro.props;
+const builder = imageUrlBuilder(sanityClient);
 
-const src = builder.image(_ref).auto('format').fit('max').width(1200).toString();
+// On récupère les props
+const { node, ...attrs } = Astro.props;
+
+// Vérification des valeurs
+const ref = node?.asset?._ref;
+const alt = node?.alt ?? "";
+
+// Si l’image existe, on génère l’URL depuis Sanity
+const src = ref
+  ? builder.image(ref).auto("format").fit("max").width(1200).toString()
+  : "/placeholder.png"; // fallback si pas d’image
 ---
 
-<img class="w-full h-auto object-cover rounded-lg mb-8" loading="lazy" src={src} alt={alt} {...attrs} />
+<img
+  class="w-full h-auto object-cover rounded-lg mb-8"
+  loading="lazy"
+  src={src}
+  alt={alt}
+  {...attrs}
+/>
