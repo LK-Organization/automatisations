@@ -13,12 +13,12 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden h-svh"
+      className="relative min-h-screen  flex flex-col items-center justify-center overflow-hidden h-svh"
     >
       {/* Fond */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute aspect-video inset-0 z-0">
         <img
-          src="/hero.png"
+          src="/couverture.jpg"
           alt="Bannière IA"
           className="w-full h-full object-cover"
         />
