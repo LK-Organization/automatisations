@@ -16,7 +16,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
       className="relative min-h-screen  flex flex-col items-center justify-center overflow-hidden h-svh"
     >
       {/* Fond */}
-      <div className="absolute aspect-video inset-0 z-0">
+      <div className="absolute md:aspect-video inset-0 z-0">
         <img
           src="/couverture.jpg"
           alt="Bannière IA"
