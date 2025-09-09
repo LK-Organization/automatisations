@@ -4,7 +4,7 @@ import { ArrowDown, Play, Instagram, Facebook } from "lucide-react";
 import { useTranslations } from "../i18n";
 
 interface HeroProps {
-  lang: string;
+  lang: "fr" | "en";
 }
 
 const Hero: React.FC<HeroProps> = ({ lang }) => {
@@ -22,8 +22,6 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
           alt="Bannière IA"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/10 to-black/30" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30" />
       </div>
 
       {/* Contenu */}
@@ -39,13 +37,19 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
             <span className=" w-full whitespace-normal ">
               {t("hero.title")}
             </span>
+
+            <span className=" w-full whitespace-normal">
+              {t("hero.title-secondary")}
+            </span>
           </h1>
           <h1 className="md:hidden inline-block w-full text-4xl md:text-6xl lg:text-6xl space-y-5 font-bold text-white mb-6 leading-tight ">
             <span className=" w-full whitespace-normal ">
               {t("hero.title")}
             </span>
           </h1>
-
+          <p className="text-xl  md:text-2xl text-gray-400 mb-4 leading-relaxed max-w-4xl mx-auto">
+            {t("hero.subtitle")}
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
             <motion.a
               href={t("hero.cta.link")}
@@ -67,9 +71,6 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
             </motion.a>
           </div>
         </motion.div>
-        <p className="text-xl md:absolute bottom-[100px] md:text-2xl text-white mb-4 leading-relaxed max-w-4xl mx-auto">
-          {t("hero.subtitle")}
-        </p>
       </div>
 
       {/* Réseaux + flèche → section suivante sur md+ */}
