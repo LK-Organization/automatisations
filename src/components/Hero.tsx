@@ -13,7 +13,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
   return (
     <section
       id="home"
-      className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden"
+      className="relative w-full h-[100svh] md:h-screen flex flex-col items-center justify-center overflow-hidden"
     >
       {/* Background image */}
       <img
