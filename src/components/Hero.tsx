@@ -13,13 +13,13 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
   return (
     <section
       id="home"
-      className="relative w-full h-screen  flex flex-col items-center justify-center overflow-hidden"
+      className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden"
     >
       {/* Background image */}
       <img
         src="/cover.jpg"
         alt="Bannière IA"
-        className="w-full h-full  object-cover "
+        className="w-full h-full object-top object-cover "
       />
 
       {/* Overlay content */}
