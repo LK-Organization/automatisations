@@ -19,12 +19,12 @@ interface FormPayload {
 }
 
 const transporter = nodemailer.createTransport({
-  host: import.meta.env.MAIL_HOST,
+  host: "mail77.lwspanel.com",
   port: 465,
   secure: true,
   auth: {
-    user: import.meta.env.MAIL_USER,
-    pass: import.meta.env.MAIL_PASS,
+    user: "contact@automatisons.fr",
+    pass: "z3yJd5623@Kjhsd",
   },
 });
 
@@ -34,7 +34,9 @@ export const POST: APIRoute = async ({ request }) => {
 
     // 🌍 Get client IP address
     const forwarded = request.headers.get("x-forwarded-for");
-    const clientIP = forwarded ? forwarded.split(",")[0] : request.headers.get("x-real-ip") || "IP non détectée";
+    const clientIP = forwarded
+      ? forwarded.split(",")[0]
+      : request.headers.get("x-real-ip") || "IP non détectée";
 
     // 🌐 Load correct translations
     const i18n = ui[payload.lang] || ui["fr"];
@@ -47,7 +49,9 @@ export const POST: APIRoute = async ({ request }) => {
     lines.push(`📍 Adresse IP du client : ${clientIP}`);
     lines.push("");
 
-    lines.push(`1) ${t("multistep.step1.question")}: ${payload.knowAutomation}`);
+    lines.push(
+      `1) ${t("multistep.step1.question")}: ${payload.knowAutomation}`
+    );
     lines.push(`2) ${t("multistep.step2.question")}: ${payload.lostTime}`);
     lines.push(`3) ${t("multistep.step3.question")}: ${payload.robotThought}`);
     lines.push(`4) ${t("multistep.step4.question")}: ${payload.role}`);
@@ -62,13 +66,19 @@ export const POST: APIRoute = async ({ request }) => {
     });
 
     lines.push("");
-    lines.push(`${t("multistep.final.question")}: ${t("multistep.final.option." + payload.contactWhen)}`);
+    lines.push(
+      `${t("multistep.final.question")}: ${t("multistep.final.option." + payload.contactWhen)}`
+    );
 
     if (payload.contactWhen === "day" && payload.contactEmail) {
-      lines.push(`• ${t("multistep.final.channel.email")}: ${payload.contactEmail}`);
+      lines.push(
+        `• ${t("multistep.final.channel.email")}: ${payload.contactEmail}`
+      );
     }
     if (payload.contactWhen === "now" && payload.contactWhats) {
-      lines.push(`• ${t("multistep.final.channel.whatsapp")}: ${payload.contactWhats}`);
+      lines.push(
+        `• ${t("multistep.final.channel.whatsapp")}: ${payload.contactWhats}`
+      );
     }
     if (payload.contactWhen === "rendezvous") {
       lines.push(`• ${t("multistep.final.channel.calendar")}`);
@@ -86,6 +96,9 @@ export const POST: APIRoute = async ({ request }) => {
     return new Response(JSON.stringify({ success: true }), { status: 200 });
   } catch (err: any) {
     console.error("Erreur dans multistep-form.ts :", err);
-    return new Response(JSON.stringify({ error: err.message || "Erreur inconnue" }), { status: 500 });
+    return new Response(
+      JSON.stringify({ error: err.message || "Erreur inconnue" }),
+      { status: 500 }
+    );
   }
 };
