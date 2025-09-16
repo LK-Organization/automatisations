@@ -46,9 +46,9 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
           >
             <div className="flex items-center mb-4">
               <img
-                src="/logo-automatisation.png"
+                src="/logo-white.svg"
                 alt="Automatisons Agence IA Logo"
-                className="h-12 w-auto"
+                className="h-32git w-auto"
               />
             </div>
             <p className="text-gray-300 leading-relaxed">

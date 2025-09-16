@@ -276,17 +276,6 @@ const TestimonialsCarousel: React.FC<{ lang: string }> = ({ lang }) => {
                   >
                     "{t(tst.quoteKey)}"
                   </blockquote>
-
-                  {tst.sectorKey && tst.resultKey && (
-                    <div className="flex justify-between items-center mt-auto">
-                      <span className="text-sm text-gray-500">
-                        {t(tst.sectorKey)}
-                      </span>
-                      <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
-                        {t(tst.resultKey)}
-                      </span>
-                    </div>
-                  )}
                 </div>
               </a>
             </SwiperSlide>
@@ -343,17 +332,6 @@ const TestimonialsCarousel: React.FC<{ lang: string }> = ({ lang }) => {
             <blockquote className="text-gray-700 text-lg mb-6 italic whitespace-pre-line">
               "{t(selectedTestimonial.quoteKey)}"
             </blockquote>
-
-            {selectedTestimonial.sectorKey && selectedTestimonial.resultKey && (
-              <div className="flex justify-between items-center mt-6 pt-4 border-t border-gray-200">
-                <span className="text-gray-600">
-                  {t(selectedTestimonial.sectorKey)}
-                </span>
-                <span className="bg-green-100 text-green-800 px-4 py-2 rounded-full font-medium">
-                  {t(selectedTestimonial.resultKey)}
-                </span>
-              </div>
-            )}
           </div>
         </div>
       )}

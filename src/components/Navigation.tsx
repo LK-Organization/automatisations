@@ -91,7 +91,7 @@ const Navigation: React.FC<NavigationProps> = ({
                 className="flex items-center"
               >
                 <img
-                  src="/logo-automatisation.png"
+                  src="/logo-color-horizental.svg"
                   alt="Automatisons Agence IA Logo"
                   className="h-12 w-auto"
                 />

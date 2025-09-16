@@ -11,7 +11,7 @@ import {
 import { useTranslations } from "../i18n";
 
 interface MethodologyProps {
-  lang: string;
+  lang: "fr" | "en";
 }
 
 const Methodology: React.FC<MethodologyProps> = ({ lang }) => {
@@ -26,7 +26,6 @@ const Methodology: React.FC<MethodologyProps> = ({ lang }) => {
       featuresKeys: [
         "methodology.analysis.feature1",
         "methodology.analysis.feature2",
-        "methodology.analysis.feature3",
         "methodology.analysis.feature4",
       ],
       color: "from-blue-500 to-blue-600",
@@ -40,7 +39,6 @@ const Methodology: React.FC<MethodologyProps> = ({ lang }) => {
         "methodology.plan.feature1",
         "methodology.plan.feature2",
         "methodology.plan.feature3",
-        "methodology.plan.feature4",
       ],
       color: "from-purple-500 to-purple-600",
     },
@@ -53,7 +51,6 @@ const Methodology: React.FC<MethodologyProps> = ({ lang }) => {
         "methodology.implementation.feature1",
         "methodology.implementation.feature2",
         "methodology.implementation.feature3",
-        "methodology.implementation.feature4",
       ],
       color: "from-green-500 to-green-600",
     },
@@ -95,12 +92,6 @@ const Methodology: React.FC<MethodologyProps> = ({ lang }) => {
                   whileHover={{ y: -5 }}
                   className="relative"
                 >
-                  <div
-                    className={`absolute -top-4 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center text-white font-bold text-sm z-20`}
-                  >
-                    {index + 1}
-                  </div>
-
                   <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 mt-4">
                     <div
                       className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${step.color} flex items-center justify-center mb-6 mx-auto`}
@@ -112,15 +103,6 @@ const Methodology: React.FC<MethodologyProps> = ({ lang }) => {
                       <h3 className="text-2xl font-bold text-gray-900 mb-2">
                         {t(step.titleKey)}
                       </h3>
-
-                      <div
-                        className={`inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r ${step.color} text-white text-sm font-medium mb-3`}
-                      >
-                        <Clock size={16} />
-                        {t(step.durationKey)}
-                      </div>
-
-                      <p className="text-gray-600">{t(step.descriptionKey)}</p>
                     </div>
 
                     <div className="space-y-3">

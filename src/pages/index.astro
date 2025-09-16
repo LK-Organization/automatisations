@@ -16,6 +16,7 @@ import Exemples from '../components/Exemples';
 import AutomationEstimator from '../components/AutomationEstimator.jsx';
 import MultiStepForm from '../components/MultiStepForm';
 import HomeBlogSection from '../components/HomeBlogSection';
+import AutomationCarousel from '../components/Automatisations';
 const lang = 'fr';
 const title = 'Automatisons Agence IA – Automatisation Intelligente & IA';
 const description = 'Dites adieu à vos tâches répétitives et gagnez plusieurs heures par semaine : passez à l’automatisation : demandez un devis gratuit';
@@ -26,19 +27,20 @@ const description = 'Dites adieu à vos tâches répétitives et gagnez plusieur
   <Hero lang={lang} client:load />
    {/* <MultiStepForm lang={lang} client:load /> /> */}
   <Exemples lang={lang} client:load />
-   <VideoPlayer
+   {/*<VideoPlayer
     thumbnail="/thumbnail.jpg"
     videoUrl="https://firebasestorage.googleapis.com/v0/b/makeviews-ea1af.appspot.com/o/Videos%2FAuto%20Pres%20Vf.mp4?alt=media&token=067afe28-4cf4-4025-a47f-260e938a07fb"
     client:load
-  />
+  />*/}
   <CTA lang={lang} client:load />
+  <AutomationCarousel lang={lang} client:load />
   <Methodology lang={lang}  client:load />
    <Pricing  client:load />
    <AutomationEstimator client:load />
   <TestimonialsCarousel lang={lang} client:load />
   <About lang={lang} client:load />
   <Faq lang={lang} client:load />
-    <Sectors lang={lang} client:load />
+  {/*<Sectors lang={lang} client:load />*/}
     
  <HomeBlogSection client:load />
   <Footer lang={lang} client:load />
