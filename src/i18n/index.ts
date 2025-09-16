@@ -72,7 +72,9 @@ export const ui = {
     "automatisations.commandes.title":
       "Vérification automatisée des photos de commandes",
     "automatisations.commandes.subtitle":
-      "Un bot Telegram contrôle automatiquement les photos des commandes envoyées par les équipes de préparations.  Objectif : détecter rapidement les erreurs avant expédition du colis et corriger la commande si une erreur est présente.",
+      "Un bot Telegram contrôle automatiquement les photos des commandes envoyées par les équipes de préparations.",
+    "automatisations.commandes.objective":
+      "Objectif : détecter rapidement les erreurs avant expédition du colis et corriger la commande si une erreur est présente.",
     "automatisations.commandes.image": "/commandes.jpg",
     "automatisations.commandes.details":
       "Nous avons développé un agent IA connecté à Telegram qui analyse en temps réel les photos des commandes envoyées par un client spécialisé en logistique. Chaque photo comporte un numéro de commande, ce qui permet à l’automatisation de vérifier la conformité entre la commande passée sur Woocommerce et la photo reçue.\n\nFiabilité  Le bot alerte immédiatement en cas d’anomalie (produit manquant, produit ajouté, incohérence sur le panier du client). Sur plus de 100 tests réalisés, le système a atteint un taux de fiabilité d’environ 95 %. Les seuls échecs constatés concernent des photos floues ou mal cadrées, ce qui limite la reconnaissance correcte.\n\nGain  Cette automatisation réduit fortement le temps de contrôle manuel, économisant plus d’une heure de travail quotidiennement. Elle fiabilise la préparation des commandes et évite toute erreur humaine.",
@@ -80,7 +82,9 @@ export const ui = {
     "automatisations.sms.title":
       "Relances automatiques par SMS pour commandes non réglées",
     "automatisations.sms.subtitle":
-      "Les commandes annulées sur WooCommerce déclenchent automatiquement un SMS de relance au bout de 2 jours.  Objectif : maximiser les conversions en récupérant une partie des ventes perdues.",
+      "Les commandes annulées sur WooCommerce déclenchent automatiquement un SMS de relance au bout de 2 jours.",
+    "automatisations.sms.objective":
+      "Objectif : maximiser les conversions en récupérant une partie des ventes perdues.",
     "automatisations.sms.image": "/sms.jpg",
     "automatisations.sms.details":
       "L’automatisation, reliée à WooCommerce, détecte les commandes passées mais non réglées. Lorsqu’une commande est annulée, le client reçoit automatiquement un SMS personnalisé l’invitant à finaliser son achat 2 jours après sa tentative de commande. Cependant, si le client a repassé une commande lors de cette période, il ne recevra pas de SMS de relance. Tous les envois et les réponses sont suivis dans un tableau Google Sheets qui regroupe les réponses des clients aux SMS et l’historique d’envoi de SMS.\n\nFiabilité  Le système fonctionne avec une précision de 98 %. Les rares limites observées concernent des cas où un client repasse commande sous une autre identité (nom et numéro de téléphone différents), ce qui peut générer un SMS de relance malgré l’achat déjà validé.\n\nGain  Cette automatisation réduit les pertes liées aux abandons de panier et améliore le taux de conversion sans intervention humaine. Notre client qui gérait un e-commerce, envoyait manuellement les SMS de relances. Cette automatisation lui a permît d’économiser 30 minutes quotidiennement.",
@@ -88,7 +92,9 @@ export const ui = {
     "automatisations.exports.title":
       "Exports quotidiens automatisés des commandes",
     "automatisations.exports.subtitle":
-      "Des exports de données spécifiques sont générés automatiquement à heures fixes chaque jour.  Objectif : assurer un suivi fiable et régulier des commandes sans intervention humaine.",
+      "Des exports de données spécifiques sont générés automatiquement à heures fixes chaque jour.",
+    "automatisations.exports.objective":
+      "Objectif : assurer un suivi fiable et régulier des commandes sans intervention humaine.",
     "automatisations.exports.image": "/exports.jpg",
     "automatisations.exports.details":
       "L’automatisation est directement connectée à WooCommerce. Elle récupère les données des commandes et envoie deux exports quotidiens (du lundi au vendredi) dans un Google Sheet : un premier à 11h, un second à 14h, Un troisième, spécifique, le samedi à 10h avec des informations différentes. Le fichier se met à jour en continu et supprime les anciennes feuilles pour éviter l’accumulation de données inutiles. Les équipes disposent ainsi d’un tableau propre et toujours à jour. Des données confidentielles ou jugées inutiles ont été supprimés automatiquement afin de ne pas apparaître lors de l’export.\n\nGain & Fiabilité  Cette automatisation est fiable à 100 % et a permis d’économiser 15 minutes quotidiennement à notre client. Elle élimine le risque d’oubli, sécurise le partage d’informations et réduit le travail manuel récurrent lié aux exports.",
@@ -96,7 +102,9 @@ export const ui = {
     "automatisations.factures.title":
       "Saisie automatique des factures et devis dans le suivi interne",
     "automatisations.factures.subtitle":
-      "Les factures et devis reçus sont lus automatiquement et intégrés dans le fichier de Suivi.  Objectif : supprimer la saisie manuelle et sécuriser la gestion comptable.",
+      "Les factures et devis reçus sont lus automatiquement et intégrés dans le fichier de Suivi.",
+    "automatisations.factures.objective":
+      "Objectif : supprimer la saisie manuelle et sécuriser la gestion comptable.",
     "automatisations.factures.image": "/factures.jpg",
     "automatisations.factures.details":
       "Lorsqu’une facture ou un devis est déposé via un formulaire dédié, l’automatisation lit automatiquement le document et extrait les informations essentielles (montant, fournisseur, date, produits). Ces données sont ensuite insérées directement dans le fichier Google Sheet de notre client à la fin du tableau, sans intervention humaine.\n\nFiabilité  Le processus fonctionne avec une fiabilité de 98 %. Les seules limites apparaissent quand un fournisseur envoie une facture dans un format atypique, difficile à interpréter automatiquement.\n\nGain  Cette automatisation réduit les erreurs humaines, accélère la gestion des documents entrants et garantit un suivi centralisé et structuré des factures et devis. En moyenne, cette automatisation permet d’économiser 20 minutes quotidiennement à notre client.",
@@ -599,21 +607,27 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "automations.title": "Completed Automations",
     "automatisations.commandes.title": "Automated verification of order photos",
     "automatisations.commandes.subtitle":
-      "A Telegram bot automatically checks the photos of orders sent by the preparation teams.  Objective: quickly detect errors before shipping the package and correct the order if a mistake is present.",
+      "A Telegram bot automatically checks the photos of orders sent by the preparation teams.",
+    "automatisations.commandes.objective":
+      "Objective: quickly detect errors before shipping the package and correct the order if a mistake is present.",
     "automatisations.commandes.image": "/commandes.jpg",
     "automatisations.commandes.details":
       "We developed an AI agent connected to Telegram that analyzes in real time the photos of orders sent by a logistics client. Each photo includes an order number, which allows the automation to verify consistency between the order placed on WooCommerce and the photo received.\n\nReliability  The bot immediately alerts in case of an anomaly (missing product, added product, inconsistency in the customer’s cart). Out of more than 100 tests performed, the system achieved a reliability rate of around 95%. The only failures observed were due to blurry or poorly framed photos, which limited accurate recognition.\n\nGain  This automation significantly reduces manual control time, saving more than one hour of work daily. It makes order preparation more reliable and prevents human error.",
 
     "automatisations.sms.title": "Automatic SMS reminders for unpaid orders",
     "automatisations.sms.subtitle":
-      "Canceled WooCommerce orders automatically trigger a reminder SMS after 2 days.  Objective: maximize conversions by recovering some of the lost sales.",
+      "Canceled WooCommerce orders automatically trigger a reminder SMS after 2 days.",
+    "automatisations.sms.objective":
+      "Objective: maximize conversions by recovering some of the lost sales.",
     "automatisations.sms.image": "/sms.jpg",
     "automatisations.sms.details":
       "The automation, connected to WooCommerce, detects orders placed but not paid. When an order is canceled, the customer automatically receives a personalized SMS inviting them to complete their purchase 2 days after the attempt. However, if the customer placed another order during this period, they will not receive a reminder SMS. All sends and responses are tracked in a Google Sheets file that consolidates customer responses and the SMS sending history.\n\nReliability  The system works with a precision of 98%. The rare limits observed concern cases where a customer places another order under a different identity (name and phone number), which may generate a reminder SMS despite the purchase already being validated.\n\nGain  This automation reduces losses from cart abandonment and improves the conversion rate without human intervention. Our client, who managed an e-commerce, used to manually send reminder SMS. This automation allowed him to save 30 minutes daily.",
 
     "automatisations.exports.title": "Automated daily exports of orders",
     "automatisations.exports.subtitle":
-      "Specific data exports are generated automatically at fixed times each day.  Objective: ensure reliable and regular order tracking without human intervention.",
+      "Specific data exports are generated automatically at fixed times each day.",
+    "automatisations.exports.objective":
+      "Objective: ensure reliable and regular order tracking without human intervention.",
     "automatisations.exports.image": "/exports.jpg",
     "automatisations.exports.details":
       "The automation is directly connected to WooCommerce. It retrieves order data and sends two daily exports (Monday to Friday) into a Google Sheet: the first at 11am, the second at 2pm, and a third, specific one on Saturday at 10am with different information. The file updates continuously and deletes old sheets to avoid data overload. Teams thus always have a clean and up-to-date table. Confidential or unnecessary data is automatically removed so it doesn’t appear in the export.\n\nGain & Reliability  This automation is 100% reliable and allowed our client to save 15 minutes daily. It eliminates the risk of forgetting, secures information sharing, and reduces recurring manual work related to exports.",
@@ -621,7 +635,9 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "automatisations.factures.title":
       "Automatic entry of invoices and quotes into internal tracking",
     "automatisations.factures.subtitle":
-      "Invoices and quotes received are automatically read and integrated into the tracking file.  Objective: eliminate manual entry and secure accounting management.",
+      "Invoices and quotes received are automatically read and integrated into the tracking file.",
+    "automatisations.factures.objective":
+      "Objective: eliminate manual entry and secure accounting management.",
     "automatisations.factures.image": "/factures.jpg",
     "automatisations.factures.details":
       "When an invoice or quote is submitted via a dedicated form, the automation automatically reads the document and extracts key information (amount, supplier, date, products). This data is then inserted directly into the client’s Google Sheet file at the end of the table, without human intervention.\n\nReliability  The process works with a reliability rate of 98%. The only limitations appear when a supplier sends an invoice in an atypical format, which is difficult to interpret automatically.\n\nGain  This automation reduces human errors, speeds up the management of incoming documents, and ensures centralized and structured tracking of invoices and quotes. On average, this automation saves our client 20 minutes daily.",
