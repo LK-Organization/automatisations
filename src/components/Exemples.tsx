@@ -1,5 +1,10 @@
 // src/components/AutomationCarousel.tsx
-import React, { useState, useRef, useEffect } from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  type ButtonHTMLAttributes,
+} from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import { ChevronLeft, ChevronRight, X, Bot } from "lucide-react";
@@ -20,9 +25,11 @@ interface Example {
 }
 
 interface AutomationCarouselProps {
-  lang: string;
+  lang: "fr" | "en";
 }
-
+type CustomButtonHTMLAttributes = ButtonHTMLAttributes<HTMLButtonElement> & {
+  ariaLabel?: "common.close" | "other.value";
+};
 // Simple hook to detect mobile screens
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -52,14 +59,7 @@ const exampleIds: Example[] = [
       "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-right",
     imgPosition: "top",
   },
-  {
-    id: "chatbot",
-    image: "/chatbot.webp",
-    tags: ["React", "OpenAI"],
-    imageClass:
-      "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top",
-    imgPosition: "bottom",
-  },
+
   {
     id: "crm",
     image: "/crm.jpg",
@@ -123,9 +123,9 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
 
   const examplesWithText = exampleIds.map((ex) => ({
     ...ex,
-    title: t(`exemples.${ex.id}.title`),
-    subtitle: t(`exemples.${ex.id}.subtitle`),
-    details: t(`exemples.${ex.id}.details`),
+    title: t(`exemples.${ex.id}.title` as any),
+    subtitle: t(`exemples.${ex.id}.subtitle` as any),
+    details: t(`exemples.${ex.id}.details` as any),
   }));
 
   const handleExpand = (
@@ -190,7 +190,6 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
                     </div>
                     <button
                       onClick={handleCollapse}
-                      aria-label={t("common.close")}
                       className="absolute top-4 right-4"
                     >
                       <X size={24} className="text-gray-700" />
@@ -242,7 +241,7 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
                         onClick={handleCollapse}
                         className="px-4 py-2 text-white rounded-full hover:bg-white/30 transition flex items-center"
                       >
-                        <X size={16} className="mr-1" /> {t("common.close")}
+                        <X size={16} className="mr-1" />
                       </button>
                     </div>
                     <p className="text-sm leading-relaxed whitespace-pre-line mb-6">
@@ -334,7 +333,7 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
         </div>
 
         {/* Navigation buttons */}
-        <div className="flex justify-center space-x-4 mt-6">
+        <div className="flex md:hidden justify-center space-x-4 mt-6">
           <button
             onClick={() => swiperRef.current?.slidePrev()}
             className="p-3 bg-white rounded-full shadow disabled:opacity-50"

@@ -15,7 +15,7 @@ export const ui = {
     "hero.title-secondary": "tâches répétitives.\n ",
     "hero.ai": "IA Active",
     "hero.subtitle":
-      "Nos automatisations IA personnalisées pour vos tâches et vos workflows informatiques.",
+      "Nos automatisations sur mesure pour vos tâches répétitives.",
 
     "hero.cta": "Comment ça fonctionne",
     "hero.cta.secondary": "Nous contacter",
@@ -517,8 +517,7 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "hero.title": "Say goodbye to your",
     "hero.title-secondary": "repetitive tasks.\n ",
     "hero.ai": "Active AI",
-    "hero.subtitle":
-      "Our custom AI automations for your IT tasks and workflows.",
+    "hero.subtitle": "Our custom automations for your repetitive tasks.",
     "hero.cta": "How does it work",
     "hero.cta.secondary": "Contact Us",
     "hero.cta.link": "#exemples",

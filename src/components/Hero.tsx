@@ -48,20 +48,10 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center ">
             <motion.a
-              href={t("hero.cta.link")}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-primary-600 to-accent-500 text-white px-8 py-4 rounded-lg font-semibold flex items-center gap-2 w-full sm:w-auto"
-            >
-              {t("hero.cta")}
-              <ArrowDown size={20} />
-            </motion.a>
-
-            <motion.a
               href={t("hero.cta.secondary.link")}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-gray-900 flex items-center gap-2 w-full sm:w-auto"
+              className="bg-gradient-to-r from-primary-600 to-accent-500 text-white px-8 py-4 rounded-lg font-semibold flex items-center gap-2 w-full sm:w-auto"
             >
               <Play size={20} />
               {t("hero.cta.secondary")}
@@ -77,7 +67,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
         transition={{ duration: 0.8, delay: 0.7 }}
         className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 flex-col items-center space-y-6 z-10"
       >
-        <a href="#next-section" className="block">
+        <a href="#exemples" className="block">
           <ArrowDown size={48} className="text-white animate-bounce" />
         </a>
       </motion.div>

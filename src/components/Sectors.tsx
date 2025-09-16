@@ -11,7 +11,7 @@ import {
 import { useTranslations } from "../i18n";
 
 interface SectorsProps {
-  lang: string;
+  lang: "fr" | "en";
 }
 
 const Sectors: React.FC<SectorsProps> = ({ lang }) => {
@@ -63,7 +63,7 @@ const Sectors: React.FC<SectorsProps> = ({ lang }) => {
   ];
 
   return (
-    <section id="next-section" className="pb-20 bg-white footer">
+    <section className="pb-20 bg-white footer">
       <div id="footer" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
         <motion.div
