@@ -93,7 +93,7 @@ const Navigation: React.FC<NavigationProps> = ({
                 <img
                   src="/logo-color-horizental.svg"
                   alt="Automatisons Agence IA Logo"
-                  className="h-12 w-auto"
+                  className="h-8 md:h-10 w-auto"
                 />
               </a>
             </div>
