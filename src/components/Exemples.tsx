@@ -30,6 +30,7 @@ interface AutomationCarouselProps {
 type CustomButtonHTMLAttributes = ButtonHTMLAttributes<HTMLButtonElement> & {
   ariaLabel?: "common.close" | "other.value";
 };
+
 // Simple hook to detect mobile screens
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -82,14 +83,24 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
   const t = useTranslations(lang);
   const isMobile = useIsMobile();
 
-  const [selected, setSelected] = useState<
-    (Example & { title: string; subtitle: string; details: string }) | null
-  >(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [isExpanded, setIsExpanded] = useState(false);
   const [originSlide, setOriginSlide] = useState<HTMLElement | null>(null);
   const swiperRef = useRef<any>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const expandedRef = useRef<HTMLDivElement>(null);
+
+  // For touch swipe on mobile modal
+  const touchStartX = useRef<number | null>(null);
+  const touchCurrentX = useRef<number | null>(null);
+
+  // Build examples with translated text
+  const examplesWithText = exampleIds.map((ex) => ({
+    ...ex,
+    title: t(`exemples.${ex.id}.title` as any),
+    subtitle: t(`exemples.${ex.id}.subtitle` as any),
+    details: t(`exemples.${ex.id}.details` as any),
+  }));
 
   // Lock background scroll on mobile when modal is open
   useEffect(() => {
@@ -121,29 +132,38 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
     }
   }, [isExpanded, isMobile]);
 
-  const examplesWithText = exampleIds.map((ex) => ({
-    ...ex,
-    title: t(`exemples.${ex.id}.title` as any),
-    subtitle: t(`exemples.${ex.id}.subtitle` as any),
-    details: t(`exemples.${ex.id}.details` as any),
-  }));
+  // Keyboard navigation when expanded
+  useEffect(() => {
+    if (!isExpanded) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") handleCollapse();
+      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "ArrowRight") handleNext();
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isExpanded, selectedIndex]);
 
   const handleExpand = (
-    ex: Example & { title: string; subtitle: string; details: string },
-    event: React.MouseEvent<HTMLElement>
+    index: number,
+    event: React.MouseEvent<HTMLElement> | React.TouchEvent<HTMLElement>
   ) => {
-    setSelected(ex);
+    setSelectedIndex(index);
     setIsExpanded(true);
-    setOriginSlide(event.currentTarget);
-    swiperRef.current?.autoplay.stop();
+    // store origin element for animation (only if click provided)
+    if ("currentTarget" in event) {
+      setOriginSlide(event.currentTarget as HTMLElement);
+    }
+    swiperRef.current?.autoplay?.stop?.();
   };
 
   const handleCollapse = () => {
     setIsExpanded(false);
     setTimeout(() => {
-      setSelected(null);
+      setSelectedIndex(null);
       setOriginSlide(null);
-      swiperRef.current?.autoplay.start();
+      swiperRef.current?.autoplay?.start?.();
     }, 300);
   };
 
@@ -159,6 +179,56 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
     };
   };
 
+  const wrapIndex = (i: number) => {
+    const n = examplesWithText.length;
+    return ((i % n) + n) % n;
+  };
+
+  const handleNext = () => {
+    if (selectedIndex === null) return;
+    setSelectedIndex((s) => (s === null ? null : wrapIndex(s + 1)));
+  };
+
+  const handlePrev = () => {
+    if (selectedIndex === null) return;
+    setSelectedIndex((s) => (s === null ? null : wrapIndex(s - 1)));
+  };
+
+  // Touch handlers for mobile swipe in modal
+  const onTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchCurrentX.current = e.touches[0].clientX;
+  };
+  const onTouchMove = (e: React.TouchEvent) => {
+    touchCurrentX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = () => {
+    if (touchStartX.current === null || touchCurrentX.current === null) return;
+    const delta = touchCurrentX.current - touchStartX.current;
+    const threshold = 50; // px
+    if (delta > threshold) {
+      // swipe right -> previous
+      handlePrev();
+    } else if (delta < -threshold) {
+      // swipe left -> next
+      handleNext();
+    }
+    touchStartX.current = null;
+    touchCurrentX.current = null;
+  };
+
+  // When switching selectedIndex, update originSlide to the slide DOM (optional)
+  useEffect(() => {
+    if (selectedIndex === null) return;
+    // find slide element with data-example-id
+    const id = examplesWithText[selectedIndex].id;
+    const slideEl = containerRef.current?.querySelector<HTMLElement>(
+      `[data-example-id="${id}"]`
+    );
+    if (slideEl) setOriginSlide(slideEl);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedIndex]);
+
   return (
     <section className="py-16" id="exemples">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -169,48 +239,80 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
         </div>
 
         <div className="relative" ref={containerRef}>
-          <AnimatePresence>
+          <AnimatePresence initial={false}>
             {isExpanded &&
-              selected &&
+              selectedIndex !== null &&
+              // Mobile full-screen modal
               (isMobile ? (
-                // Mobile full-screen modal
                 <motion.div
                   key="mobile-modal"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   className="fixed inset-0 z-50 bg-white overflow-auto p-6"
+                  onTouchStart={onTouchStart}
+                  onTouchMove={onTouchMove}
+                  onTouchEnd={onTouchEnd}
                 >
                   <div className="flex justify-between items-center mb-4">
                     <div className="flex flex-col items-center gap-2">
                       <Bot size={40} className="text-indigo-600" />
                       <h3 className="text-2xl text-center font-semibold text-gray-900">
-                        {selected.title}
+                        {examplesWithText[selectedIndex].title}
                       </h3>
                     </div>
-                    <button
-                      onClick={handleCollapse}
-                      className="absolute top-4 right-4"
-                    >
-                      <X size={24} className="text-gray-700" />
-                    </button>
-                  </div>
-                  <p className="text-gray-800 mb-6 whitespace-pre-line">
-                    {selected.details}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {selected.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-100 text-indigo-800"
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={handleCollapse}
+                        className="absolute top-4 right-4"
+                        aria-label="Close"
                       >
-                        {tag}
-                      </span>
-                    ))}
+                        <X size={24} className="text-gray-700" />
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="mb-6">
+                    <img
+                      src={examplesWithText[selectedIndex].image}
+                      alt={examplesWithText[selectedIndex].title}
+                      className="w-full h-auto rounded-lg mb-4 object-cover"
+                    />
+                    <p className="text-gray-800 mb-6 whitespace-pre-line">
+                      {examplesWithText[selectedIndex].details}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2">
+                      {examplesWithText[selectedIndex].tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-100 text-indigo-800"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="fixed bottom-6 left-0 right-0 flex justify-between px-6 pointer-events-auto">
+                    <button
+                      onClick={handlePrev}
+                      className="p-3 bg-white rounded-full shadow disabled:opacity-50"
+                      aria-label="Previous example"
+                    >
+                      <ChevronLeft />
+                    </button>
+                    <button
+                      onClick={handleNext}
+                      className="p-3 bg-white rounded-full shadow disabled:opacity-50"
+                      aria-label="Next example"
+                    >
+                      <ChevronRight />
+                    </button>
                   </div>
                 </motion.div>
               ) : (
-                // Desktop expanded view with outside click handling
+                // Desktop expanded view with side arrows + outside click handling
                 <motion.div
                   ref={expandedRef}
                   key="expanded-view"
@@ -223,46 +325,81 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
                   }}
                   exit={getSlidePosition()}
                   transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="absolute z-20 flex flex-col md:flex-row bg-gradient-to-br from-blue-800 to-[#2563eb] rounded-2xl shadow-lg overflow-hidden min-h-[300px]"
+                  className="absolute z-20 flex flex-col md:flex-row bg-gradient-to-br from-blue-800 to-[#2563eb] rounded-2xl shadow-lg overflow-visible min-h-[300px]"
                 >
+                  {/* Left arrow */}
+                  <button
+                    onClick={handlePrev}
+                    className="hidden md:flex absolute left-[-24px] top-1/2 transform -translate-y-1/2 z-30 bg-white  p-3 rounded-full items-center justify-center shadow-xl"
+                    aria-label="Previous example"
+                    style={{ backdropFilter: "blur(6px)" }}
+                  >
+                    <ChevronLeft className="text-black" />
+                  </button>
+
+                  {/* Right arrow */}
+                  <button
+                    onClick={handleNext}
+                    className="hidden md:flex absolute right-[-24px] top-1/2 transform -translate-y-1/2 z-30 bg-white p-3 rounded-full items-center justify-center shadow-xl"
+                    aria-label="Next example"
+                    style={{ backdropFilter: "blur(6px)" }}
+                  >
+                    <ChevronRight className="text-black" />
+                  </button>
+
                   <div
                     className="w-full md:w-1/3 min-h-[300px] p-6 flex flex-col justify-between bg-cover bg-center"
-                    style={{ backgroundImage: `url(${selected.image})` }}
+                    style={{
+                      backgroundImage: `url(${examplesWithText[selectedIndex].image})`,
+                    }}
                   ></div>
+
                   <div className="w-full md:w-2/3 p-6 text-white border-t md:border-t-0 md:border-l border-white/20">
                     <div className="flex justify-between items-center gap-3 mb-4">
                       <div className="p-2 bg-indigo-100 text-indigo-600 rounded-full">
                         <Bot size={20} />
                       </div>
                       <h3 className="text-2xl font-semibold">
-                        {selected.title}
+                        {examplesWithText[selectedIndex].title}
                       </h3>
-                      <button
-                        onClick={handleCollapse}
-                        className="px-4 py-2 text-white rounded-full hover:bg-white/30 transition flex items-center"
-                      >
-                        <X size={16} className="mr-1" />
-                      </button>
-                    </div>
-                    <p className="text-sm leading-relaxed whitespace-pre-line mb-6">
-                      {selected.details}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {selected.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-100 text-indigo-800"
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={handleCollapse}
+                          className="px-4 py-2 text-white rounded-full hover:bg-white/30 transition flex items-center"
+                          aria-label="Close"
                         >
-                          {tag}
-                        </span>
-                      ))}
+                          <X size={16} className="mr-1" />
+                        </button>
+                      </div>
                     </div>
+
+                    <motion.div
+                      key={examplesWithText[selectedIndex].id}
+                      initial={{ opacity: 0, x: 10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -10 }}
+                      transition={{ duration: 0.18 }}
+                    >
+                      <p className="text-sm leading-relaxed whitespace-pre-line mb-6">
+                        {examplesWithText[selectedIndex].details}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {examplesWithText[selectedIndex].tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-3 py-1 text-xs font-semibold rounded-full bg-indigo-100 text-indigo-800"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </motion.div>
                   </div>
                 </motion.div>
               ))}
           </AnimatePresence>
 
-          {/* Carousel */}
+          {/* Carousel (hidden/disabled while expanded) */}
           <motion.div
             animate={{ opacity: isExpanded ? 0 : 1 }}
             transition={{ duration: 0.2 }}
@@ -281,10 +418,11 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
               }}
               className="px-4"
             >
-              {examplesWithText.map((ex) => (
+              {examplesWithText.map((ex, idx) => (
                 <SwiperSlide key={ex.id}>
                   <div
-                    onClick={(e) => handleExpand(ex, e)}
+                    data-example-id={ex.id}
+                    onClick={(e) => handleExpand(idx, e as any)}
                     className="cursor-pointer h-[450px] flex flex-col justify-between bg-gradient-to-br from-blue-800 to-[#2563eb] rounded-2xl shadow-lg overflow-hidden relative"
                   >
                     {ex.imgPosition === "top" && (
@@ -332,17 +470,19 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
           </motion.div>
         </div>
 
-        {/* Navigation buttons */}
+        {/* Mobile bottom nav controls for the swiper itself (not modal) */}
         <div className="flex md:hidden justify-center space-x-4 mt-6">
           <button
             onClick={() => swiperRef.current?.slidePrev()}
             className="p-3 bg-white rounded-full shadow disabled:opacity-50"
+            aria-label="Carousel previous"
           >
             <ChevronLeft />
           </button>
           <button
             onClick={() => swiperRef.current?.slideNext()}
             className="p-3 bg-white rounded-full shadow disabled:opacity-50"
+            aria-label="Carousel next"
           >
             <ChevronRight />
           </button>
