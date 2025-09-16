@@ -44,11 +44,11 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
             viewport={{ once: true }}
             className="text-left"
           >
-            <div className="flex items-center mb-4">
+            <div className="flex items-center justify-center md:justify-start mb-4">
               <img
                 src="/logo-white.svg"
                 alt="Automatisons Agence IA Logo"
-                className="h-32git w-auto"
+                className="h-16 md:h-32  w-auto"
               />
             </div>
             <p className="text-gray-300 leading-relaxed">
