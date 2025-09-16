@@ -296,12 +296,14 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
       sections.push(
         <div key={i} className="mb-6">
           {heading && (
-            <h4 className="text-lg font-semibold mb-2 text-white">{heading}</h4>
+            <h4 className="text-lg font-semibold mb-2 text-black md:text-white">
+              {heading}
+            </h4>
           )}
           <p className="text-sm leading-relaxed whitespace-pre-line">{text}</p>
 
           {listItems.length > 0 && (
-            <ul className="list-disc list-inside text-sm text-gray-200 my-2">
+            <ul className="list-disc list-inside text-sm text-black-200 md:text-gray-200 my-2">
               {listItems.map((li, idx) => (
                 <li key={idx}>{li}</li>
               ))}
