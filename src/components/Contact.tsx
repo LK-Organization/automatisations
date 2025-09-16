@@ -5,7 +5,7 @@ import debounce from "lodash/debounce";
 import { useTranslations } from "../i18n";
 
 interface ContactProps {
-  lang: string;
+  lang: "fr" | "en";
 }
 
 const Contact: React.FC<ContactProps> = ({ lang }) => {
@@ -85,11 +85,11 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
     }
   }, []);
   useEffect(() => {
-    const interval = setInterval(() => {
+    const interval = window.setInterval(() => {
       saveDraftToServer();
     }, 10000); // every 10 seconds
 
-    return () => clearInterval(interval);
+    return () => window.clearInterval(interval);
   }, [saveDraftToServer]);
 
   // Handle form field changes

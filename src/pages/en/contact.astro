@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Navigation from '../../components/Navigation';
-import Contact from '../../components/Contact';
+import ContactSection from '../../components/Contact';
 import Footer from '../../components/Footer';
 import Chatbot from '../../components/Chatbot';
 
@@ -13,8 +13,8 @@ const description = 'Contactez-nous pour discuter de votre projet d\'automatisat
 <Layout title={title} description={description}>
   <Navigation lang={lang} isHomePage={false} client:load />
   <main class="pt-16">
-    <Contact lang={lang} client:load />
+    <ContactSection lang={lang} client:load />
   </main>
   <Footer lang={lang} client:load />
-  <Chatbot lang={lang} client:load />
+ {/*<Chatbot lang={lang} client:load />*/}
 </Layout>
