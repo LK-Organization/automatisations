@@ -102,7 +102,6 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
     title: t(`automatisations.${ex.id}.title` as any),
     objective: t(`automatisations.${ex.id}.objective` as any),
     subtitle: t(`automatisations.${ex.id}.subtitle` as any),
-    details: t(`automatisations.${ex.id}.details` as any),
   }));
 
   // Lock background scroll on mobile when modal is open
@@ -145,7 +144,6 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
     };
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isExpanded, selectedIndex]);
 
   const handleExpand = (
@@ -227,11 +225,9 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
     if (slideEl) setOriginSlide(slideEl);
   }, [selectedIndex]);
 
-  // === NEW: Measure all slide heights and set the max so every slide matches it ===
+  // === Measure all slide heights and set the max so every slide matches it ===
   useEffect(() => {
     if (!containerRef.current) return;
-
-    // Only measure when carousel is visible (not expanded)
     if (isExpanded) return;
 
     const measure = () => {
@@ -246,14 +242,12 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
       setMaxSlideHeight(max);
     };
 
-    // Use ResizeObserver to react to content changes (images loading, text wrapping, etc.)
     const ro = new ResizeObserver(() => measure());
     const slides = Array.from(
       containerRef.current.querySelectorAll<HTMLElement>("[data-example-id]")
     );
     slides.forEach((s) => ro.observe(s));
 
-    // Also watch window resize and image loads (images sometimes don't trigger ResizeObserver immediately)
     window.addEventListener("resize", measure);
     const imgs = Array.from(
       containerRef.current.querySelectorAll<HTMLImageElement>("img")
@@ -261,7 +255,6 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
     const onImgLoad = () => measure();
     imgs.forEach((img) => img.addEventListener("load", onImgLoad));
 
-    // initial measure
     measure();
 
     return () => {
@@ -270,6 +263,64 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
       imgs.forEach((img) => img.removeEventListener("load", onImgLoad));
     };
   }, [isExpanded, examplesWithText]);
+
+  // --- helper to render details ---
+  const renderDetails = (id: string) => {
+    const sections: JSX.Element[] = [];
+    let i = 1;
+
+    while (true) {
+      const key = `automatisations.${id}.details.${i}`;
+      const text = t(key as any);
+      if (!text || text.startsWith("automatisations.")) break;
+
+      let heading = "";
+      if (i === 1) heading = lang === "fr" ? "Réalisation" : "Realization";
+      if (i === 2) heading = lang === "fr" ? "Fiabilité" : "Reliability";
+      if (i === 3) heading = lang === "fr" ? "Gain" : "Gain";
+
+      // Vérifier s’il existe des sous-listes
+      const listItems: string[] = [];
+      let j = 1;
+      while (true) {
+        const listKey = `automatisations.${id}.details.${i}.list.${j}`;
+        const listText = t(listKey as any);
+        if (!listText || listText.startsWith("automatisations.")) break;
+        listItems.push(listText);
+        j++;
+      }
+
+      const endKey = `automatisations.${id}.details.${i}.end`;
+      const endText = t(endKey as any);
+
+      sections.push(
+        <div key={i} className="mb-6">
+          {heading && (
+            <h4 className="text-lg font-semibold mb-2 text-white">{heading}</h4>
+          )}
+          <p className="text-sm leading-relaxed whitespace-pre-line">{text}</p>
+
+          {listItems.length > 0 && (
+            <ul className="list-disc list-inside text-sm text-gray-200 my-2">
+              {listItems.map((li, idx) => (
+                <li key={idx}>{li}</li>
+              ))}
+            </ul>
+          )}
+
+          {endText && (
+            <p className="text-sm leading-relaxed whitespace-pre-line mt-2">
+              {endText}
+            </p>
+          )}
+        </div>
+      );
+
+      i++;
+    }
+
+    return sections;
+  };
 
   return (
     <section className="py-16" id="automatisations">
@@ -318,9 +369,9 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
                       alt={examplesWithText[selectedIndex].title}
                       className="w-full h-auto rounded-lg mb-4 object-cover"
                     />
-                    <p className="text-gray-800 mb-6 whitespace-pre-line">
-                      {examplesWithText[selectedIndex].details}
-                    </p>
+
+                    {/* Render dynamic details */}
+                    {renderDetails(examplesWithText[selectedIndex].id)}
 
                     <div className="flex flex-wrap gap-2">
                       {examplesWithText[selectedIndex].tags.map((tag) => (
@@ -414,9 +465,9 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
                       exit={{ opacity: 0, x: -10 }}
                       transition={{ duration: 0.18 }}
                     >
-                      <p className="text-sm leading-relaxed whitespace-pre-line mb-6">
-                        {examplesWithText[selectedIndex].details}
-                      </p>
+                      {/* Render dynamic details */}
+                      {renderDetails(examplesWithText[selectedIndex].id)}
+
                       <div className="flex flex-wrap gap-2">
                         {examplesWithText[selectedIndex].tags.map((tag) => (
                           <span
@@ -457,8 +508,6 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
                   <div
                     data-example-id={ex.id}
                     onClick={(e) => handleExpand(idx, e as any)}
-                    // IMPORTANT: don't hard-code a fixed tailwind height here.
-                    // instead we set an inline height equal to the measured tallest slide
                     style={
                       maxSlideHeight
                         ? { height: `${maxSlideHeight}px` }
