@@ -24,7 +24,7 @@ const CTA: React.FC<CTAProps> = ({ lang }) => {
             {t("methodology.cta.title")}
           </h3>
           <motion.a
-            href={lang === "en" ? "/en/contact" : "/contact"}
+            href="#contact"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary-600 transition-colors duration-200"

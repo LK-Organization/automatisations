@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import Navigation from '../../components/Navigation';
 import Hero from '../../components/Hero';
 import Sectors from '../../components/Sectors';
+import { Contact } from '../../components/Contact';
 import Methodology from '../../components/Methodology';
 import About from '../../components/About';
 import Footer from '../../components/Footer';
@@ -30,6 +31,7 @@ const description = 'Say goodbye to repetitive tasks and save hours every week: 
 <About lang={lang} client:load />
 <Faq lang={lang} client:load />
 {/*<Sectors lang={lang} client:load />*/}
+<Contact lang={lang} client:load />
 <Footer lang={lang} client:load />
   {/*<Chatbot lang={lang} client:load />*/}
 </Layout>

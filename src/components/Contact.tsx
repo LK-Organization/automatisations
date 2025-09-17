@@ -8,7 +8,7 @@ interface ContactProps {
   lang: "fr" | "en";
 }
 
-const Contact: React.FC<ContactProps> = ({ lang }) => {
+export const Contact: React.FC<ContactProps> = ({ lang }) => {
   const t = useTranslations(lang);
   const [formData, setFormData] = useState({
     name: "",
@@ -162,7 +162,7 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-50 overflow-hidden">
+    <section id="contact" className="py-20 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -382,5 +382,3 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
     </section>
   );
 };
-
-export default Contact;

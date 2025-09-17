@@ -46,7 +46,7 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
           >
             <div className="flex items-center justify-center md:justify-start mb-4">
               <img
-                src="/logo-white.svg"
+                src="/logo-color.svg"
                 alt="Automatisons Agence IA Logo"
                 className="h-16 md:h-32  w-auto"
               />

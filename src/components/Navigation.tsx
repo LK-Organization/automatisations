@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations, languages } from "../i18n";
 
 interface NavigationProps {
-  lang: string;
+  lang: "fr" | "en";
   isHomePage?: boolean;
 }
 
@@ -25,7 +25,7 @@ const Navigation: React.FC<NavigationProps> = ({
       key: "nav.solutions",
       href: lang === "en" ? "/en/solutions" : "/solutions",
     },
-    { key: "nav.contact", href: lang === "en" ? "/en/contact" : "/contact" },
+    { key: "nav.contact", href: lang === "en" ? "/en/#contact" : "/#contact" },
   ];
 
   // Determine language switch target and label
@@ -101,15 +101,25 @@ const Navigation: React.FC<NavigationProps> = ({
             {/* Desktop Navigation */}
             <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 items-center space-x-8">
               <div>
-                {navItems.map((item) => (
-                  <a
-                    key={item.key}
-                    href={item.href === "/" ? "/" : `${item.href}/`}
-                    className="text-white/90 hover:text-white px-4 py-2 text-base font-medium transition-all duration-200 hover:scale-105"
-                  >
-                    {t(item.key)}
-                  </a>
-                ))}
+                {navItems.map((item) => {
+                  // Keep "/" as "/", keep anchors (#) as-is, else add "/"
+                  const href =
+                    item.href === "/"
+                      ? "/"
+                      : item.href.includes("#")
+                        ? item.href
+                        : `${item.href}/`;
+
+                  return (
+                    <a
+                      key={item.key}
+                      href={href}
+                      className="text-white/90 hover:text-white px-4 py-2 text-base font-medium transition-all duration-200 hover:scale-105"
+                    >
+                      {t(item.key)}
+                    </a>
+                  );
+                })}
               </div>
             </div>
             {/* Language Switcher Desktop */}
@@ -150,16 +160,26 @@ const Navigation: React.FC<NavigationProps> = ({
               }`}
             >
               <div className="flex flex-col gap-4 px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                {navItems.map((item) => (
-                  <a
-                    key={item.key}
-                    href={item.href === "/" ? "/" : `${item.href}/`}
-                    className="text-white/90 hover:text-white block px-3 py-2 text-base font-medium transition-all duration-200"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {t(item.key)}
-                  </a>
-                ))}
+                {navItems.map((item) => {
+                  const href =
+                    item.href === "/"
+                      ? "/"
+                      : item.href.includes("#")
+                        ? item.href
+                        : `${item.href}/`;
+
+                  return (
+                    <a
+                      key={item.key}
+                      href={href}
+                      className="text-white/90 hover:text-white block px-3 py-2 text-base font-medium transition-all duration-200"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {t(item.key)}
+                    </a>
+                  );
+                })}
+
                 <a
                   href={switchTo}
                   className="  px-8 py-2 items-center justify-center gap-2 "
