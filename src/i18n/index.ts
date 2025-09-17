@@ -463,8 +463,7 @@ export const ui = {
     "methodology.implementation.title": "Mise en Œuvre",
     "methodology.implementation.description":
       "Développement, déploiement et formation pour une adoption réussie",
-    "methodology.cta.title":
-      "Commencez à automatiser dès aujourd'hui dès aujourd'hui",
+    "methodology.cta.title": "Commencez à automatiser dès aujourd'hui",
     "methodology.cta.description":
       "Bénéficiez d'une analyse gratuite de vos processus en 48h",
     "methodology.cta.free_analysis": "Analyse gratuite",
@@ -1027,7 +1026,7 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "methodology.implementation.title": "Implementation",
     "methodology.implementation.description":
       "Development, deployment, and training for successful adoption",
-    "methodology.cta.title": "Start automating today Today",
+    "methodology.cta.title": "Start automating today",
     "methodology.cta.description": "Get a free process audit within 48 hours",
     "methodology.cta.free_analysis": "Free Audit",
     "methodology.cta.consultation": "Contact Us",
