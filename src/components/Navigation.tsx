@@ -27,17 +27,17 @@ const Navigation: React.FC<NavigationProps> = ({
       setIsMenuOpen(false);
 
       const id = href.split("#")[1];
-      if (
-        window.location.pathname === "/" ||
-        window.location.pathname === "/en"
-      ) {
-        // ✅ Already on homepage → scroll
-        const target = document.getElementById(id);
-        if (target) {
-          setTimeout(() => {
+      // normalize pathname (remove trailing slash)
+      const path = window.location.pathname.replace(/\/$/, "");
+
+      if (path === "" || path === "/" || path === "/en") {
+        // ✅ Already on homepage (FR or EN)
+        setTimeout(() => {
+          const target = document.getElementById(id);
+          if (target) {
             target.scrollIntoView({ behavior: "smooth" });
-          }, 200);
-        }
+          }
+        }, 400); // wait for menu animation
       } else {
         // 🌍 On another page → redirect with anchor
         window.location.href = href;
