@@ -4,7 +4,7 @@ import { Users } from "lucide-react";
 import { useTranslations } from "../i18n";
 
 interface CTAProps {
-  lang: string;
+  lang: "fr" | "en";
 }
 
 const CTA: React.FC<CTAProps> = ({ lang }) => {

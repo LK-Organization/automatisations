@@ -5,7 +5,7 @@ import { Facebook, Instagram, Youtube, MapPin } from "lucide-react";
 import { useTranslations } from "../i18n";
 
 interface FooterProps {
-  lang: string;
+  lang: "fr" | "en";
 }
 
 const Footer: React.FC<FooterProps> = ({ lang }) => {

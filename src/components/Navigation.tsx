@@ -18,6 +18,34 @@ const Navigation: React.FC<NavigationProps> = ({
   const t = useTranslations(lang);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const handleClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    if (href.includes("#")) {
+      e.preventDefault();
+      setIsMenuOpen(false);
+
+      const id = href.split("#")[1];
+      if (
+        window.location.pathname === "/" ||
+        window.location.pathname === "/en"
+      ) {
+        // ✅ Already on homepage → scroll
+        const target = document.getElementById(id);
+        if (target) {
+          setTimeout(() => {
+            target.scrollIntoView({ behavior: "smooth" });
+          }, 200);
+        }
+      } else {
+        // 🌍 On another page → redirect with anchor
+        window.location.href = href;
+      }
+    } else {
+      setIsMenuOpen(false);
+    }
+  };
 
   const navItems = [
     { key: "nav.home", href: lang === "en" ? "/en" : "/" },
@@ -173,7 +201,7 @@ const Navigation: React.FC<NavigationProps> = ({
                       key={item.key}
                       href={href}
                       className="text-white/90 hover:text-white block px-3 py-2 text-base font-medium transition-all duration-200"
-                      onClick={() => setIsMenuOpen(false)}
+                      onClick={(e) => handleClick(e, href)}
                     >
                       {t(item.key)}
                     </a>
