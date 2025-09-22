@@ -12,11 +12,12 @@ import {
   UserCheck,
   MessageCircle,
   Target,
+  PlusCircle,
 } from "lucide-react";
 import { useTranslations } from "../i18n";
 
 interface SolutionsProps {
-  lang: string;
+  lang: "fr" | "en";
 }
 
 const Solutions: React.FC<SolutionsProps> = ({ lang }) => {
@@ -131,6 +132,17 @@ const Solutions: React.FC<SolutionsProps> = ({ lang }) => {
         "solutions.chatbot.features.0",
         "solutions.chatbot.features.1",
         "solutions.chatbot.features.2",
+      ],
+    },
+    {
+      icon: PlusCircle,
+      title: "solutions.bonus.title",
+      description: "solutions.bonus.description",
+      color: "from-yellow-500 to-yellow-600",
+      features: [
+        "solutions.bonus.features.0",
+        "solutions.bonus.features.1",
+        "solutions.bonus.features.2",
       ],
     },
   ];

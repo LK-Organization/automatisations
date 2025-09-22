@@ -293,11 +293,6 @@ export const Contact: React.FC<ContactProps> = ({ lang }) => {
                 {t("contact.meetingFormTitle")}
               </h2>
               <div className="space-y-7 m-[0]">
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    {t("contact.meetingFormSubtitle")}
-                  </h3>
-                </div>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center">
                     <Mail size={20} className="text-white" />
@@ -310,19 +305,6 @@ export const Contact: React.FC<ContactProps> = ({ lang }) => {
                       <a href="mailto:contact@automatisons.fr">
                         contact@automatisons.fr
                       </a>
-                    </div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center">
-                    <Phone size={20} className="text-white" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-gray-900">
-                      {t("contact.phoneLabel")}
-                    </div>
-                    <div className="text-gray-600">
-                      <a href="tel:+33 6 48 09 15 11">+33 6 48 09 15 11</a>
                     </div>
                   </div>
                 </div>
@@ -350,31 +332,7 @@ export const Contact: React.FC<ContactProps> = ({ lang }) => {
                     </a>
                   </div>
                 </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center">
-                    <MapPin size={20} className="text-white" />
-                  </div>
-                  <div>
-                    <div className="font-semibold text-gray-900">
-                      {t("contact.addressLabel")}
-                    </div>
-                    <div className="text-gray-600">
-                      {" "}
-                      25 RUE TRONCHET 75008 PARIS
-                    </div>
-                  </div>
-                </div>
               </div>
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="w-full bg-primary-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-700 transition-colors duration-200 flex items-center justify-center gap-2"
-                href="https://calendly.com/kkulig25/30min"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {t("contact.schedule")}
-              </motion.a>
             </div>
           </motion.div>
         </div>

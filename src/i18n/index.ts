@@ -18,7 +18,7 @@ export const ui = {
       "Nos automatisations sur mesure pour vos tâches répétitives.",
 
     "hero.cta": "Comment ça fonctionne",
-    "hero.cta.secondary": "Nous contacter",
+    "hero.cta.secondary": "Contactez-nous",
     "hero.cta.link": "#exemples",
     "hero.cta.secondary.link": "/contact",
 
@@ -253,11 +253,14 @@ export const ui = {
     "solutions.chatbot.title": "Chatbots IA",
     "solutions.chatbot.description":
       "Assistants conversationnels intelligents pour votre support client",
+    "solutions.bonus.title": "Et bien plus encore !",
+    "solutions.bonus.description":
+      "Une tâche répétitive ne devrait plus être fait par un humain",
     "solutions.learn_more": "En savoir plus",
     "solutions.cta.title": "Prêt à automatiser votre entreprise ?",
     "solutions.cta.description":
       "Découvrez comment nos solutions peuvent transformer vos processus",
-    "solutions.cta.button": "Nous contacter",
+    "solutions.cta.button": "Contactez-nous",
     // À placer dans "fr"
     "solutions.email.features.0": "Tri automatique",
     "solutions.email.features.1": "Réponses intelligentes",
@@ -299,6 +302,9 @@ export const ui = {
     "solutions.chatbot.features.1": "Disponibilité 24/7",
     "solutions.chatbot.features.2": "Intégration CRM",
 
+    "solutions.bonus.features.0": "Connectez vos logiciels entre eux",
+    "solutions.bonus.features.1": "Optimisez vos process",
+    "solutions.bonus.features.2": "Gagner du temps",
     // Sectors
     "sectors.title": "Secteurs d'Activité",
     "sectors.subtitle":
@@ -467,7 +473,7 @@ export const ui = {
     "methodology.cta.description":
       "Bénéficiez d'une analyse gratuite de vos processus en 48h",
     "methodology.cta.free_analysis": "Analyse gratuite",
-    "methodology.cta.consultation": "Nous contacter",
+    "methodology.cta.consultation": "Contactez-nous",
     // Analysis step durations
     "methodology.analysis.duration": "24 h",
     "methodology.plan.duration": "48 h",
@@ -512,8 +518,8 @@ export const ui = {
     "contact.title": "Contactez-nous",
     "contact.subtitle":
       "Prêt à transformer votre entreprise ? Parlons de votre projet.",
-    "contact.emailFormTitle": "Envoyer un email",
-    "contact.meetingFormTitle": "Prendre un rendez-vous",
+    "contact.emailFormTitle": "Envoyez-nous un message",
+    "contact.meetingFormTitle": "Nous sommes aussi disponible par :",
     "contact.meetingFormSubtitle":
       "Discutons de votre projet d’automatisation IA ",
     "contact.meetingFormDescription":
@@ -828,6 +834,9 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "solutions.chatbot.title": "AI Chatbots",
     "solutions.chatbot.description":
       "Intelligent conversational assistants for your support team",
+    "solutions.bonus.title": "And much more!",
+    "solutions.bonus.description":
+      "A repetitive task should no longer be done by a human",
     "solutions.learn_more": "Learn More",
     "solutions.cta.title": "Ready to Automate Your Business?",
     "solutions.cta.description":
@@ -873,6 +882,10 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "solutions.chatbot.features.0": "Instant replies",
     "solutions.chatbot.features.1": "24/7 availability",
     "solutions.chatbot.features.2": "CRM integration",
+
+    "solutions.bonus.features.0": "Connect your software together",
+    "solutions.bonus.features.1": "Optimize your processes",
+    "solutions.bonus.features.2": "Save time",
 
     // Sectors
     "sectors.title": "Industries We Serve",
