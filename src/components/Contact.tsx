@@ -189,7 +189,7 @@ export const Contact: React.FC<ContactProps> = ({ lang }) => {
             viewport={{ once: true }}
             className="bg-white rounded-2xl p-8 shadow-lg relative"
           >
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
               {t("contact.emailFormTitle")}
             </h2>
 
@@ -289,7 +289,7 @@ export const Contact: React.FC<ContactProps> = ({ lang }) => {
             className="space-y-8"
           >
             <div className="bg-white rounded-2xl p-8 shadow-lg space-y-6 h-fitjustify-between flex flex-col">
-              <h2 className="text-3xl font-bold text-gray-900 ">
+              <h2 className="text-2xl font-bold text-gray-900 ">
                 {t("contact.meetingFormTitle")}
               </h2>
               <div className="space-y-7 m-[0]">
