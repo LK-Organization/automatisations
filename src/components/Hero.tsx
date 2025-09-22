@@ -17,7 +17,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
     >
       {/* Background image */}
       <img
-        src="/cover.jpg"
+        src="/cover.webp"
         alt="Bannière IA"
         className="w-full h-full object-top object-cover "
       />

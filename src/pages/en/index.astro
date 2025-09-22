@@ -14,6 +14,7 @@ import CTA from '../../components/CTA';
 import Exemples from '../../components/Exemples';
 import MultiStepForm from '../../components/MultiStepForm';
 import AutomationCarousel from '../../components/Automatisations';
+import PricingEnglish from '../../components/PricingEnglish';
 const lang = 'en';
 const title = 'Automatisons Agence IA – Smart Automation & AI';
 const description = 'Say goodbye to repetitive tasks and save hours every week: switch to automation — request a free quote.';
@@ -22,11 +23,13 @@ const description = 'Say goodbye to repetitive tasks and save hours every week: 
 <Layout title={title} description={description}>
 <Navigation lang={lang} isHomePage={true} client:load />
 <Hero lang={lang} client:load />
+<AutomationCarousel lang={lang} client:load />
 {/* <MultiStepForm lang={lang} client:load /> /> */}
 <Exemples lang={lang} client:load />
 <CTA lang={lang} client:load />
-<AutomationCarousel lang={lang} client:load />
+
 <Methodology lang={lang} client:load />
+<PricingEnglish  client:load />
 <TestimonialsCarousel lang={lang} client:load />
 <About lang={lang} client:load />
 <Faq lang={lang} client:load />

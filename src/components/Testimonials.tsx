@@ -5,6 +5,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
 import { useTranslations } from "../i18n";
+import GoogleRating from "./ui/googleRatings";
 
 interface Testimonial {
   nameKey: string;
@@ -22,30 +23,6 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    nameKey: "testimonials.jpl.name",
-    roleKey: "testimonials.jpl.role",
-    companyKey: "testimonials.jpl.company",
-    sectorKey: "testimonials.jpl.sector",
-    quoteKey: "testimonials.jpl.quote",
-    resultKey: "testimonials.jpl.result",
-    image:
-      "https://images.pexels.com/photos/428361/pexels-photo-428361.jpeg?auto=compress&cs=tinysrgb&w=150",
-    rating: 5,
-    dateKey: "testimonials.jpl.date",
-  },
-  {
-    nameKey: "testimonials.sm.name",
-    roleKey: "testimonials.sm.role",
-    companyKey: "testimonials.sm.company",
-    sectorKey: "testimonials.sm.sector",
-    quoteKey: "testimonials.sm.quote",
-    resultKey: "testimonials.sm.result",
-    image:
-      "https://images.pexels.com/photos/3184405/pexels-photo-3184405.jpeg?auto=compress&cs=tinysrgb&w=150",
-    rating: 5,
-    dateKey: "testimonials.sm.date",
-  },
-  {
     nameKey: "google.michal.name",
     quoteKey: "google.michal.quote",
     image:
@@ -55,29 +32,7 @@ const testimonials: Testimonial[] = [
     link: "https://maps.app.goo.gl/dMPkcWyNTZCkX5Mv6",
     google: true,
   },
-  {
-    nameKey: "testimonials.mk.name",
-    roleKey: "testimonials.mk.role",
-    companyKey: "testimonials.mk.company",
-    sectorKey: "testimonials.mk.sector",
-    quoteKey: "testimonials.mk.quote",
-    resultKey: "testimonials.mk.result",
-    image:
-      "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=150",
-    rating: 5,
-    dateKey: "testimonials.mk.date",
-  },
-  {
-    nameKey: "testimonials.cd.name",
-    roleKey: "testimonials.cd.role",
-    companyKey: "testimonials.cd.company",
-    sectorKey: "testimonials.cd.sector",
-    quoteKey: "testimonials.cd.quote",
-    resultKey: "testimonials.cd.result",
-    image: "/clair.webp",
-    rating: 5,
-    dateKey: "testimonials.cd.date",
-  },
+
   {
     nameKey: "google.lucas.name",
     quoteKey: "google.lucas.quote",
@@ -88,30 +43,7 @@ const testimonials: Testimonial[] = [
     link: "https://maps.app.goo.gl/QEGeBrYyCJHK6Fhk9",
     google: true,
   },
-  {
-    nameKey: "testimonials.tr.name",
-    roleKey: "testimonials.tr.role",
-    companyKey: "testimonials.tr.company",
-    sectorKey: "testimonials.tr.sector",
-    quoteKey: "testimonials.tr.quote",
-    resultKey: "testimonials.tr.result",
-    image:
-      "https://images.pexels.com/photos/4481259/pexels-photo-4481259.jpeg?auto=compress&cs=tinysrgb&w=150",
-    rating: 5,
-    dateKey: "testimonials.tr.date",
-  },
-  {
-    nameKey: "testimonials.nf.name",
-    roleKey: "testimonials.nf.role",
-    companyKey: "testimonials.nf.company",
-    sectorKey: "testimonials.nf.sector",
-    quoteKey: "testimonials.nf.quote",
-    resultKey: "testimonials.nf.result",
-    image:
-      "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150",
-    rating: 5,
-    dateKey: "testimonials.nf.date",
-  },
+
   {
     nameKey: "google.robert.name",
     quoteKey: "google.robert.quote",
@@ -122,30 +54,7 @@ const testimonials: Testimonial[] = [
     link: "https://maps.app.goo.gl/xtHdunsTCQDC9oN58",
     google: true,
   },
-  {
-    nameKey: "testimonials.kb.name",
-    roleKey: "testimonials.kb.role",
-    companyKey: "testimonials.kb.company",
-    sectorKey: "testimonials.kb.sector",
-    quoteKey: "testimonials.kb.quote",
-    resultKey: "testimonials.kb.result",
-    image:
-      "https://images.pexels.com/photos/2102416/pexels-photo-2102416.jpeg?auto=compress&cs=tinysrgb&w=150",
-    rating: 5,
-    dateKey: "testimonials.kb.date",
-  },
-  {
-    nameKey: "testimonials.al.name",
-    roleKey: "testimonials.al.role",
-    companyKey: "testimonials.al.company",
-    sectorKey: "testimonials.al.sector",
-    quoteKey: "testimonials.al.quote",
-    resultKey: "testimonials.al.result",
-    image:
-      "https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=150",
-    rating: 5,
-    dateKey: "testimonials.al.date",
-  },
+
   {
     nameKey: "google.gauthier.name",
     quoteKey: "google.gauthier.quote",
@@ -155,17 +64,6 @@ const testimonials: Testimonial[] = [
     dateKey: "google.gauthier.date",
     link: "https://maps.app.goo.gl/xtHdunsTCQDC9oN58",
     google: true,
-  },
-  {
-    nameKey: "testimonials.lb.name",
-    roleKey: "testimonials.lb.role",
-    companyKey: "testimonials.lb.company",
-    sectorKey: "testimonials.lb.sector",
-    quoteKey: "testimonials.lb.quote",
-    resultKey: "testimonials.lb.result",
-    image: "/lucie.webp",
-    rating: 5,
-    dateKey: "testimonials.lb.date",
   },
 ];
 
@@ -203,9 +101,6 @@ const TestimonialsCarousel: React.FC<{ lang: string }> = ({ lang }) => {
           <h3 className="text-4xl font-bold text-gray-900 mb-4">
             {t("testimonials.title")}
           </h3>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            {t("testimonials.subtitle")}
-          </p>
         </div>
 
         <Swiper
@@ -335,6 +230,7 @@ const TestimonialsCarousel: React.FC<{ lang: string }> = ({ lang }) => {
           </div>
         </div>
       )}
+      <GoogleRating />
     </section>
   );
 };

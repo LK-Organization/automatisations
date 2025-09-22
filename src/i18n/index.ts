@@ -23,7 +23,7 @@ export const ui = {
     "hero.cta.secondary.link": "/contact",
 
     // exemples
-    "exemples.title": "Exemples concrets d’automatisation",
+    "exemples.title": "Exemples d’automatisation",
 
     "exemples.factures.title": "Saisie automatique de factures fournisseurs",
     "exemples.factures.subtitle":
@@ -81,45 +81,44 @@ export const ui = {
     "automatisations.commandes.image": "/commandes.jpg",
 
     "automatisations.commandes.details.1":
-      "Nous avons développé un agent IA connecté à Telegram qui analyse en temps réel les photos des commandes envoyées par un client spécialisé en logistique. Chaque photo comporte un numéro de commande, ce qui permet à l’automatisation de vérifier la conformité entre la commande passée sur WooCommerce et la photo reçue.",
+      "Un agent IA analyse en temps réel les photos des commandes envoyées par un client spécialisé en logistique. Chaque photo affiche les produits de la commande ainsi que le bon de livraison qui comporte le numéro de commande. L’agent vérifie la conformité entre la commande passée sur le CMS et la photo reçue.",
 
     "automatisations.commandes.details.2":
-      "Le bot alerte immédiatement en cas d’anomalie (produit manquant, produit ajouté, incohérence sur le panier du client). Sur plus de 100 tests réalisés, le système a atteint un taux de fiabilité d’environ 95 %. Les seuls échecs constatés concernent des photos floues ou mal cadrées, ce qui limite la reconnaissance correcte.",
+      "Le bot alerte immédiatement en cas d’anomalie (produit manquant, produit ajouté, incohérence sur le panier du client). Sur plus de 100 tests réalisés, le système a atteint un taux de fiabilité d’environ 97 %. Les 3% d’échecs constatés concernent des photos floues ou mal cadrées.",
 
     "automatisations.commandes.details.3":
       "Cette automatisation réduit fortement le temps de contrôle manuel, économisant plus d’une heure de travail quotidiennement. Elle fiabilise la préparation des commandes et évite toute erreur humaine.",
 
     // --- SMS ---
-    "automatisations.sms.title":
-      "Relances automatiques par SMS pour commandes non réglées",
+    "automatisations.sms.title": "Relances SMS des commandes non réglées",
     "automatisations.sms.subtitle":
-      "Les commandes annulées sur WooCommerce déclenchent automatiquement un SMS de relance au bout de 2 jours.",
+      "Les commandes annulées ou en attente déclenchent automatiquement un SMS de relance.",
     "automatisations.sms.objective":
       "Objectif : maximiser les conversions en récupérant une partie des ventes perdues.",
     "automatisations.sms.image": "/sms.jpg",
 
     "automatisations.sms.details.1":
-      "L’automatisation, reliée à WooCommerce, détecte les commandes passées mais non réglées. Lorsqu’une commande est annulée, le client reçoit automatiquement un SMS personnalisé l’invitant à finaliser son achat 2 jours après sa tentative de commande. Cependant, si le client a repassé une commande lors de cette période, il ne recevra pas de SMS de relance. Tous les envois et les réponses sont suivis dans un tableau Google Sheets qui regroupe les réponses des clients aux SMS et l’historique d’envoi de SMS.",
+      "L’automatisation détecte les commandes passées mais non réglées. Lorsqu’une commande est annulée, le client reçoit automatiquement un SMS personnalisé l’invitant à finaliser son achat X temps après sa tentative de commande. Cependant, si le client a repassé une commande lors de cette période, il ne recevra pas de SMS de relance. Tous les envois et les réponses sont suivis dans un tableau Google Sheets qui regroupe les réponses des clients aux SMS et l’historique d’envoi de SMS.",
 
     "automatisations.sms.details.2":
-      "Le système fonctionne avec une précision de 98 %. Les rares limites observées concernent des cas où un client repasse commande sous une autre identité (nom et numéro de téléphone différents), ce qui peut générer un SMS de relance malgré l’achat déjà validé.",
+      "Le système fonctionne avec une précision de 99 %. Les rares limites observées concernent des cas où un client repasse commande sous une autre identité (nom et numéro de téléphone différents), ce qui peut générer un SMS de relance malgré l’achat déjà validé.",
 
     "automatisations.sms.details.3":
-      "Cette automatisation réduit les pertes liées aux abandons de panier et améliore le taux de conversion sans intervention humaine. Notre client, qui gérait un e-commerce, envoyait manuellement les SMS de relance. Cette automatisation lui a permis d’économiser 30 minutes quotidiennement.",
+      "Cette automatisation réduit les pertes liées aux abandons de panier et améliore le taux de conversion sans intervention humaine. Notre client, qui gérait un ecommerce, envoyait manuellement les SMS de relance. Cette automatisation lui a permis d’économiser 30 minutes quotidiennement.",
 
     // --- Exports ---
     "automatisations.exports.title":
-      "Exports quotidiens automatisés des commandes",
+      "Customisation automatisée de l’export des commandes",
     "automatisations.exports.subtitle":
-      "Des exports de données spécifiques sont générés automatiquement à heures fixes chaque jour.",
+      "Des exports de données spécifiques sont générés automatiquement à des heures fixes pour les préparateurs de commandes.",
     "automatisations.exports.objective":
-      "Objectif : assurer un suivi fiable et régulier des commandes sans intervention humaine.",
+      "Objectif : : Gagner du temps en automatisant une action répétitive.",
     "automatisations.exports.image": "/exports.jpg",
 
     "automatisations.exports.details.1":
-      "L’automatisation est directement connectée à WooCommerce. Elle récupère les données des commandes et envoie automatiquement des exports quotidiens dans un Google Sheet :",
+      "L’automatisation est directement connectée au CMS. Elle récupère les données des commandes, fait les modifications nécessaires et envoie automatiquement les nouvelles informations.\n Le fichier se met à jour en continu et supprime les anciennes feuilles pour éviter l’accumulation de données inutiles. Les équipes disposent ainsi d’un tableau propre et toujours à jour.",
 
-    "automatisations.exports.details.1.list.1":
+    /*"automatisations.exports.details.1.list.1":
       "Un premier export à 11h (du lundi au vendredi)",
 
     "automatisations.exports.details.1.list.2":
@@ -129,28 +128,28 @@ export const ui = {
       "Un troisième export spécifique le samedi à 10h, avec des informations différentes",
 
     "automatisations.exports.details.1.end":
-      "Le fichier se met à jour en continu et supprime les anciennes feuilles pour éviter l’accumulation de données inutiles. Les équipes disposent ainsi d’un tableau propre et toujours à jour.",
+      "Le fichier se met à jour en continu et supprime les anciennes feuilles pour éviter l’accumulation de données inutiles. Les équipes disposent ainsi d’un tableau propre et toujours à jour.",*/
 
     "automatisations.exports.details.2":
       "Cette automatisation est fiable à 100 % et a permis d’économiser 15 minutes quotidiennement à notre client. Elle élimine le risque d’oubli, sécurise le partage d’informations et réduit le travail manuel récurrent lié aux exports.",
 
     // --- Factures ---
     "automatisations.factures.title":
-      "Saisie automatique des factures et devis dans le suivi interne",
+      "Récupération et transmissions des données d’une photo ",
     "automatisations.factures.subtitle":
-      "Les factures et devis reçus sont lus automatiquement et intégrés dans le fichier de Suivi.",
+      "Les factures et devis reçus dans les colis sont pris en photo et directement retransmis informatiquement.",
     "automatisations.factures.objective":
       "Objectif : supprimer la saisie manuelle et sécuriser la gestion comptable.",
     "automatisations.factures.image": "/factures.jpg",
 
     "automatisations.factures.details.1":
-      "Lorsqu’une facture ou un devis est déposé via un formulaire dédié, l’automatisation lit automatiquement le document et extrait les informations essentielles (montant, fournisseur, date, produits). Ces données sont ensuite insérées directement dans le fichier Google Sheet de notre client à la fin du tableau, sans intervention humaine.",
+      "Lorsqu’une facture ou un devis est déposé via un formulaire dédié, l’automatisation lit le document et extrait les informations essentielles (montant, fournisseur, date, produits). Ces données sont ensuite insérées directement sans intervention humaine manuel.",
 
     "automatisations.factures.details.2":
-      "Le processus fonctionne avec une fiabilité de 98 %. Les seules limites apparaissent quand un fournisseur envoie une facture dans un format atypique, difficile à interpréter automatiquement.",
+      "Le processus fonctionne avec une fiabilité de 98 %. Les seules limites apparaissent lorsqu’un fournisseur envoie une facture dans un format atypique, difficile à interpréter automatiquement.",
 
     "automatisations.factures.details.3":
-      "Cette automatisation réduit les erreurs humaines, accélère la gestion des documents entrants et garantit un suivi centralisé et structuré des factures et devis. En moyenne, elle permet d’économiser 20 minutes quotidiennement à notre client.",
+      "Cette automatisation réduit les erreurs humaines, accélère la gestion des documents entrants et garantit un suivi centralisé et structuré des factures et devis. En moyenne, elle permet d’économiser 20 minutes lors des réceptions produits à notre client.",
 
     // multistep form
     "form.title": "Formulaire interactif",
@@ -495,25 +494,37 @@ export const ui = {
     "methodology.implementation.feature2": "Tests & validation",
     "methodology.implementation.feature3": "Formation & support continu",
 
-    "about.title": "À propos d'Automatisons Agence IA",
-    "about.description":
-      "Nous sommes une agence spécialisée dans l'automatisation et l'intelligence artificielle, dédiée à transformer la façon dont les entreprises opèrent.",
+    "about.title": "Une agence « IA » pas comme les autres…",
+    "about.description": "Je suis Lukas, le fondateur. Enchanté !",
+    "about.description1":
+      "Pourquoi me faire confiance ? Tout simplement parce que j’applique une règle simple:",
+    "about.description1bold": "le client est ROI.",
+    "about.description2":
+      "Fondateur d’un e-commerce depuis plus de 7 ans, j’ai dû m’adapter à la concurrence en optimisant à l’extrême mes process. C’est donc naturellement que j’ai fait de l’automatisation mon expertise.",
+    "about.description3":
+      "On peut dire que je suis mon propre client : je teste sur moi ce que je propose ensuite à mes clients",
+    "about.description41":
+      "Concrètement, nous sommes une agence spécialisée dans",
+    "about.description42": "l’automatisation",
+    "about.description43": "et",
+    "about.description44": "l’intelligence artificielle",
+    "about.description45":
+      "avec un seul but : vous faire gagner (beaucoup) de temps.",
     // About stats (FR)
     "about.stats.customers": "100 %",
     "about.stats.customersLabel": "Clients satisfaits",
-    "about.stats.years": "3+",
+    "about.stats.years": "+7",
     "about.stats.yearsLabel": "Années d'expérience",
-    "about.stats.efficiency": "200 %",
-    "about.stats.efficiencyLabel": "Amélioration efficacité",
-    "about.stats.projects": "45",
-    "about.stats.projectsLabel": "Projets réalisés",
+    "about.stats.efficiency": "4",
+    "about.stats.efficiencyLabel": "experts passionnées",
+    "about.stats.projects": "100+",
+    "about.stats.projectsLabel": "automatisations réalisées",
 
     // About features (FR)
-    "about.feature.innovation": "À la pointe de l’innovation",
-    "about.feature.experts": "Équipe d'experts certifiés",
-    "about.feature.customSolutions":
-      "Solutions personnalisées en moins de 24 h",
-    "about.feature.support": "Support 24/7",
+    "about.feature.innovation": "Le client est ROI",
+    "about.feature.experts": "Satisfait ou remboursé",
+    "about.feature.customSolutions": "Agence française",
+    "about.feature.support": "Disponible 7j/7",
 
     "contact.title": "Contactez-nous",
     "contact.subtitle":
@@ -612,7 +623,7 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "hero.cta.link": "#exemples",
     "hero.cta.secondary.link": "/en/contact",
     // exemples
-    "exemples.title": "Concrete Examples of Automation",
+    "exemples.title": "Examples of Automation",
 
     "exemples.factures.title": "Automatic Entry of Supplier Invoices",
     "exemples.factures.subtitle": "No more wasting evenings sorting invoices.",
@@ -1063,22 +1074,33 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "methodology.implementation.feature2": "Testing & validation",
     "methodology.implementation.feature3": "Training & continuous support",
 
-    "about.title": "About Automatisons Agence IA",
-    "about.description":
-      "We are an agency specializing in automation and artificial intelligence, dedicated to transforming how businesses operate.",
-    "about.stats.customers": "100 %",
-    "about.stats.customersLabel": "Satisfied clients",
-    "about.stats.years": "3+",
+    "about.title": "An AI agency unlike any other…",
+    "about.description": "I'm Lukas, the founder. Nice to meet you!",
+    "about.description1":
+      "Why trust me? Simply because I follow one simple rule:",
+    "about.description1bold": "the client is KING.",
+    "about.description2":
+      "As the founder of an e-commerce business for over 7 years, I had to adapt to the competition by ruthlessly optimizing my processes. So it was only natural that I made automation my specialty.",
+    "about.description3":
+      "You could say I'm my own client: I test on myself what I then offer to my clients.",
+    "about.description41": "In short, we are an agency specialized in",
+    "about.description42": "automation",
+    "about.description43": "and",
+    "about.description44": "artificial intelligence",
+    "about.description45": "with a single goal: to save you (a lot of) time.",
+    "about.stats.customers": "100%",
+    "about.stats.customersLabel": "Satisfied customers",
+    "about.stats.years": "+7",
     "about.stats.yearsLabel": "Years of experience",
-    "about.stats.efficiency": "200 %",
-    "about.stats.efficiencyLabel": "Efficiency improvement",
-    "about.stats.projects": "45",
-    "about.stats.projectsLabel": "Projects completed",
+    "about.stats.efficiency": "4",
+    "about.stats.efficiencyLabel": "Passionate experts",
+    "about.stats.projects": "100+",
+    "about.stats.projectsLabel": "Automations completed",
 
-    "about.feature.innovation": "At the cutting edge of innovation",
-    "about.feature.experts": "Certified expert team",
-    "about.feature.customSolutions": "Custom solutions within 24 h",
-    "about.feature.support": "24/7 support",
+    "about.feature.innovation": "The customer is KING",
+    "about.feature.experts": "Satisfaction guaranteed",
+    "about.feature.customSolutions": "French agency",
+    "about.feature.support": "Available 7 days a week",
 
     "contact.title": "Get in Touch",
     "contact.subtitle": "Ready to transform your business? Let's talk.",

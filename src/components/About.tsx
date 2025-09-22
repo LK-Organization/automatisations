@@ -4,7 +4,7 @@ import { CheckCircle, Users, Award, Zap } from "lucide-react";
 import { useTranslations } from "../i18n";
 
 interface AboutProps {
-  lang: string;
+  lang: "fr" | "en";
 }
 
 const About: React.FC<AboutProps> = ({ lang }) => {
@@ -55,10 +55,23 @@ const About: React.FC<AboutProps> = ({ lang }) => {
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
               {t("about.title")}
             </h2>
-            <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+            <p className="text-md text-gray-600 mb-8 leading-relaxed">
               {t("about.description")}
+              <br />
+              {t("about.description1")}
+              <b> {t("about.description1bold")}</b>
             </p>
-
+            <p className="text-md text-gray-600 mb-8 leading-relaxed">
+              {t("about.description2")}
+            </p>
+            <p className="text-md text-gray-600 mb-8 leading-relaxed">
+              {t("about.description3")}
+            </p>
+            <p className="text-md text-gray-600 mb-8 leading-relaxed">
+              {t("about.description41")} <b>{t("about.description42")}</b>{" "}
+              {t("about.description43")} <b>{t("about.description44")}</b>{" "}
+              {t("about.description45")}
+            </p>
             <div className="space-y-4">
               {highlights.map((key, idx) => (
                 <motion.div

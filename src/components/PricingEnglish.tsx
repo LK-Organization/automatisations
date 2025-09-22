@@ -79,24 +79,21 @@ function TiltCard({
 export default function PricingSection() {
   const cards = [
     {
-      title: "Développement d’automatisation sur mesure",
-      price: "Dès 400€/ jour",
+      title: "Custom automation development",
+      price: "From €400/day",
       icon: <Settings className="w-8 h-8 text-green-400 mb-4" />,
       background: "bg-gradient-to-r from-blue-500 to-blue-600",
       checkbox: "blue-600",
-      list: ["Garanti satisfait ou rembourser"],
+      list: ["Satisfaction guaranteed or your money back"],
     },
     {
-      title: "Vous avez un doute ?",
-      price: "0€",
-      addText: "Testez-nous, gratuitement",
+      title: "Not sure yet?",
+      price: "€0",
+      addText: "Try us for free",
       icon: <Wand2 className="w-8 h-8 text-blue-400 mb-4" />,
-      description: `Il n’y a que 2 options gagnantes : `,
+      description: `There are only 2 winning outcomes: `,
       checkbox: "green-500",
-      list: [
-        "Ça fonctionne, vous économisez.",
-        "Ça ne fonctionne pas, vous ne payez rien.",
-      ],
+      list: ["It works, you save money.", "It doesn’t work, you pay nothing."],
       background: "bg-gradient-to-r from-green-500 to-green-600",
     },
   ];
@@ -148,15 +145,15 @@ export default function PricingSection() {
           {cards.map((card, idx) => (
             <TiltCard
               key={idx}
-              className="rounded-3xl h-full"
+              className="rounded-2xl h-full"
               width="100%"
               height="100%"
             >
               <div
                 key={idx}
-                className="flex flex-col justify-between h-full shadow-xl rounded-3xl"
+                className="flex flex-col justify-between h-full shadow-xl rounded-2xl"
               >
-                <div className={`${card.background} p-6 rounded-3xl`}>
+                <div className={`${card.background} p-6 rounded-2xl`}>
                   <h3 className="text-2xl text-center text-white font-semibold mb-3">
                     {card.title}
                   </h3>
