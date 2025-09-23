@@ -72,10 +72,9 @@ export const ui = {
     "automations.title": "Automatisations réalisées",
 
     // --- Commandes ---
-    "automatisations.commandes.title":
-      "Vérification automatisée des photos de commandes",
+    "automatisations.commandes.title": "Vérification des commandes (via photo)",
     "automatisations.commandes.subtitle":
-      "Un bot Telegram contrôle automatiquement les photos des commandes envoyées par les équipes de préparations.",
+      "Un contrôle automatique est fait entre la commande client et la photo de la commande prise par le préparateur de commande.",
     "automatisations.commandes.objective":
       "Objectif : détecter rapidement les erreurs avant expédition du colis et corriger la commande si une erreur est présente.",
     "automatisations.commandes.image": "/commandes.jpg",
@@ -666,85 +665,82 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "automations.title": "Completed Automations",
 
     // --- Orders ---
-    "automatisations.commandes.title": "Automated verification of order photos",
+    "automatisations.commandes.title": "Automated order photo verification",
     "automatisations.commandes.subtitle":
-      "A Telegram bot automatically checks the photos of orders sent by the preparation teams.",
+      "A Telegram bot automatically checks order photos sent by the preparation teams.",
     "automatisations.commandes.objective":
-      "Objective: quickly detect errors before shipping the package and correct the order if a mistake is present.",
+      "Goal: quickly detect errors before shipping the package and correct the order if an error is found.",
     "automatisations.commandes.image": "/commandes.jpg",
 
     "automatisations.commandes.details.1":
-      "We developed an AI agent connected to Telegram that analyzes in real time the photos of orders sent by a logistics client. Each photo includes an order number, which allows the automation to verify consistency between the order placed on WooCommerce and the photo received.",
+      "An AI agent analyzes in real time the order photos sent by a logistics client. Each photo shows the ordered products along with the delivery slip containing the order number. The agent checks the consistency between the order placed on the CMS and the received photo.",
 
     "automatisations.commandes.details.2":
-      "The bot immediately alerts in case of an anomaly (missing product, added product, inconsistency in the customer’s cart). Out of more than 100 tests performed, the system achieved a reliability rate of around 95%. The only failures observed were due to blurry or poorly framed photos, which limited accurate recognition.",
+      "The bot immediately alerts in case of anomaly (missing product, added product, inconsistency in the customer’s cart). In over 100 tests, the system reached a reliability rate of around 97%. The 3% failures observed were due to blurry or poorly framed photos.",
 
     "automatisations.commandes.details.3":
-      "This automation significantly reduces manual control time, saving more than one hour of work daily. It makes order preparation more reliable and prevents human error.",
+      "This automation significantly reduces manual control time, saving more than an hour of work daily. It ensures order preparation reliability and avoids human error.",
 
     // --- SMS ---
-    "automatisations.sms.title": "Automatic SMS reminders for unpaid orders",
+    "automatisations.sms.title": "SMS reminders for unpaid orders",
     "automatisations.sms.subtitle":
-      "Canceled WooCommerce orders automatically trigger a reminder SMS after 2 days.",
+      "Canceled or pending orders automatically trigger a reminder SMS.",
     "automatisations.sms.objective":
-      "Objective: maximize conversions by recovering some of the lost sales.",
+      "Goal: maximize conversions by recovering part of the lost sales.",
     "automatisations.sms.image": "/sms.jpg",
 
     "automatisations.sms.details.1":
-      "The automation, connected to WooCommerce, detects orders placed but not paid. When an order is canceled, the customer automatically receives a personalized SMS inviting them to complete their purchase 2 days after the attempt. However, if the customer placed another order during this period, they will not receive a reminder SMS. All sends and responses are tracked in a Google Sheets file that consolidates customer responses and the SMS sending history.",
+      "The automation detects placed but unpaid orders. When an order is canceled, the customer automatically receives a personalized SMS inviting them to complete their purchase X time after their attempt. However, if the customer has already placed a new order during that period, they won’t receive a reminder SMS. All sends and responses are tracked in a Google Sheets table that logs customer replies and the SMS sending history.",
 
     "automatisations.sms.details.2":
-      "The system works with a precision of 98%. The rare limits observed concern cases where a customer places another order under a different identity (name and phone number), which may generate a reminder SMS despite the purchase already being validated.",
+      "The system works with 99% accuracy. The rare limitations occur when a customer places a new order under a different identity (different name and phone number), which may trigger a reminder SMS despite the purchase being already validated.",
 
     "automatisations.sms.details.3":
-      "This automation reduces losses from cart abandonment and improves the conversion rate without human intervention. Our client, who managed an e-commerce, used to manually send reminder SMS. This automation allowed him to save 30 minutes daily.",
+      "This automation reduces losses due to abandoned carts and increases the conversion rate without human intervention. Our client, who managed an e-commerce business, used to send reminder SMS manually. This automation saved him 30 minutes daily.",
 
     // --- Exports ---
-    "automatisations.exports.title": "Automated daily exports of orders",
+    "automatisations.exports.title": "Automated customization of order exports",
     "automatisations.exports.subtitle":
-      "Specific data exports are generated automatically at fixed times each day.",
+      "Specific data exports are automatically generated at fixed times for order preparers.",
     "automatisations.exports.objective":
-      "Objective: ensure reliable and regular order tracking without human intervention.",
+      "Goal: save time by automating a repetitive task.",
     "automatisations.exports.image": "/exports.jpg",
 
     "automatisations.exports.details.1":
-      "The automation is directly connected to WooCommerce. It retrieves order data and automatically sends daily exports into a Google Sheet:",
+      "The automation is directly connected to the CMS. It retrieves order data, makes the necessary changes, and automatically sends the updated information.\n The file updates continuously and deletes old sheets to avoid unnecessary data accumulation. Teams therefore have a clean, always up-to-date spreadsheet.",
 
-    "automatisations.exports.details.1.list.1":
-      "A first export at 11am (Monday to Friday)",
+    /*"automatisations.exports.details.1.list.1":
+  "A first export at 11 a.m. (Monday to Friday)",
 
-    "automatisations.exports.details.1.list.2":
-      "A second export at 2pm (Monday to Friday)",
+"automatisations.exports.details.1.list.2":
+  "A second export at 2 p.m. (Monday to Friday)",
 
-    "automatisations.exports.details.1.list.3":
-      "A third specific export on Saturday at 10am with different information",
+"automatisations.exports.details.1.list.3":
+  "A third specific export on Saturday at 10 a.m., with different information",
 
-    "automatisations.exports.details.1.end":
-      "The file updates continuously and deletes old sheets to avoid data overload. This way, teams always have a clean and up-to-date table.",
+"automatisations.exports.details.1.end":
+  "The file updates continuously and deletes old sheets to avoid unnecessary data accumulation. Teams therefore have a clean, always up-to-date spreadsheet.",*/
 
     "automatisations.exports.details.2":
-      "This automation is 100% reliable. It eliminates the risk of forgetting, secures information sharing, and reduces recurring manual work related to exports.",
-
-    "automatisations.exports.details.3":
-      "It allowed our client to save 15 minutes daily and avoid any management errors linked to manual exports.",
+      "This automation is 100% reliable and has saved our client 15 minutes daily. It eliminates the risk of forgetting, secures information sharing, and reduces repetitive manual work related to exports.",
 
     // --- Invoices ---
     "automatisations.factures.title":
-      "Automatic entry of invoices and quotes into internal tracking",
+      "Data extraction and transfer from a photo",
     "automatisations.factures.subtitle":
-      "Invoices and quotes received are automatically read and integrated into the tracking file.",
+      "Invoices and quotes received in packages are photographed and directly transferred into the system.",
     "automatisations.factures.objective":
-      "Objective: eliminate manual entry and secure accounting management.",
+      "Goal: eliminate manual entry and secure accounting management.",
     "automatisations.factures.image": "/factures.jpg",
 
     "automatisations.factures.details.1":
-      "When an invoice or quote is submitted via a dedicated form, the automation automatically reads the document and extracts key information (amount, supplier, date, products). This data is then inserted directly into the client’s Google Sheet file at the end of the table, without human intervention.",
+      "When an invoice or quote is submitted via a dedicated form, the automation reads the document and extracts the key information (amount, supplier, date, products). This data is then directly inserted without any manual input.",
 
     "automatisations.factures.details.2":
-      "The process works with a reliability rate of 98%. The only limitations appear when a supplier sends an invoice in an atypical format, which is difficult to interpret automatically.",
+      "The process runs with 98% reliability. The only limitations appear when a supplier sends an invoice in an unusual format, difficult to interpret automatically.",
 
     "automatisations.factures.details.3":
-      "This automation reduces human errors, speeds up the management of incoming documents, and ensures centralized and structured tracking of invoices and quotes. On average, it saves our client 20 minutes daily.",
+      "This automation reduces human errors, speeds up document handling, and guarantees a centralized and structured follow-up of invoices and quotes. On average, it saves our client 20 minutes during product receptions.",
 
     // multi-step form
     "form.title": "Interactive Form",
