@@ -102,7 +102,13 @@ const TestimonialsCarousel: React.FC<{ lang: string }> = ({ lang }) => {
             {t("testimonials.title")}
           </h3>
         </div>
-
+        <a
+          href="https://www.google.com/maps/place/Automatisons/@48.8726215,2.3261205,17z/data=!4m8!3m7!1s0x47e66f19031dda7f:0xc00524e3a8228af3!8m2!3d48.8726215!4d2.3261205!9m1!1b1!16s%2Fg%2F11xl8j691g?entry=ttu&g_ep=EgoyMDI1MDkyMS4wIKXMDSoASAFQAw%3D%3D"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <GoogleRating />
+        </a>
         <Swiper
           modules={[Autoplay]}
           autoplay={{ delay: 4000, disableOnInteraction: false }}
@@ -230,7 +236,6 @@ const TestimonialsCarousel: React.FC<{ lang: string }> = ({ lang }) => {
           </div>
         </div>
       )}
-      <GoogleRating />
     </section>
   );
 };

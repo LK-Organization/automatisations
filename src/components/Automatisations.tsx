@@ -100,7 +100,7 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
   const examplesWithText = exampleIds.map((ex) => ({
     ...ex,
     title: t(`automatisations.${ex.id}.title` as any),
-    objective: t(`automatisations.${ex.id}.objective` as any),
+    /*objective: t(`automatisations.${ex.id}.objective` as any),*/
     subtitle: t(`automatisations.${ex.id}.subtitle` as any),
   }));
 
@@ -533,7 +533,7 @@ const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {
                         {ex.subtitle}
                       </p>
                       <p className="text-gray-200 mb-4 text-sm">
-                        {ex.objective}
+                        {/*{ex.objective}*/}
                       </p>
                       <div className="w-fit p-2 bg-white/20 text-white rounded-full hover:bg-white/30 transition">
                         <ChevronRight className="h-5 w-5" />

@@ -62,7 +62,7 @@ export default function GoogleRating({
 
   return (
     <div
-      className={`flex flex-row items-center justify-center ${cfg.px} rounded-2xl shadow-sm bg-white ${cfg.gap}`}
+      className={`flex flex-row items-center justify-center ${cfg.px}  bg-white ${cfg.gap}`}
       role="group"
       aria-label={`Google rating: ${r} out of 5 based on ${reviews} reviews`}
     >
@@ -74,7 +74,7 @@ export default function GoogleRating({
       {/* rating & stars */}
       <div className="flex flex-col items-center">
         <div className={`flex items-center ${cfg.gap}`}>
-          <span className={`font-semibold ${cfg.text}`}>{r.toFixed(1)}</span>
+          <span className={`font-semibold ${cfg.text}`}>{r.toFixed(0)}</span>
           <span className={`text-sm text-gray-500`}>/ 5</span>
         </div>
 

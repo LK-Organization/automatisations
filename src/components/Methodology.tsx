@@ -122,7 +122,7 @@ const Methodology: React.FC<MethodologyProps> = ({ lang }) => {
                             size={16}
                             className="text-green-500 flex-shrink-0"
                           />
-                          <span className="text-sm text-gray-700">
+                          <span className="text-md text-gray-700">
                             {t(featureKey)}
                           </span>
                         </motion.div>
