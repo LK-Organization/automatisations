@@ -42,7 +42,7 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-left w-1/3"
+            className="text-center md:text-left md:w-1/3"
           >
             <div className="flex items-center justify-center md:justify-start mb-4">
               <img
@@ -62,9 +62,9 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="flex flex-col items-center text-left w-1/3"
+            className="flex flex-col items-center text-center md:text-left md:w-1/3"
           >
-            <div className="flex flex-col items-start justify-end w-fit">
+            <div className="flex flex-col md:items-start md:justify-end w-fit">
               <h4 className="text-lg font-semibold mb-4">
                 {t("footer.navigationTitle")}
               </h4>
@@ -93,9 +93,9 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-            className="flex flex-col items-end text-left w-1/3"
+            className="flex flex-col items-end text-center md:text-left md:w-1/3"
           >
-            <div className="flex flex-col items-start justify-end w-fit">
+            <div className="flex flex-col md:items-start md:justify-end w-fit">
               {" "}
               <h4 className="text-lg font-semibold mb-4">
                 {t("footer.followUs")}
@@ -124,7 +124,7 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
           <p className="text-gray-400">
             © {currentYear} Automatisons Agence IA. {t("footer.rights")}
           </p>
-          <div className="flex gap-4 flex-wrap">
+          <div className="flex justify-center gap-4 flex-wrap">
             <a
               href={t("footer.legalLink")}
               className="text-gray-400 hover:text-primary-400 transition-colors duration-200"
