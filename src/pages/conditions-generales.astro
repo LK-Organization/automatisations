@@ -6,10 +6,10 @@ import Chatbot from '../components/Chatbot';
 
 const lang = 'fr';
 const title = 'Conditions Générales d’Utilisation du site Automatisons.fr';
-const description = 'Conditions Générales d’Utilisation des services proposés par Automatisons Agence IA.';
+const description = 'Conditions Générales d’Utilisation des services proposés par Automatisons.';
 ---
 
-<Layout title={title} description={description} >
+<Layout title={title} description={description}>
   <Navigation lang={lang} isHomePage={false} client:load />
 
   <main class="pt-16">
@@ -17,17 +17,17 @@ const description = 'Conditions Générales d’Utilisation des services propos�
       <h1 class="text-4xl font-bold mb-10">Conditions d’utilisation du site Automatisons.fr</h1>
 
       <p class="bg-yellow-100 border-l-4 border-yellow-400 text-yellow-900 px-4 py-3 mb-6">
-        <strong>Important :</strong> Les présentes Conditions Générales d'Utilisation (CGU) régissent l'utilisation des services d'automatisation et d'intelligence artificielle proposés par Automatisons Agence IA. Elles constituent un contrat entre vous et notre société.
+        <strong>Important :</strong> Les présentes Conditions Générales d'Utilisation (CGU) régissent l'utilisation des services d'automatisation et d'intelligence artificielle proposés par Automatisons. Elles constituent un contrat entre vous et notre société.
       </p>
 
       <h2 class="text-2xl font-semibold mt-8 mb-2">1. Objet et champ d'application</h2>
       <p class="mb-4">
-        Les présentes CGU définissent les conditions dans lesquelles Automatisons Agence IA fournit ses services d'automatisation, d'intelligence artificielle et de conseil en transformation digitale. Elles s'appliquent à toute commande passée via notre site web, par téléphone, email ou tout autre moyen.
+        Les présentes CGU définissent les conditions dans lesquelles Automatisons fournit ses services d'automatisation, d'intelligence artificielle et de conseil en transformation digitale. Elles s'appliquent à toute commande passée via notre site web, par téléphone, email ou tout autre moyen.
       </p>
 
       <h2 class="text-2xl font-semibold mt-8 mb-2">2. Définitions</h2>
       <p class="mb-4">
-        <strong>"Automatisons Agence IA" ou "Prestataire"</strong> : la société Automatisons Agence IA SAS<br />
+        <strong>"Automatisons" ou "Prestataire"</strong> : la SARL 36Blue<br />
         <strong>"Client"</strong> : toute personne physique ou morale qui commande des services<br />
         <strong>"Services"</strong> : prestations d'automatisation, d'IA, de conseil et de formation<br />
         <strong>"Projet"</strong> : ensemble des Services définis dans un devis ou contrat<br />
@@ -36,19 +36,17 @@ const description = 'Conditions Générales d’Utilisation des services propos�
 
       <h2 class="text-2xl font-semibold mt-8 mb-2">3. Commande et acceptation</h2>
       <h3 class="text-xl font-medium mt-4">3.1 Processus de commande</h3>
-      <p class="mb-4">
-        Chaque commande suit ce processus :
-        <ul class="list-disc ml-6 mt-2">
-          <li>Audit gratuit (48h)</li>
-          <li>Émission d’un devis personnalisé (sous 7 jours)</li>
-          <li>Validation par le Client</li>
-          <li>Signature du contrat</li>
-          <li>Démarrage des travaux</li>
-        </ul>
-      </p>
+      <ul class="list-disc ml-6 mt-2 mb-4">
+        <li>Audit gratuit (48h)</li>
+        <li>Émission d’un devis personnalisé (sous 7 jours)</li>
+        <li>Validation par le Client</li>
+        <li>Signature du contrat</li>
+        <li>Démarrage des travaux</li>
+      </ul>
+
       <h3 class="text-xl font-medium mt-4">3.2 Acceptation</h3>
       <p class="mb-4">
-        La commande est définitive après signature du devis et réception de l’acompte. Automatisons Agence IA se réserve le droit de refuser une commande ne respectant pas ces CGU.
+        La commande est définitive après signature du devis et réception de l’acompte. Automatisons se réserve le droit de refuser une commande ne respectant pas ces CGU.
       </p>
 
       <h2 class="text-2xl font-semibold mt-8 mb-2">4. Prix et conditions de paiement</h2>
@@ -58,35 +56,34 @@ const description = 'Conditions Générales d’Utilisation des services propos�
       </p>
 
       <h3 class="text-xl font-medium mt-4">4.2 Modalités de paiement</h3>
-<div class="overflow-x-auto mb-4">
-  <table class="min-w-full border border-gray-300 text-sm">
-    <thead class="bg-gray-100">
-      <tr>
-        <th class="border border-gray-300 px-4 py-2 text-left">Type de projet</th>
-        <th class="border border-gray-300 px-4 py-2 text-left">Acompte</th>
-        <th class="border border-gray-300 px-4 py-2 text-left">Solde</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="border border-gray-300 px-4 py-2">&lt; 5 000€</td>
-        <td class="border border-gray-300 px-4 py-2">30% à la commande</td>
-        <td class="border border-gray-300 px-4 py-2">70% à la livraison</td>
-      </tr>
-      <tr class="bg-gray-50">
-        <td class="border border-gray-300 px-4 py-2">5 000€ - 20 000€</td>
-        <td class="border border-gray-300 px-4 py-2">40% à la commande</td>
-        <td class="border border-gray-300 px-4 py-2">60% à la livraison</td>
-      </tr>
-      <tr>
-        <td class="border border-gray-300 px-4 py-2">&gt; 20 000€</td>
-        <td class="border border-gray-300 px-4 py-2">50% à la commande</td>
-        <td class="border border-gray-300 px-4 py-2">50% selon échéancier</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
+      <div class="overflow-x-auto mb-4">
+        <table class="min-w-full border border-gray-300 text-sm">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="border border-gray-300 px-4 py-2 text-left">Type de projet</th>
+              <th class="border border-gray-300 px-4 py-2 text-left">Acompte</th>
+              <th class="border border-gray-300 px-4 py-2 text-left">Solde</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border border-gray-300 px-4 py-2">&lt; 5 000€</td>
+              <td class="border border-gray-300 px-4 py-2">30% à la commande</td>
+              <td class="border border-gray-300 px-4 py-2">70% à la livraison</td>
+            </tr>
+            <tr class="bg-gray-50">
+              <td class="border border-gray-300 px-4 py-2">5 000€ - 20 000€</td>
+              <td class="border border-gray-300 px-4 py-2">40% à la commande</td>
+              <td class="border border-gray-300 px-4 py-2">60% à la livraison</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-300 px-4 py-2">&gt; 20 000€</td>
+              <td class="border border-gray-300 px-4 py-2">50% à la commande</td>
+              <td class="border border-gray-300 px-4 py-2">50% selon échéancier</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <h3 class="text-xl font-medium mt-4">4.3 Retard de paiement</h3>
       <p class="mb-4">
@@ -98,18 +95,20 @@ const description = 'Conditions Générales d’Utilisation des services propos�
       <p class="mb-4">
         Les délais sont donnés à titre indicatif et commencent à réception de l’acompte et de tous les éléments nécessaires.
       </p>
+
       <h3 class="text-xl font-medium mt-4">5.2 Obligations du Client</h3>
       <p class="mb-4">
         Le Client s’engage à fournir les informations et accès nécessaires, désigner un interlocuteur et valider les livrables dans les délais.
       </p>
+
       <h3 class="text-xl font-medium mt-4">5.3 Obligations du Prestataire</h3>
       <p class="mb-4">
-        Automatisons Agence IA s’engage à travailler avec professionnalisme, respecter la confidentialité et assurer un support et une formation si prévue.
+        Automatisons s’engage à travailler avec professionnalisme, respecter la confidentialité et assurer un support et une formation si prévue.
       </p>
 
       <h2 class="text-2xl font-semibold mt-8 mb-2">6. Propriété intellectuelle</h2>
       <p class="mb-4">
-        Les développements spécifiques deviennent la propriété du Client après paiement intégral. Les outils génériques restent la propriété d’Automatisons Agence IA.
+        Les développements spécifiques deviennent la propriété du Client après paiement intégral. Les outils génériques restent la propriété d’Automatisons.
       </p>
 
       <h2 class="text-2xl font-semibold mt-8 mb-2">7. Confidentialité</h2>
@@ -119,7 +118,7 @@ const description = 'Conditions Générales d’Utilisation des services propos�
 
       <h2 class="text-2xl font-semibold mt-8 mb-2">8. Garanties et responsabilité</h2>
       <p class="mb-4">
-        Automatisons Agence IA garantit la conformité des Services aux spécifications définies. Sa responsabilité ne peut être engagée qu’en cas de faute prouvée.
+        Automatisons garantit la conformité des Services aux spécifications définies. Sa responsabilité ne peut être engagée qu’en cas de faute prouvée.
       </p>
 
       <h2 class="text-2xl font-semibold mt-8 mb-2">9. Droit applicable et juridiction</h2>
@@ -131,7 +130,7 @@ const description = 'Conditions Générales d’Utilisation des services propos�
       <p class="mb-4">
         Pour toute question, vous pouvez nous contacter à :<br />
         Email : <a href="mailto:contact@automatisons.fr" class="text-blue-600 hover:underline">contact@automatisons.fr</a><br />
-        Adresse : 123 Avenue de l'Innovation, 75001 Paris, France<br />
+        Adresse : 25 RUE TRONCHET 25-27, 75008 PARIS<br />
         Téléphone : +33 6 48 09 15 11
       </p>
 
@@ -140,5 +139,5 @@ const description = 'Conditions Générales d’Utilisation des services propos�
   </main>
 
   <Footer lang={lang} client:load />
-    {/*<Chatbot lang={lang} client:load />*/}
+  {/*<Chatbot lang={lang} client:load />*/}
 </Layout>
