@@ -501,7 +501,7 @@ export const ui = {
     "about.description2":
       "Fondateur d’un e-commerce depuis plus de 7 ans, j’ai dû m’adapter à la concurrence en optimisant à l’extrême mes process. C’est donc naturellement que j’ai fait de l’automatisation mon expertise.",
     "about.description3":
-      "On peut dire que je suis mon propre client : je teste sur mon entreprise ce que je propose ensuite à mes clients",
+      "On peut dire que je suis mon propre client : je teste sur mon entreprise ce que je propose ensuite à mes clients.",
     "about.description41":
       "Concrètement, nous sommes une agence spécialisée dans",
     "about.description42": "l’automatisation",
