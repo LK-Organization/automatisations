@@ -84,7 +84,10 @@ export default function PricingSection() {
       icon: <Settings className="w-8 h-8 text-green-400 mb-4" />,
       background: "bg-gradient-to-r from-blue-500 to-blue-600",
       checkbox: "blue-600",
-      list: ["Satisfaction guaranteed or your money back"],
+      list: [
+        "Satisfaction guaranteed or your money back",
+        "Payment after 15 days of use, only if satisfied.",
+      ],
     },
     {
       title: "Not sure yet?",

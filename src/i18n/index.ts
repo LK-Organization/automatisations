@@ -44,7 +44,7 @@ export const ui = {
       "Fini la perte de temps sur les compte-rendus.",
     "exemples.reports.image": "/reports.png",
     "exemples.reports.details":
-      "À chaque visite client je dois rédiger un compte-rendu manuel. Entre la rédaction, le copier-coller d’infos, l’envoi par mail, cela me prenait 10 à 15 minutes par bien à la fin de la journée… parfois jusqu’à 22h.\n\nAujourd’hui, dès qu’une visite est terminée, je remplis simplement un formulaire. Le compte-rendu personnalisé est généré automatiquement et envoyé au client en quelques minutes, avec les infos du bien, les points clés, et même des suggestions de visites similaires.\n\nCela me fait gagner un nombre d’heures incalculable chaque semaine, et mes clients sont bluffés de recevoir un suivi aussi rapide et soigné.",
+      "Je suis agent immobilier. À chaque visite client je dois rédiger un compte-rendu manuel. Entre la rédaction, le copier-coller d’infos, l’envoi par mail, cela me prenait 10 à 15 minutes par bien à la fin de la journée… parfois jusqu’à 22h.\n\nAujourd’hui, dès qu’une visite est terminée, je remplis simplement un formulaire. Le compte-rendu personnalisé est généré automatiquement et envoyé au client en quelques minutes, avec les infos du bien, les points clés, et même des suggestions de visites similaires.\n\nCela me fait gagner un nombre d’heures incalculable chaque semaine, et mes clients sont bluffés de recevoir un suivi aussi rapide et soigné.",
 
     "exemples.crm.title":
       "Synchronisation entre CRM, calendrier, et boîte mail",
@@ -74,16 +74,16 @@ export const ui = {
     // --- Commandes ---
     "automatisations.commandes.title": "Vérification des commandes (via photo)",
     "automatisations.commandes.subtitle":
-      "Un contrôle automatique est fait entre la commande client et la photo de la commande prise par le préparateur de commande.",
+      "Le préparateur prend en photo la commande. L’automatisation vérifie immédiatement que son contenu est correct.",
     "automatisations.commandes.objective":
       "Objectif : détecter rapidement les erreurs avant expédition du colis et corriger la commande si une erreur est présente.",
     "automatisations.commandes.image": "/commandes.jpg",
 
     "automatisations.commandes.details.1":
-      "Un agent IA analyse en temps réel les photos des commandes envoyées par un client spécialisé en logistique. Chaque photo affiche les produits de la commande ainsi que le bon de livraison qui comporte le numéro de commande. L’agent vérifie la conformité entre la commande passée sur le CMS et la photo reçue.",
+      "Le préparateur prépare la commande du client et la prend en photo. La photo contient les produits de la commande ainsi que le bon de livraison qui comporte le numéro de commande. L’agent vérifie la conformité entre la commande passée sur le CMS et la photo reçue.",
 
     "automatisations.commandes.details.2":
-      "Le bot alerte immédiatement en cas d’anomalie (produit manquant, produit ajouté, incohérence sur le panier du client). Sur plus de 100 tests réalisés, le système a atteint un taux de fiabilité d’environ 97 %. Les 3% d’échecs constatés concernent des photos floues ou mal cadrées.",
+      "Le bot alerte immédiatement en cas d’anomalie (Quand la photo était floue / mal cadrée : un humain aurait-il pût lire ? Si non, si une mauvaise photo est envoyée et que l'automatisation ne fonctionne pas, ça ne devrait pas baisser la fiabilité de l'automatisation. Car ce n’est pas l'automatisation le problème, mais la photo. (ex : si sur 100 tests, une photo était une photo différente que la commande (ex : photo d’un stylo), cela ne veut pas dire que la fiabilité est de 99%)). ",
 
     "automatisations.commandes.details.3":
       "Cette automatisation réduit fortement le temps de contrôle manuel, économisant plus d’une heure de travail quotidiennement. Elle fiabilise la préparation des commandes et évite toute erreur humaine.",
@@ -100,7 +100,7 @@ export const ui = {
       "L’automatisation détecte les commandes passées mais non réglées. Lorsqu’une commande est annulée, le client reçoit automatiquement un SMS personnalisé l’invitant à finaliser son achat X temps après sa tentative de commande. Cependant, si le client a repassé une commande lors de cette période, il ne recevra pas de SMS de relance. Tous les envois et les réponses sont suivis dans un tableau Google Sheets qui regroupe les réponses des clients aux SMS et l’historique d’envoi de SMS.",
 
     "automatisations.sms.details.2":
-      "Le système fonctionne avec une précision de 99 %. Les rares limites observées concernent des cas où un client repasse commande sous une autre identité (nom et numéro de téléphone différents), ce qui peut générer un SMS de relance malgré l’achat déjà validé.",
+      "Le système fonctionne avec une précision de 100 %.",
 
     "automatisations.sms.details.3":
       "Cette automatisation réduit les pertes liées aux abandons de panier et améliore le taux de conversion sans intervention humaine. Notre client, qui gérait un ecommerce, envoyait manuellement les SMS de relance. Cette automatisation lui a permis d’économiser 30 minutes quotidiennement.",
@@ -115,7 +115,7 @@ export const ui = {
     "automatisations.exports.image": "/exports.jpg",
 
     "automatisations.exports.details.1":
-      "L’automatisation est directement connectée au CMS. Elle récupère les données des commandes, fait les modifications nécessaires et envoie automatiquement les nouvelles informations.\n Le fichier se met à jour en continu et supprime les anciennes feuilles pour éviter l’accumulation de données inutiles. Les équipes disposent ainsi d’un tableau propre et toujours à jour.",
+      " L’automatisation est directement connectée au CMS. Elle récupère les données des commandes et les ajoute dans un fichier Google Sheets au format spécifique pour simplifier la préparation de commande.\n Le fichier se met à jour en continu et supprime les anciennes feuilles pour éviter l’accumulation de données inutiles. Les équipes disposent ainsi d’un tableau propre et toujours à jour.",
 
     /*"automatisations.exports.details.1.list.1":
       "Un premier export à 11h (du lundi au vendredi)",
@@ -220,7 +220,7 @@ export const ui = {
     // Solutions
     "solutions.title": "Nos Solutions d'Automatisation Intelligentes",
     "solutions.subtitle":
-      "Des solutions complètes pour automatiser tous vos processus métier",
+      "Des solutions complètes pour automatiser tous vos processus métiers",
     "solutions.email.title": "Gestion des Emails",
     "solutions.email.description":
       "Automatisez le tri, les réponses et le suivi de vos emails",
@@ -496,12 +496,12 @@ export const ui = {
     "about.title": "Une agence « IA » pas comme les autres…",
     "about.description": "Je suis Lukas, le fondateur. Enchanté !",
     "about.description1":
-      "Pourquoi me faire confiance ? Tout simplement parce que j’applique une règle simple:",
+      "Pourquoi me faire confiance ? Tout simplement parce que j’applique une règle simple :",
     "about.description1bold": "le client est ROI.",
     "about.description2":
       "Fondateur d’un e-commerce depuis plus de 7 ans, j’ai dû m’adapter à la concurrence en optimisant à l’extrême mes process. C’est donc naturellement que j’ai fait de l’automatisation mon expertise.",
     "about.description3":
-      "On peut dire que je suis mon propre client : je teste sur moi ce que je propose ensuite à mes clients",
+      "On peut dire que je suis mon propre client : je teste sur mon entreprise ce que je propose ensuite à mes clients",
     "about.description41":
       "Concrètement, nous sommes une agence spécialisée dans",
     "about.description42": "l’automatisation",
@@ -521,7 +521,7 @@ export const ui = {
 
     // About features (FR)
     "about.feature.innovation": "Le client est ROI",
-    "about.feature.experts": "Satisfait ou remboursé",
+    "about.feature.experts": "Paiement seulement si satisfait",
     "about.feature.customSolutions": "Agence française",
     "about.feature.support": "Disponible 7j/7",
 
@@ -640,7 +640,7 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "exemples.reports.subtitle": "No more wasting time on reports.",
     "exemples.reports.image": "/reports.png",
     "exemples.reports.details":
-      "After every client visit, I used to write a manual report. Between writing, copy-pasting info, and emailing, it took me 10 to 15 minutes per property at the end of the day—sometimes until 10 p.m.\n\nNow, as soon as a visit is over, I just fill out a form. A personalized report is automatically generated and sent to the client within minutes, including property details, key points, and even suggestions for similar listings.\n\nThis saves me countless hours every week, and my clients are amazed by the fast and polished follow-up.",
+      "I am a real estate agent. After every client visit, I used to write a manual report. Between writing, copy-pasting info, and emailing, it took me 10 to 15 minutes per property at the end of the day—sometimes until 10 p.m.\n\nNow, as soon as a visit is over, I just fill out a form. A personalized report is automatically generated and sent to the client within minutes, including property details, key points, and even suggestions for similar listings.\n\nThis saves me countless hours every week, and my clients are amazed by the fast and polished follow-up.",
 
     "exemples.crm.title": "Synchronization Between CRM, Calendar, and Email",
     "exemples.crm.subtitle": "All info in one place—no more errors.",
@@ -667,16 +667,16 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     // --- Orders ---
     "automatisations.commandes.title": "Automated order photo verification",
     "automatisations.commandes.subtitle":
-      "A Telegram bot automatically checks order photos sent by the preparation teams.",
+      "The preparer takes a photo of the order. The automation immediately checks that its contents are correct.",
     "automatisations.commandes.objective":
       "Goal: quickly detect errors before shipping the package and correct the order if an error is found.",
     "automatisations.commandes.image": "/commandes.jpg",
 
     "automatisations.commandes.details.1":
-      "An AI agent analyzes in real time the order photos sent by a logistics client. Each photo shows the ordered products along with the delivery slip containing the order number. The agent checks the consistency between the order placed on the CMS and the received photo.",
+      "The preparer prepares the customer’s order and takes a photo of it. The photo includes the products from the order as well as the delivery slip, which contains the order number. The agent checks the consistency between the order placed on the CMS and the received photo.",
 
     "automatisations.commandes.details.2":
-      "The bot immediately alerts in case of anomaly (missing product, added product, inconsistency in the customer’s cart). In over 100 tests, the system reached a reliability rate of around 97%. The 3% failures observed were due to blurry or poorly framed photos.",
+      "The bot immediately raises an alert in case of an anomaly (when the photo is blurry or poorly framed: could a human have read it? If not, then if a bad photo is sent and the automation doesn’t work, this should not reduce the reliability of the automation. Because the issue is not with the automation, but with the photo. (e.g., if out of 100 tests, one photo was completely different from the order (e.g., a photo of a pen), that does not mean the reliability is 99%).",
 
     "automatisations.commandes.details.3":
       "This automation significantly reduces manual control time, saving more than an hour of work daily. It ensures order preparation reliability and avoids human error.",
@@ -692,8 +692,7 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "automatisations.sms.details.1":
       "The automation detects placed but unpaid orders. When an order is canceled, the customer automatically receives a personalized SMS inviting them to complete their purchase X time after their attempt. However, if the customer has already placed a new order during that period, they won’t receive a reminder SMS. All sends and responses are tracked in a Google Sheets table that logs customer replies and the SMS sending history.",
 
-    "automatisations.sms.details.2":
-      "The system works with 99% accuracy. The rare limitations occur when a customer places a new order under a different identity (different name and phone number), which may trigger a reminder SMS despite the purchase being already validated.",
+    "automatisations.sms.details.2": "The system works with 100% accuracy. ",
 
     "automatisations.sms.details.3":
       "This automation reduces losses due to abandoned carts and increases the conversion rate without human intervention. Our client, who managed an e-commerce business, used to send reminder SMS manually. This automation saved him 30 minutes daily.",
@@ -707,7 +706,7 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "automatisations.exports.image": "/exports.jpg",
 
     "automatisations.exports.details.1":
-      "The automation is directly connected to the CMS. It retrieves order data, makes the necessary changes, and automatically sends the updated information.\n The file updates continuously and deletes old sheets to avoid unnecessary data accumulation. Teams therefore have a clean, always up-to-date spreadsheet.",
+      "The automation is directly connected to the CMS. It retrieves the order data and adds it into a Google Sheets file in a specific format to simplify order preparation.\n The file updates continuously and deletes old sheets to avoid unnecessary data accumulation. Teams therefore have a clean, always up-to-date spreadsheet.",
 
     /*"automatisations.exports.details.1.list.1":
   "A first export at 11 a.m. (Monday to Friday)",
@@ -1078,7 +1077,7 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "about.description2":
       "As the founder of an e-commerce business for over 7 years, I had to adapt to the competition by ruthlessly optimizing my processes. So it was only natural that I made automation my specialty.",
     "about.description3":
-      "You could say I'm my own client: I test on myself what I then offer to my clients.",
+      "You could say I am my own client: I test on my own business what I later offer to my clients.",
     "about.description41": "In short, we are an agency specialized in",
     "about.description42": "automation",
     "about.description43": "and",
@@ -1094,7 +1093,7 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
     "about.stats.projectsLabel": "Automations completed",
 
     "about.feature.innovation": "The customer is KING",
-    "about.feature.experts": "Satisfaction guaranteed",
+    "about.feature.experts": "Payment only if satisfied",
     "about.feature.customSolutions": "French agency",
     "about.feature.support": "Available 7 days a week",
 

@@ -47,7 +47,7 @@ const exampleIds: Example[] = [
   {
     id: "commandes",
     image: "/automatisation1.png",
-    tags: ["AI", "Telegram", "WooCommerce"],
+    tags: ["AI", "WooCommerce"],
     imageClass:
       "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top",
     imgPosition: "bottom",

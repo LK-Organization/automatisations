@@ -84,7 +84,10 @@ export default function PricingSection() {
       icon: <Settings className="w-8 h-8 text-green-400 mb-4" />,
       background: "bg-gradient-to-r from-blue-500 to-blue-600",
       checkbox: "blue-600",
-      list: ["Garanti satisfait ou rembourser"],
+      list: [
+        "100% satisfaction guaranteed",
+        "Paiement après 15 jours d’utilisation, seulement si satisfait",
+      ],
     },
     {
       title: "Vous avez un doute ?",
