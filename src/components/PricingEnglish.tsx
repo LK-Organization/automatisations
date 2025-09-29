@@ -85,7 +85,7 @@ export default function PricingSection() {
       background: "bg-gradient-to-r from-blue-500 to-blue-600",
       checkbox: "blue-600",
       list: [
-        "Satisfaction guaranteed or your money back",
+        "100% satisfaction guaranteed",
         "Payment after 15 days of use, only if satisfied.",
       ],
     },

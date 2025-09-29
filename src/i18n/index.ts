@@ -83,7 +83,7 @@ export const ui = {
       "Le préparateur prépare la commande du client et la prend en photo. La photo contient les produits de la commande ainsi que le bon de livraison qui comporte le numéro de commande. L’agent vérifie la conformité entre la commande passée sur le CMS et la photo reçue.",
 
     "automatisations.commandes.details.2":
-      "Le bot alerte immédiatement en cas d’anomalie (Quand la photo était floue / mal cadrée : un humain aurait-il pût lire ? Si non, si une mauvaise photo est envoyée et que l'automatisation ne fonctionne pas, ça ne devrait pas baisser la fiabilité de l'automatisation. Car ce n’est pas l'automatisation le problème, mais la photo. (ex : si sur 100 tests, une photo était une photo différente que la commande (ex : photo d’un stylo), cela ne veut pas dire que la fiabilité est de 99%)). ",
+      "Le bot alerte immédiatement en cas d’anomalie (produit manquant, produit ajouté, incohérence sur le panier du client).",
 
     "automatisations.commandes.details.3":
       "Cette automatisation réduit fortement le temps de contrôle manuel, économisant plus d’une heure de travail quotidiennement. Elle fiabilise la préparation des commandes et évite toute erreur humaine.",
@@ -100,7 +100,7 @@ export const ui = {
       "L’automatisation détecte les commandes passées mais non réglées. Lorsqu’une commande est annulée, le client reçoit automatiquement un SMS personnalisé l’invitant à finaliser son achat X temps après sa tentative de commande. Cependant, si le client a repassé une commande lors de cette période, il ne recevra pas de SMS de relance. Tous les envois et les réponses sont suivis dans un tableau Google Sheets qui regroupe les réponses des clients aux SMS et l’historique d’envoi de SMS.",
 
     "automatisations.sms.details.2":
-      "Le système fonctionne avec une précision de 100 %.",
+      "Le système fonctionne avec une précision de 100%.",
 
     "automatisations.sms.details.3":
       "Cette automatisation réduit les pertes liées aux abandons de panier et améliore le taux de conversion sans intervention humaine. Notre client, qui gérait un ecommerce, envoyait manuellement les SMS de relance. Cette automatisation lui a permis d’économiser 30 minutes quotidiennement.",
@@ -510,7 +510,7 @@ export const ui = {
     "about.description45":
       "avec un seul but : vous faire gagner (beaucoup) de temps.",
     // About stats (FR)
-    "about.stats.customers": "100 %",
+    "about.stats.customers": "100%",
     "about.stats.customersLabel": "Clients satisfaits",
     "about.stats.years": "+7",
     "about.stats.yearsLabel": "Années d'expérience",
@@ -676,7 +676,7 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
       "The preparer prepares the customer’s order and takes a photo of it. The photo includes the products from the order as well as the delivery slip, which contains the order number. The agent checks the consistency between the order placed on the CMS and the received photo.",
 
     "automatisations.commandes.details.2":
-      "The bot immediately raises an alert in case of an anomaly (when the photo is blurry or poorly framed: could a human have read it? If not, then if a bad photo is sent and the automation doesn’t work, this should not reduce the reliability of the automation. Because the issue is not with the automation, but with the photo. (e.g., if out of 100 tests, one photo was completely different from the order (e.g., a photo of a pen), that does not mean the reliability is 99%).",
+      "The bot immediately alerts in case of an anomaly (missing product, added product, inconsistency in the customer’s cart).",
 
     "automatisations.commandes.details.3":
       "This automation significantly reduces manual control time, saving more than an hour of work daily. It ensures order preparation reliability and avoids human error.",
