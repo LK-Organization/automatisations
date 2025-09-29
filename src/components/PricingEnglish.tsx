@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { Wand2, Settings, Brain, CheckCircle } from "lucide-react";
+import type { add } from "lodash";
 
 // Spring configuration for smooth 3D effect
 const springConfig = {
@@ -80,7 +81,8 @@ export default function PricingSection() {
   const cards = [
     {
       title: "Custom automation development",
-      price: "From €400/day",
+      price: "From €400",
+      addText: "(Daily Rate)",
       icon: <Settings className="w-8 h-8 text-green-400 mb-4" />,
       background: "bg-gradient-to-r from-blue-500 to-blue-600",
       checkbox: "blue-600",

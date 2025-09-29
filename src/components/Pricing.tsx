@@ -80,7 +80,9 @@ export default function PricingSection() {
   const cards = [
     {
       title: "Développement d’automatisation sur mesure",
-      price: "Dès 400€/ jour",
+      price: "À partir de 400€",
+
+      addText: "(TJM)",
       icon: <Settings className="w-8 h-8 text-green-400 mb-4" />,
       background: "bg-gradient-to-r from-blue-500 to-blue-600",
       checkbox: "blue-600",
@@ -166,6 +168,9 @@ export default function PricingSection() {
 
                   <p className="text-4xl font-semibold  text-center text-white">
                     {card.price}
+                  </p>
+                  <p className="text-2xl font-semibold  text-center text-white">
+                    {card.subText}
                   </p>
                   <p className="text-2xl text-center text-white/90 font-semibold ">
                     {card.addText}
