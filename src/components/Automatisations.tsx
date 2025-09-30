@@ -76,6 +76,14 @@ const exampleIds: Example[] = [
       "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-top",
     imgPosition: "bottom",
   },
+  {
+    id: "mail",
+    image: "/mail-generation.webp",
+    tags: ["NLP", "API REST", "SMTP"],
+    imageClass:
+      "h-auto md:h-[200px] md:w-full w-[300px] object-cover object-center",
+    imgPosition: "top",
+  },
 ];
 
 const AutomationCarousel: React.FC<AutomationCarouselProps> = ({ lang }) => {

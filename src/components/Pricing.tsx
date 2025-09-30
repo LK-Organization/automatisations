@@ -79,7 +79,6 @@ function TiltCard({
 export default function PricingSection() {
   const cards = [
     {
-      title: "Développement d’automatisation sur mesure",
       price: "À partir de 400€",
 
       addText: "(TJM)",

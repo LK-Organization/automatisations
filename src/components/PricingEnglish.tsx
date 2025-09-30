@@ -80,7 +80,6 @@ function TiltCard({
 export default function PricingSection() {
   const cards = [
     {
-      title: "Custom automation development",
       price: "From €400",
       addText: "(Daily Rate)",
       icon: <Settings className="w-8 h-8 text-green-400 mb-4" />,

@@ -149,7 +149,22 @@ export const ui = {
 
     "automatisations.factures.details.3":
       "Cette automatisation réduit les erreurs humaines, accélère la gestion des documents entrants et garantit un suivi centralisé et structuré des factures et devis. En moyenne, elle permet d’économiser 20 minutes lors des réceptions produits à notre client.",
+    // --- generation d'email ---
+    "automatisations.mail.title":
+      "Génération de mails de réponse semi-automatiques",
+    "automatisations.mail.subtitle":
+      "L’automatisation récupère les informations du back-office et du site du transporteur pour générer un brouillon personnalisé pour répondre par mail. L'opérateur peut vérifier le mail et n'a plus qu'à cliquer sur \"Envoyer\" pour que le mail s'envoie.",
 
+    "automatisations.mail.image": "/mail-generation.webp",
+
+    "automatisations.mail.details.1":
+      "L’automatisation génère automatiquement un brouillon de réponse aux mails reçus par le service client.\n À l’ouverture du mail, le système l’analyse, récupère les données disponibles dans le back-office du site internet et sur le site du transporteur, et produit un brouillon personnalisé, que l’opérateur valide avant l’envoi.",
+
+    "automatisations.mail.details.2":
+      "Les cas les plus fréquents (demandes de numéro de suivi, demande de liens de tracking, confirmations de commande, délais, etc.) sont traités avec une fiabilité de 97 %.",
+
+    "automatisations.mail.details.3":
+      "Cette automatisation permet d’économiser environ 5 minutes par mail et réduit considérablement le taux d’erreurs humaines dans les réponses. Elle garantit une communication simple, rapide, professionnelle et personnalisée.",
     // multistep form
     "form.title": "Formulaire interactif",
     "form.labels.next": "Suivant",
@@ -740,6 +755,22 @@ L’analyse de vos besoins et le devis sont gratuits, livrés en moins de 24h.`,
 
     "automatisations.factures.details.3":
       "This automation reduces human errors, speeds up document handling, and guarantees a centralized and structured follow-up of invoices and quotes. On average, it saves our client 20 minutes during product receptions.",
+
+    // --- Emails ---
+    "automatisations.mail.title": "Semi-automated reply email generation",
+    "automatisations.mail.subtitle":
+      'The automation retrieves information from the back-office and the carrier’s website to generate a personalized draft reply email. The operator can review the draft and simply click "Send" to dispatch the email.',
+
+    "automatisations.mail.image": "/mail-generation.webp",
+
+    "automatisations.mail.details.1":
+      "The automation automatically generates a draft reply to emails received by the customer service team.\nWhen the email is opened, the system analyzes it, retrieves the available data from the website’s back-office and the carrier’s site, and produces a personalized draft, which the operator validates before sending.",
+
+    "automatisations.mail.details.2":
+      "The most common cases (requests for tracking numbers, tracking links, order confirmations, delivery times, etc.) are handled with a reliability of 97%.",
+
+    "automatisations.mail.details.3":
+      "This automation saves about 5 minutes per email and significantly reduces the rate of human errors in replies. It ensures communication that is simple, fast, professional, and personalized.",
 
     // multi-step form
     "form.title": "Interactive Form",
